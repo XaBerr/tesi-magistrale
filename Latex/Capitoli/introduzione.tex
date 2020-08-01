@@ -1,0 +1,14 @@
+\lvli{Introduzione}
+\lvlii{Legge di Moore}
+\cite{S24}Nel 1965 uno dei fondatori della Intel, Gordon Moore, ipotizzò che il numero dei transistor nei microprocessori sarebbe raddoppiato ogni anno. Questa legge ha garantito un aumento costante delle prestazioni per i computer ed è rimasta vera fino ai nostri giorni, grazie alla possibilità di rimpicciolire la dimensione dei transistor stessi. Oggi che le lavorazioni sono arrivate alla dimensione di gate di 14 nm vale ancora questa legge? Un nanometro misura 3-4 atomi di silicio e presenta un vincolo fisico per la tecnica di scaling utilizzata fino ad ora.
+
+I computer sono già stati limitati in passato dal vincolo di velocità di clock dei processori di circa 4GHz ed oggi subiscono il vincolo dello scaling, riusciranno in futuro a sopperire alla richiesta costante di prestazioni?
+
+Intel attraverso a dei cambi di architettura dei transistor: Pat-terning, FinFet, High-K metal gate, Single dummy gate, hyperscaling, cerca di trovare la soluzione nell'aumentare la densità di transistor mantenendo la lunghezza di gate costante.
+
+Altre aziende invece cercano soluzione nell'affiancare al computer tradizionale risolutori specifici per il calcolo delle operazioni più dispendiose; da qui nasce l'interesse di molte aziende per i quantum computer.
+
+\lvlii{Computer quantistico/adiabatico}
+\cite{NAC}Da circa vent'anni a questa parte è cresciuto l'interesse per i computer quantistici con la speranza che possano fornire prestazioni superiori rispetto ai computer classici grazie all'esistenza delle super position. Shor ha dimostrato che utilizzando algoritmi quantistici è possibile risolvere la fattorizzazione e l'estrazione dei logaritmi discreti in tempi polinomiali rispetto ai tempi superpolinomiali degli algoritmi classici. Successivamente Feynman introduce l'idea che questi algoritmi quantistici non possano essere simulati in computer classici visto che richiederebbero risorse esponenziali, da qui nasce l'esigenza della ricerca dei computer quantisti, ovvero computer in grado di utilizzare algoritmi quantistici con risorse polinomiali.
+
+Molte aziende hanno cercato di creare computer quantistici basandosi su idee differenti. IBM ha creato quello che definisce il primo \textit{Universal Quantum Computers} a 50 qubit. Google ha creato \textit{Bristlecone}, un quantum computer che possiede 72 qubit e vanta della \textit{Quantum Supremacy}\cite{QS}. Microsoft ha costruito il suo quantum computer su dei qubit composti da \textit{quasiparticelle Majorana} con l'idea di ridurre gli errori di calcolo provenienti dai rumori esterni\cite{MA}. Intel stessa fa ricerca quantistica producendo \textit{Tangle Lake} un quantum computer di 49 qubit\cite{Q49}. In questo documento ci interesseremo al quantum computer della D-wave che vanta 2000 qubit, basato sulla tecnologia di \textit{quantum annealer}.

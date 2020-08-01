@@ -1,0 +1,16 @@
+/Latex/*.aux
+/Latex/*.log
+/Latex/*.pdf
+/Latex/*.gz
+/Latex/*.toc
+/Latex/*.lof
+/Latex/*.lot
+/Latex/*.idx
+/Latex/*.ilg
+/Latex/*.ind
+/Latex/*.xml
+/Latex/*.blg
+/Latex/*.bcf
+/Latex/*.bbl
+/Latex/*.bib
+/Latex/*.lol

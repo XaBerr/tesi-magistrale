@@ -2,13 +2,34 @@
 
 - QKD introduction
   - what is QKD
+    - introduction
+    - Qubit
+    - Photons
+    - BB84
+    - Other protocols
+    - Fiber
+    - Satellite
   - what is a PAT system
+    - introduction
+    - Fine
+    - Coarse
 - Hardware design
-  - the setups of QKD
-  - the setups of PAT-fine
+  - optical setups of QKD
+    - the main blocks and its functions
+  - optical setups of PAT-fine
+    - the setups variants
+  - additional circuit BIAS
 - Software design
   - the organization of the QKD software
+    - the problem we had
+    - the solution we chose
   - the development of PAT-fine software
+    - the request
+    - the UML planning
+    - the classes
+    - the main algorithm
+    - all the setups available
 - Test and future developments
   - test done with the PAT-fine setup
+    - the performance comparison with the old software
   - future developments
