@@ -14,3 +14,5 @@
 /Latex/*.bbl
 /Latex/*.bib
 /Latex/*.lol
+/Latex/*.fls
+/Latex/*.fdb_latexmk
