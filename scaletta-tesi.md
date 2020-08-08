@@ -6,7 +6,6 @@
     - Qubit
     - Photons
     - BB84
-    - Other protocols
     - Fiber
     - Satellite
   - what is a PAT system
