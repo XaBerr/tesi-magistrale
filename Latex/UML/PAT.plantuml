@@ -1,0 +1,26 @@
+@startuml controller
+!$LIGHT = 1
+!includeurl https://raw.githubusercontent.com/XaBerr/plantUMLstyle/master/style.plantuml
+
+hide members
+
+rectangle "sensor" as sensor
+rectangle "controller" as controller
+rectangle "actuator" as actuator
+rectangle "system" as system
+
+circle "input\lbeam\lposition" as x
+circle "output\rbeam\rposition" as y
+circle "error" as e
+circle "disturbance" as d
+
+x -right--> e
+e -right-> controller
+controller -right-> actuator
+actuator -right-> system
+d -down-> system
+system -right-> y
+y -down-> sensor
+sensor --> e
+
+@enduml

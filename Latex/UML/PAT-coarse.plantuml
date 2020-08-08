@@ -1,0 +1,26 @@
+@startuml controller
+!$LIGHT = 1
+!includeurl https://raw.githubusercontent.com/XaBerr/plantUMLstyle/master/style.plantuml
+
+hide members
+
+rectangle "camera" as sensor
+rectangle "one Shot" as controller
+rectangle "two axis motors" as actuator
+rectangle "telescope mount" as system
+
+circle "input\lpixel\lposition\l(x,y)" as x
+circle "output\rpixel\rposition\r(x,y)" as y
+circle "error\rdelta\rpixel" as e
+circle "vibrations" as d
+
+x -right--> e
+e -right-> controller
+controller -right-> actuator
+actuator -right-> system
+d -down-> system
+system -right-> y
+y -down-> sensor
+sensor --> e
+
+@enduml
