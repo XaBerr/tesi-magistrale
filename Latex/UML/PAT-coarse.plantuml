@@ -1,4 +1,4 @@
-@startuml controller
+@startuml PAT-coarse
 !$LIGHT = 1
 !includeurl https://raw.githubusercontent.com/XaBerr/plantUMLstyle/master/style.plantuml
 

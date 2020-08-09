@@ -1,0 +1,341 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" contentScriptType="application/ecmascript" contentStyleType="text/css" height="273px" preserveAspectRatio="none" style="width:643px;height:273px;background:#EEEEEE;" version="1.1" viewBox="0 0 643 273" width="643px" zoomAndPan="magnify"><defs><filter height="300%" id="f18n2rll93ozwr" width="300%" x="-1" y="-1"><feGaussianBlur result="blurOut" stdDeviation="2.0"/><feColorMatrix in="blurOut" result="blurOut2" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 .4 0"/><feOffset dx="4.0" dy="4.0" in="blurOut2" result="blurOut3"/><feBlend in="SourceGraphic" in2="blurOut3" mode="normal"/></filter></defs><g><!--MD5=[88723051146da09166554e42ec8ff111]
+entity sensor--><rect fill="#FFFFFF" filter="url(#f18n2rll93ozwr)" height="37.0146" rx="5" ry="5" style="stroke: #AAAAAA; stroke-width: 1.5;" width="70" x="310" y="225"/><text fill="#000000" font-family="Verdana" font-size="14" lengthAdjust="spacingAndGlyphs" textLength="50" x="320" y="249.0752">camera</text><!--MD5=[c05fcadc036a699206cfdfa4a4fdb889]
+entity controller--><rect fill="#FFFFFF" filter="url(#f18n2rll93ozwr)" height="37.0146" rx="5" ry="5" style="stroke: #AAAAAA; stroke-width: 1.5;" width="85" x="131.5" y="128"/><text fill="#000000" font-family="Verdana" font-size="14" lengthAdjust="spacingAndGlyphs" textLength="65" x="141.5" y="152.0752">one Shot</text><!--MD5=[296df57ef9007dac74070e4982c50e2d]
+entity actuator--><rect fill="#FFFFFF" filter="url(#f18n2rll93ozwr)" height="37.0146" rx="5" ry="5" style="stroke: #AAAAAA; stroke-width: 1.5;" width="135" x="251.5" y="128"/><text fill="#000000" font-family="Verdana" font-size="14" lengthAdjust="spacingAndGlyphs" textLength="115" x="261.5" y="152.0752">two axis motors</text><!--MD5=[691a1726be306d84324876b17512fe90]
+entity system--><rect fill="#FFFFFF" filter="url(#f18n2rll93ozwr)" height="37.0146" rx="5" ry="5" style="stroke: #AAAAAA; stroke-width: 1.5;" width="137" x="421.5" y="128"/><text fill="#000000" font-family="Verdana" font-size="14" lengthAdjust="spacingAndGlyphs" textLength="117" x="431.5" y="152.0752">telescope mount</text><!--MD5=[fd07f395667725ff60a8c06b2c928ecc]
+entity x--><ellipse cx="34" cy="146.5" fill="#B1DBFF" filter="url(#f18n2rll93ozwr)" rx="8" ry="8" style="stroke: #81A1BD; stroke-width: 2.0;"/><text fill="#000000" font-family="Verdana" font-size="14" lengthAdjust="spacingAndGlyphs" textLength="36" x="6" y="177.5752">input</text><text fill="#000000" font-family="Verdana" font-size="14" lengthAdjust="spacingAndGlyphs" textLength="32" x="6" y="194.5898">pixel</text><text fill="#000000" font-family="Verdana" font-size="14" lengthAdjust="spacingAndGlyphs" textLength="56" x="6" y="211.6045">position</text><text fill="#000000" font-family="Verdana" font-size="14" lengthAdjust="spacingAndGlyphs" textLength="34" x="6" y="228.6191">(x,y)</text><!--MD5=[f9c43c048aa201683de6aaaeed7cf90c]
+entity y--><ellipse cx="603" cy="146.5" fill="#B1DBFF" filter="url(#f18n2rll93ozwr)" rx="8" ry="8" style="stroke: #81A1BD; stroke-width: 2.0;"/><text fill="#000000" font-family="Verdana" font-size="14" lengthAdjust="spacingAndGlyphs" textLength="48" x="575" y="177.5752">output</text><text fill="#000000" font-family="Verdana" font-size="14" lengthAdjust="spacingAndGlyphs" textLength="32" x="575" y="194.5898">pixel</text><text fill="#000000" font-family="Verdana" font-size="14" lengthAdjust="spacingAndGlyphs" textLength="56" x="575" y="211.6045">position</text><text fill="#000000" font-family="Verdana" font-size="14" lengthAdjust="spacingAndGlyphs" textLength="34" x="575" y="228.6191">(x,y)</text><!--MD5=[e32773a0da76c445e84e5885468a4484]
+entity e--><ellipse cx="87" cy="146.5" fill="#B1DBFF" filter="url(#f18n2rll93ozwr)" rx="8" ry="8" style="stroke: #81A1BD; stroke-width: 2.0;"/><text fill="#000000" font-family="Verdana" font-size="14" lengthAdjust="spacingAndGlyphs" textLength="35" x="69.5" y="177.5752">error</text><text fill="#000000" font-family="Verdana" font-size="14" lengthAdjust="spacingAndGlyphs" textLength="34" x="69.5" y="194.5898">delta</text><text fill="#000000" font-family="Verdana" font-size="14" lengthAdjust="spacingAndGlyphs" textLength="32" x="69.5" y="211.6045">pixel</text><!--MD5=[011db1d27274c86691871bc51b12beb8]
+entity d--><ellipse cx="490" cy="38" fill="#B1DBFF" filter="url(#f18n2rll93ozwr)" rx="8" ry="8" style="stroke: #81A1BD; stroke-width: 2.0;"/><text fill="#000000" font-family="Verdana" font-size="14" lengthAdjust="spacingAndGlyphs" textLength="69" x="455.5" y="69.0752">vibrations</text><!--MD5=[af277d6b9eecc5db68b1a73f748fbcf3]
+link x to e--><path d="M43.1094,146.5 C52.9399,146.5 62.7705,146.5 72.6011,146.5 " fill="none" id="x-&gt;e" style="stroke: #000000; stroke-width: 1.0;"/><polygon fill="#000000" points="77.7418,146.5,68.7418,142.5,72.7418,146.5,68.7418,150.5,77.7418,146.5" style="stroke: #000000; stroke-width: 1.0;"/><!--MD5=[d732363e7f8b4329bb0eca75a3c73bd3]
+link e to controller--><path d="M96.1758,146.5 C106.1856,146.5 116.1955,146.5 126.205,146.5 " fill="none" id="e-&gt;controller" style="stroke: #000000; stroke-width: 1.0;"/><polygon fill="#000000" points="131.44,146.5,122.44,142.5,126.44,146.5,122.44,150.5,131.44,146.5" style="stroke: #000000; stroke-width: 1.0;"/><!--MD5=[20a3c849206dab5908c33b3530aab65f]
+link controller to actuator--><path d="M216.764,146.5 C226.513,146.5 236.262,146.5 246.011,146.5 " fill="none" id="controller-&gt;actuator" style="stroke: #000000; stroke-width: 1.0;"/><polygon fill="#000000" points="251.109,146.5,242.109,142.5,246.109,146.5,242.109,150.5,251.109,146.5" style="stroke: #000000; stroke-width: 1.0;"/><!--MD5=[4a5f3ea0b620cbb917ae66bcdbb678ca]
+link actuator to system--><path d="M386.799,146.5 C396.64,146.5 406.481,146.5 416.322,146.5 " fill="none" id="actuator-&gt;system" style="stroke: #000000; stroke-width: 1.0;"/><polygon fill="#000000" points="421.468,146.5,412.468,142.5,416.468,146.5,412.468,150.5,421.468,146.5" style="stroke: #000000; stroke-width: 1.0;"/><!--MD5=[001ca3c4a82ac76666cd08033d633802]
+link d to system--><path d="M490,47.005 C490,62.835 490,98.667 490,122.465 " fill="none" id="d-&gt;system" style="stroke: #000000; stroke-width: 1.0;"/><polygon fill="#000000" points="490,127.644,494,118.644,490,122.644,486,118.644,490,127.644" style="stroke: #000000; stroke-width: 1.0;"/><!--MD5=[367d2341101d7f634e58ea8d27503067]
+link system to y--><path d="M558.859,146.5 C568.746,146.5 578.632,146.5 588.519,146.5 " fill="none" id="system-&gt;y" style="stroke: #000000; stroke-width: 1.0;"/><polygon fill="#000000" points="593.689,146.5,584.689,142.5,588.689,146.5,584.689,150.5,593.689,146.5" style="stroke: #000000; stroke-width: 1.0;"/><!--MD5=[861f180082f29fb4eaf98b53e05677c1]
+link y to sensor--><path d="M593.844,154.26 C588.769,157.791 582.239,161.991 576,165 C511.851,195.9389 432.164,219.704 385.124,232.349 " fill="none" id="y-&gt;sensor" style="stroke: #000000; stroke-width: 1.0;"/><polygon fill="#000000" points="380.114,233.6868,389.8413,235.2294,384.9447,232.3968,387.7773,227.5002,380.114,233.6868" style="stroke: #000000; stroke-width: 1.0;"/><!--MD5=[16d526e88477cd668bb16d8e4571c953]
+link sensor to e--><path d="M309.886,233.6868 C263.664,221.4263 180.487,197.0662 114,165 C109.4183,162.7903 104.6798,159.938 100.4757,157.181 " fill="none" id="sensor-&gt;e" style="stroke: #000000; stroke-width: 1.0;"/><polygon fill="#000000" points="96.1564,154.26,101.3709,162.6152,100.2982,157.061,105.8524,155.9883,96.1564,154.26" style="stroke: #000000; stroke-width: 1.0;"/><!--MD5=[f77c7d28571e61f400ce951f855df225]
+@startuml PAT-coarse
+!$LIGHT = 1
+!includeurl https://raw.githubusercontent.com/XaBerr/plantUMLstyle/master/style.plantuml
+
+hide members
+
+rectangle "camera" as sensor
+rectangle "one Shot" as controller
+rectangle "two axis motors" as actuator
+rectangle "telescope mount" as system
+
+circle "input\lpixel\lposition\l(x,y)" as x
+circle "output\rpixel\rposition\r(x,y)" as y
+circle "error\rdelta\rpixel" as e
+circle "vibrations" as d
+
+x -right- -> e
+e -right-> controller
+controller -right-> actuator
+actuator -right-> system
+d -down-> system
+system -right-> y
+y -down-> sensor
+sensor - -> e
+
+@enduml
+
+@startuml PAT-coarse
+
+
+
+
+  skinparam stereotypeCBackgroundColor b1dbff
+  skinparam backgroundColor eee
+
+
+
+
+
+skinparam roundcorner 10
+skinparam BoxPadding 20
+
+skinparam circledCharacter {
+  radius 8
+  fontSize 14
+  fontName Verdana
+}
+
+skinparam class {
+    backgroundColor fff
+  borderColor aaa
+    fontColor 000
+  fontName Verdana
+  fontSize 14
+  stereotypeFontColor 333
+  stereotypeFontSize 14
+    arrowColor 000
+  arrowFontName Verdana
+  arrowFontColor 333
+  arrowFontSize 14
+  attributeFontColor 333
+  attributeFontSize 14
+  attributeIconSize 14
+}
+
+
+skinparam actor {
+    backgroundColor b1dbff
+  borderColor 81a1bd
+    fontColor 000
+  fontName Verdana
+  fontSize 14
+  stereotypeFontColor 333
+  stereotypeFontSize 14
+}
+
+skinparam participant {
+    backgroundColor fff
+  borderColor aaa
+    fontColor 000
+  fontName Verdana
+  fontSize 14
+  stereotypeFontColor 333
+  stereotypeFontSize 14
+}
+
+
+skinparam interface {
+    backgroundColor b1dbff
+  borderColor 81a1bd
+    fontColor 000
+  fontName Verdana
+  fontSize 14
+  stereotypeFontColor 333
+  stereotypeFontSize 14
+}
+
+skinparam component {
+    backgroundColor fff
+  borderColor aaa
+    fontColor 000
+  fontName Verdana
+  fontSize 14
+  stereotypeFontColor 333
+  stereotypeFontSize 14
+}
+
+skinparam node {
+    backgroundColor fff
+  borderColor aaa
+    fontColor 000
+  fontName Verdana
+  fontSize 14
+  stereotypeFontColor 333
+  stereotypeFontSize 14
+}
+
+skinparam database {
+    backgroundColor fff
+  borderColor aaa
+    fontColor 000
+  fontName Verdana
+  fontSize 14
+  stereotypeFontColor 333
+  stereotypeFontSize 14
+}
+
+skinparam queue {
+    backgroundColor fff
+  borderColor aaa
+    fontColor 000
+  fontName Verdana
+  fontSize 14
+  stereotypeFontColor 333
+  stereotypeFontSize 14
+}
+
+
+skinparam usecase {
+    backgroundColor fff
+  borderColor aaa
+    fontColor 000
+  fontName Verdana
+  fontSize 14
+  stereotypeFontColor 333
+  stereotypeFontSize 14
+    arrowColor 000
+  arrowFontName Verdana
+  arrowFontColor 333
+  arrowFontSize 14
+}
+
+skinparam activity {
+    backgroundColor fff
+  borderColor aaa
+    fontColor 000
+  fontName Verdana
+  fontSize 14
+  stereotypeFontColor 333
+  stereotypeFontSize 14
+    arrowColor 000
+  arrowFontName Verdana
+  arrowFontColor 333
+  arrowFontSize 14
+}
+
+skinparam sequence {
+    fontColor 000
+  fontName Verdana
+  fontSize 14
+  stereotypeFontColor 333
+  stereotypeFontSize 14
+    arrowColor 000
+  arrowFontName Verdana
+  arrowFontColor 333
+  arrowFontSize 14
+
+  lifeLineBorderColor 000
+  lifeLineBackgroundColor 333
+}
+
+skinparam boundary {
+    backgroundColor b1dbff
+  borderColor 81a1bd
+    fontColor 000
+  fontName Verdana
+  fontSize 14
+  stereotypeFontColor 333
+  stereotypeFontSize 14
+}
+
+skinparam control {
+    backgroundColor b1dbff
+  borderColor 81a1bd
+    fontColor 000
+  fontName Verdana
+  fontSize 14
+  stereotypeFontColor 333
+  stereotypeFontSize 14
+}
+
+skinparam entity {
+    backgroundColor b1dbff
+  borderColor 81a1bd
+    fontColor 000
+  fontName Verdana
+  fontSize 14
+  stereotypeFontColor 333
+  stereotypeFontSize 14
+}
+
+
+skinparam state {
+    backgroundColor fff
+  borderColor aaa
+    fontColor 000
+  fontName Verdana
+  fontSize 14
+  stereotypeFontColor 333
+  stereotypeFontSize 14
+    arrowColor 000
+  arrowFontName Verdana
+  arrowFontColor 333
+  arrowFontSize 14
+  startColor b1dbff
+  endColor 81a1bd
+}
+
+
+skinparam object {
+    backgroundColor fff
+  borderColor aaa
+    fontColor 000
+  fontName Verdana
+  fontSize 14
+  stereotypeFontColor 333
+  stereotypeFontSize 14
+    arrowColor 000
+  arrowFontName Verdana
+  arrowFontColor 333
+  arrowFontSize 14
+  attributeFontColor 333
+  attributeFontSize 14
+  attributeIconSize 14
+}
+
+
+skinparam note {
+    backgroundColor b1dbff
+  borderColor 81a1bd
+    fontColor 000
+  fontName Verdana
+  fontSize 14
+  stereotypeFontColor 333
+  stereotypeFontSize 14
+}
+
+skinparam cloud {
+    backgroundColor fff
+  borderColor aaa
+    fontColor 000
+  fontName Verdana
+  fontSize 14
+  stereotypeFontColor 333
+  stereotypeFontSize 14
+    arrowColor 000
+  arrowFontName Verdana
+  arrowFontColor 333
+  arrowFontSize 14
+}
+
+skinparam rectangle {
+    backgroundColor fff
+  borderColor aaa
+    fontColor 000
+  fontName Verdana
+  fontSize 14
+  stereotypeFontColor 333
+  stereotypeFontSize 14
+}
+
+skinparam storage {
+    backgroundColor fff
+  borderColor aaa
+    fontColor 000
+  fontName Verdana
+  fontSize 14
+  stereotypeFontColor 333
+  stereotypeFontSize 14
+}
+
+hide members
+
+rectangle "camera" as sensor
+rectangle "one Shot" as controller
+rectangle "two axis motors" as actuator
+rectangle "telescope mount" as system
+
+circle "input\lpixel\lposition\l(x,y)" as x
+circle "output\rpixel\rposition\r(x,y)" as y
+circle "error\rdelta\rpixel" as e
+circle "vibrations" as d
+
+x -right- -> e
+e -right-> controller
+controller -right-> actuator
+actuator -right-> system
+d -down-> system
+system -right-> y
+y -down-> sensor
+sensor - -> e
+
+@enduml
+
+PlantUML version 1.2020.10(Sun May 17 11:35:57 CEST 2020)
+(GPL source distribution)
+Java Runtime: OpenJDK Runtime Environment
+JVM: OpenJDK 64-Bit Server VM
+Java Version: 13.0.2+8
+Operating System: Windows 10
+Default Encoding: Cp1252
+Language: it
+Country: IT
+--></g></svg>

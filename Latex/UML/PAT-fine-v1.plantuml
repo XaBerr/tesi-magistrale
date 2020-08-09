@@ -1,18 +1,18 @@
-@startuml controller
+@startuml PAT-fine-v1
 !$LIGHT = 1
 !includeurl https://raw.githubusercontent.com/XaBerr/plantUMLstyle/master/style.plantuml
 
 hide members
 
-rectangle "camera" as sensor
-rectangle "one Shot" as controller
+rectangle "position sensitive device" as sensor
+rectangle "PID KPA101" as controller
 rectangle "two axis motors" as actuator
-rectangle "telescope mount" as system
+rectangle "fast steering mirror" as system
 
-circle "input\lpixel\lposition\l(x,y)" as x
-circle "output\rpixel\rposition\r(x,y)" as y
-circle "error\rdelta\rpixel" as e
-circle "vibrations" as d
+circle "input\lvolt\lposition\l(x,y)" as x
+circle "output\rvolt\rposition\r(x,y)" as y
+circle "error\rdelta\rvolt" as e
+circle "vibrations + beam fluctuation" as d
 
 x -right--> e
 e -right-> controller
