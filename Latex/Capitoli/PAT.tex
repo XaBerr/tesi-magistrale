@@ -1,16 +1,22 @@
 \lvli{Pointing Acquisition Tracking system}
 \lvlii{Introduction}
 \img{PAT}{Pointing, Acquisition and Tracking model system.}
-Per stabilire una comunicazione tra un trasmettitore e un ricevitore non isotropici serve un sistema di allineamento. Il sistema di allineamento usato nella free-space QKD viene chiamato Pointing, Acquisition and Tracking (PAT) system. Questo sistema agisce su due livelli precisione: il primo livello viene chiamato coarse mentre il secondo livello fine. L'allineamento coarse ha l'obiettivo di allineare i telescopi, mentre quello fine di compensare le fluttuazioni del segnale trasmesso. I segnali tipicamente usati in questa comunicazione sono segnali laser. Entrambi i sistemi sono modellizabili con un controllo in retroazione mostrato in \fig{PAT} che cerca di allineare dei fasci laser. Data una posizione nominale di allinemanto il controllore tramite un sensore stimerà l'errore e cerca di correggerlo tramite un'attuatore. Ora verranno presentate delle possibili implementazioni per questi sistemi.
+To establish a communication between two non-isotropic sources (transmitter, receiver), an alignment system is required. The alignment system used in the free-space QKD is called \textit{Pointing, Acquisition and Tracking} (PAT) system. This system operates on two levels: the first level is called \textit{coarse} while the second level is called \textit{fine}.
+The coarse aims to align the telescopes, while the fine aims to compensate the fluctuations of the transmitted signal. The signals typically used in this communication are laser signals. Both systems can be modeled with a feedback-control shown in the \fig{PAT}.
+Given a nominal position, the controller will estimate the error via a sensor. Once the estimate is completed, it will try to compensate the error by means of an actuator.
+Now will presented a possible implementations for these systems.
 
 \lvlii{Coarse}
 \lvliii{Logical design}
 \img{PAT-coarse}{PAT coarse model-implementation system.}
-Un modo per fare puntare un telescopio in una determinata regione dello spazio, è quello di mettere un laser in quella regione che punta nella direzione del telescopio, e nel telescopio montare una camera per vedere il laser. Se la camera è allineata rispetto al telescopio, allora quando si cerca di centrare il laser nella camera, si allinerà anche il telescopio nella direzione voluta. Per allineare quindi due telescopi (Alice, Bob) bisognerà montare questo sistema doppio in modo che Alice abbia una camera che punti verso il laser di Bob e vice versa.
+One way to point a telescope in a given region of space, it is to put a laser in that region, pointing in the direction of the telescope, and in the telescope mount a camera to see the laser.
+If the camera is aligned with the telescope, then when the laser is centered in the camera, the telescope will be aligned in the desired direction.
+To align two telescopes (Alice, Bob) will be needed to mount this system twice, so that Alice has a camera that points towards Bob’s laser and vice versa.
 
-In questo sistema di allineamento come sensore è presente una camera che esprime l'errore in pixel. Questo errore viene gestito da un controllore sviluppato ad-hoc che prende il nome di \textit{one shot} e verrà spiegato nel capitolo \ref{cap:2.2}. Il controllore una volta in possesso dell'errore muoverà il motore a due assi presente sulla montatura per allineare il telescopio.
+In this alignment system a camera is used as a sensor to express the system error in pixels. This error is handled by an ad-hoc developed controller that takes the name of \textit{one shot} and will be explained in the chapter \ref{cap:2.2}. Once the controller has the error, it will move the two-axis engine on the mount to align the telescope.
 
-Questo sistema manterrà il puntamento di entrambi i telescopi sia in caso di movimenti ampi come lo spostamento dei due telescopi, sia per quelli più piccoli come ad esempio vibrazioni a basse frequenze.
+This system will maintain the aiming of both telescopes in both cases: for large movements such as the displacement of the two telescopes, and for smaller ones such as vibrations at low frequencies.
+
 \lvliii{Physical implementation}
 
 
@@ -19,8 +25,8 @@ Questo sistema manterrà il puntamento di entrambi i telescopi sia in caso di mo
 \img{PAT-fine-v1}{PAT fine model-implementation system with position sensitive device.}
 \img{PAT-fine-v2}{PAT fine-v2 model-implementation system with camera.}
 
-Una volta che il sistema coarse ha allineato i telescopi quello fine entra in azione. Per compensare le fluttuazioni del segnale trasmesso, si sovrappone al fascio laser del segnale un secondo fascio che verrà utilizzato per le compensazioni. Se le lunghezze d'onda dei due fasci sono sufficientemente vicine, allora entrambi i fasci saranno soggetti alle stesse fluttuazioni e quindi compensare il secondo fascio compenserà anche il primo.
-Questo secondo sistema è fondamentale se si vuole accoppiare il segnale in free-space in fibra a singolo modo.
-Il sensore in questo caso può essere una camera per le grandi distanze oppure un position sensitive device (PSD) per le piccole. Il PSD può sfruttare un'altro sistema di controllo chiamato \textit{PID KPA101} che verrà spiegato nel capitolo \ref{cap:2.2}. Il sensore leggerà la posizione del laser e la manderà al controllore che la correggerà usando un fast-steering mirror (FSM). Questo sistema sarà in grado di compensare le fluttuazioni dovute all'atmosfera e alle vibrazioni ad alta frequenza.
+Once the coarse system has aligned the telescopes that fine goes into action. To compensate for the fluctuations of the transmitted signal, a second beam is superimposed on the beam of the signal. If the wavelengths of the two beams are sufficiently close together, then both beams will be subject to the same fluctuations and thus compensate the second beam will also compensate the first.
+This system is essential if you want to inject the free-space signal into a single mode fiber. The sensor in this case can be a camera for long distances or a position sensitive device (PSD) for small distances.
+The PSD can exploit another control system called \textit{PID KPA101} which will be explained in the chapter \ref{cap:2.2}. The sensor will read the position of the laser and send it to the controller that will correct it using a fast-steering mirror (FSM). This system will be able to compensate for the atmosphere fluctuations and high frequency vibrations.
 
 \lvliii{Physical implementation}
