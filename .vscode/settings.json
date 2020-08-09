@@ -2,5 +2,5 @@
   "plantuml.diagramsRoot": "Latex/UML",
   "plantuml.exportOutDir": "Latex/img",
   "plantuml.exportSubFolder": false,
-  "plantuml.exportFormat": "svg"
+  "plantuml.exportFormat": "eps"
 }

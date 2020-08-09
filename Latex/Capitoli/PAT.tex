@@ -1,6 +1,7 @@
 \lvli{Pointing Acquisition Tracking system}
 \lvlii{Introduction}
 Per stabilire una comunicazione tra un trasmettitore e un ricevitore non isotropici serve un sistema di allineamento. Il sistema di allineamento usato nella free-space QKD viene chiamato Pointing, Acquisition and Tracking (PAT) system. Questo sistema agisce su due livelli precisione: il primo livello viene chiamato coarse mentre il secondo livello fine.
+\img{PAT.eps}{Pointing, Acquisition and Tracking system}
 
 \lvlii{Coarse}
 L'obiettivo del sistema di allineamento coarse è quello di far puntare i due telescopi nella stessa direzione. Per fare ciò su entrambi i telescopi vengono montati un laser e una camera. Il laser del telescopio trasmettitore verrà visto dalla camera del telescopio ricevitore, e il laser del telescopio ricevitore verrà visto dalla camera del telescopio trasmettitore. Il sistema di allineamento viene gestito separatamente nei due telescopi. L'allineamento viene gestito da un sistema in retroazione composto da tre elementi: sensore, controllore, e attuatore. Il sensore che in questo caso è la camera, leggerà la posizione del laser dell'altro telescopio e la manderà ad un controllore che correggerà la posizione del telescopio usando due motori ad alta precisione.
