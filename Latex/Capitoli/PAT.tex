@@ -4,17 +4,23 @@
 Per stabilire una comunicazione tra un trasmettitore e un ricevitore non isotropici serve un sistema di allineamento. Il sistema di allineamento usato nella free-space QKD viene chiamato Pointing, Acquisition and Tracking (PAT) system. Questo sistema agisce su due livelli precisione: il primo livello viene chiamato coarse mentre il secondo livello fine. L'allineamento coarse ha l'obiettivo di allineare i telescopi, mentre quello fine di compensare le fluttuazioni del segnale trasmesso. I segnali tipicamente usati in questa comunicazione sono segnali laser. Entrambi i sistemi sono modellizabili con un controllo in retroazione mostrato in \fig{PAT} che cerca di allineare dei fasci laser. Data una posizione nominale di allinemanto il controllore tramite un sensore stimerà l'errore e cerca di correggerlo tramite un'attuatore. Ora verranno presentate delle possibili implementazioni per questi sistemi.
 
 \lvlii{Coarse}
+\lvliii{Logical design}
 \img{PAT-coarse}{PAT coarse model-implementation system.}
 Un modo per fare puntare un telescopio in una determinata regione dello spazio, è quello di mettere un laser in quella regione che punta nella direzione del telescopio, e nel telescopio montare una camera per vedere il laser. Se la camera è allineata rispetto al telescopio, allora quando si cerca di centrare il laser nella camera, si allinerà anche il telescopio nella direzione voluta. Per allineare quindi due telescopi (Alice, Bob) bisognerà montare questo sistema doppio in modo che Alice abbia una camera che punti verso il laser di Bob e vice versa.
 
 In questo sistema di allineamento come sensore è presente una camera che esprime l'errore in pixel. Questo errore viene gestito da un controllore sviluppato ad-hoc che prende il nome di \textit{one shot} e verrà spiegato nel capitolo \ref{cap:2.2}. Il controllore una volta in possesso dell'errore muoverà il motore a due assi presente sulla montatura per allineare il telescopio.
 
 Questo sistema manterrà il puntamento di entrambi i telescopi sia in caso di movimenti ampi come lo spostamento dei due telescopi, sia per quelli più piccoli come ad esempio vibrazioni a basse frequenze.
+\lvliii{Physical implementation}
+
 
 \lvlii{Fine}
+\lvliii{Logical design}
 \img{PAT-fine-v1}{PAT fine model-implementation system with position sensitive device.}
 \img{PAT-fine-v2}{PAT fine-v2 model-implementation system with camera.}
 
 Una volta che il sistema coarse ha allineato i telescopi quello fine entra in azione. Per compensare le fluttuazioni del segnale trasmesso, si sovrappone al fascio laser del segnale un secondo fascio che verrà utilizzato per le compensazioni. Se le lunghezze d'onda dei due fasci sono sufficientemente vicine, allora entrambi i fasci saranno soggetti alle stesse fluttuazioni e quindi compensare il secondo fascio compenserà anche il primo.
 Questo secondo sistema è fondamentale se si vuole accoppiare il segnale in free-space in fibra a singolo modo.
 Il sensore in questo caso può essere una camera per le grandi distanze oppure un position sensitive device (PSD) per le piccole. Il PSD può sfruttare un'altro sistema di controllo chiamato \textit{PID KPA101} che verrà spiegato nel capitolo \ref{cap:2.2}. Il sensore leggerà la posizione del laser e la manderà al controllore che la correggerà usando un fast-steering mirror (FSM). Questo sistema sarà in grado di compensare le fluttuazioni dovute all'atmosfera e alle vibrazioni ad alta frequenza.
+
+\lvliii{Physical implementation}
