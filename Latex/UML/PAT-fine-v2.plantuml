@@ -5,7 +5,7 @@
 hide members
 
 rectangle "camera" as sensor
-rectangle "one Shot" as controller
+rectangle "one shot" as controller
 rectangle "two axis motors" as actuator
 rectangle "fast steering mirror" as system
 
