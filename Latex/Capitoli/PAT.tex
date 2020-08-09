@@ -1,9 +1,9 @@
 \lvli{Pointing Acquisition Tracking system}
 \lvlii{Introduction}
 \img{PAT}{Pointing, Acquisition and Tracking model system.}
-To establish a communication between two non-isotropic sources (transmitter, receiver), an alignment system is required. The alignment system used in the free-space QKD is called \textit{Pointing, Acquisition and Tracking} (PAT) system. This system operates on two levels: the first level is called \textit{coarse} while the second level is called \textit{fine}.
+To establish a communication between two non-isotropic sources (transmitter, receiver), an alignment system is required. The one used in the free-space QKD is called \textit{Pointing, Acquisition and Tracking} (PAT) system. PAT system operates on two levels: the first level is called \textit{coarse} while the second level is called \textit{fine}.
 The coarse aims to align the telescopes, while the fine aims to compensate the fluctuations of the transmitted signal. The signals typically used in this communication are laser signals. Both systems can be modeled with a feedback-control shown in the \fig{PAT}.
-Given a nominal position, the controller will estimate the error via a sensor. Once the estimate is completed, it will try to compensate the error by means of an actuator.
+Given a nominal position, the controller will estimate the error via a sensor. Once the estimate is completed, it will try to compensate the error by an actuator.
 Now will presented a possible implementations for these systems.
 
 \lvlii{Coarse}
@@ -13,20 +13,21 @@ One way to point a telescope in a given region of space, it is to put a laser in
 If the camera is aligned with the telescope, then when the laser is centered in the camera, the telescope will be aligned in the desired direction.
 To align two telescopes (Alice, Bob) will be needed to mount this system twice, so that Alice has a camera that points towards Bob’s laser and vice versa.
 
-In this alignment system a camera is used as a sensor to express the system error in pixels. This error is handled by an ad-hoc developed controller that takes the name of \textit{one shot} and will be explained in the chapter \ref{cap:2.2}. Once the controller has the error, it will move the two-axis engine on the mount to align the telescope.
+In this alignment system a camera is used as a sensor to express the system error in pixels. This error is handled by an ad-hoc developed controller that takes the name of \textit{one shot} and will be explained in the chapter \ref{chapter:2.2}. Once the controller has complete the error calculation, it will move the two-axis engine on the mount to align the telescope.
 
 This system will maintain the aiming of both telescopes in both cases: for large movements such as the displacement of the two telescopes, and for smaller ones such as vibrations at low frequencies.
 
 \lvliii{Physical implementation}
-
+%  TODO: farmi dare uno schema del circuito ottico
 
 \lvlii{Fine}
 \lvliii{Logical design}
 \img{PAT-fine-v1}{PAT fine model-implementation system with position sensitive device.}
 \img{PAT-fine-v2}{PAT fine-v2 model-implementation system with camera.}
 
-Once the coarse system has aligned the telescopes that fine goes into action. To compensate for the fluctuations of the transmitted signal, a second beam is superimposed on the beam of the signal. If the wavelengths of the two beams are sufficiently close together, then both beams will be subject to the same fluctuations and thus compensate the second beam will also compensate the first.
-This system is essential if you want to inject the free-space signal into a single mode fiber. The sensor in this case can be a camera for long distances or a position sensitive device (PSD) for small distances.
-The PSD can exploit another control system called \textit{PID KPA101} which will be explained in the chapter \ref{cap:2.2}. The sensor will read the position of the laser and send it to the controller that will correct it using a fast-steering mirror (FSM). This system will be able to compensate for the atmosphere fluctuations and high frequency vibrations.
+Once the coarse system has aligned the telescopes then the fine goes in action. To compensate for the fluctuations of the transmitted signal, a second beam is superimposed on the beam of the signal. If the wavelengths of the two beams are sufficiently close together, then both beams will be subject to the same fluctuations and thus compensate the second beam will also compensate the first.
+This system is essential if you want to inject the free-space signal into a single-mode fiber. In this case the sensor can be a camera for long distances or a position sensitive device (PSD) for small distances.
+The PSD can exploits another control system called \textit{PID KPA101} which will be explained in the chapter \ref{chapter:2.2}. The sensor will read the position of the laser and send it to the controller that will correct it using a fast-steering mirror (FSM). This system will be able to compensate for the atmosphere fluctuations and high frequency vibrations.
 
 \lvliii{Physical implementation}
+%  TODO: farmi dare uno schema del circuito ottico
