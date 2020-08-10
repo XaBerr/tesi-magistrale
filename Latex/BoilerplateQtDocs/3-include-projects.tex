@@ -6,19 +6,19 @@ can do the following. Assuming your project structure is based on
 BoilerplateQt, you can add to the \texttt{config.json} the following
 lines:
 
-\begin{lstlisting}[language=javascript]
-"modules": [
-  {
-    "other module": "info"
-  },
-  {
-    "name": "BoilerplateQt",
-    "path": "gitlab.dei.unipd.it/Calderaro/BoilerplateQt.git",
-    "tag": "1.0.0",
-    "avaiable": "YES",
-    "getGui": "YES"
-  }
-]
+\begin{lstlisting}[language=javascript, gobble=2]
+  "modules": [
+    {
+      "other module": "info"
+    },
+    {
+      "name": "BoilerplateQt",
+      "path": "gitlab.dei.unipd.it/Calderaro/BoilerplateQt.git",
+      "tag": "1.0.0",
+      "avaiable": "YES",
+      "getGui": "YES"
+    }
+  ]
 \end{lstlisting}
 
 \textbf{Keep in mind that this will force your submodules to use this version (the one described in the ``tag'') of BoilerplateQt. Make sure that your submodule works fine with the version you set.}
@@ -82,9 +82,9 @@ BoilerplateQt Widget following these steps:
         GUI Widget class.
 \end{itemize}
 
-\begin{lstlisting}[language=c++]
-BoilerplateQt *boilerplateQt;
-SimpleLabel *simpleLabel;
+\begin{lstlisting}[language=c++, gobble=2]
+  BoilerplateQt *boilerplateQt;
+  SimpleLabel *simpleLabel;
 \end{lstlisting}
 
 \begin{itemize}
@@ -99,6 +99,6 @@ SimpleLabel *simpleLabel;
         two pointers as argument:
 \end{itemize}
 
-\begin{lstlisting}[language=c++]
+\begin{lstlisting}[language=c++, gobble=2]
   ui->boilerplateQtWidget->setBoilerplateQt(boilerplateQt, simpleLabel).
 \end{lstlisting}
