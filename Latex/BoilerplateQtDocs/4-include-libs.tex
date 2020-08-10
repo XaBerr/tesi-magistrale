@@ -1,217 +1,116 @@
-% Options for packages loaded elsewhere
-\PassOptionsToPackage{unicode}{hyperref}
-\PassOptionsToPackage{hyphens}{url}
-%
-\documentclass[
-]{article}
-\usepackage{lmodern}
-\usepackage{amssymb,amsmath}
-\usepackage{ifxetex,ifluatex}
-\ifnum 0\ifxetex 1\fi\ifluatex 1\fi=0 % if pdftex
-  \usepackage[T1]{fontenc}
-  \usepackage[utf8]{inputenc}
-  \usepackage{textcomp} % provide euro and other symbols
-\else % if luatex or xetex
-  \usepackage{unicode-math}
-  \defaultfontfeatures{Scale=MatchLowercase}
-  \defaultfontfeatures[\rmfamily]{Ligatures=TeX,Scale=1}
-\fi
-% Use upquote if available, for straight quotes in verbatim environments
-\IfFileExists{upquote.sty}{\usepackage{upquote}}{}
-\IfFileExists{microtype.sty}{% use microtype if available
-  \usepackage[]{microtype}
-  \UseMicrotypeSet[protrusion]{basicmath} % disable protrusion for tt fonts
-}{}
-\makeatletter
-\@ifundefined{KOMAClassName}{% if non-KOMA class
-  \IfFileExists{parskip.sty}{%
-    \usepackage{parskip}
-  }{% else
-    \setlength{\parindent}{0pt}
-    \setlength{\parskip}{6pt plus 2pt minus 1pt}}
-}{% if KOMA class
-  \KOMAoptions{parskip=half}}
-\makeatother
-\usepackage{xcolor}
-\IfFileExists{xurl.sty}{\usepackage{xurl}}{} % add URL line breaks if available
-\IfFileExists{bookmark.sty}{\usepackage{bookmark}}{\usepackage{hyperref}}
-\hypersetup{
-  hidelinks,
-  pdfcreator={LaTeX via pandoc}}
-\urlstyle{same} % disable monospaced font for URLs
-\usepackage{color}
-\usepackage{fancyvrb}
-\newcommand{\VerbBar}{|}
-\newcommand{\VERB}{\Verb[commandchars=\\\{\}]}
-\DefineVerbatimEnvironment{Highlighting}{Verbatim}{commandchars=\\\{\}}
-% Add ',fontsize=\small' for more characters per line
-\newenvironment{Shaded}{}{}
-\newcommand{\AlertTok}[1]{\textcolor[rgb]{1.00,0.00,0.00}{\textbf{#1}}}
-\newcommand{\AnnotationTok}[1]{\textcolor[rgb]{0.38,0.63,0.69}{\textbf{\textit{#1}}}}
-\newcommand{\AttributeTok}[1]{\textcolor[rgb]{0.49,0.56,0.16}{#1}}
-\newcommand{\BaseNTok}[1]{\textcolor[rgb]{0.25,0.63,0.44}{#1}}
-\newcommand{\BuiltInTok}[1]{#1}
-\newcommand{\CharTok}[1]{\textcolor[rgb]{0.25,0.44,0.63}{#1}}
-\newcommand{\CommentTok}[1]{\textcolor[rgb]{0.38,0.63,0.69}{\textit{#1}}}
-\newcommand{\CommentVarTok}[1]{\textcolor[rgb]{0.38,0.63,0.69}{\textbf{\textit{#1}}}}
-\newcommand{\ConstantTok}[1]{\textcolor[rgb]{0.53,0.00,0.00}{#1}}
-\newcommand{\ControlFlowTok}[1]{\textcolor[rgb]{0.00,0.44,0.13}{\textbf{#1}}}
-\newcommand{\DataTypeTok}[1]{\textcolor[rgb]{0.56,0.13,0.00}{#1}}
-\newcommand{\DecValTok}[1]{\textcolor[rgb]{0.25,0.63,0.44}{#1}}
-\newcommand{\DocumentationTok}[1]{\textcolor[rgb]{0.73,0.13,0.13}{\textit{#1}}}
-\newcommand{\ErrorTok}[1]{\textcolor[rgb]{1.00,0.00,0.00}{\textbf{#1}}}
-\newcommand{\ExtensionTok}[1]{#1}
-\newcommand{\FloatTok}[1]{\textcolor[rgb]{0.25,0.63,0.44}{#1}}
-\newcommand{\FunctionTok}[1]{\textcolor[rgb]{0.02,0.16,0.49}{#1}}
-\newcommand{\ImportTok}[1]{#1}
-\newcommand{\InformationTok}[1]{\textcolor[rgb]{0.38,0.63,0.69}{\textbf{\textit{#1}}}}
-\newcommand{\KeywordTok}[1]{\textcolor[rgb]{0.00,0.44,0.13}{\textbf{#1}}}
-\newcommand{\NormalTok}[1]{#1}
-\newcommand{\OperatorTok}[1]{\textcolor[rgb]{0.40,0.40,0.40}{#1}}
-\newcommand{\OtherTok}[1]{\textcolor[rgb]{0.00,0.44,0.13}{#1}}
-\newcommand{\PreprocessorTok}[1]{\textcolor[rgb]{0.74,0.48,0.00}{#1}}
-\newcommand{\RegionMarkerTok}[1]{#1}
-\newcommand{\SpecialCharTok}[1]{\textcolor[rgb]{0.25,0.44,0.63}{#1}}
-\newcommand{\SpecialStringTok}[1]{\textcolor[rgb]{0.73,0.40,0.53}{#1}}
-\newcommand{\StringTok}[1]{\textcolor[rgb]{0.25,0.44,0.63}{#1}}
-\newcommand{\VariableTok}[1]{\textcolor[rgb]{0.10,0.09,0.49}{#1}}
-\newcommand{\VerbatimStringTok}[1]{\textcolor[rgb]{0.25,0.44,0.63}{#1}}
-\newcommand{\WarningTok}[1]{\textcolor[rgb]{0.38,0.63,0.69}{\textbf{\textit{#1}}}}
-\setlength{\emergencystretch}{3em} % prevent overfull lines
-\providecommand{\tightlist}{%
-  \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
-\setcounter{secnumdepth}{-\maxdimen} % remove section numbering
-
-\author{}
-\date{}
-
-\begin{document}
-
-\hypertarget{header-n0}{%
-\section{\texorpdfstring{Include third part libs \textbf{.dll} or
-\textbf{.h}}{Include third part libs .dll or .h}}\label{header-n0}}
-
-\href{../home}{↩️ Back to index}
-
 If you need to add some external libs to your project this is the right
 section. Supposing you want add an external library called "uEye" these
 are the steps to add it (remember to substitute "uEye" with your lib
 name):
 
 \begin{enumerate}
-\def\labelenumi{\arabic{enumi}.}
-\item
-  Make the folders:
-
-  \begin{itemize}
+  \def\labelenumi{\arabic{enumi}.}
   \item
-    \textbf{libs/uEye/libs}
+        Make the folders:
+
+        \begin{itemize}
+          \item
+                \textbf{libs/uEye/libs}
+          \item
+                \textbf{libs/uEye/include}
+        \end{itemize}
   \item
-    \textbf{libs/uEye/include}
-  \end{itemize}
-\item
-  Make the file \textbf{cmake/FinduEye.cmake} containing:
+        Make the file \textbf{cmake/FinduEye.cmake} containing:
 
-\begin{Shaded}
-\begin{Highlighting}[]
-\CommentTok{\# Find the uEye libs}
-\CommentTok{\# uEye\_FOUND {-} uEye SDK has been found on this system}
-\CommentTok{\# uEye\_INCLUDE\_DIR {-} where to find the header files}
-\CommentTok{\# uEye\_LIBRARY\_DIR {-} where to find the library files}
+        \begin{lstlisting}[language=cmake]
+          # Find the uEye libs
+          # uEye_FOUND - uEye SDK has been found on this system
+          # uEye_INCLUDE_DIR - where to find the header files
+          # uEye_LIBRARY_DIR - where to find the library files
 
-\CommentTok{\# positions where to search the libs}
-\KeywordTok{SET}\NormalTok{(}
-\NormalTok{  uEye\_PATH\_HINTS}
-  \StringTok{"}\DecValTok{$\{PROJECT\_SOURCE\_DIR\}}\StringTok{/libs/uEye/include"}
-  \StringTok{"}\DecValTok{$\{PROJECT\_SOURCE\_DIR\}}\StringTok{/libs/uEye/libs"}
-\NormalTok{)}
+          # positions where to search the libs
+          SET(
+            uEye_PATH_HINTS
+            "${PROJECT_SOURCE_DIR}/libs/uEye/include"
+            "${PROJECT_SOURCE_DIR}/libs/uEye/libs"
+          )
 
-\CommentTok{\# set uEye\_INCLUDE\_DIR}
-\KeywordTok{find\_path}\NormalTok{(}
-\NormalTok{  uEye\_INCLUDE\_DIR}
-\NormalTok{  uEye.h}
-  \OtherTok{HINTS}
-  \DecValTok{$\{}\NormalTok{uEye\_PATH\_HINTS}\DecValTok{\}}
-\NormalTok{)}
+          # set uEye_INCLUDE_DIR
+          find_path(
+            uEye_INCLUDE_DIR
+            uEye.h
+            HINTS
+            ${uEye_PATH_HINTS}
+          )
 
-\CommentTok{\# set uEye\_LIBRARY\_DIR}
-\KeywordTok{find\_library}\NormalTok{(}
-\NormalTok{  uEye\_LIBRARY}
-  \OtherTok{NAMES}
-\NormalTok{  uEye\_api\_64}
-  \OtherTok{HINTS}
-  \DecValTok{$\{}\NormalTok{uEye\_PATH\_HINTS}\DecValTok{\}}
-\NormalTok{)}
+          # set uEye_LIBRARY_DIR
+          find_library(
+            uEye_LIBRARY
+            NAMES
+            uEye_api_64
+            HINTS
+            ${uEye_PATH_HINTS}
+          )
 
-\CommentTok{\# if all listed variables are TRUE then  set uEye\_FOUND = TRUE}
-\KeywordTok{include}\NormalTok{(FindPackageHandleStandardArgs)}
-\KeywordTok{find\_package}\NormalTok{\_handle\_standard\_args(}
-\NormalTok{  uEye}
-\NormalTok{  DEFAULT\_MSG}
-\NormalTok{  uEye\_LIBRARY}
-\NormalTok{  uEye\_INCLUDE\_DIR}
-\NormalTok{)}
+          # if all listed variables are TRUE then  set uEye_FOUND = TRUE
+          include(FindPackageHandleStandardArgs)
+          find_package_handle_standard_args(
+            uEye
+            DEFAULT_MSG
+            uEye_LIBRARY
+            uEye_INCLUDE_DIR
+          )
 
-\CommentTok{\# now we can use this in the others cmake files}
-\KeywordTok{mark\_as\_advanced}\NormalTok{(uEye\_INCLUDE\_DIR uEye\_LIBRARY)}
-\KeywordTok{set}\NormalTok{(}\DecValTok{uEye\_LIBRARIES} \DecValTok{$\{}\NormalTok{uEye\_LIBRARY}\DecValTok{\}}\NormalTok{ )}
-\KeywordTok{set}\NormalTok{(}\DecValTok{uEye\_INCLUDE\_DIRS} \DecValTok{$\{}\NormalTok{uEye\_INCLUDE\_DIR}\DecValTok{\}}\NormalTok{ )}
+          # now we can use this in the others cmake files
+          mark_as_advanced(uEye_INCLUDE_DIR uEye_LIBRARY)
+          set(uEye_LIBRARIES ${uEye_LIBRARY} )
+          set(uEye_INCLUDE_DIRS ${uEye_INCLUDE_DIR} )
 
-\CommentTok{\# outputs}
-\KeywordTok{message}\NormalTok{(}\StringTok{"Adding lib: uEye"}\NormalTok{)}
-\KeywordTok{message}\NormalTok{(}\StringTok{"{-}{-} uEye\_FOUND: }\DecValTok{$\{uEye\_FOUND\}}\StringTok{"}\NormalTok{)}
-\KeywordTok{message}\NormalTok{(}\StringTok{"{-}{-} uEye\_LIBRARIES: }\DecValTok{$\{uEye\_LIBRARIES\}}\StringTok{"}\NormalTok{)}
-\KeywordTok{message}\NormalTok{(}\StringTok{"{-}{-} uEye\_INCLUDE\_DIRS: }\DecValTok{$\{uEye\_INCLUDE\_DIRS\}}\StringTok{"}\NormalTok{)}
-\end{Highlighting}
-\end{Shaded}
-\item
-  In the file \textbf{src/CMakeLists.txt} add the following lines:
+          # outputs
+          message("Adding lib: uEye")
+          message("-- uEye_FOUND: ${uEye_FOUND}")
+          message("-- uEye_LIBRARIES: ${uEye_LIBRARIES}")
+          message("-- uEye_INCLUDE_DIRS: ${uEye_INCLUDE_DIRS}")
+        \end{lstlisting}
+  \item
+        In the file \textbf{src/CMakeLists.txt} add the following lines:
 
-\begin{Shaded}
-\begin{Highlighting}[]
-\CommentTok{\# Make cmake aware about the presence of Qt source files}
-\CommentTok{\# set(CMAKE\_AUTOUIC ON)}
-\CommentTok{\# set(CMAKE\_AUTOMOC ON)}
-\CommentTok{\# set(CMAKE\_AUTORCC ON)}
+        \begin{lstlisting}[language=cmake]
+          # Make cmake aware about the presence of Qt source files
+          # set(CMAKE_AUTOUIC ON)
+          # set(CMAKE_AUTOMOC ON)
+          # set(CMAKE_AUTORCC ON)
 
-\CommentTok{\# file(GLOB HEADER\_LIST CONFIGURE\_DEPENDS "$\{PROJECT\_SOURCE\_DIR\}/include/$\{PROJECT\_NAME\}/*.h")}
+          # file(GLOB HEADER_LIST CONFIGURE_DEPENDS "${PROJECT_SOURCE_DIR}/include/${PROJECT_NAME}/*.h")
 
-\CommentTok{\# Automatically check if Qt5 is installed in the system}
-\CommentTok{\# Automatically find Qt5 components. REQUIRED flag: if components not found no build}
-\CommentTok{\# find\_package(}
-\CommentTok{\#     Qt5 COMPONENTS}
-\CommentTok{\#     Core REQUIRED}
-\CommentTok{\# )}
+          # Automatically check if Qt5 is installed in the system
+          # Automatically find Qt5 components. REQUIRED flag: if components not found no build
+          # find_package(
+          #     Qt5 COMPONENTS
+          #     Core REQUIRED
+          # )
 
-\KeywordTok{find\_package}\NormalTok{(uEye }\OtherTok{REQUIRED}\NormalTok{)}
+          find_package(uEye REQUIRED)
 
-\CommentTok{\# Create a target to build a library for the core sources.}
-\CommentTok{\# Specify the sources from which the library will be built}
-\CommentTok{\# Make an automatic library {-} will be static or dynamic based on user setting}
-\CommentTok{\# add\_library(}
-\CommentTok{\#     $\{PROJECT\_NAME\} STATIC}
-\CommentTok{\#     Camera.cpp}
-\CommentTok{\#     CameraFrame.cpp}
-\CommentTok{\#     Cameras/IDS.cpp}
-\CommentTok{\#     Cameras/Kiralux.cpp}
-\CommentTok{\#     $\{HEADER\_LIST\}}
-\CommentTok{\# )}
+          # Create a target to build a library for the core sources.
+          # Specify the sources from which the library will be built
+          # Make an automatic library - will be static or dynamic based on user setting
+          # add_library(
+          #     ${PROJECT_NAME} STATIC
+          #     Camera.cpp
+          #     CameraFrame.cpp
+          #     Cameras/IDS.cpp
+          #     Cameras/Kiralux.cpp
+          #     ${HEADER_LIST}
+          # )
 
-\CommentTok{\# We need this directory, and users of our library will need it too}
-\CommentTok{\# target\_include\_directories($\{PROJECT\_NAME\} PUBLIC "../include")}
-\KeywordTok{target\_include\_directories}\NormalTok{(}\DecValTok{$\{PROJECT\_NAME\}} \OtherTok{PRIVATE} \DecValTok{$\{}\NormalTok{uEye\_INCLUDE\_DIR}\DecValTok{\}}\NormalTok{)}
+          # We need this directory, and users of our library will need it too
+          # target_include_directories(${PROJECT_NAME} PUBLIC "../include")
+          target_include_directories(${PROJECT_NAME} PRIVATE ${uEye_INCLUDE_DIR})
 
-\CommentTok{\# Specify the libraries needed to build BoilerPlateQt.}
-\CommentTok{\# target\_link\_libraries($\{PROJECT\_NAME\} PRIVATE Qt5::Core $\{SUBMODULES\_NAME\})}
-\KeywordTok{target\_link\_libraries}\NormalTok{(}\DecValTok{$\{PROJECT\_NAME\}} \OtherTok{PRIVATE} \DecValTok{$\{uEye\_LIBRARIES\}}\NormalTok{)}
-\end{Highlighting}
-\end{Shaded}
-\item
-  Now because we include the libs using "PRIVATE" you must include the
-  libs using the relative path
-  \texttt{\#include\ "../../libs/uEye/include/uEye.h"}
-\item
-  Enjoy ;)
+          # Specify the libraries needed to build BoilerPlateQt.
+          # target_link_libraries(${PROJECT_NAME} PRIVATE Qt5::Core ${SUBMODULES_NAME})
+          target_link_libraries(${PROJECT_NAME} PRIVATE ${uEye_LIBRARIES})
+        \end{lstlisting}
+  \item
+        Now because we include the libs using "PRIVATE" you must include the
+        libs using the relative path
+        \texttt{\#include\ "../../libs/uEye/include/uEye.h"}
+  \item
+        Enjoy ;)
 \end{enumerate}
-
-\end{document}

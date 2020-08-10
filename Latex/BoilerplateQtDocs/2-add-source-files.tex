@@ -22,7 +22,7 @@ an external program can use it, put the header in the
 In the \texttt{apps/CMakeLists.txt} add the \textbf{add\_executable}
 function to create a new target executable:
 
-\begin{lstlisting}[language=c++]
+\begin{lstlisting}[language=cmake]
   add_executable(
   "${PROJECT_NAME}NewApp"
   newapp.cpp
@@ -32,7 +32,7 @@ function to create a new target executable:
 Also add the libraries that should be linked to the ``NewApp'' with
 target\emph{link}libraries:
 
-\begin{lstlisting}[language=c++]
+\begin{lstlisting}[language=cmake]
   target_link_libraries(
     "${PROJECT_NAME}NewApp"
     PRIVATE Qt5::Gui Qt5::Widgets "${PROJECT_NAME}Gui" ${PROJECT_NAME} ${SUBMODULES_NAME}
