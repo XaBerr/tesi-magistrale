@@ -6,7 +6,7 @@ The PAT-Fine system want to align the incoming beam into a sensor's
 point. To do so we use three elements: \textbf{sensor},
 \textbf{controller}, \textbf{actuator}.
 
-\img{simplified-model}{Simplified model of PAT system.}
+% \img{simplified-model}{Simplified model of PAT system.}
 
 The beam reflected by the mirror arrived into a sensor. The sensor take
 a picture of himself that is called \textbf{frame}. The controller
@@ -56,23 +56,23 @@ information, the right side show the controllers information.
 In the sensor's side we have (form the top):
 
 \begin{itemize}
-  \itemsep1pt\parskip0pt\parsep0pt
-  \item
-        The frame rendering that contains three objects:
-  \item
-        the red dots represents the centroid of the beam;
-  \item
-        the red square represents the area where the controller calculates the
-        centroid;
-  \item
-        the green circle represents the target.
-  \item
-        The set of parameters of the camera/PSD.
-  \item
-        The set of parameters to position the target.
-  \item
-        The plotter that show in real time the distances in pixels between the
-        target and the centroid.
+      \itemsep1pt\parskip0pt\parsep0pt
+      \item
+            The frame rendering that contains three objects:
+      \item
+            the red dots represents the centroid of the beam;
+      \item
+            the red square represents the area where the controller calculates the
+            centroid;
+      \item
+            the green circle represents the target.
+      \item
+            The set of parameters of the camera/PSD.
+      \item
+            The set of parameters to position the target.
+      \item
+            The plotter that show in real time the distances in pixels between the
+            target and the centroid.
 \end{itemize}
 
 In the controller's side we have: manual controller, calibrated
@@ -94,7 +94,7 @@ section for it.
 \imgThree{0.3}{calibrated1}{Controller interface.}{0.3}{calibrated2}{Analyzer interface.}{0.3}{calibrated3}{Graph interface.}
 
 The aim of this controller is to be able to use the \emph{One shot
-  controller}, but before to be able to use it we need to calibrate the
+      controller}, but before to be able to use it we need to calibrate the
 controller. The calibration procedure can be decomposed into two parts:
 data acquisition, data analysis.
 
@@ -104,13 +104,13 @@ In this phase we want to acquire the calibration points. The procedure
 is the following:
 
 \begin{itemize}
-  \itemsep1pt\parskip0pt\parsep0pt
-  \item
-        in the \emph{Analyzer} tab set the voltages and the time interval;
-  \item
-        autogenerate the filename;
-  \item
-        start the point acquisition.
+      \itemsep1pt\parskip0pt\parsep0pt
+      \item
+            in the \emph{Analyzer} tab set the voltages and the time interval;
+      \item
+            autogenerate the filename;
+      \item
+            start the point acquisition.
 \end{itemize}
 
 \paragraph{Data analysis}
@@ -119,17 +119,17 @@ In this phase we want to analyze the calibration points store into a
 file. The procedure is the following:
 
 \begin{itemize}
-  \itemsep1pt\parskip0pt\parsep0pt
-  \item
-        in the \emph{Controller} tab select the file and press \emph{Upload
-          and Calibrated};
-  \item
-        go into \emph{Graphs} tab and check that the analysis is completed
-        correctly;
-  \item
-        if everything is ok then go into the \emph{Controller} tab and set the
-        configuration to the low voltages or high voltages pressing the
-        corresponding button.
+      \itemsep1pt\parskip0pt\parsep0pt
+      \item
+            in the \emph{Controller} tab select the file and press \emph{Upload
+                  and Calibrated};
+      \item
+            go into \emph{Graphs} tab and check that the analysis is completed
+            correctly;
+      \item
+            if everything is ok then go into the \emph{Controller} tab and set the
+            configuration to the low voltages or high voltages pressing the
+            corresponding button.
 \end{itemize}
 
 \paragraph{One shot controller}
