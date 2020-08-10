@@ -1,0 +1,59 @@
+@startuml KPA101
+!$LIGHT = 1
+!includeurl https://raw.githubusercontent.com/XaBerr/plantUMLstyle/master/style.plantuml
+
+!include ./Utils.plantuml
+
+hide empty members
+
+namespace PAT {
+  class InputKPA
+  class KPA101
+}
+
+class PAT.InputKPA << (S, orchid) >> {
+  + x : double
+  + y : double
+  + sum : double
+  ---
+  + InputKPA()
+}
+
+class PAT.KPA101 {
+  - pidActive : bool
+  - kpaId : std::string
+  - maxVoltageOut : double
+  - autoOpenCloseLoop : bool
+  - autoOpenInterval : PAT::Utils::BoundedParameter<PAT::Utils::Interval<double>>
+  - pidParameters : PAT::Utils::BoundedParameter<QD_PIDParameters>
+  - feedBackGain : PAT::Utils::BoundedParameter<PAT::Utils::Point<double>>
+  ---
+  + KPA101()
+  + KPA101(_kpaId : std::string)
+  + ~KPA101()
+  + {static} find() : std::string
+  + {static} findAll() : std::vector<std::string>
+  ..sensor..
+  + getInputVoltage() : InputKPA
+  ..actuator..
+  + setOutputVoltage(_voltageX : double, _voltageY : double)
+  + setOutputImpulse(_voltagePeakX : double, _voltagePeakY : double, _time_ms : double)
+  + setOutputCombinedImpulse(_voltagePeakX : double, _timeX_ms : double, _voltagePeakY : double, _timeY_ms : double)
+  ..controller..
+  + setPIDParameters(_parameters : const PAT::Utils::BoundedParameter<QD_PIDParameters>&)
+  + getPIDParameters() : const PAT::Utils::BoundedParameter<QD_PIDParameters>&
+  + enablePID(_enable : bool)
+  + isPIDActive() : bool
+  + setAutoOpenCloseLoop(_autoOpenCloseLoop : bool)
+  + getAutoOpenCloseLoop() : bool
+  + setAutoOpenInterval(_autoOpenInterval : const PAT::Utils::BoundedParameter<PAT::Utils::Interval<double>>&)
+  + getAutoOpenInterval() : const PAT::Utils::BoundedParameter<PAT::Utils::Interval<double>>&
+  + setFeedBackGain(_feedBackGain : const PAT::Utils::BoundedParameter<PAT::Utils::Point<double>>&)
+  + getFeedBackGain() : const PAT::Utils::BoundedParameter<PAT::Utils::Point<double>>&
+}
+
+PAT.KPA101 --* PAT.Utils.BoundedParameter
+PAT.KPA101 ..> PAT.InputKPA
+PAT.KPA101 ..> PAT.Utils.Interval
+
+@enduml

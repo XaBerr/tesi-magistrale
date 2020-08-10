@@ -1,0 +1,84 @@
+@startuml PSD
+!$LIGHT = 1
+!includeurl https://raw.githubusercontent.com/XaBerr/plantUMLstyle/master/style.plantuml
+
+!include ./KPA101.plantuml
+!include ./Centroid.plantuml
+
+hide empty members
+
+namespace PAT {
+  namespace PSD {
+    interface PSD
+    class PSDWidget
+    class PDQ90A
+  }
+}
+
+interface PAT.PSD.PSD extends QObject {
+  # centroid : std::shared_ptr<PAT::Centroid>
+  # target : std::shared_ptr<PAT::Utils::BoundedParameter<PAT::Utils::Circle<int>>>
+  # active : bool
+  # sensorSize : PAT::Utils::Point<double>
+  # frameRate : PAT::Utils::BoundedParameter<double>
+  # meterToPixel : double
+  ---
+  + PSD()
+  + {virtual} start()
+  + {virtual} stop()
+  + isActive() : bool
+  + setFrameRate(_frameRate : const PAT::Utils::BoundedParameter<double>&)
+  + getFrameRate() : const PAT::Utils::BoundedParameter<double>&
+  + getTarget() : std::shared_ptr<PAT::Utils::BoundedParameter<PAT::Utils::Circle<int>>>&
+  + getCentroid() : std::shared_ptr<PAT::Centroid>&
+  + getSensorSize() : const PAT::Utils::Point<double>&
+  + {virtual} getIntensity() : double
+  ..signals..
+  newFrameSignal()
+}
+
+class  PAT.PSD.PDQ90A implements  PAT.PSD.PSD {
+  - kpa101 : std::shared_ptr<PAT::KPA101>
+  - threadNewFrame : QFuture<void>
+  - maxVoltage : int
+  ---
+  + PDQ90A(_kpa101 : std::shared_ptr<PAT::KPA101>&)
+  + ~PDQ90A()
+  + start()
+  + stop()
+  + getIntensity() : double
+  + processEvent()
+}
+
+class PAT.PSD.PSDWidget extends QWidget {
+  - ui : Ui::PSDWidget *
+  - psd : std::shared_ptr<PAT::PSD::PSD>
+  - frameScene : QGraphicsScene
+  - pixitem : QGraphicsPixmapItem
+  - centroid : std::shared_ptr<QGraphicsEllipseItem>
+  - target : std::shared_ptr<QGraphicsEllipseItem>
+  - centroidSize : int
+  - centroidThreshold : int
+  - centroidSearchingRadius : int
+  - analysisTime : QElapsedTimer
+  - imgBuffer : char *
+  - width : int
+  - height : int
+  ---
+  + PSDWidget(_parent : QWidget *)
+  + ~PSDWidget()
+  + setPSD(_psd : std::shared_ptr<PAT::PSD::PSD> &)
+  + newFrame()
+  ..slots..
+  - on_dsbFramerate_valueChanged(arg1 : double)
+}
+
+PAT.PSD.PSD --* PAT.Centroid
+PAT.PSD.PSD --* PAT.Utils.Point
+PAT.PSD.PSD --* PAT.Utils.BoundedParameter
+
+PAT.PSD.PDQ90A --* PAT.KPA101
+
+PAT.PSD.PSDWidget --* PAT.PSD.PSD
+
+@enduml

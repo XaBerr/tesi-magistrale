@@ -15,7 +15,7 @@
 \BOOKMARK [1][-]{section.2.3}{Fine}{chapter.2}% 15
 \BOOKMARK [2][-]{subsection.2.3.1}{Logical design}{section.2.3}% 16
 \BOOKMARK [2][-]{subsection.2.3.2}{Physical implementation}{section.2.3}% 17
-\BOOKMARK [0][-]{chapter.3}{Software design}{}% 18
+\BOOKMARK [0][-]{chapter.3}{QKD software design}{}% 18
 \BOOKMARK [1][-]{section.3.1}{Memorization, standardization and expansion of the QKD software}{chapter.3}% 19
 \BOOKMARK [1][-]{section.3.2}{Boilerplate documentation}{chapter.3}% 20
 \BOOKMARK [2][-]{subsection.3.2.1}{Setup your environment}{section.3.2}% 21
@@ -24,4 +24,9 @@
 \BOOKMARK [2][-]{subsection.3.2.4}{Include third part libs .dll or .h}{section.3.2}% 24
 \BOOKMARK [2][-]{subsection.3.2.5}{Structure description of the project}{section.3.2}% 25
 \BOOKMARK [2][-]{subsection.3.2.6}{Setup git credential in windows}{section.3.2}% 26
-\BOOKMARK [1][-]{section.3.3}{The development of the PAT software}{chapter.3}% 27
+\BOOKMARK [0][-]{chapter.4}{PAT software design}{}% 27
+\BOOKMARK [1][-]{section.4.1}{The development of the PAT software}{chapter.4}% 28
+\BOOKMARK [1][-]{section.4.2}{PAT Docs}{chapter.4}% 29
+\BOOKMARK [2][-]{subsection.4.2.1}{Introduction}{section.4.2}% 30
+\BOOKMARK [2][-]{subsection.4.2.2}{GUI}{section.4.2}% 31
+\BOOKMARK [2][-]{subsection.4.2.3}{Classes UML}{section.4.2}% 32

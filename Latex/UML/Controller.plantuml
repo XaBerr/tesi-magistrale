@@ -1,0 +1,325 @@
+@startuml Controller
+!$LIGHT = 1
+!includeurl https://raw.githubusercontent.com/XaBerr/plantUMLstyle/master/style.plantuml
+
+!include ./Mirror.plantuml
+!include ./Centroid.plantuml
+
+hide empty members
+
+namespace PAT {
+  namespace Controller {
+    class PIDKPA101
+    class PIDKPA101Widget
+    enum Direction
+    class Manual
+    class ManualWidget
+    class CalibrationConfig
+    class CalibrationAnalysis
+    class Calibrated
+    class CalibratedWidget
+    class DistancePlotterWidget
+  }
+}
+
+class PAT.Controller.PIDKPA101 {
+  - kpa101 : std::shared_ptr<PAT::KPA101>
+  ---
+  + PIDKPA101(_kpa101 : std::shared_ptr<PAT::KPA101>&)
+  + setPIDParameters(_parameters : const PAT::Utils::BoundedParameter<QD_PIDParameters>&)
+  + getPIDParameters() : const PAT::Utils::BoundedParameter<QD_PIDParameters>&
+  + enablePID(_enable : bool)
+  + isPIDActive() : bool
+  + getAutoOpenCloseLoop() : bool
+  + setAutoOpenCloseLoop(_autoOpenCloseLoop : bool)
+  + setAutoOpenInterval(_autoOpenInterval : const PAT::Utils::BoundedParameter<PAT::Utils::Interval<double>>&)
+  + getAutoOpenInterval() : const PAT::Utils::BoundedParameter<PAT::Utils::Interval<double>>&
+  + setFeedBackGain(_feedBackGain : const PAT::Utils::BoundedParameter<PAT::Utils::Point<double>>&)
+  + getFeedBackGain() : const PAT::Utils::BoundedParameter<PAT::Utils::Point<double>>&
+}
+
+class PAT.Controller.PIDKPA101Widget extends QWidget {
+  - ui : Ui::PIDKPA101Widget*
+  - pidkpa101 : std::shared_ptr<PIDKPA101>
+  ---
+  + PIDKPA101Widget(parent : QWidget*)
+  + ~PIDKPA101Widget()
+  + setController(_pidkpa101 : std::shared_ptr<PIDKPA101>&)
+  ..slots..
+  on_dsbP_valueChanged(arg1 : double)
+  on_dsbI_valueChanged(arg1 : double)
+  on_dsbD_valueChanged(arg1 : double)
+  on_chkPID_toggled(checked : bool)
+  on_chkAutoOpenLoop_toggled(checked : bool)
+  on_dsbAutoOpenThresholdMin_valueChanged(arg1 : double)
+  on_dsbAutoOpenThresholdMax_valueChanged(arg1 : double)
+  on_dsbGainX_valueChanged(arg1 : double)
+  on_dsbGainY_valueChanged(arg1 : double)
+}
+
+enum PAT.Controller.Direction {
+  up
+  down
+  left
+  righ
+}
+
+class PAT.Controller.Manual extends QObject {
+  - mirror : std::shared_ptr<PAT::Mirror::Mirror>
+  - centroid : std::shared_ptr<PAT::Centroid>
+  - lastCentroid : PAT::Centroid
+  - newCentroidReady : std::atomic<int>
+  - mirrorIsMoving : bool
+  - manualVoltages : std::vector<double>
+  - manualTimes : std::vector<double>
+  - flippedX : bool
+  - flippedY : bool
+  - swappedXY : bool
+  - const : int getMultiplier(int _localReference)
+  - const : int getLocalReference(Direction _direction)
+  - arrowMovementOn : bool
+  ---
+  + Manual(_mirror : std::shared_ptr<PAT::Mirror::Mirror>&, _centroid : std::shared_ptr<PAT::Centroid>&)
+  + move(_direction : Direction)
+  + setManualVoltage(_volt : double, _direction : Direction)
+  + getManualVoltage(_direction : Direction) : double
+  + setManualTime(_milliSecond : double, _direction : Direction)
+  + getManualTime(_direction : Direction) : double
+  + setFlippedX(_flippedX : bool)
+  + getFlippedX() : bool
+  + setFlippedY(_flippedY : bool)
+  + getFlippedY() : bool
+  + setSwappedXY(_swappedXY : bool)
+  + getSwappedXY() : bool
+  + newCentroid()
+  + movementCompleted()
+}
+
+class PAT.Controller.ManualWidget extends QWidget {
+  - ui : Ui::ManualWidget*
+  - manual : std::shared_ptr<Manual>
+  ---
+  + explicit ManualWidget(parent : QWidget*)
+  + ~ManualWidget()
+  + setController(_manual : std::shared_ptr<Manual>&)
+  ..signals..
+  + chkFlipXchanged(arg1 : int)
+  + chkFlipYchanged(arg1 : int)
+  + chkSwapXYchanged(arg1 : int)
+  ..slots..
+  + on_btnUp_clicked()
+  + on_btnDown_clicked()
+  + on_btnLeft_clicked()
+  + on_btnRight_clicked()
+  + on_chkFlipX_stateChanged(arg1 : int)
+  + on_chkFlipY_stateChanged(arg1 : int)
+  + on_chkSwapXY_stateChanged(arg1 : int)
+  + on_dsbUpV_valueChanged(arg1 : double)
+  + on_dsbRightV_valueChanged(arg1 : double)
+  + on_dsbDownV_valueChanged(arg1 : double)
+  + on_dsbLeftV_valueChanged(arg1 : double)
+  + on_dsbRightS_valueChanged(arg1 : double)
+  + on_dsbUpS_valueChanged(arg1 : double)
+  + on_dsbDownS_valueChanged(arg1 : double)
+  + on_dsbLeftS_valueChanged(arg1 : double)
+}
+
+class PAT.Controller.CalibrationConfig << (S, orchid) >> {
+  + inputVoltages : std::vector<PAT::Utils::BoundedParameter<double>>
+  + timeIntervalMin : PAT::Utils::BoundedParameter<double>
+  + timeIntervalInc : PAT::Utils::BoundedParameter<double>
+  + timeIntervalMax : PAT::Utils::BoundedParameter<double>
+  + flippedX : bool
+  + flippedY : bool
+  + swappedXY : bool
+  ---
+  + CalibrationConfig()
+  + write(_fileName : const QString&)
+  + read(_fileName : const QString&)
+  + generateFileName() : QString
+}
+
+class PAT.Controller.CalibrationAnalysis << (S, orchid) >> {
+  + time : std::vector<std::vector<double>>
+  + voltage : std::vector<std::vector<double>>
+  + delta : std::vector<std::vector<double>>
+  + fitParameters : std::vector<LineParameters>
+  ---
+  + CalibrationAnalysis()
+  + reset()
+  + read(_fileName : const QString&, _lineToSkip : int)
+  + linearFitMQ(x : const std::vector<double>&, y : const std::vector<double>&) : LineParameters
+  + linearFitM(x : const std::vector<double>&, y : const std::vector<double>&) : LineParameters
+}
+
+class PAT.Controller.Calibrated extends QObject {
+  ..external objects..
+  - mirror : std::shared_ptr<PAT::Mirror::Mirror>
+  - centroid : std::shared_ptr<PAT::Centroid>
+  - target : std::shared_ptr<PAT::Utils::BoundedParameter<PAT::Utils::Circle<int>>>
+  ..default parameters..
+  - config : CalibrationConfig
+  ..points generation..
+  - lastCentroid : PAT::Centroid
+  - newCentroidReady : std::atomic<int>
+  - mutexCalibration : std::mutex
+  - movementInAction : bool
+  - threadTakeCalibrationPoints : std::shared_ptr<std::thread>
+  - fileName : QString
+  - appendFile : bool
+  - takingCalibrationPoints : bool
+  - nPoints : PAT::Utils::BoundedParameter<int>
+  ..points analysis..
+  - calibrationOn : bool
+  - calibratedPixelOverTime : std::vector<LineParameters>
+  - calibratedVoltages : std::vector<double>
+  - deltaPixel : PAT::Utils::BoundedParameter<int>
+  - conditionCalibration : std::condition_variable
+  - threshold : PAT::Utils::BoundedParameter<double>
+  - analysis : CalibrationAnalysis
+  ..one shot controller..
+  - threadOneShotController : std::shared_ptr<std::thread>
+  - oneShotControllerOn : bool
+  - thresholdIntensity : PAT::Utils::Interval<double>
+  - intensityPercentage : double
+  - homeThreshold : int
+  ..arrow controller..
+  - arrowMovementOn : bool
+  ..utility functions..
+  ---
+  - getLocalReference(_direction : Direction) : int
+  - getMultiplier(_localReference : int) : int
+  + Calibrated(_mirror : std::shared_ptr<PAT::Mirror::Mirror>&, _centroid : std::shared_ptr<PAT::Centroid>&, _target : std::shared_ptr<PAT::Utils::BoundedParameter<PAT::Utils::Circle<int>>>&)
+  + moveAuto(_direction : Direction)
+  + move(_direction : Direction, _voltage : double, _time : double)
+  + setInputVoltage(_voltage : const PAT::Utils::BoundedParameter<double>&, _direction : Direction)
+  + getInputVoltage(_direction : Direction) : const PAT::Utils::BoundedParameter<double>&
+  + setTimeIntervalMin(_time_ms : const PAT::Utils::BoundedParameter<double>&)
+  + getTimeIntervalMin() : const PAT::Utils::BoundedParameter<double>&
+  + setTimeIntervalInc(_time_ms : const PAT::Utils::BoundedParameter<double>&)
+  + getTimeIntervalInc() : const PAT::Utils::BoundedParameter<double>&
+  + setTimeIntervalMax(_time_ms : const PAT::Utils::BoundedParameter<double>&)
+  + getTimeIntervalMax() : const PAT::Utils::BoundedParameter<double>&
+  + setNPoints(_nPoints : const PAT::Utils::BoundedParameter<int>&)
+  + getNPoints() : const PAT::Utils::BoundedParameter<int>&
+  + setDeltaPixel(_deltaPixel : const PAT::Utils::BoundedParameter<int>&)
+  + getDeltaPixel() : const PAT::Utils::BoundedParameter<int>&
+  + setThreshold(_threshold : const PAT::Utils::BoundedParameter<double>&)
+  + getThreshold() : const PAT::Utils::BoundedParameter<double>&
+  + setTarget(_target : const std::shared_ptr<PAT::Utils::BoundedParameter<PAT::Utils::Circle<int>>>&)
+  + getTarget() : const std::shared_ptr<PAT::Utils::BoundedParameter<PAT::Utils::Circle<int>>>&
+  + setFlippedX(_flippedX : bool)
+  + getFlippedX() : bool
+  + setFlippedY(_flippedY : bool)
+  + getFlippedY() : bool
+  + setSwappedXY(_swappedXY : bool)
+  + getSwappedXY() : bool
+  + setAppendFile(_appendFile : bool)
+  + getAppendFile() : bool
+  + setFileName(_fileName : const QString&)
+  + getFileName() : const QString&
+  + getCalibratedVoltages(_type : VoltageType, _direction : Direction) : const double
+  + newCentroid()
+  + movementCompleted()
+  + uploadConfig() : const CalibrationConfig&
+  + startTakeCalibrationPoints()
+  + stopTakeCalibrationPoints()
+  + analyzeCalibrationPoints() : const CalibrationAnalysis&
+  + useCurrentCalibration(_type : VoltageType)
+  + autoFileName()
+  + startOneShotController()
+  + stopOneShotController()
+}
+
+class PAT.Controller.CalibratedWidget extends QWidget {
+  - ui : Ui::CalibratedWidget*
+  - calibrated : std::shared_ptr<Calibrated>
+  ---
+  + CalibratedWidget(parent : QWidget*)
+  + ~CalibratedWidget()
+  + setController(_calibrated : std::shared_ptr<Calibrated>&)
+  ..signals..
+  + chkFlipXchanged(arg1 : int)
+  + chkFlipYchanged(arg1 : int)
+  + chkSwapXYchanged(arg1 : int)
+  ..slots..
+  + on_btnUp_clicked()
+  + on_btnDown_clicked()
+  + on_btnLeft_clicked()
+  + on_btnRight_clicked()
+  + on_chkFlipX_stateChanged(arg1 : int)
+  + on_chkFlipY_stateChanged(arg1 : int)
+  + on_chkSwapXY_stateChanged(arg1 : int)
+  + on_btnSelectFile_clicked()
+  + on_chkAppend_toggled(checked : bool)
+  + on_dsbInputUp_valueChanged(arg1 : double)
+  + on_dsbInputDown_valueChanged(arg1 : double)
+  + on_dsbInputLeft_valueChanged(arg1 : double)
+  + on_dsbInputRight_valueChanged(arg1 : double)
+  + on_dsbInputTimeMin_valueChanged(arg1 : double)
+  + on_dsbInputTimeInc_valueChanged(arg1 : double)
+  + on_dsbInputTimeMax_valueChanged(arg1 : double)
+  + on_sbNPoints_valueChanged(arg1 : int)
+  + on_btnUploadVoltages_clicked()
+  + on_btnUploadAndCalibrate_clicked()
+  + on_btnSetLowVoltages_clicked()
+  + on_btnSetHighVoltages_clicked()
+  + on_sbDeltaPixel_valueChanged(arg1 : int)
+  + on_dsbThreshold_valueChanged(arg1 : double)
+  + renderPlot(_plot : QCustomPlot*, _time : QVector<double>, _voltages : const QVector<double>&, _fitParameters : const PAT::Controller::LineParameters&)
+  + on_btnAutogenerateName_clicked()
+  + on_btnStartAcquisition_clicked()
+  + on_btnStopAcquisition_clicked()
+  + on_sbTargetX_valueChanged(arg1 : int)
+  + on_sbTargetY_valueChanged(arg1 : int)
+  + on_chkOneShotOn_stateChanged(arg1 : int)
+}
+
+class PAT.Controller.DistancePlotterWidget extends QWidget {
+  - ui : Ui::DistancePlotterWidget* 
+  - centroid : std::shared_ptr<Centroid> 
+  - target : std::shared_ptr<PAT::Utils::BoundedParameter<PAT::Utils::Circle<int>>> 
+  - timer : QElapsedTimer 
+  - maxSize : int 
+  - time : QVector<double> 
+  - deltaX : QVector<double> 
+  - deltaY : QVector<double> 
+  ---
+  + DistancePlotterWidget(parent : QWidget*)
+  + ~DistancePlotterWidget()
+  + setCentroidAndTarget(_centroid : std::shared_ptr<Centroid>&, _target : std::shared_ptr<PAT::Utils::BoundedParameter<PAT::Utils::Circle<int>>>&)
+  ..slots..
+  - newCentroid()
+}
+
+PAT.Controller.PIDKPA101 --* PAT.KPA101
+PAT.Controller.PIDKPA101 ..> PAT.Utils.BoundedParameter
+PAT.Controller.PIDKPA101 ..> PAT.Utils.Interval
+PAT.Controller.PIDKPA101 ..> PAT.Utils.Point
+
+PAT.Controller.PIDKPA101Widget --* PAT.Controller.PIDKPA101
+
+PAT.Controller.Manual --* PAT.Mirror.Mirror
+PAT.Controller.Manual --* PAT.Centroid
+PAT.Controller.Manual ..> PAT.Controller.Direction
+
+PAT.Controller.ManualWidget --* PAT.Controller.Manual
+
+PAT.Controller.CalibrationConfig --* PAT.Utils.BoundedParameter
+
+PAT.Controller.Calibrated --* PAT.Mirror.Mirror
+PAT.Controller.Calibrated --* PAT.Centroid
+PAT.Controller.Calibrated --* PAT.Utils.BoundedParameter
+PAT.Controller.Calibrated --* PAT.Utils.Interval
+PAT.Controller.Calibrated ..> PAT.Utils.Point
+PAT.Controller.Calibrated ..> PAT.Controller.Direction
+PAT.Controller.Calibrated ..> PAT.Controller.CalibrationConfig
+PAT.Controller.Calibrated ..> PAT.Controller.CalibrationAnalysis
+
+PAT.Controller.CalibratedWidget --* PAT.Controller.Calibrated
+
+PAT.Controller.DistancePlotterWidget --* PAT.Centroid
+PAT.Controller.DistancePlotterWidget --* PAT.Utils.BoundedParameter
+PAT.Controller.DistancePlotterWidget ..> PAT.Utils.Point
+
+@enduml

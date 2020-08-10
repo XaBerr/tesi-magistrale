@@ -1,0 +1,34 @@
+@startuml Mirror
+!$LIGHT = 1
+!includeurl https://raw.githubusercontent.com/XaBerr/plantUMLstyle/master/style.plantuml
+
+!include ./KPA101.plantuml
+
+hide empty members
+
+namespace PAT {
+  namespace Mirror {
+    class Mirror
+    class STT254
+  }
+}
+
+class PAT.Mirror.Mirror extends QObject {
+  + {virtual} setOutputImpulse(_voltagePeakX : double, _voltagePeakY : double, _time_ms : double)
+  + {virtual} setOutputCombinedImpulse(_voltagePeakX : double, _timeX_ms : double, _voltagePeakY : double, _timeY_ms : double)
+  ..signals..
+  + movementCompleted()
+}
+
+class PAT.Mirror.STT254 extends PAT.Mirror.Mirror {
+  - kpa101 : std::shared_ptr<PAT::KPA101>
+  - threadNewMovement : std::shared_ptr<std::thread>
+
+  + STT254(_kpa101 : std::shared_ptr<PAT::KPA101>&)
+  + void setOutputImpulse(_voltagePeakX : double, _voltagePeakY : double, _time_ms : double)
+  + void setOutputCombinedImpulse(_voltagePeakX : double, _timeX_ms : double, _voltagePeakY : double, _timeY_ms : double)
+}
+
+PAT.Mirror.STT254 --* PAT.KPA101
+
+@enduml

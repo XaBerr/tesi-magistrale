@@ -1,0 +1,128 @@
+@startuml Camera
+!$LIGHT = 1
+!includeurl https://raw.githubusercontent.com/XaBerr/plantUMLstyle/master/style.plantuml
+
+!include ./Centroid.plantuml
+
+hide empty members
+
+namespace PAT {
+  namespace Camera {
+    class Frame
+    interface Camera
+    class CameraWidget
+    class IDS
+  }
+}
+
+class PAT.Camera.Frame {
+  # buffer : unsigned char*
+  # width : int
+  # height : int
+  # image : QImage
+  # format : QImage::Format
+  # centroid : std::shared_ptr<PAT::Centroid>
+  # target : std::shared_ptr<PAT::Utils::BoundedParameter<PAT::Utils::Circle<int>>>
+  # spotDiameter : double
+  # Rectangle : PAT::Utils::Rectangle<int>
+  # threshold : PAT::Utils::BoundedParameter<unsigned int>
+  # RectangleRadius : PAT::Utils::BoundedParameter<unsigned int>
+  ---
+  + Frame(_image : unsigned char*, _width : int, _height : int, _format : QImage::Format)
+  + flipX()
+  + flipY()
+  + calculateCentroidAndIntegral()
+  + setThreshold(_threshold : const PAT::Utils::BoundedParameter<unsigned int>&)
+  + getThreshold() : const PAT::Utils::BoundedParameter<unsigned int>&
+  + setRectangleRadius(_RectangleRadius : const PAT::Utils::BoundedParameter<unsigned int>&)
+  + getRectangleRadius() : const PAT::Utils::BoundedParameter<unsigned int>&
+  + getRectangle() : const PAT::Utils::Rectangle<int>&
+  + getCentroid() : std::shared_ptr<PAT::Centroid>&
+  + getTarget() : std::shared_ptr<PAT::Utils::BoundedParameter<PAT::Utils::Circle<int>>>&
+  + getImageRaw() : unsigned char*
+  + getImage() : const QImage&
+  + getWidth() : int
+  + getHeight() : int
+}
+
+interface PAT.Camera.Camera extends QObject {
+ protected:
+  # frame : std::shared_ptr<Frame>
+  # active : bool
+  # centroidCalculation : bool
+  # frameRate : PAT::Utils::BoundedParameter<double>
+  # exposureTime : PAT::Utils::BoundedParameter<double>
+ ---
+  + Camera()
+  + getFrame() : std::shared_ptr<Frame>&
+  + {virtual} start()
+  + {virtual} stop()
+  + isActive() : bool
+  + {virtual} setFrameRate(_frameRate : const PAT::Utils::BoundedParameter<double>&)
+  + getFrameRate() : const PAT::Utils::BoundedParameter<double>&
+  + {virtual} setExposureTime _exposureTime : const PAT::Utils::BoundedParameter<double>&)
+  + getExposureTime() : const PAT::Utils::BoundedParameter<double>&
+  + setCentroidCalculation(bool _centroidCalculation)
+  + getCentroidCalculation() : bool
+  ..signals..
+  + newFrameSignal()
+}
+
+class PAT.Camera.IDS implements PAT.Camera.Camera {
+  - cameraId : HIDS 
+  - imgId : int 
+  - imgBuffer : char* 
+  - eventHandler : HANDLE 
+  - bitsPerPixel : int 
+  - pixelClock : PAT::Utils::BoundedParameter<unsigned int> 
+  - sensorInfo : SENSORINFO 
+  - threadNewFrame : QFuture<void> 
+  - gain : int 
+  ---
+  + IDS()
+  + IDS(_cameraId : HIDS)
+  + ~IDS()
+  + start()
+  + stop()
+  + setFrameRate(_frameRate : const PAT::Utils::BoundedParameter<double>&)
+  + setExposureTime(_exposureTime : const PAT::Utils::BoundedParameter<double>&)
+  + {static} find() : HIDS
+  + {static} findAll() : std::shared_ptr<UEYE_CAMERA_LIST>
+  + processEvent()
+}
+
+class PAT.Camera.CameraWidget extends QWidget {
+  - ui : Ui::CameraWidget *
+  - camera : std::shared_ptr<PAT::Camera::Camera> 
+  - frameScene : QGraphicsScene 
+  - pixitem : QGraphicsPixmapItem 
+  - centroid : QGraphicsEllipseItem *
+  - target : QGraphicsEllipseItem *
+  - centroidBoundary : QGraphicsRectItem *
+  - centroidSize : int 
+ ---
+  + CameraWidget(_parent : QWidget *)
+  + ~CameraWidget()
+  + setCamera(_camera : const std::shared_ptr<PAT::Camera::Camera> &)
+  + newFrame()
+  ..slots..
+  - on_dsbFramerate_valueChanged(arg1 : double)
+  - on_sbCentroidThreshold_valueChanged(arg1 : int)
+  - on_sbCentroidSearchingRadius_valueChanged(arg1 : int)
+  - on_dsbExposureTime_valueChanged(arg1 : double)
+}
+
+PAT.Camera.Frame --* PAT.Centroid
+PAT.Camera.Frame --* PAT.Utils.BoundedParameter
+PAT.Camera.Frame --* PAT.Utils.Rectangle
+PAT.Camera.Frame --* PAT.Utils.Point
+PAT.Camera.Frame --* QImage
+
+PAT.Camera.Camera --* PAT.Camera.Frame
+PAT.Camera.Camera --* PAT.Utils.BoundedParameter
+
+PAT.Camera.IDS --* PAT.Utils.BoundedParameter
+
+PAT.Camera.CameraWidget --* PAT.Camera.Camera
+
+@enduml

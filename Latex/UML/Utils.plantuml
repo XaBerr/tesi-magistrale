@@ -1,0 +1,76 @@
+@startuml Utils
+!$LIGHT = 1
+!includeurl https://raw.githubusercontent.com/XaBerr/plantUMLstyle/master/style.plantuml
+  
+hide empty members
+
+namespace PAT {
+namespace Utils {
+  class BoundedParameter
+  class Interval
+  class Point
+  class Rectangle
+  class Circle
+}
+}
+
+class PAT.Utils.BoundedParameter << (S, orchid) >> {
+  + min : T
+  + max : T
+  + increment : T
+  + value : T
+}
+
+class PAT.Utils.Interval << (S, orchid) >> {
+  + min : T
+  + max : T
+  ---
+  + Interval()
+  + Interval(_min : T, _max : T)
+}
+
+class PAT.Utils.Point << (S, orchid) >> {
+  + x : T
+  + y : T
+  ---
+  + Point()
+  + Point(_x : T, _y : T)
+  + distance(_point : const Point<T>&) : T
+  + operator+=(_point : const Point<T>&) : Point<T>&
+  + operator-=(_point : const Point<T>&) : Point<T>&
+  + operator+=(_number : T) : Point<T>&
+  + operator-=(_number : T) : Point<T>&
+  + operator*=(_number : T) : Point<T>&
+  + operator/=(_number : T) : Point<T>&
+  + operator=(_number : T) : Point<T>&
+  + operator+(_a : Point<T>, _b : const Point<T>&) : Point<T>
+  + operator-(_a : Point<T>, _b : const Point<T>&) : Point<T>
+  + operator+(_a : Point<T>, _b : T) : Point<T>
+  + operator-(_a : Point<T>, _b : T) : Point<T>
+}
+
+class PAT.Utils.Rectangle << (S, orchid) >> {
+  + start : Point<T>
+  + end : Point<T>
+  ---
+  + Rectangle()
+  + Rectangle(_start : Point<T>, _end : Point<T>)
+  + Rectangle(_startX : T, _startY : T, _endX : T, _endY : T)
+  + isInside(_point : Point<T>) : bool
+}
+
+class PAT.Utils.Circle << (S, orchid) >> {
+  + center : Point<T>
+  + radius : T
+  + Circle()
+  + Circle(_center : Point<T>, _radius : T)
+  + Circle(_centerX : T, _centerY : T, _radius : T)
+  + isInside(_point : Point<T>) : bool
+  + getBoundaries() : Rectangle<T>
+}
+
+
+PAT.Utils.Rectangle --* PAT.Utils.Point
+PAT.Utils.Circle --* PAT.Utils.Point
+
+@enduml

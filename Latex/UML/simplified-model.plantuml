@@ -1,0 +1,28 @@
+@startuml simplified-model
+!$LIGHT = 1
+!includeurl https://raw.githubusercontent.com/XaBerr/plantUMLstyle/master/style.plantuml
+
+object sensor {
+  camera
+  psd
+}
+
+object controller {
+  kpa101
+  pc
+}
+
+object actuator {
+  mirror
+}
+
+circle "input beam" as x
+circle "output beam" as y
+
+x -right-> actuator
+actuator -right-> y
+y -right-> sensor
+sensor -down-> controller
+controller --> actuator
+
+@enduml

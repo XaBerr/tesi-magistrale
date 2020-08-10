@@ -1,0 +1,23 @@
+@startuml Centroid
+!$LIGHT = 1
+!includeurl https://raw.githubusercontent.com/XaBerr/plantUMLstyle/master/style.plantuml
+
+!include ./Utils.plantuml
+
+hide empty members
+
+namespace PAT {
+  class Centroid
+}
+
+class PAT.Centroid extends QObject, PAT.Utils.Point {
+  + double intensity
+  ---
+  + Centroid()
+  + Centroid(_x : double, _y : double, _intensity : double)
+  + Centroid(const Centroid& _centroid)
+  --signals--
+  + newValue()
+}
+
+@enduml

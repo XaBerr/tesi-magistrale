@@ -133,14 +133,46 @@
   \end{figure}
 }
 
-\newcommand{\imgtwo}[2] {
+\newcommand{\imgTwo}[6]{
   \begin{figure}[H]
+    \minipage{0.5\textwidth}
     \centering
-    \includegraphics[width=100mm]{img/#1}
-    \caption{#2}
-    \label{fig:#1}
+    \includegraphics[scale=#1]{img/#2}
+    \caption{#3}
+    \label{fig:#2}
+    \endminipage\hfill
+    \minipage{0.5\textwidth}
+    \centering
+    \includegraphics[scale=#4]{img/#5}
+    \caption{#6}
+    \label{fig:#5}
+    \endminipage
   \end{figure}
 }
+
+\newcommand{\imgThree}[9]{
+  \begin{figure}[H]
+    \minipage{0.32\textwidth}
+    \centering
+    \includegraphics[scale=#1]{img/#2}
+    \caption{#3}
+    \label{fig:#2}
+    \endminipage\hfill
+    \minipage{0.32\textwidth}
+    \centering
+    \includegraphics[scale=#4]{img/#5}
+    \caption{#6}
+    \label{fig:#5}
+    \endminipage\hfill
+    \minipage{0.32\textwidth}%
+    \centering
+    \includegraphics[scale=#7]{img/#8}
+    \caption{#9}
+    \label{fig:#8}
+    \endminipage
+  \end{figure}
+}
+
 \newcommand{\fig}[1] {
   Fig. \ref{fig:#1}
 }
