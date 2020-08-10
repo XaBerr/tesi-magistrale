@@ -1,149 +1,149 @@
-\lvlv{Prerequisites}
+\lvliv{Prerequisites}
 
 These libraries need to be installed manually in your system:
 
 \begin{itemize}
-  \item
-        \href{https://www.qt.io/}{Qt 5.14.2}
-  \item
-        \href{http://www.doxygen.nl/download.html}{Doxygen 1.8.13}
-  \item
-        \href{https://www.anaconda.com/products/individual}{python3}
+      \item
+            \href{https://www.qt.io/}{Qt 5.14.2}
+      \item
+            \href{http://www.doxygen.nl/download.html}{Doxygen 1.8.13}
+      \item
+            \href{https://www.anaconda.com/products/individual}{python3}
 \end{itemize}
 
 This can be installed through \textbf{pip3} using a single command line:
 
 \begin{itemize}
-  \item
-        \href{https://pypi.org/project/Sphinx/}{Sphinx 3.0.3}
-  \item
-        \href{https://sphinx-rtd-theme.readthedocs.io/en/stable/}{Sphinx read
-          the doc theme 0.4.3} (to use the read the doc theme for html
-        documentation)
-  \item
-        \href{https://pypi.org/project/breathe/}{Breathe 4.16.0} (to use the
-        xml output of doxygen)
-  \item
-        \href{https://pypi.org/project/sphinx-markdown-builder/}{Sphinx-markdown-builder
-          0.5.4} (to generate the markdown version for gitlab wiki)
+      \item
+            \href{https://pypi.org/project/Sphinx/}{Sphinx 3.0.3}
+      \item
+            \href{https://sphinx-rtd-theme.readthedocs.io/en/stable/}{Sphinx read
+                  the doc theme 0.4.3} (to use the read the doc theme for html
+            documentation)
+      \item
+            \href{https://pypi.org/project/breathe/}{Breathe 4.16.0} (to use the
+            xml output of doxygen)
+      \item
+            \href{https://pypi.org/project/sphinx-markdown-builder/}{Sphinx-markdown-builder
+                  0.5.4} (to generate the markdown version for gitlab wiki)
 \end{itemize}
 
 \texttt{pip3\ install\ Sphinx\ sphinx\_rtd\_theme\ breathe\ sphinx-markdown-builder}
 
 On \textbf{Windows} add the path of the \texttt{../Anaconda3/Scripts} folder to the system variable \textbf{PATH}.
 
-\lvlv{Setup procedure}
+\lvliv{Setup procedure}
 
 \begin{itemize}
-  \item
-        Create a new project on gitlab \{YourProject\} (the name of the
-        project must be \href{https://en.wikipedia.org/wiki/Camel_case}{upper
-          camel case}).
+      \item
+            Create a new project on gitlab \{YourProject\} (the name of the
+            project must be \href{https://en.wikipedia.org/wiki/Camel_case}{upper
+                  camel case}).
 \end{itemize}
 
 \begin{itemize}
-  \item
-        Download \{YourProject\} on the computer.
+      \item
+            Download \{YourProject\} on the computer.
 \end{itemize}
 
 \begin{itemize}
-  \item
-        Download this repository
-        \texttt{git\ clone\ https://gitlab.dei.unipd.it/Calderaro/BoilerplateQT.git}.
+      \item
+            Download this repository
+            \texttt{git\ clone\ https://gitlab.dei.unipd.it/Calderaro/BoilerplateQT.git}.
 \end{itemize}
 
 \begin{itemize}
-  \item
-        Copy everything except the folder \textbf{.git} from this repository
-        to \{YourProject\} folder.
+      \item
+            Copy everything except the folder \textbf{.git} from this repository
+            to \{YourProject\} folder.
 \end{itemize}
 
 \begin{itemize}
-  \item
-        (optional for QtCreator) Configure the project as described in the
-        Installation.
+      \item
+            (optional for QtCreator) Configure the project as described in the
+            Installation.
 \end{itemize}
 
 \begin{itemize}
-  \item
-        Replace every string \textbf{BoilerplateQt} with \{YourProject\} in
-        every file (Recommended to use QtCreator advanced replace).
+      \item
+            Replace every string \textbf{BoilerplateQt} with \{YourProject\} in
+            every file (Recommended to use QtCreator advanced replace).
 \end{itemize}
 
 \begin{itemize}
-  \item
-        Replace every string \textbf{boilerplateQt} with \{yourProject\} in
-        every file (Recommended to use QtCreator advanced replace).
+      \item
+            Replace every string \textbf{boilerplateQt} with \{yourProject\} in
+            every file (Recommended to use QtCreator advanced replace).
 \end{itemize}
 
 \begin{itemize}
-  \item
-        Replace every string \textbf{boilerplateqt} with \{yourproject\} in
-        every file (Recommended to use QtCreator advanced replace).
+      \item
+            Replace every string \textbf{boilerplateqt} with \{yourproject\} in
+            every file (Recommended to use QtCreator advanced replace).
 \end{itemize}
 
 \begin{itemize}
-  \item
-        Replace every string \textbf{BOILERPLATEQT} with \{YOURPROJECT\} in
-        every file (Recommended to use QtCreator advanced replace).
+      \item
+            Replace every string \textbf{BOILERPLATEQT} with \{YOURPROJECT\} in
+            every file (Recommended to use QtCreator advanced replace).
 \end{itemize}
 
 \begin{itemize}
-  \item
-        Rename every file that contains \textbf{boilerplateqt} with
-        \{yourproject\}:
-        \begin{itemize}
-          \item
-                `/gui/boilerplateqtwidget.cpp` to `/gui/{yourproject}widget.cpp`.
+      \item
+            Rename every file that contains \textbf{boilerplateqt} with
+            \{yourproject\}:
+            \begin{itemize}
+                  \item
+                        `/gui/boilerplateqtwidget.cpp` to `/gui/{yourproject}widget.cpp`.
 
-          \item
-                `/gui/boilerplateqtwidget.ui` to `/gui/{yourproject}widget.ui`.
+                  \item
+                        `/gui/boilerplateqtwidget.ui` to `/gui/{yourproject}widget.ui`.
 
-          \item
-                `/src/boilerplateqt.cpp` to `/src/{yourproject}.cpp`.
+                  \item
+                        `/src/boilerplateqt.cpp` to `/src/{yourproject}.cpp`.
 
-          \item
-                `/tests/boilerplateqttest.cpp` to `/tests/{yourproject}test.cpp`.
+                  \item
+                        `/tests/boilerplateqttest.cpp` to `/tests/{yourproject}test.cpp`.
 
-          \item
-                `/include/BoilerplateQt/boilerplateqt.h` to `/include/BoilerplateQt/{yourproject}.h`.
-        \end{itemize}
+                  \item
+                        `/include/BoilerplateQt/boilerplateqt.h` to `/include/BoilerplateQt/{yourproject}.h`.
+            \end{itemize}
 \end{itemize}
 
 
 \begin{itemize}
-  \item
-        Rename the folder \texttt{/include/BoilerplateQt} with
-        \texttt{/include/\{YourProject\}}.
+      \item
+            Rename the folder \texttt{/include/BoilerplateQt} with
+            \texttt{/include/\{YourProject\}}.
 \end{itemize}
 
 \begin{itemize}
-  \item
-        Open \texttt{config.json} and substitute with your data:
+      \item
+            Open \texttt{config.json} and substitute with your data:
 \end{itemize}
 
 \begin{itemize}
-  \item \textbf{name}: name of the project {YourProject}.
+      \item \textbf{name}: name of the project {YourProject}.
 
-  \item \textbf{version}: last tag in {YourProject} master history.
+      \item \textbf{version}: last tag in {YourProject} master history.
 
-  \item \textbf{description}: short description of {YourProject}.
+      \item \textbf{description}: short description of {YourProject}.
 
-  \item \textbf{GUI}: whether {YourProject} have a GUI. \textbf{If you do not have a gui remove} `/gui` \textbf{and} `/include/{YourProject}/gui` \textbf{folders}.
+      \item \textbf{GUI}: whether {YourProject} have a GUI. \textbf{If you do not have a gui remove} `/gui` \textbf{and} `/include/{YourProject}/gui` \textbf{folders}.
 
-  \item \textbf{modules}: external libraries to be fetched from an online repositoty.
+      \item \textbf{modules}: external libraries to be fetched from an online repositoty.
 \end{itemize}
 
 \begin{itemize}
-  \item
-        (Optional for QtCreator):
-        \begin{itemize}
-          \item Close the project on QtCreator.
+      \item
+            (Optional for QtCreator):
+            \begin{itemize}
+                  \item Close the project on QtCreator.
 
-          \item Remove the file `CMakeLists.txt.user` and build directory (if any).
+                  \item Remove the file `CMakeLists.txt.user` and build directory (if any).
 
-          \item Configure the project as described in the Installation.
-        \end{itemize}
+                  \item Configure the project as described in the Installation.
+            \end{itemize}
 \end{itemize}
 
 
@@ -151,11 +151,11 @@ If you correctly executed the above steps the project should build with
 no problems. From this point on you can start:
 
 \begin{itemize}
-  \item
-        adding new source files and/or change the existing ones.
+      \item
+            adding new source files and/or change the existing ones.
 \end{itemize}
 
 \begin{itemize}
-  \item
-        adding and removing libraries dependeces.
+      \item
+            adding and removing libraries dependeces.
 \end{itemize}

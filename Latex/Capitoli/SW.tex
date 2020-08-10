@@ -1,6 +1,5 @@
 \lvli{Software design}
-\lvlii{The organization of the QKD software}
-\lvliii{Memorization, standardization and expansion}
+\lvlii{Memorization, standardization and expansion of the QKD software}
 Tutto il codice che controllava QKD era stato realizzato in via temporanea su diversi computer senza una particolare organizzazione. Bisognava quindi implementare un sistema facile che permettesse di standardizzare, memorizzare, e semplificare l'espansione del codice.
 
 Per memorizzare il codice è stato scelto di usare GitLab, una piattaforma che permette la memorizzazione e il versionamento del codice tramite git. Il codice è quindi possibile memorizzarlo in repository organizzate in gruppi.
@@ -9,15 +8,16 @@ Per creare una standardizzazione è stato scelto di realizzare un Boilerplate, u
 
 Per semplificare l'espansione del codice è stato scelto di creare un packet manager basato su CMake e di integrarlo direttamente nel Boilerplate. Con questo nuovo sistema è elencare in un file "config.json" le dipendenze di ogni progetto, ovvero le librerie necessarie alla sua compilazione. Quando il progetto viene compilato le dipendenze vengono scaricate e compilate automaticamente.
 
-\lvliii{Boilerplate documentation}
-La documentazione del Boilerplate è memorizzata in una repository separata chiamata BoilerplateQT.wiki. Essa è realizzata in markdown (.md). In questa sezione verranno elencate le sue sezioni principali.
-\lvliv{Setup your environment}
+\lvlii{Boilerplate documentation}
+La documentazione del Boilerplate è memorizzata in una repository separata chiamata BoilerplateQt.wiki. Essa è realizzata in markdown (.md). In questa sezione verranno elencate le sue sezioni principali.
+\lvliii{Setup your environment}
 \input{BoilerplateQtDocs/1-setup-enviroment.tex}
-\lvliv{How to add source files .cpp or .h}
+\lvliii{How to add source files .cpp or .h}
 \input{BoilerplateQtDocs/2-add-source-files.tex}
-\lvliv{Include other projects inside https://gitlab.dei.unipd.it/}
-\lvliv{Include third part libs .dll or .h}
-\lvliv{Structure description of the project}
-\lvliv{Setup git credential in windows}
+\lvliii{Include other projects inside https://gitlab.dei.unipd.it/}
+\input{BoilerplateQtDocs/3-include-projects.tex}
+\lvliii{Include third part libs .dll or .h}
+\lvliii{Structure description of the project}
+\lvliii{Setup git credential in windows}
 
 \lvlii{The development of the PAT software}

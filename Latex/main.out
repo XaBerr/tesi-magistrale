@@ -16,7 +16,12 @@
 \BOOKMARK [2][-]{subsection.2.3.1}{Logical design}{section.2.3}% 16
 \BOOKMARK [2][-]{subsection.2.3.2}{Physical implementation}{section.2.3}% 17
 \BOOKMARK [0][-]{chapter.3}{Software design}{}% 18
-\BOOKMARK [1][-]{section.3.1}{The organization of the QKD software}{chapter.3}% 19
-\BOOKMARK [2][-]{subsection.3.1.1}{Memorization, standardization and expansion}{section.3.1}% 20
-\BOOKMARK [2][-]{subsection.3.1.2}{Boilerplate documentation}{section.3.1}% 21
-\BOOKMARK [1][-]{section.3.2}{The development of the PAT software}{chapter.3}% 22
+\BOOKMARK [1][-]{section.3.1}{Memorization, standardization and expansion of the QKD software}{chapter.3}% 19
+\BOOKMARK [1][-]{section.3.2}{Boilerplate documentation}{chapter.3}% 20
+\BOOKMARK [2][-]{subsection.3.2.1}{Setup your environment}{section.3.2}% 21
+\BOOKMARK [2][-]{subsection.3.2.2}{How to add source files .cpp or .h}{section.3.2}% 22
+\BOOKMARK [2][-]{subsection.3.2.3}{Include other projects inside https://gitlab.dei.unipd.it/}{section.3.2}% 23
+\BOOKMARK [2][-]{subsection.3.2.4}{Include third part libs .dll or .h}{section.3.2}% 24
+\BOOKMARK [2][-]{subsection.3.2.5}{Structure description of the project}{section.3.2}% 25
+\BOOKMARK [2][-]{subsection.3.2.6}{Setup git credential in windows}{section.3.2}% 26
+\BOOKMARK [1][-]{section.3.3}{The development of the PAT software}{chapter.3}% 27

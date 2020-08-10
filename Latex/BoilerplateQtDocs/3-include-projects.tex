@@ -1,62 +1,4 @@
-% Options for packages loaded elsewhere
-\PassOptionsToPackage{unicode}{hyperref}
-\PassOptionsToPackage{hyphens}{url}
-%
-\documentclass[
-]{article}
-\usepackage{lmodern}
-\usepackage{amssymb,amsmath}
-\usepackage{ifxetex,ifluatex}
-\ifnum 0\ifxetex 1\fi\ifluatex 1\fi=0 % if pdftex
-  \usepackage[T1]{fontenc}
-  \usepackage[utf8]{inputenc}
-  \usepackage{textcomp} % provide euro and other symbols
-\else % if luatex or xetex
-  \usepackage{unicode-math}
-  \defaultfontfeatures{Scale=MatchLowercase}
-  \defaultfontfeatures[\rmfamily]{Ligatures=TeX,Scale=1}
-\fi
-% Use upquote if available, for straight quotes in verbatim environments
-\IfFileExists{upquote.sty}{\usepackage{upquote}}{}
-\IfFileExists{microtype.sty}{% use microtype if available
-  \usepackage[]{microtype}
-  \UseMicrotypeSet[protrusion]{basicmath} % disable protrusion for tt fonts
-}{}
-\makeatletter
-\@ifundefined{KOMAClassName}{% if non-KOMA class
-  \IfFileExists{parskip.sty}{%
-    \usepackage{parskip}
-  }{% else
-    \setlength{\parindent}{0pt}
-    \setlength{\parskip}{6pt plus 2pt minus 1pt}}
-}{% if KOMA class
-  \KOMAoptions{parskip=half}}
-\makeatother
-\usepackage{xcolor}
-\IfFileExists{xurl.sty}{\usepackage{xurl}}{} % add URL line breaks if available
-\IfFileExists{bookmark.sty}{\usepackage{bookmark}}{\usepackage{hyperref}}
-\hypersetup{
-  hidelinks,
-  pdfcreator={LaTeX via pandoc}}
-\urlstyle{same} % disable monospaced font for URLs
-\setlength{\emergencystretch}{3em} % prevent overfull lines
-\providecommand{\tightlist}{%
-  \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
-\setcounter{secnumdepth}{-\maxdimen} % remove section numbering
-
-\author{}
-\date{}
-
-\begin{document}
-
-\hypertarget{header-n0}{%
-\section{Include other projects inside
-https://gitlab.dei.unipd.it/}\label{header-n0}}
-
-\href{../home}{↩️ Back to index}
-
-\hypertarget{header-n3}{%
-\subsection{Configuring your root CMakeLists.txt}\label{header-n3}}
+\lvliv{Configuring your root CMakeLists.txt}
 
 This project builds two libraries called BoilerplateQt and
 BoilerplateQtGui. To import these libraries in your personal project you
@@ -64,7 +6,7 @@ can do the following. Assuming your project structure is based on
 BoilerplateQt, you can add to the \texttt{config.json} the following
 lines:
 
-\begin{verbatim}
+\begin{lstlisting}[language=javascript]
 "modules": [
   {
     "other module": "info"
@@ -77,96 +19,86 @@ lines:
     "getGui": "YES"
   }
 ]
-\end{verbatim}
+\end{lstlisting}
 
-\begin{itemize}
-\item
-  \textbf{exclamation}
-
-  \textbf{Keep in mind that this will force your submodules to use this
-  version (the one described in the ``tag'') of BoilerplateQt. Make sure
-  that your submodule works fine with the version you set.}
-\end{itemize}
+\textbf{Keep in mind that this will force your submodules to use this version (the one described in the ``tag'') of BoilerplateQt. Make sure that your submodule works fine with the version you set.}
 
 This will add two library targets: BoilerplateQt and BoilerplateQtGui.
 Other options:
 
 \begin{itemize}
-\item
-  If you do not want to import the BoilerplateQtGui library set
-  \texttt{"getGui":\ "NO"}
+  \item
+        If you do not want to import the BoilerplateQtGui library set
+        \texttt{"getGui":\ "NO"}
 \end{itemize}
 
 \begin{itemize}
-\item
-  You can just force your submodules to use a particular version of the
-  BoilerplateQt libraries by setting \texttt{"available":\ "NO"}. Your
-  project will not import the BoilerplateQt and BoilerplateQtGui
-  targets.
+  \item
+        You can just force your submodules to use a particular version of the
+        BoilerplateQt libraries by setting \texttt{"available":\ "NO"}. Your
+        project will not import the BoilerplateQt and BoilerplateQtGui
+        targets.
 \end{itemize}
 
-\hypertarget{header-n20}{%
-\subsection{Add the BoilerplateQtWidget to your GUI
-Widget}\label{header-n20}}
+\lvliv{Add the BoilerplateQtWidget to your GUI
+  Widget}
 
 Show the BoilerplateQtWidget inside your GUI Widget following these
 steps:
 
 \begin{itemize}
-\item
-  create an empty Widget in your GUI Widget and name it as
-  ``boilerplateQtWidget''.
+  \item
+        create an empty Widget in your GUI Widget and name it as
+        ``boilerplateQtWidget''.
 \end{itemize}
 
 \begin{itemize}
-\item
-  right-click on the boilerplateQtWidget and select ``promote to''.
+  \item
+        right-click on the boilerplateQtWidget and select ``promote to''.
 \end{itemize}
 
 \begin{itemize}
-\item
-  Use ``QWidget'' as base class.
+  \item
+        Use ``QWidget'' as base class.
 \end{itemize}
 
 \begin{itemize}
-\item
-  In ``Promoted class name'' insert ``BoilerplateQtWidget''.
+  \item
+        In ``Promoted class name'' insert ``BoilerplateQtWidget''.
 \end{itemize}
 
 \begin{itemize}
-\item
-  In ``Header file'' insert
-  \textless BoilerplateQt/gui/boilerplateqtwidget.h\textgreater.
+  \item
+        In ``Header file'' insert
+        \textless BoilerplateQt/gui/boilerplateqtwidget.h\textgreater.
 \end{itemize}
 
 Connect BoilerplateQt business logic to the presentation of
 BoilerplateQt Widget following these steps:
 
 \begin{itemize}
-\item
-  add two private pointers of type BoilerplateQt and SimpleLabel to your
-  GUI Widget class.
+  \item
+        add two private pointers of type BoilerplateQt and SimpleLabel to your
+        GUI Widget class.
 \end{itemize}
 
-\begin{verbatim}
+\begin{lstlisting}[language=c++]
 BoilerplateQt *boilerplateQt;
 SimpleLabel *simpleLabel;
-\end{verbatim}
+\end{lstlisting}
 
 \begin{itemize}
-\item
-  assign two objects to the pointers in a method of your GUI Widget
-  class.
+  \item
+        assign two objects to the pointers in a method of your GUI Widget
+        class.
 \end{itemize}
 
 \begin{itemize}
-\item
-  call the setBoilerplateQt method of BoilerplateQtWidget, passing the
-  two pointers as argument:
+  \item
+        call the setBoilerplateQt method of BoilerplateQtWidget, passing the
+        two pointers as argument:
 \end{itemize}
 
-\begin{verbatim}
-ui->boilerplateQtWidget->setBoilerplateQt(boilerplateQt, simpleLabel).
-\end{verbatim}
-
-\end{document}
+\begin{lstlisting}[language=c++]
+  ui->boilerplateQtWidget->setBoilerplateQt(boilerplateQt, simpleLabel).
+\end{lstlisting}
