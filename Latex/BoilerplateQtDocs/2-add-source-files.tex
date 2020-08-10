@@ -1,0 +1,40 @@
+\lvlv{Adding new classes to the src folder}
+
+In the \texttt{src/CMakeLists.txt} add the source and header (only the
+headers not exported in the library) files in the \textbf{add\_library}
+function. If you want the class to be exported in the library, so that
+an external program can use it, put the header in the
+\texttt{include/ProjName} folder.
+
+
+\lvlv{Adding new classes to gui folder (should not be necessary
+  but why not)}
+
+In the \texttt{gui/CMakeLists.txt} add the source and header (only the
+headers not exported in the library) files in the \textbf{add\_library}
+function. If you want the class to be exported in the library, so that
+an external program can use it, put the header in the
+\texttt{include/ProjName/gui} folder.
+
+
+\lvlv{Adding new executables to the apps folder}
+
+In the \texttt{apps/CMakeLists.txt} add the \textbf{add\_executable}
+function to create a new target executable:
+
+\begin{lstlisting}[language=c++]
+  add_executable(
+  "${PROJECT_NAME}NewApp"
+  newapp.cpp
+  )
+\end{lstlisting}
+
+Also add the libraries that should be linked to the ``NewApp'' with
+target\emph{link}libraries:
+
+\begin{lstlisting}[language=c++]
+  target_link_libraries(
+    "${PROJECT_NAME}NewApp"
+    PRIVATE Qt5::Gui Qt5::Widgets "${PROJECT_NAME}Gui" ${PROJECT_NAME} ${SUBMODULES_NAME}
+  )
+\end{lstlisting}
