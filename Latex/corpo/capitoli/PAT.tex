@@ -7,17 +7,35 @@ Given a nominal position, the controller will estimate the error via a sensor. O
 Now will presented a possible implementations for these systems.
 
 \lvlii{Components}
+In questa sezione verranno elencati i componenti utilizzati nel sistema PAT.
 \lvliii{Sensors}
 \lvliv{Camera}
+CMOS
+Lavora in px
+Meglio nelle lunghe distanze perché integra
+
 \lvliv{PSD}
+Lavora in volt x, y, sum
+Necessita di un driver come il KPA101
+Meglio nelle corte distanze
 
 \lvliii{Actuators}
 \lvliv{FSM}
+Specchio controllato da motori piezoelettrici
+Può fare movimenti molto precisi
+Necessita di un driver come il KPA101
+
 \lvliv{Skywatcher}
+Montatura per telescopio controllata da due motori elettrici
 
 \lvliii{Controllers}
 \lvliv{One Shot}
+Sviluppato su pc
+Controllo che necessita di una calibrazione
+
 \lvliv{PID KPA101}
+Integrato nel KPA101
+Non necessita del pc per settare i parametri PID
 
 \lvlii{Coarse}
 \lvliii{Logical design}
