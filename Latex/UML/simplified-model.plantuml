@@ -14,6 +14,7 @@ object controller {
 
 object actuator {
   mirror
+  skywatch
 }
 
 circle "input beam" as x
@@ -21,8 +22,8 @@ circle "output beam" as y
 
 x -right-> actuator
 actuator -right-> y
-y -right-> sensor
-sensor -down-> controller
-controller --> actuator
+y -down-> sensor
+sensor -left-> controller
+controller -up-> actuator
 
 @enduml
