@@ -11,31 +11,32 @@
 \BOOKMARK [1][-]{section.2.1}{Introduction}{chapter.2}% 11
 \BOOKMARK [1][-]{section.2.2}{Components}{chapter.2}% 12
 \BOOKMARK [2][-]{subsection.2.2.1}{Sensors}{section.2.2}% 13
-\BOOKMARK [2][-]{subsection.2.2.2}{Actuators}{section.2.2}% 14
-\BOOKMARK [2][-]{subsection.2.2.3}{Controllers}{section.2.2}% 15
-\BOOKMARK [1][-]{section.2.3}{Coarse}{chapter.2}% 16
-\BOOKMARK [2][-]{subsection.2.3.1}{Logical design}{section.2.3}% 17
-\BOOKMARK [2][-]{subsection.2.3.2}{Physical implementation}{section.2.3}% 18
-\BOOKMARK [1][-]{section.2.4}{Fine}{chapter.2}% 19
-\BOOKMARK [2][-]{subsection.2.4.1}{Logical design}{section.2.4}% 20
-\BOOKMARK [2][-]{subsection.2.4.2}{Physical implementation}{section.2.4}% 21
-\BOOKMARK [0][-]{chapter.3}{QKD software design}{}% 22
-\BOOKMARK [1][-]{section.3.1}{Memorization, standardization and expansion of the QKD software}{chapter.3}% 23
-\BOOKMARK [1][-]{section.3.2}{Boilerplate documentation}{chapter.3}% 24
-\BOOKMARK [2][-]{subsection.3.2.1}{Setup your environment}{section.3.2}% 25
-\BOOKMARK [2][-]{subsection.3.2.2}{How to add source files .cpp or .h}{section.3.2}% 26
-\BOOKMARK [2][-]{subsection.3.2.3}{Include other projects inside https://gitlab.dei.unipd.it/}{section.3.2}% 27
-\BOOKMARK [2][-]{subsection.3.2.4}{Include third part libs .dll or .h}{section.3.2}% 28
-\BOOKMARK [2][-]{subsection.3.2.5}{Structure description of the project}{section.3.2}% 29
-\BOOKMARK [2][-]{subsection.3.2.6}{Setup git credential in windows}{section.3.2}% 30
-\BOOKMARK [0][-]{chapter.4}{PAT software design}{}% 31
-\BOOKMARK [1][-]{section.4.1}{The development of the PAT software}{chapter.4}% 32
-\BOOKMARK [1][-]{section.4.2}{PAT Docs}{chapter.4}% 33
-\BOOKMARK [2][-]{subsection.4.2.1}{Introduction}{section.4.2}% 34
-\BOOKMARK [2][-]{subsection.4.2.2}{GUI}{section.4.2}% 35
-\BOOKMARK [2][-]{subsection.4.2.3}{Classes UML}{section.4.2}% 36
-\BOOKMARK [0][-]{chapter.5}{KPA101 bias circuit}{}% 37
-\BOOKMARK [1][-]{section.5.1}{Circuit design}{chapter.5}% 38
-\BOOKMARK [1][-]{section.5.2}{Software design}{chapter.5}% 39
-\BOOKMARK [0][-]{chapter.6}{Fiber injection setup}{}% 40
-\BOOKMARK [1][-]{section.6.1}{Align procedure}{chapter.6}% 41
+\BOOKMARK [2][-]{subsection.2.2.2}{Drivers}{section.2.2}% 14
+\BOOKMARK [2][-]{subsection.2.2.3}{Actuators}{section.2.2}% 15
+\BOOKMARK [2][-]{subsection.2.2.4}{Controllers}{section.2.2}% 16
+\BOOKMARK [1][-]{section.2.3}{Coarse}{chapter.2}% 17
+\BOOKMARK [2][-]{subsection.2.3.1}{Logical design}{section.2.3}% 18
+\BOOKMARK [2][-]{subsection.2.3.2}{Physical implementation}{section.2.3}% 19
+\BOOKMARK [1][-]{section.2.4}{Fine}{chapter.2}% 20
+\BOOKMARK [2][-]{subsection.2.4.1}{Logical design}{section.2.4}% 21
+\BOOKMARK [2][-]{subsection.2.4.2}{Physical implementation}{section.2.4}% 22
+\BOOKMARK [0][-]{chapter.3}{QKD software design}{}% 23
+\BOOKMARK [1][-]{section.3.1}{Memorization, standardization and expansion of the QKD software}{chapter.3}% 24
+\BOOKMARK [1][-]{section.3.2}{Boilerplate documentation}{chapter.3}% 25
+\BOOKMARK [2][-]{subsection.3.2.1}{Setup your environment}{section.3.2}% 26
+\BOOKMARK [2][-]{subsection.3.2.2}{How to add source files .cpp or .h}{section.3.2}% 27
+\BOOKMARK [2][-]{subsection.3.2.3}{Include other projects inside https://gitlab.dei.unipd.it/}{section.3.2}% 28
+\BOOKMARK [2][-]{subsection.3.2.4}{Include third part libs .dll or .h}{section.3.2}% 29
+\BOOKMARK [2][-]{subsection.3.2.5}{Structure description of the project}{section.3.2}% 30
+\BOOKMARK [2][-]{subsection.3.2.6}{Setup git credential in windows}{section.3.2}% 31
+\BOOKMARK [0][-]{chapter.4}{PAT software design}{}% 32
+\BOOKMARK [1][-]{section.4.1}{The development of the PAT software}{chapter.4}% 33
+\BOOKMARK [1][-]{section.4.2}{PAT Docs}{chapter.4}% 34
+\BOOKMARK [2][-]{subsection.4.2.1}{Introduction}{section.4.2}% 35
+\BOOKMARK [2][-]{subsection.4.2.2}{GUI}{section.4.2}% 36
+\BOOKMARK [2][-]{subsection.4.2.3}{Classes UML}{section.4.2}% 37
+\BOOKMARK [0][-]{chapter.5}{KPA101 bias circuit}{}% 38
+\BOOKMARK [1][-]{section.5.1}{Circuit design}{chapter.5}% 39
+\BOOKMARK [1][-]{section.5.2}{Software design}{chapter.5}% 40
+\BOOKMARK [0][-]{chapter.6}{Fiber injection setup}{}% 41
+\BOOKMARK [1][-]{section.6.1}{Align procedure}{chapter.6}% 42

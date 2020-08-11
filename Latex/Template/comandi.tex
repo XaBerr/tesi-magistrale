@@ -133,6 +133,15 @@
   \end{figure}
 }
 
+\newcommand{\imgs}[3] {
+  \begin{figure}[H]
+    \centering
+    \includegraphics[scale=#1]{img/#2}
+    \caption{#3}
+    \label{fig:#2}
+  \end{figure}
+}
+
 \newcommand{\imgTwo}[6]{
   \begin{figure}[H]
     \minipage{0.5\textwidth}
