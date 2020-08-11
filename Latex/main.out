@@ -30,11 +30,11 @@
 \BOOKMARK [2][-]{subsection.3.2.5}{Structure description of the project}{section.3.2}% 30
 \BOOKMARK [2][-]{subsection.3.2.6}{Setup git credential in windows}{section.3.2}% 31
 \BOOKMARK [0][-]{chapter.4}{PAT software design}{}% 32
-\BOOKMARK [1][-]{section.4.1}{The development of the PAT software}{chapter.4}% 33
-\BOOKMARK [1][-]{section.4.2}{PAT Docs}{chapter.4}% 34
-\BOOKMARK [2][-]{subsection.4.2.1}{Introduction}{section.4.2}% 35
-\BOOKMARK [2][-]{subsection.4.2.2}{GUI}{section.4.2}% 36
-\BOOKMARK [2][-]{subsection.4.2.3}{Classes UML}{section.4.2}% 37
+\BOOKMARK [1][-]{section.4.1}{The components analysis}{chapter.4}% 33
+\BOOKMARK [1][-]{section.4.2}{The GUI analysis}{chapter.4}% 34
+\BOOKMARK [2][-]{subsection.4.2.1}{Possible setups}{section.4.2}% 35
+\BOOKMARK [2][-]{subsection.4.2.2}{Possible GUIs}{section.4.2}% 36
+\BOOKMARK [1][-]{section.4.3}{The classes}{chapter.4}% 37
 \BOOKMARK [0][-]{chapter.5}{KPA101 bias circuit}{}% 38
 \BOOKMARK [1][-]{section.5.1}{Circuit design}{chapter.5}% 39
 \BOOKMARK [1][-]{section.5.2}{Software design}{chapter.5}% 40
