@@ -11,38 +11,45 @@ In this section will be listed all the components used into PAT system.
 \lvliii{Sensors}
 \lvliv{Camera}
 \img{pictures/camera}{IDS camera.}
-La camera industriale è il sensore principale per la comunicazione. A seconda del modello essa può coprire tutti gli spettri utili per la comunicazione con i laser: ultraviolet, visible, infrared. Ha tipicamente un framerate che può variare da 30Hz ai 200Hz. Il vantaggio principale della camera è che è possibile ridurre gli Hertz per aumentare il tempo di esposizione per compensare le attenuazioni tipiche delle grandi distanze. La camera ritorna una immaginine in pixel tipicamente delle dimensioni 1280x1024. Questa immagine dovrà essere poi processata dal computer per ricavare l'informazione della posizione del segnale del laser. Le camere usate nel setup del PAT sono camere IDS con tecnologia CMOS.
+The industrial camera is the main sensor for communication. Depending on the model it can cover all the spectra useful for communication with lasers: ultraviolet, visible, infrared.
+It typically has a framerate that can range from 30Hz to 200Hz. The main advantage of the chamber is that it is possible to reduce the Hertz to increase the exposure time to compensate for the typical attenuations of long distances.
+The camera returns an image in pixels typically of the size 1280x1024. This image will then have to be processed by the computer to derive the location information of the laser signal.
+The cameras used in the PAT setup are IDS's cameras with CMOS technology.
 
 \lvliv{Position Sensing Detectors}
 \imgs{0.2}{pictures/PSD}{ThorLabs PSD.}
-The Position Sensing Detectors (PSD) utilizes a silicon photodiode-based pincushion tetra lateral sensor to accurately measure the displacement of an incident beam relative to the calibrated center. These devices are ideal for measuring the movement of a beam, the distance traveled, or as feedback for alignment systems. Lo spettro che copre è dai 320nm ai 1100nm. Questo dispositivo necessita di un driver hardware per essere usato. A seconda della posizione del laser nel sensore, esso ritorna tre tensioni: $\Delta x, \Delta y, SUM$. Esse esprimono le intensità del laser in x, in y, e totale. È possibile usare le seguenti formule per ricavarsi la posizione del laser nel sensore di dimensioni $L_x,L_y$:
+The Position Sensing Detectors (PSD) utilizes a silicon photodiode-based pincushion tetra lateral sensor to accurately measure the displacement of an incident beam relative to the calibrated center. These devices are ideal for measuring the movement of a beam, the distance traveled, or as feedback for alignment systems.
+The spectrum covered is from 320nm to 1100nm. This device needs a hardware driver to be used. Depending on the position of the laser in the sensor, it returns three voltages: $\Delta x, \Delta y, SUM$.
+From these three components it is possible to obtain the position of the laser in the sensor of size $L_x,L_y$, using the following equations:
 $$x = \frac{L_x \Delta x}{2 SUM}, y = \frac{L_y \Delta y}{2 SUM}.$$
-Il modello usato nel PAT è il PDQ90A della ThorLabs, esso necessita di un driver chiamato KPA101.
-IL PSD è tipicamente meglio della camera nelle corte distanze perché il controllore integrato nel KPA101 è basato su un circuito e quindi ha una risoluzione continua, il suo segnale non deve essere campionato ed analizzato.
+The model used in the PAT is the Thorlabs PDQ90A, which requires a driver called KPA101.
+The PSD is typically better than the camera at short distances because the integrated controller in the KPA101 is based on a circuit and therefore has a continuous resolution, its signal is not sampled and analyzed.
 
 \lvliii{Drivers}
 \lvliv{KPA101}
 \imgs{0.25}{pictures/KPA101}{ThorLabs KPA101.}
-Il KPA101 è un dispositivo con tre funzioni principali: fare da driver per il PSD, fare da driver per il FSM, e implementare nativamente un controllore PID. Collegandolo ad un computer da la possibilità di controllare queste tre funzioni in maniera separata.
+The KPA101 is a device with three main functions: driver for the PSD, driver for the FSM, and natively implement a PID controller. Connecting it to a computer gives the ability to control these three functions separately.
 
 
 \lvliii{Actuators}
 \lvliv{Fast Steering Mirror}
 \imgs{2.5}{pictures/FSM}{SmarAct FSM.}
-Il fast-steering mirror è uno specchio allogiato su una montatuta in grado di fare tip and tilt. Ha tipicamente una velocità angolare di 15 degree/s e con un range di movimento di ±2.5 degree. Il FSM usato per il PAT usa una montatura della SmarAct che sfrutta la tecnoloiga stick-slip piezo stages. The piezo actuator combine macroscopic travel with nanometer resolution and high velocities of several millimeters per second. Esso necessita di un driver esterno per essere gestito perché il suo movimento è controllato da due tensioni x e y. Il KPA101 è un driver compatibile con la tecnologia di questo attuatore.
+The fast-steering mirror is a mirror housed on a mount able to do tip and tilt. It typically has an angular velocity of 15 degree/s and a range of motion of $\pm 2.5$ degree.
+The FSM used for the PAT uses a SmarAct frame that takes advantage of the technology stick-slip piezo stages. The piezo actuator combine macroscopic travel with nanometer resolution and high velocities of several millimeters per second.
+It requires an external driver to be managed because its movement is controlled by two voltages: x and y. The KPA101 is a driver compatible with the technology of this actuator.
 
 \lvliv{Telescope mount}
 \imgs{0.1}{pictures/skywatcher}{Skywatcher telescope mout.}
-La montatura per telescopio utilizzata nel PAT è la AZ-GTI della Skywatch. Essa è una montatura Altitude-azimuth controllata da due DC Servo Motor. Essa necessita di un computer per poter fare i puntamenti.
+The telescope mount used in the PAT is the AZ-GTI of the Skywatch. It is an Altitude-azimuth mount controlled by two DC Servo Motor. It needs a computer to do the targeting.
 
 \lvliii{Controllers}
-Idealmente esistono infiniti controller disponibili per il sistema PAT, ma solo due sono quelli che sono stati utilizzati: one shot, e PID KPA101.
+Ideally there are countless controllers available for the PAT system, but only two are used: one shot, and PID KPA101.
 \lvliv{One Shot}
-One shot è un controllore realizzato a computer che legge l'errore in pixel tra il segnale in ingresso e la posizione voluta, e genera un segnale di correzione proporzionale per l'attuatore.
-Essendo i dispositivi non ideali questo controllore dovrà fare una calibrazione di ogni singolo dispositivo per potersi ricavare le migliori tensioni da dare ai vari attuatori.
+One shot is a computer-made controller that reads the error in pixels between the input signal and the desired position, and generates a proportional correction signal for the actuator.
+Since the devices are not ideal, this controller will have to make a calibration for each device, in order to obtain the best voltages to be given to the various actuators.
 
 \lvliv{PID KPA101}
-Questo controller è di tipo Proportional Integral Derivate (PID) ed è integrato nel KPA101. Per specificare i parametri PID è necessario utilizzare un computer. Il sistema integrato PID ha una grande limitazione, esso permette di allineare il fascio solo al centro del sistema, posizione non sempre ottimale in caso di setup complessi.
+This controller is Proportional Integral Derivatives (PID) and is integrated into the KPA101. A computer is required to specify PID parameters. The integrated PID system has a big limitation, it allows to align the beam only to the center of the system, position not always optimal in case of complex setups.
 
 \lvlii{Coarse}
 \lvliii{Logical design}
