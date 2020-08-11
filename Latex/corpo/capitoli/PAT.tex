@@ -12,17 +12,17 @@ In this section will be listed all the components used into PAT system.
 \lvliv{Camera}
 \img{pictures/camera}{IDS camera.}
 The industrial camera is the main sensor for communication. Depending on the model it can cover all the spectra useful for communication with lasers: ultraviolet, visible, infrared.
-It typically has a framerate that can range from 30Hz to 200Hz. The main advantage of the chamber is that it is possible to reduce the Hertz to increase the exposure time to compensate for the typical attenuations of long distances.
-The camera returns an image in pixels typically of the size 1280x1024. This image will then have to be processed by the computer to derive the location information of the laser signal.
+It typically has a framerate that can range from 30Hz to 200Hz. The main advantage of the camera over the other sensors is that it is possible to reduce the framerate to increase the exposure time to compensate for the typical attenuations of long distances.
+The camera returns an image typically of the size 1280x1024 pixels. This image will then have to be processed by the computer to calculate the location of the laser signal.
 The cameras used in the PAT setup are IDS's cameras with CMOS technology.
 
 \lvliv{Position Sensing Detectors}
 \imgs{0.2}{pictures/PSD}{ThorLabs PSD.}
-The Position Sensing Detectors (PSD) utilizes a silicon photodiode-based pincushion tetra lateral sensor to accurately measure the displacement of an incident beam relative to the calibrated center. These devices are ideal for measuring the movement of a beam, the distance traveled, or as feedback for alignment systems.
+The Position Sensing Detectors (PSD) utilizes a silicon photodiode-based pincushion-tetra-lateral sensor to accurately measure the displacement of an incident beam relative to the calibrated center. These devices are ideal for measuring the movement of a beam, the distance traveled, or as feedback for alignment systems.
 The spectrum covered is from 320nm to 1100nm. This device needs a hardware driver to be used. Depending on the position of the laser in the sensor, it returns three voltages: $\Delta x, \Delta y, SUM$.
-From these three components it is possible to obtain the position of the laser in the sensor of size $L_x,L_y$, using the following equations:
-$$x = \frac{L_x \Delta x}{2 SUM}, y = \frac{L_y \Delta y}{2 SUM}.$$
-The model used in the PAT is the Thorlabs PDQ90A, which requires a driver called KPA101.
+From these three components it is possible to obtain the position of the laser, using the following equations:
+$$x = \frac{L_x \cdot \Delta x}{2 \cdot SUM}, y = \frac{L_y \cdot \Delta y}{2 \cdot  SUM}$$
+where $L_x,L_y$ are the sensor sizes. The model used in the PAT is the Thorlabs PDQ90A, which requires a driver called KPA101.
 The PSD is typically better than the camera at short distances because the integrated controller in the KPA101 is based on a circuit and therefore has a continuous resolution, its signal is not sampled and analyzed.
 
 \lvliii{Drivers}
@@ -35,12 +35,12 @@ The KPA101 is a device with three main functions: driver for the PSD, driver for
 \lvliv{Fast Steering Mirror}
 \imgs{2.5}{pictures/FSM}{SmarAct FSM.}
 The fast-steering mirror is a mirror housed on a mount able to do tip and tilt. It typically has an angular velocity of 15 degree/s and a range of motion of $\pm 2.5$ degree.
-The FSM used for the PAT uses a SmarAct frame that takes advantage of the technology stick-slip piezo stages. The piezo actuator combine macroscopic travel with nanometer resolution and high velocities of several millimeters per second.
-It requires an external driver to be managed because its movement is controlled by two voltages: x and y. The KPA101 is a driver compatible with the technology of this actuator.
+The FSM used for the PAT is mounted into a SmarAct frame that takes advantage of the technology stick-slip piezo stages. The piezo actuator combine macroscopic travel with nanometer resolution and high velocities of several millimeters per second.
+It requires an external driver to be managed because its movement is controlled by two voltages (x,y). The KPA101 is a driver compatible with the technology of this actuator.
 
 \lvliv{Telescope mount}
 \imgs{0.1}{pictures/skywatcher}{Skywatcher telescope mout.}
-The telescope mount used in the PAT is the AZ-GTI of the Skywatch. It is an Altitude-azimuth mount controlled by two DC Servo Motor. It needs a computer to do the targeting.
+The telescope mount used in the PAT is the AZ-GTI of the Skywatch. It is an altitude-azimuth mount controlled by two DC servo motor. It needs a computer to do the targeting.
 
 \lvliii{Controllers}
 Ideally there are countless controllers available for the PAT system, but only two are used: one shot, and PID KPA101.
@@ -49,7 +49,7 @@ One shot is a computer-made controller that reads the error in pixels between th
 Since the devices are not ideal, this controller will have to make a calibration for each device, in order to obtain the best voltages to be given to the various actuators.
 
 \lvliv{PID KPA101}
-This controller is Proportional Integral Derivatives (PID) and is integrated into the KPA101. A computer is required to specify PID parameters. The integrated PID system has a big limitation, it allows to align the beam only to the center of the system, position not always optimal in case of complex setups.
+This controller is Proportional Integral Derivatives (PID) and is integrated into the KPA101. A computer is required to specify PID parameters. The integrated PID system has a big limitation, it allows to align the beam only to the center of the system, this position is not always optimal in case of complex setups.
 
 \lvlii{Coarse}
 \lvliii{Logical design}
