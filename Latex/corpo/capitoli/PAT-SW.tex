@@ -5,11 +5,11 @@ Partendo dal modello PAT \fig{PAT} si è sviluppato un modello semplificato \fig
 \img{simplified-model}{Simplified model for PAT system.}
 
 \lvlii{The GUI analysis}
-Per avere una idea completa dell'obiettivo del codice il passo successivo è stato studiare quali sono i setup possibili e quali sono le funzionalità che si aspetta un'utente: Per questo motivo è stata svolta anche un'analisi delle interfaccie grafiche.
+Per avere una idea completa dell'obiettivo del codice il passo successivo è stato studiare quali sono i setup possibili e quali sono le funzionalità che si aspetta un'utente. Per questo motivo è stata svolta anche un'analisi delle interfaccie grafiche.
 
 \lvliii{Possible setups}
 In this system there are three basic setups:
-\textbf{mirror-camera-pc}, \textbf{mirror-PSD-KPA101}, and \textbf{skywatcher-camera-pc}.
+\textbf{mirror-camera-pc}, \textbf{skywatcher-camera-pc}, and \textbf{mirror-PSD-KPA101}.
 
 \lvliv{Mirror-camera-pc}
 In this setup we have the pc connected with two devices: the first is
@@ -20,6 +20,11 @@ in input times and voltages. Calibrated has two functionalities: the first is to
 similar to manual that it work taking in input a distance in pixels; the
 second is to use and automatic controller that align the centroid to the
 target that it is called \textbf{one shot}.
+
+\lvliv{Skywatcher-camera-pc}
+In this setup we have the pc connected with two devices: the first is
+the skywatcher mout used to control the mirror; the second is the camera used as
+sensor. The controllers available are the same of the mirror-camera-pc setup.
 
 \lvliv{Mirror-PSD-KPA101}
 In this setup we have the pc connected only to the KPA101, the KPA101 is
