@@ -1,11 +1,15 @@
 \lvli{PAT software design}
 \lvlii{The components analysis}
-L'obiettivo di questo progetto era di sviluppare un software modulabile in grado di controllare un sistema PAT. Il sistema PAT doveva essere in grado di allineare il telescopio a diverse sorgenti luminose come la luce di una stella o al laser di un'altro telescopio. In aggiunta, il sistema PAT doveva essere in grado di controllare tutti i dispositivi della sezione \sect{Components}.
-Partendo dal modello PAT \fig{PAT} si è sviluppato un modello semplificato \fig{simplified-model} per mettere in luce i vari componenti da implementare. In questo modello si vede che tre sono le principali famiglie da implementare: sensori, controllori, e attuatori. Le frecce in questo schema indicano i passaggi di informazione, in altre parole, sensore a attuatore dovranno comunicare con il controllore e vice versa. Si vede quindi la necessità di stabilire un'interfaccia comune tra i vari sensori e attuatori per metterli in comunicazione con i controllori. Lo studio di queste interfaccie ha richiesto molteplici iterazioni per garantire la massima flessibilità.
+The aim of this project was to develop modular software that could control a PAT system. The PAT system had to be able to align the telescope with different light sources such as the light of a star or the laser of another telescope.
+In addition, the PAT system had to be able to control all devices in the \sect{Components}.
+Starting from the PAT model \fig{PAT} a simplified model has been developed \fig{simplified-model} to highlight the various components to be implemented.
+In questo modello si vede che tre sono le principali famiglie da implementare: sensori, controllori, e attuatori. Le frecce in questo schema indicano i passaggi di informazione, in altre parole, sensore a attuatore dovranno comunicare con il controllore e vice versa.
+It is therefore necessary to establish a common interface between the various sensors and actuators to connect them with the controllers. The study of these interfaces required multiple iterations to ensure maximum flexibility.
 \img{simplified-model}{Simplified model for PAT system.}
 
 \lvlii{The GUI analysis}
-Per avere una idea completa dell'obiettivo del codice il passo successivo è stato studiare quali sono i setup possibili e quali sono le funzionalità che si aspetta un'utente. Per questo motivo è stata svolta anche un'analisi delle interfaccie grafiche e delle procedure da eseguire per l'allineamento. In questa sezione verrà riportata l'interfaccia globale che sarà un assemblaggio delle grafiche dei singoli componenti.
+To get a complete idea of the goal of the code the next step was to study what are the possible setups and what are the features that a user expects. For this reason, an analysis of the graphical interfaces and the procedures to be carried out for alignment was done.
+In this section will be reported the global interface that will be an assembly of the graphics of the individual components.
 
 \lvliii{Possible setups}
 In this system there are three basic setups:
