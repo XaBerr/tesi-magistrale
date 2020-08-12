@@ -77,13 +77,12 @@ section is reserved for it.
 \imgThree{0.3}{calibrated1}{Controller interface.}{0.3}{calibrated2}{Analyzer interface.}{0.3}{calibrated3}{Graph interface.}
 
 The aim of this controller is to be able to use the \emph{One shot
-  controller}, but before to be able to use it we need to calibrate the
-controller. The calibration procedure can be decomposed into two parts:
+  controller}, but before to be able to use it a calibration is required. The calibration procedure can be decomposed into two parts:
 data acquisition, data analysis.
 
 \paragraph{Data acquisition}
 
-In this phase we want to acquire the calibration points. The procedure
+In this phase several calibration points will be taken and stored into a file. The procedure
 is the following:
 
 \begin{itemize}
@@ -98,8 +97,8 @@ is the following:
 
 \paragraph{Data analysis}
 
-In this phase we want to analyze the calibration points store into a
-file. The procedure is the following:
+In this phase the calibration points storde into a
+file will be analyzed to retrieve the low/high voltages configuration. The procedure is the following:
 
 \begin{itemize}
   \itemsep1pt\parskip0pt\parsep0pt
@@ -117,10 +116,8 @@ file. The procedure is the following:
 
 \paragraph{One shot controller}
 
-When you have chose both low and high voltages you are ready to press
-the button to enable the controller in the \emph{Controller} tab. To
-swap between high and low voltages you can set the time movement
-threshold in the same tab.
+After the selection of both low and high voltages, the one shot checkbox is ready to be pressed in the \emph{Controller} tab. To
+swap between high and low voltages a time threshold is available in the same tab. If the movement is too long a high voltages will be selected to reduce the time, if not a low voltages will be selected to increase the precision.
 
 \lvlii{The classes}
 
