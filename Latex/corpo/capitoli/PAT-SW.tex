@@ -125,15 +125,11 @@ swap between high and low voltages a time threshold is available in the same tab
 
 \lvlii{The repositories}
 \img{repositories}{This is a screenshot of all the repositories developed in the PAT group.}
-Partendo dal modello semplificato \fig{simplified-model} è stato scelto di creare: un'unica repository per tutti i controllori (Controller), un'unica repository per tutti gli attuatori (Mirror) e due repository separate per i sensori (Camera, PSD).
-Come interfaccia di comunicazione tra Controller e Mirror è stata fatta una classe Mirror. Come interfaccia di comunicazione tra la classe Controller e Camera/PSD è stato scelto di creare una classe Centroid memorizzata in una repository a parte (Centroid).
-La repository KPA101 è stata aggiunta per contenere il driver del KPA101, mentre la repository Utils è stata creata per contenere un'elenco di classi utili a tutte la altre repository.
-La repository Setup è stata creata con l'idea di prendere i pezzi dalle varie repository e comporre dei setup, in altre parole, contiene un'elenco delle possibili combinazioni del PAT.
-In fine altre due repository sono state create: Docs che contiene una rapida documentazione per i programmatori che vogliono contribuire al PAT e PSD-bias che è il software realizzato per controllare un circuito che verrà spiegato nella prossima sezione
-In questa sezione verranno spiegate tutte le repository ad eccezione della Docs che non è altro che un sottoinsieme di questa sezione, e PSD-bias che verrà spiegata in una sezione successiva.
-
-\lvliii{Setup}
-\img{Setup}{Simplified summary UML scheme.}
+Starting from the simplified model \fig{simplified-model} has been chosen to create: a single repository for all controllers (Controller), a single repository for all actuators (Mirror), and two separate repositories for sensors (Camera, PSD).
+As a communication interface between Controller and Mirror was made a Mirror class. As a communication interface between the Controller class and Camera/PSD it was chosen to create a Centroid class stored in a separate repository (Centroid).
+The KPA101 repository was added to contain the KPA101 driver, while the Utils repository was created to contain a list of classes useful to all other repositories.
+The Setup repository was created with the idea of taking pieces from the various repositories and composing setups, in other words, it contains a list of possible PAT combinations.
+The last two repositories that have been created are: Docs that contains quick documentation for programmers who want to contribute to the PAT and PSD-bias that contains the software created to control a circuit that will be explained in the next chapter.
 
 \lvliii{Utils}
 \img{Utils}{Utils UML.}
@@ -155,3 +151,6 @@ In questa sezione verranno spiegate tutte le repository ad eccezione della Docs 
 
 \lvliii{Controller}
 \img{Controller}{Controller UML.}
+
+\lvliii{Setup}
+\img{Setup}{Simplified summary UML scheme.}

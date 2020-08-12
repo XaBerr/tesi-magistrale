@@ -35,14 +35,14 @@
 \BOOKMARK [2][-]{subsection.4.2.1}{Possible setups}{section.4.2}% 35
 \BOOKMARK [2][-]{subsection.4.2.2}{Possible GUIs}{section.4.2}% 36
 \BOOKMARK [1][-]{section.4.3}{The repositories}{chapter.4}% 37
-\BOOKMARK [2][-]{subsection.4.3.1}{Setup}{section.4.3}% 38
-\BOOKMARK [2][-]{subsection.4.3.2}{Utils}{section.4.3}% 39
-\BOOKMARK [2][-]{subsection.4.3.3}{Centroid}{section.4.3}% 40
-\BOOKMARK [2][-]{subsection.4.3.4}{KPA101}{section.4.3}% 41
-\BOOKMARK [2][-]{subsection.4.3.5}{Mirror}{section.4.3}% 42
-\BOOKMARK [2][-]{subsection.4.3.6}{PSD}{section.4.3}% 43
-\BOOKMARK [2][-]{subsection.4.3.7}{Camera}{section.4.3}% 44
-\BOOKMARK [2][-]{subsection.4.3.8}{Controller}{section.4.3}% 45
+\BOOKMARK [2][-]{subsection.4.3.1}{Utils}{section.4.3}% 38
+\BOOKMARK [2][-]{subsection.4.3.2}{Centroid}{section.4.3}% 39
+\BOOKMARK [2][-]{subsection.4.3.3}{KPA101}{section.4.3}% 40
+\BOOKMARK [2][-]{subsection.4.3.4}{Mirror}{section.4.3}% 41
+\BOOKMARK [2][-]{subsection.4.3.5}{PSD}{section.4.3}% 42
+\BOOKMARK [2][-]{subsection.4.3.6}{Camera}{section.4.3}% 43
+\BOOKMARK [2][-]{subsection.4.3.7}{Controller}{section.4.3}% 44
+\BOOKMARK [2][-]{subsection.4.3.8}{Setup}{section.4.3}% 45
 \BOOKMARK [0][-]{chapter.5}{KPA101 bias circuit}{}% 46
 \BOOKMARK [1][-]{section.5.1}{Circuit design}{chapter.5}% 47
 \BOOKMARK [1][-]{section.5.2}{Software design}{chapter.5}% 48
