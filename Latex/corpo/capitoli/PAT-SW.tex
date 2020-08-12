@@ -30,9 +30,98 @@ sensor. The controllers available are the same of the mirror-camera-pc setup.
 In this setup we have the pc connected only to the KPA101, the KPA101 is
 then connected to the mirror and to the PSD. Here we have three types of controllers available: \textbf{manual}, \textbf{calibrated}, \textbf{PIDKPA101}. Manual and calibrated are the same as the previous point. PIDKPA101 use the integrated PID-controller available in the KPA101.
 
-
 \lvliii{Possible GUIs}
 
+\img{gui}{Main GUI of the program.}
+
+We can divide the GUI into two parts: the left side show the sensor
+information, the right side show the controllers information.
+
+In the sensor's side we have (form the top):
+
+\begin{itemize}
+  \itemsep1pt\parskip0pt\parsep0pt
+  \item
+        the frame rendering that contains three objects:
+  \item
+        the red dots represents the centroid of the beam;
+  \item
+        the red square represents the area where the controller calculates the
+        centroid;
+  \item
+        the green circle represents the target;
+  \item
+        the set of parameters of the camera/PSD;
+  \item
+        the set of parameters to position the target;
+  \item
+        the plotter that show in real time the distances in pixels between the
+        target and the centroid.
+\end{itemize}
+
+In the controller's side we have: manual controller, calibrated
+controller and PIDKPA101 controller (only for PSD). The Manual
+controller and the PID controller are self explanatory. In the manual
+controller you set voltages and times to optimize the joystick that will
+be use for the movement.
+
+In the PIDKPA101 after chose the PID parameters press \emph{enable PID}
+to start the controller. The \emph{auto open closed loop} is used to
+disable the controller when the intensity of the beam go outside the
+threshold range.
+
+The calibrated controller is more complex so I reserve a separate
+section for it.
+
+\lvliv{Calibrated controller}
+
+\imgThree{0.3}{calibrated1}{Controller interface.}{0.3}{calibrated2}{Analyzer interface.}{0.3}{calibrated3}{Graph interface.}
+
+The aim of this controller is to be able to use the \emph{One shot
+  controller}, but before to be able to use it we need to calibrate the
+controller. The calibration procedure can be decomposed into two parts:
+data acquisition, data analysis.
+
+\paragraph{Data acquisition}
+
+In this phase we want to acquire the calibration points. The procedure
+is the following:
+
+\begin{itemize}
+  \itemsep1pt\parskip0pt\parsep0pt
+  \item
+        in the \emph{Analyzer} tab set the voltages and the time interval;
+  \item
+        autogenerate the filename;
+  \item
+        start the point acquisition.
+\end{itemize}
+
+\paragraph{Data analysis}
+
+In this phase we want to analyze the calibration points store into a
+file. The procedure is the following:
+
+\begin{itemize}
+  \itemsep1pt\parskip0pt\parsep0pt
+  \item
+        in the \emph{Controller} tab select the file and press \emph{Upload
+          and Calibrated};
+  \item
+        go into \emph{Graphs} tab and check that the analysis is completed
+        correctly;
+  \item
+        if everything is ok then go into the \emph{Controller} tab and set the
+        configuration to the low voltages or high voltages pressing the
+        corresponding button.
+\end{itemize}
+
+\paragraph{One shot controller}
+
+When you have chose both low and high voltages you are ready to press
+the button to enable the controller in the \emph{Controller} tab. To
+swap between high and low voltages you can set the time movement
+threshold in the same tab.
 
 \lvlii{The classes}
 
