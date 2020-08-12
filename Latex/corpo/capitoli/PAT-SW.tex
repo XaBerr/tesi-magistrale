@@ -125,10 +125,15 @@ swap between high and low voltages a time threshold is available in the same tab
 
 \lvlii{The repositories}
 \img{repositories}{This is a screenshot of all the repositories developed in the PAT group.}
-Here a description of all repositories is listed.
+Partendo dal modello semplificato \fig{simplified-model} è stato scelto di creare: un'unica repository per tutti i controllori (Controller), un'unica repository per tutti gli attuatori (Mirror) e due repository separate per i sensori (Camera, PSD).
+Come interfaccia di comunicazione tra Controller e Mirror è stata fatta una classe Mirror. Come interfaccia di comunicazione tra la classe Controller e Camera/PSD è stato scelto di creare una classe Centroid memorizzata in una repository a parte (Centroid).
+La repository KPA101 è stata aggiunta per contenere il driver del KPA101, mentre la repository Utils è stata creata per contenere un'elenco di classi utili a tutte la altre repository.
+La repository Setup è stata creata con l'idea di prendere i pezzi dalle varie repository e comporre dei setup, in altre parole, contiene un'elenco delle possibili combinazioni del PAT.
+In fine altre due repository sono state create: Docs che contiene una rapida documentazione per i programmatori che vogliono contribuire al PAT e PSD-bias che è il software realizzato per controllare un circuito che verrà spiegato nella prossima sezione
+In questa sezione verranno spiegate tutte le repository ad eccezione della Docs che non è altro che un sottoinsieme di questa sezione, e PSD-bias che verrà spiegata in una sezione successiva.
 
 \lvliii{Setup}
-\img{Setup}{Setup UML.}
+\img{Setup}{Simplified summary UML scheme.}
 
 \lvliii{Utils}
 \img{Utils}{Utils UML.}
