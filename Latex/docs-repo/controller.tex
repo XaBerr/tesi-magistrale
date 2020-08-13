@@ -1,66 +1,55 @@
-\hypertarget{controller}{%
-\section{Controller}\label{controller}}
+\lvliii{Controller}
 
 This project contains different controllers for the PAT system. The
 controllers implemented at moment are: Manual, Calibrated, PIDKPA101.
 
 \textbf{Requirements}
 
-\includegraphics{https://img.shields.io/static/v1?label=cpp\&message=11\&color=007bff}
+\includegraphics[scale=0.7]{img/shilds/cpp.png}
+\includegraphics[scale=0.7]{img/shilds/cmake.png}
+\includegraphics[scale=0.7]{img/shilds/git.png}
+\includegraphics[scale=0.7]{img/shilds/doxygen.png}
+\includegraphics[scale=0.7]{img/shilds/sphinx.png}
+\includegraphics[scale=0.7]{img/shilds/win.png}
 
-\includegraphics{https://img.shields.io/static/v1?label=cmake\&message=3.16\&color=007bff}
+\lvliv{Generality}
 
-\includegraphics{https://img.shields.io/static/v1?label=git\&message=2.0\&color=007bff}
-
-\includegraphics{https://img.shields.io/static/v1?label=Doxygen\&message=1.8.13\&color=007bff}
-
-\includegraphics{https://img.shields.io/static/v1?label=Sphinx\&message=3.0.2\&color=007bff}
-
-\includegraphics{https://img.shields.io/static/v1?label=OS\&message=Win\&color=28a745\%22}
-
-\hypertarget{generality}{%
-\subsection{Generality}\label{generality}}
-
-\hypertarget{import}{%
-\subsubsection{Import}\label{import}}
+\lvlv{Import}
 
 Import as an external library into your project by copy-paste the
 following lines in your \texttt{config.json}.
 
-\begin{Shaded}
-\begin{Highlighting}[]
-\FunctionTok{\{}
-  \DataTypeTok{"name"}     \FunctionTok{:} \StringTok{"PATController"}\FunctionTok{,}
-  \DataTypeTok{"path"}     \FunctionTok{:} \StringTok{"gitlab.dei.unipd.it/PAT/Controller.git"}\FunctionTok{,}
-  \DataTypeTok{"tag"}      \FunctionTok{:} \StringTok{"HEAD"}\FunctionTok{,}
-  \DataTypeTok{"available"}\FunctionTok{:} \StringTok{"YES"}\FunctionTok{,}
-  \DataTypeTok{"getGui"}   \FunctionTok{:} \StringTok{"YES"}
-\FunctionTok{\}}
-\end{Highlighting}
-\end{Shaded}
+\begin{lstlisting}[language=javascript, gobble=2]
+    {
+      "name"     : "PATController",
+      "path"     : "gitlab.dei.unipd.it/PAT/Controller.git",
+      "tag"      : "HEAD",
+      "available": "YES",
+      "getGui"   : "YES"
+    }
+\end{lstlisting}
 
-\hypertarget{prerequisites}{%
-\subsubsection{Prerequisites}\label{prerequisites}}
+\lvlv{Prerequisites}
 
 The following libraries are auto fetched from the gitlab.dei.unipd.it
 host (ask the owner of this repo to become a member):
 
 \begin{itemize}
-\tightlist
-\item
-  \href{https://gitlab.dei.unipd.it/PAT/Mirror}{Mirror} 1.0.0
-\item
-  \href{https://gitlab.dei.unipd.it/PAT/PSD}{PSD} 1.0.0
-\item
-  \href{https://gitlab.dei.unipd.it/PAT/Camera}{Camera} 1.0.0
+  \tightlist
+  \item
+        \href{https://gitlab.dei.unipd.it/PAT/Mirror}{Mirror} 1.0.0
+  \item
+        \href{https://gitlab.dei.unipd.it/PAT/PSD}{PSD} 1.0.0
+  \item
+        \href{https://gitlab.dei.unipd.it/PAT/Camera}{Camera} 1.0.0
 \end{itemize}
 
 These other libraries need to be installed manually in your system:
 
 \begin{itemize}
-\tightlist
-\item
-  \href{https://www.qt.io/}{Qt} 5.14.2
+  \tightlist
+  \item
+        \href{https://www.qt.io/}{Qt} 5.14.2
 \end{itemize}
 
 The library documentation is generated through
@@ -71,105 +60,94 @@ documentation in the \texttt{index} folder is generated through the
 extensions (which you can install through pip3):
 
 \begin{itemize}
-\tightlist
-\item
-  \href{https://pypi.org/project/Sphinx/}{Sphinx 3.0.2}
-\item
-  \href{https://sphinx-rtd-theme.readthedocs.io/en/stable/}{Sphinx read
-  the doc theme} (to use the read the doc theme for html documentation)
-\item
-  \href{https://pypi.org/project/breathe/}{Breathe} (to use the xml
-  output of doxygen)
-\item
-  \href{https://pypi.org/project/sphinx-markdown-builder/}{Sphinx-markdown-builder}
-  (to generate the markdown version for gitlab wiki)
+  \tightlist
+  \item
+        \href{https://pypi.org/project/Sphinx/}{Sphinx 3.0.2}
+  \item
+        \href{https://sphinx-rtd-theme.readthedocs.io/en/stable/}{Sphinx read
+          the doc theme} (to use the read the doc theme for html documentation)
+  \item
+        \href{https://pypi.org/project/breathe/}{Breathe} (to use the xml
+        output of doxygen)
+  \item
+        \href{https://pypi.org/project/sphinx-markdown-builder/}{Sphinx-markdown-builder}
+        (to generate the markdown version for gitlab wiki)
 \end{itemize}
 
 \texttt{pip3\ install\ Sphinx\ sphinx\_rtd\_theme\ breathe\ sphinx-markdown-builder}
 
-\hypertarget{usage}{%
-\subsection{Usage}\label{usage}}
+\lvliv{Usage}
 
-\hypertarget{pidkpa101}{%
-\subsubsection{PIDKPA101}\label{pidkpa101}}
+\lvlv{PIDKPA101}
 
 This class offers a set of functions to comunicate with the PID
 controller integrated in the KPA101.
 
 First you need to include the header file and use the namespace.
 
-\begin{Shaded}
-\begin{Highlighting}[]
-\PreprocessorTok{\#include }\ImportTok{\textless{}PAT/Controller/PIDKPA101.h\textgreater{}}
-\KeywordTok{using} \KeywordTok{namespace}\NormalTok{ PAT::Controller;}
-\end{Highlighting}
-\end{Shaded}
+\begin{lstlisting}[language=c++, gobble=2]
+  #include <PAT/Controller/PIDKPA101.h>
+  using namespace PAT::Controller;
+\end{lstlisting}
 
 When you istantiate the \textbf{PIDKPA101} you must pass a
 \textbf{KPA101} istance.
 
-\begin{Shaded}
-\begin{Highlighting}[]
-\BuiltInTok{std::}\NormalTok{shared\_ptr\textless{}PAT::KPA101\textgreater{} kpa101   = }\BuiltInTok{std::}\NormalTok{make\_shared\textless{}PAT::KPA101\textgreater{}();}
-\BuiltInTok{std::}\NormalTok{shared\_ptr\textless{}PAT::Controller::PIDKPA101\textgreater{} pidkpa101 = }\BuiltInTok{std::}\NormalTok{make\_shared\textless{}PAT::Controller::PIDKPA101\textgreater{}(kpa101);}
-\end{Highlighting}
-\end{Shaded}
+\begin{lstlisting}[language=c++, gobble=2]
+  std::shared_ptr<PAT::KPA101> kpa101   = std::make_shared<PAT::KPA101>();
+  std::shared_ptr<PAT::Controller::PIDKPA101> pidkpa101 = std::make_shared<PAT::Controller::PIDKPA101>(kpa101);
+\end{lstlisting}
+
 
 You can enable/disable or check if enabled the PIDKPA101 controller
 using these functions.
 
-\begin{Shaded}
-\begin{Highlighting}[]
-\ControlFlowTok{if}\NormalTok{(!pidkpa101{-}\textgreater{}isPIDActive())}
-\NormalTok{ pidkpa101{-}\textgreater{}enablePID(}\KeywordTok{true}\NormalTok{);}
-\ControlFlowTok{else}
-\NormalTok{ pidkpa101{-}\textgreater{}enablePID(}\KeywordTok{false}\NormalTok{);}
-\end{Highlighting}
-\end{Shaded}
+\begin{lstlisting}[language=c++, gobble=2]
+  if(!pidkpa101->isPIDActive())
+    pidkpa101->enablePID(true);
+ else
+    pidkpa101->enablePID(false); 
+\end{lstlisting}
+
 
 You can set the PID parameters using these functions. PID values are
 between 1 and 0.
 
-\begin{Shaded}
-\begin{Highlighting}[]
-\KeywordTok{auto}\NormalTok{ parameters = pidkpa101{-}\textgreater{}getPIDParameters();}
-\NormalTok{parameters.value.proportionalGain = }\DecValTok{1}\NormalTok{;}
-\NormalTok{parameters.value.integralGain = }\FloatTok{0.001}\NormalTok{;}
-\NormalTok{parameters.value.differentialGain = }\FloatTok{0.01}\NormalTok{;}
-\NormalTok{pidkpa101{-}\textgreater{}setPIDParameters(parameters);}
-\end{Highlighting}
-\end{Shaded}
+\begin{lstlisting}[language=c++, gobble=2]
+  auto parameters = pidkpa101->getPIDParameters();
+  parameters.value.proportionalGain = 1;
+  parameters.value.integralGain = 0.001;
+  parameters.value.differentialGain = 0.01;
+  pidkpa101->setPIDParameters(parameters);
+\end{lstlisting}
+
 
 You can enable/disable the auto open closed loop. If the intensity of
 the light is outside the interval \textbf{autoOpenInterval} then the PID
 controller is stopped. The intensity value is bounded between 10 and 0.
 
-\begin{Shaded}
-\begin{Highlighting}[]
-\KeywordTok{auto}\NormalTok{ interval = pidkpa101{-}\textgreater{}getAutoOpenInterval();}
-\NormalTok{interval.value.min = }\FloatTok{0.1}\NormalTok{;}
-\NormalTok{interval.value.max = }\FloatTok{1.3}\NormalTok{;}
-\NormalTok{pidkpa101{-}\textgreater{}setAutoOpenInterval(interval);}
-\ControlFlowTok{if}\NormalTok{(!pidkpa101{-}\textgreater{}getAutoOpenCloseLoop())}
-\NormalTok{ pidkpa101{-}\textgreater{}setAutoOpenCloseLoop(}\KeywordTok{true}\NormalTok{);}
-\end{Highlighting}
-\end{Shaded}
+\begin{lstlisting}[language=c++, gobble=2]
+  auto interval = pidkpa101->getAutoOpenInterval();
+  interval.value.min = 0.1;
+  interval.value.max = 1.3;
+  pidkpa101->setAutoOpenInterval(interval);
+  if(!pidkpa101->getAutoOpenCloseLoop())
+   pidkpa101->setAutoOpenCloseLoop(true);
+\end{lstlisting}
 
 The output of the PID controller is multiplied by a feedback constant
 that it range between -10 to +10 volts. Using this function you can set
 it.
 
-\begin{Shaded}
-\begin{Highlighting}[]
-\KeywordTok{auto}\NormalTok{ feedback = pidkpa101{-}\textgreater{}getFeedBackGain();}
-\NormalTok{gain.value.x = }\DecValTok{10}\NormalTok{;}
-\NormalTok{gain.value.y = }\DecValTok{10}\NormalTok{;}
-\NormalTok{pidkpa101{-}\textgreater{}setFeedBackGain(feedback);}
-\end{Highlighting}
-\end{Shaded}
+\begin{lstlisting}[language=c++, gobble=2]
+  auto feedback = pidkpa101->getFeedBackGain();
+  gain.value.x = 10;
+  gain.value.y = 10;
+  pidkpa101->setFeedBackGain(feedback);
+\end{lstlisting}
 
-\hypertarget{manual}{%
-\subsubsection{Manual}\label{manual}}
+
+\lvlv{Manual}
 
 Manual is a controller that it allow to move a mirror in the four
 directions. It require a \textbf{Mirror} and a \textbf{Centroid}. This
@@ -179,196 +157,178 @@ last one is from a \textbf{Frame} inside a \textbf{Camera} or from a
 
 First you need to include the header file and use the namespace.
 
-\begin{Shaded}
-\begin{Highlighting}[]
-\PreprocessorTok{\#include }\ImportTok{\textless{}PAT/Controller/Manual.h\textgreater{}}
-\PreprocessorTok{\#include }\ImportTok{\textless{}PAT/Mirror/STT254.h\textgreater{}}
-\PreprocessorTok{\#include }\ImportTok{\textless{}PAT/Camera/IDS.h\textgreater{}}
-\KeywordTok{using} \KeywordTok{namespace}\NormalTok{ PAT::Controller;}
-\KeywordTok{using} \KeywordTok{namespace}\NormalTok{ PAT::Camera;}
-\KeywordTok{using} \KeywordTok{namespace}\NormalTok{ PAT::Mirror;}
-\end{Highlighting}
-\end{Shaded}
+\begin{lstlisting}[language=c++, gobble=2]
+  #include <PAT/Controller/Manual.h>
+  #include <PAT/Mirror/STT254.h>
+  #include <PAT/Camera/IDS.h>
+  using namespace PAT::Controller;
+  using namespace PAT::Camera;
+  using namespace PAT::Mirror;
+\end{lstlisting}
+
 
 When you istantiate the \textbf{Manual} you must pass a \textbf{Mirror}
 and a \textbf{Centroid} istances.
 
-\begin{Shaded}
-\begin{Highlighting}[]
-\BuiltInTok{std::}\NormalTok{shared\_ptr\textless{}Camera\textgreater{} camera      = }\BuiltInTok{std::}\NormalTok{make\_shared\textless{}IDS\textgreater{}();}
-\BuiltInTok{std::}\NormalTok{shared\_ptr\textless{}PAT::KPA101\textgreater{} kpa101 = }\BuiltInTok{std::}\NormalTok{make\_shared\textless{}PAT::KPA101\textgreater{}();}
-\BuiltInTok{std::}\NormalTok{shared\_ptr\textless{}Mirror\textgreater{} mirror      = }\BuiltInTok{std::}\NormalTok{make\_shared\textless{}STT254\textgreater{}(kpa101);}
-\BuiltInTok{std::}\NormalTok{shared\_ptr\textless{}Manual\textgreater{} manual      = }\BuiltInTok{std::}\NormalTok{make\_shared\textless{}Manual\textgreater{}(mirror, camera{-}\textgreater{}getFrame(){-}\textgreater{}getCentroid());}
-\end{Highlighting}
-\end{Shaded}
+\begin{lstlisting}[language=c++, gobble=2]
+  std::shared_ptr<Camera> camera      = std::make_shared<IDS>();
+  std::shared_ptr<PAT::KPA101> kpa101 = std::make_shared<PAT::KPA101>();
+  std::shared_ptr<Mirror> mirror      = std::make_shared<STT254>(kpa101);
+  std::shared_ptr<Manual> manual      = std::make_shared<Manual>(mirror, camera->getFrame()->getCentroid());
+\end{lstlisting}
+
 
 To move in one of the four directions you can use this code.
 
-\begin{Shaded}
-\begin{Highlighting}[]
-\NormalTok{manual{-}\textgreater{}move(Direction::up);}
-\NormalTok{manual{-}\textgreater{}move(Direction::down);}
-\NormalTok{manual{-}\textgreater{}move(Direction::left);}
-\NormalTok{manual{-}\textgreater{}move(Direction::right);}
-\end{Highlighting}
-\end{Shaded}
+\begin{lstlisting}[language=c++, gobble=2]
+  manual->move(Direction::up);
+  manual->move(Direction::down);
+  manual->move(Direction::left);
+  manual->move(Direction::right);
+\end{lstlisting}
+
 
 To choose how much move you need to set times (milliseconds) and
 voltages (volts) in the four directions. You can also control the
 current values.
 
-\begin{Shaded}
-\begin{Highlighting}[]
-\ControlFlowTok{if}\NormalTok{(manual{-}\textgreater{}getManualVoltage(Direction::up) \textgreater{} }\DecValTok{100}\NormalTok{)}
-\NormalTok{  manual{-}\textgreater{}setManualVoltage(}\DecValTok{1}\NormalTok{, Direction::up);}
-\ControlFlowTok{if}\NormalTok{(manual{-}\textgreater{}getManualTime(Direction::up) \textgreater{} }\DecValTok{100}\NormalTok{)}
-\NormalTok{  manual{-}\textgreater{}setManualTime(}\DecValTok{1}\NormalTok{, Direction::down);}
-\end{Highlighting}
-\end{Shaded}
+\begin{lstlisting}[language=c++, gobble=2]
+  if(manual->getManualVoltage(Direction::up) > 100)
+    manual->setManualVoltage(1, Direction::up);
+  if(manual->getManualTime(Direction::up) > 100)
+    manual->setManualTime(1, Direction::down);
+\end{lstlisting}
+
 
 You can also invert or check the movement directions in the two axes.
 You can also swap the two axes.
 
-\begin{Shaded}
-\begin{Highlighting}[]
-\ControlFlowTok{if}\NormalTok{(!manual{-}\textgreater{}getFlippedX())}
-\NormalTok{ manual{-}\textgreater{}setFlippedX(}\KeywordTok{true}\NormalTok{);}
-\ControlFlowTok{else}
-\NormalTok{ manual{-}\textgreater{}setFlippedX(}\KeywordTok{false}\NormalTok{);}
+\begin{lstlisting}[language=c++, gobble=2]
+  if(!manual->getFlippedX())
+    manual->setFlippedX(true);
+  else
+    manual->setFlippedX(false);
+  
+  if(!manual->getFlippedY())
+    manual->setFlippedY(true);
+  else
+    manual->setFlippedY(false);
+  
+  if(!manual->getSwappedXY())
+    manual->setSwappedXY(true);
+  else
+    manual->setSwappedXY(false);
+\end{lstlisting}
 
-\ControlFlowTok{if}\NormalTok{(!manual{-}\textgreater{}getFlippedY())}
-\NormalTok{ manual{-}\textgreater{}setFlippedY(}\KeywordTok{true}\NormalTok{);}
-\ControlFlowTok{else}
-\NormalTok{ manual{-}\textgreater{}setFlippedY(}\KeywordTok{false}\NormalTok{);}
 
-\ControlFlowTok{if}\NormalTok{(!manual{-}\textgreater{}getSwappedXY())}
-\NormalTok{ manual{-}\textgreater{}setSwappedXY(}\KeywordTok{true}\NormalTok{);}
-\ControlFlowTok{else}
-\NormalTok{ manual{-}\textgreater{}setSwappedXY(}\KeywordTok{false}\NormalTok{);}
-\end{Highlighting}
-\end{Shaded}
-
-\hypertarget{manualwidget}{%
-\subsubsection{ManualWidget}\label{manualwidget}}
+\lvlv{ManualWidget}
 
 The \textbf{ManualWidget} class is a widget for the Manual controller.
 Here I present the an example consistent with the Manual one. The
 include code is the following.
 
-\begin{Shaded}
-\begin{Highlighting}[]
-\PreprocessorTok{\#include }\ImportTok{\textless{}QApplication\textgreater{}}
-\PreprocessorTok{\#include }\ImportTok{\textless{}PAT/Controller/gui/ManualWidget.h\textgreater{}}
-\PreprocessorTok{\#include }\ImportTok{\textless{}PAT/Mirror/STT254.h\textgreater{}}
-\PreprocessorTok{\#include }\ImportTok{\textless{}memory\textgreater{}}
-\PreprocessorTok{\#include }\ImportTok{\textless{}PAT/Camera/IDS.h\textgreater{}}
-\KeywordTok{using} \KeywordTok{namespace}\NormalTok{ PAT::Controller;}
-\KeywordTok{using} \KeywordTok{namespace}\NormalTok{ PAT::Camera;}
-\KeywordTok{using} \KeywordTok{namespace}\NormalTok{ PAT::Mirror;}
-\end{Highlighting}
-\end{Shaded}
+\begin{lstlisting}[language=c++, gobble=2]
+  #include <QApplication>
+  #include <PAT/Controller/gui/ManualWidget.h>
+  #include <PAT/Mirror/STT254.h>
+  #include <memory>
+  #include <PAT/Camera/IDS.h>
+  using namespace PAT::Controller;
+  using namespace PAT::Camera;
+  using namespace PAT::Mirror;
+  
+\end{lstlisting}
+
 
 This is a simple \textbf{main} example.
 
-\begin{Shaded}
-\begin{Highlighting}[]
-\DataTypeTok{int}\NormalTok{ main(}\DataTypeTok{int}\NormalTok{ argc, }\DataTypeTok{char}\NormalTok{ *argv[]) \{}
-  \ExtensionTok{QApplication}\NormalTok{ a(argc, argv);}
-\NormalTok{  ManualWidget manualWidget;}
-  \BuiltInTok{std::}\NormalTok{shared\_ptr\textless{}Camera\textgreater{} camera      = }\BuiltInTok{std::}\NormalTok{make\_shared\textless{}IDS\textgreater{}();}
-  \BuiltInTok{std::}\NormalTok{shared\_ptr\textless{}PAT::KPA101\textgreater{} kpa101 = }\BuiltInTok{std::}\NormalTok{make\_shared\textless{}PAT::KPA101\textgreater{}();}
-  \BuiltInTok{std::}\NormalTok{shared\_ptr\textless{}Mirror\textgreater{} mirror      = }\BuiltInTok{std::}\NormalTok{make\_shared\textless{}STT254\textgreater{}(kpa101);}
-  \BuiltInTok{std::}\NormalTok{shared\_ptr\textless{}Manual\textgreater{} manual      = }\BuiltInTok{std::}\NormalTok{make\_shared\textless{}Manual\textgreater{}(mirror, camera{-}\textgreater{}getFrame(){-}\textgreater{}getCentroid());}
-\NormalTok{  manualWidget.setController(manual);}
-\NormalTok{  manualWidget.show();}
-\NormalTok{  camera{-}\textgreater{}start();}
-  \ControlFlowTok{return}\NormalTok{ a.exec();}
-\NormalTok{\}}
-\end{Highlighting}
-\end{Shaded}
+\begin{lstlisting}[language=c++, gobble=2]
+  int main(int argc, char *argv[]) {
+    QApplication a(argc, argv);
+    ManualWidget manualWidget;
+    std::shared_ptr<Camera> camera      = std::make_shared<IDS>();
+    std::shared_ptr<PAT::KPA101> kpa101 = std::make_shared<PAT::KPA101>();
+    std::shared_ptr<Mirror> mirror      = std::make_shared<STT254>(kpa101);
+    std::shared_ptr<Manual> manual      = std::make_shared<Manual>(mirror, camera->getFrame()->getCentroid());
+    manualWidget.setController(manual);
+    manualWidget.show();
+    camera->start();
+    return a.exec();
+  }
+\end{lstlisting}
+
 
 If you want instead integrate the widget into another GUI (layout) you
 can use this code.
 
-\begin{Shaded}
-\begin{Highlighting}[]
-\ExtensionTok{QWidget}\NormalTok{ *window                     = }\KeywordTok{new} \ExtensionTok{QWidget}\NormalTok{();}
-\ExtensionTok{QVBoxLayout}\NormalTok{ *mainLayout             = }\KeywordTok{new} \ExtensionTok{QVBoxLayout}\NormalTok{();}
-\NormalTok{ManualWidget *manualWidget          = }\KeywordTok{new}\NormalTok{ ManualWidget();}
+\begin{lstlisting}[language=c++, gobble=2]
+  QWidget *window                     = new QWidget();
+  QVBoxLayout *mainLayout             = new QVBoxLayout();
+  ManualWidget *manualWidget          = new ManualWidget();
+  
+  std::shared_ptr<Camera> camera      = std::make_shared<IDS>();
+  std::shared_ptr<PAT::KPA101> kpa101 = std::make_shared<PAT::KPA101>();
+  std::shared_ptr<Mirror> mirror      = std::make_shared<STT254>(kpa101);
+  std::shared_ptr<Manual> manual      = std::make_shared<Manual>(mirror, camera->getFrame()->getCentroid());
+  
+  manualWidget->setPSD(manual);
+  mainLayout->addWidget((QWidget *)manualWidget);
+  window->setLayout(mainLayout);
+  window->show();
+\end{lstlisting}
 
-\BuiltInTok{std::}\NormalTok{shared\_ptr\textless{}Camera\textgreater{} camera      = }\BuiltInTok{std::}\NormalTok{make\_shared\textless{}IDS\textgreater{}();}
-\BuiltInTok{std::}\NormalTok{shared\_ptr\textless{}PAT::KPA101\textgreater{} kpa101 = }\BuiltInTok{std::}\NormalTok{make\_shared\textless{}PAT::KPA101\textgreater{}();}
-\BuiltInTok{std::}\NormalTok{shared\_ptr\textless{}Mirror\textgreater{} mirror      = }\BuiltInTok{std::}\NormalTok{make\_shared\textless{}STT254\textgreater{}(kpa101);}
-\BuiltInTok{std::}\NormalTok{shared\_ptr\textless{}Manual\textgreater{} manual      = }\BuiltInTok{std::}\NormalTok{make\_shared\textless{}Manual\textgreater{}(mirror, camera{-}\textgreater{}getFrame(){-}\textgreater{}getCentroid());}
-
-\NormalTok{manualWidget{-}\textgreater{}setPSD(manual);}
-\NormalTok{mainLayout{-}\textgreater{}addWidget((}\ExtensionTok{QWidget}\NormalTok{ *)manualWidget);}
-\NormalTok{window{-}\textgreater{}setLayout(mainLayout);}
-\NormalTok{window{-}\textgreater{}show();}
-\end{Highlighting}
-\end{Shaded}
 
 There are also these three signal functions that they are used to
 propagate the click of their respective buttons in other controllers.
 
-\begin{Shaded}
-\begin{Highlighting}[]
-\DataTypeTok{void}\NormalTok{ chkFlipXchanged(}\DataTypeTok{int}\NormalTok{ arg1);}
-\DataTypeTok{void}\NormalTok{ chkFlipYchanged(}\DataTypeTok{int}\NormalTok{ arg1);}
-\DataTypeTok{void}\NormalTok{ chkSwapXYchanged(}\DataTypeTok{int}\NormalTok{ arg1);}
-\end{Highlighting}
-\end{Shaded}
+\begin{lstlisting}[language=c++, gobble=2]
+  void chkFlipXchanged(int arg1);
+  void chkFlipYchanged(int arg1);
+  void chkSwapXYchanged(int arg1);
+\end{lstlisting}
 
-\hypertarget{calibrationconfig}{%
-\subsubsection{CalibrationConfig}\label{calibrationconfig}}
+
+\lvlv{CalibrationConfig}
 
 This structure contains the main parameters for the calibration. The
 parameters are: the four voltages, one per direction; the time durations
 of the movements described by min-max-increment; the inversion or swap
 of the axes. The include code is the following.
 
-\begin{Shaded}
-\begin{Highlighting}[]
-\PreprocessorTok{\#include }\ImportTok{\textless{}PAT/Controller/CalibrationConfig.h\textgreater{}}
-\end{Highlighting}
-\end{Shaded}
+\begin{lstlisting}[language=c++, gobble=2]
+  #include <PAT/Controller/CalibrationConfig.h>
+\end{lstlisting}
+
 
 You can also store/unstore from a file these parameters.
 
-\begin{Shaded}
-\begin{Highlighting}[]
-\NormalTok{CalibrationConfig parameters;}
-\ExtensionTok{QString}\NormalTok{ filename = }\StringTok{"test.txt"}\NormalTok{;}
-\NormalTok{parameters.write(filename);}
-\NormalTok{parameters.read(filename);}
-\end{Highlighting}
-\end{Shaded}
+\begin{lstlisting}[language=c++, gobble=2]
+  CalibrationConfig parameters;
+  QString filename = "test.txt";
+  parameters.write(filename);
+  parameters.read(filename);
+\end{lstlisting}
 
-CalibrationAnalysis
-\textasciitilde\textasciitilde\textasciitilde\textasciitilde\textasciitilde\textasciitilde\textasciitilde\textasciitilde\textasciitilde\textasciitilde\textasciitilde\textasciitilde\textasciitilde\textasciitilde\textasciitilde\textasciitilde\textasciitilde{}
+
+\lvlv{CalibrationAnalysis}
 
 This is a support structure to take the data from a file and fit them
 using a linear fit. The include code is the following.
 
-\begin{Shaded}
-\begin{Highlighting}[]
-\PreprocessorTok{\#include }\ImportTok{\textless{}PAT/Controller/CalibrationAnalysis.h\textgreater{}}
-\end{Highlighting}
-\end{Shaded}
+\begin{lstlisting}[language=c++, gobble=2]
+  #include <PAT/Controller/CalibrationAnalysis.h>
+\end{lstlisting}
 
 This structure can analyze file data generated by \textbf{Calibrated}
 controller.
 
-\begin{Shaded}
-\begin{Highlighting}[]
-\NormalTok{CalibrationAnalysis analysis;}
-\ExtensionTok{QString}\NormalTok{ filename = }\StringTok{"test.txt"}\NormalTok{;}
-\NormalTok{analysis.read(filename);}
-\end{Highlighting}
-\end{Shaded}
+\begin{lstlisting}[language=c++, gobble=2]
+  CalibrationAnalysis analysis;
+  QString filename = "test.txt";
+  analysis.read(filename);
+\end{lstlisting}
 
-\hypertarget{calibrated}{%
-\subsubsection{Calibrated}\label{calibrated}}
+\lvlv{Calibrated}
 
 Calibrated is a controller that it allow to move a mirror in the four
 directions. It is able to calibrate itself using linear fit. It also
@@ -381,87 +341,77 @@ from a \textbf{PSD}. For semplicity here I provide an example using a
 
 First you need to include the header file and use the namespace.
 
-\begin{Shaded}
-\begin{Highlighting}[]
-\PreprocessorTok{\#include }\ImportTok{\textless{}PAT/Controller/Calibrated.h\textgreater{}}
-\PreprocessorTok{\#include }\ImportTok{\textless{}PAT/Mirror/STT254.h\textgreater{}}
-\PreprocessorTok{\#include }\ImportTok{\textless{}PAT/Camera/IDS.h\textgreater{}}
-\KeywordTok{using} \KeywordTok{namespace}\NormalTok{ PAT::Controller;}
-\KeywordTok{using} \KeywordTok{namespace}\NormalTok{ PAT::Camera;}
-\KeywordTok{using} \KeywordTok{namespace}\NormalTok{ PAT::Mirror;}
-\end{Highlighting}
-\end{Shaded}
+\begin{lstlisting}[language=c++, gobble=2]
+  #include <PAT/Controller/Calibrated.h>
+  #include <PAT/Mirror/STT254.h>
+  #include <PAT/Camera/IDS.h>
+  using namespace PAT::Controller;
+  using namespace PAT::Camera;
+  using namespace PAT::Mirror;
+\end{lstlisting}
 
 When you istantiate the \textbf{Calibrated} you must pass a
 \textbf{Mirror} and a \textbf{Centroid} istances.
 
-\begin{Shaded}
-\begin{Highlighting}[]
-\BuiltInTok{std::}\NormalTok{shared\_ptr\textless{}Camera\textgreater{} camera         = }\BuiltInTok{std::}\NormalTok{make\_shared\textless{}IDS\textgreater{}();}
-\BuiltInTok{std::}\NormalTok{shared\_ptr\textless{}PAT::KPA101\textgreater{} kpa101    = }\BuiltInTok{std::}\NormalTok{make\_shared\textless{}PAT::KPA101\textgreater{}();}
-\BuiltInTok{std::}\NormalTok{shared\_ptr\textless{}Mirror\textgreater{} mirror         = }\BuiltInTok{std::}\NormalTok{make\_shared\textless{}STT254\textgreater{}(kpa101);}
-\BuiltInTok{std::}\NormalTok{shared\_ptr\textless{}Calibrated\textgreater{} calibrated = }\BuiltInTok{std::}\NormalTok{make\_shared\textless{}Calibrated\textgreater{}(mirror, camera{-}\textgreater{}getFrame(){-}\textgreater{}getCentroid(), camera{-}\textgreater{}getFrame(){-}\textgreater{}getTarget());}
-\end{Highlighting}
-\end{Shaded}
+\begin{lstlisting}[language=c++, gobble=2]
+  std::shared_ptr<Camera> camera         = std::make_shared<IDS>();
+  std::shared_ptr<PAT::KPA101> kpa101    = std::make_shared<PAT::KPA101>();
+  std::shared_ptr<Mirror> mirror         = std::make_shared<STT254>(kpa101);
+  std::shared_ptr<Calibrated> calibrated = std::make_shared<Calibrated>(mirror, camera->getFrame()->getCentroid(), camera->getFrame()->getTarget());
+\end{lstlisting}
 
 To calibrate the controller you need first to collect the data. To do so
 you need to choose a configuration and a file name. You can use this
 code as example of command you require.
 
-\begin{Shaded}
-\begin{Highlighting}[]
-\KeywordTok{auto}\NormalTok{ upVoltage     = calibrated{-}\textgreater{}getInputVoltage(Direction::up);}
-\KeywordTok{auto}\NormalTok{ downVoltage   = calibrated{-}\textgreater{}getInputVoltage(Direction::down);}
-\KeywordTok{auto}\NormalTok{ leftVoltage   = calibrated{-}\textgreater{}getInputVoltage(Direction::left);}
-\KeywordTok{auto}\NormalTok{ rightVoltage  = calibrated{-}\textgreater{}getInputVoltage(Direction::right);}
-\NormalTok{upVoltage.value    = }\DecValTok{2}\NormalTok{;}
-\NormalTok{downVoltage.value  = }\DecValTok{2}\NormalTok{;}
-\NormalTok{leftVoltage.value  = }\DecValTok{2}\NormalTok{;}
-\NormalTok{rightVoltage.value = }\DecValTok{2}\NormalTok{;}
-\NormalTok{calibrated{-}\textgreater{}setInputVoltage(upVoltage, Direction::up);}
-\NormalTok{calibrated{-}\textgreater{}setInputVoltage(downVoltage, Direction::down);}
-\NormalTok{calibrated{-}\textgreater{}setInputVoltage(leftVoltage, Direction::left);}
-\NormalTok{calibrated{-}\textgreater{}setInputVoltage(rightVoltage, Direction::right);}
-
-\KeywordTok{auto}\NormalTok{ timeMin  = calibrated{-}\textgreater{}getTimeIntervalMin();}
-\KeywordTok{auto}\NormalTok{ timeInc  = calibrated{-}\textgreater{}getTimeIntervalInc();}
-\KeywordTok{auto}\NormalTok{ timeMax  = calibrated{-}\textgreater{}getTimeIntervalMax();}
-\NormalTok{timeMin.value = }\DecValTok{1}\NormalTok{;}
-\NormalTok{timeInc.value = }\FloatTok{0.5}\NormalTok{;}
-\NormalTok{timeMax.value = }\DecValTok{5}\NormalTok{;}
-\NormalTok{calibrated{-}\textgreater{}setTimeIntervalMin(timeMin);}
-\NormalTok{calibrated{-}\textgreater{}setTimeIntervalInc(timeInc);}
-\NormalTok{calibrated{-}\textgreater{}setTimeIntervalMax(timeMax);}
-
-\KeywordTok{auto}\NormalTok{ nPoints = calibrated{-}\textgreater{}getNPoints();}
-\NormalTok{nPoints.value = }\DecValTok{10}\NormalTok{;}
-\NormalTok{calibrated{-}\textgreater{}setNPoints(nPoints);}
-
-\NormalTok{calibrated{-}\textgreater{}setFlippedX(}\KeywordTok{true}\NormalTok{);}
-\NormalTok{calibrated{-}\textgreater{}setFlippedY(}\KeywordTok{false}\NormalTok{);}
-\NormalTok{calibrated{-}\textgreater{}setSwappedXY(}\KeywordTok{false}\NormalTok{);}
-
-\NormalTok{calibrated{-}\textgreater{}autoFileName();}
-\end{Highlighting}
-\end{Shaded}
+\begin{lstlisting}[language=c++, gobble=2]
+  auto upVoltage     = calibrated->getInputVoltage(Direction::up);
+  auto downVoltage   = calibrated->getInputVoltage(Direction::down);
+  auto leftVoltage   = calibrated->getInputVoltage(Direction::left);
+  auto rightVoltage  = calibrated->getInputVoltage(Direction::right);
+  upVoltage.value    = 2;
+  downVoltage.value  = 2;
+  leftVoltage.value  = 2;
+  rightVoltage.value = 2;
+  calibrated->setInputVoltage(upVoltage, Direction::up);
+  calibrated->setInputVoltage(downVoltage, Direction::down);
+  calibrated->setInputVoltage(leftVoltage, Direction::left);
+  calibrated->setInputVoltage(rightVoltage, Direction::right);
+  
+  auto timeMin  = calibrated->getTimeIntervalMin();
+  auto timeInc  = calibrated->getTimeIntervalInc();
+  auto timeMax  = calibrated->getTimeIntervalMax();
+  timeMin.value = 1;
+  timeInc.value = 0.5;
+  timeMax.value = 5;
+  calibrated->setTimeIntervalMin(timeMin);
+  calibrated->setTimeIntervalInc(timeInc);
+  calibrated->setTimeIntervalMax(timeMax);
+  
+  auto nPoints = calibrated->getNPoints();
+  nPoints.value = 10;
+  calibrated->setNPoints(nPoints);
+  
+  calibrated->setFlippedX(true);
+  calibrated->setFlippedY(false);
+  calibrated->setSwappedXY(false);
+  
+  calibrated->autoFileName();
+\end{lstlisting}
 
 After selected the config you can start/stop to collect the data.
 
-\begin{Shaded}
-\begin{Highlighting}[]
-\NormalTok{calibrated{-}\textgreater{}startTakeCalibrationPoints();}
-\NormalTok{calibrated{-}\textgreater{}stopTakeCalibrationPoints();}
-\end{Highlighting}
-\end{Shaded}
+\begin{lstlisting}[language=c++, gobble=2]
+  calibrated->startTakeCalibrationPoints();
+  calibrated->stopTakeCalibrationPoints();
+\end{lstlisting}
 
 After collected the data you can analyze it and store the result in
 cache.
 
-\begin{Shaded}
-\begin{Highlighting}[]
-\NormalTok{calibrated{-}\textgreater{}analyzeCalibrationPoints();}
-\end{Highlighting}
-\end{Shaded}
+\begin{lstlisting}[language=c++, gobble=2]
+  calibrated->analyzeCalibrationPoints();
+\end{lstlisting}
 
 To conclude the process, when you are happy with the cached data you can
 use it as configuration to the calibrated movement. Remember to select
@@ -469,151 +419,132 @@ the time threshold in milliseconds. If the calibrated movement time is
 higher than threshold the controller use an high voltage else a low
 voltage.
 
-\begin{Shaded}
-\begin{Highlighting}[]
-\NormalTok{calibrated{-}\textgreater{}useCurrentCalibration(VoltageType::low);}
-\NormalTok{calibrated{-}\textgreater{}useCurrentCalibration(VoltageType::high);}
-\KeywordTok{auto}\NormalTok{ threshold = calibrated{-}\textgreater{}getThreshold();}
-\NormalTok{threshold.value = }\DecValTok{2}\NormalTok{;}
-\NormalTok{calibrated{-}\textgreater{}setThreshold(threshold);}
-\end{Highlighting}
-\end{Shaded}
+\begin{lstlisting}[language=c++, gobble=2]
+  calibrated->useCurrentCalibration(VoltageType::low);
+  calibrated->useCurrentCalibration(VoltageType::high);
+  auto threshold = calibrated->getThreshold();
+  threshold.value = 2;
+  calibrated->setThreshold(threshold);
+\end{lstlisting}
 
 Completed this process you can use the directional movement or the One
 Shot controller.
 
-\begin{Shaded}
-\begin{Highlighting}[]
-\KeywordTok{auto}\NormalTok{ deltaPx = calibrated{-}\textgreater{}getDeltaPixel();}
-\NormalTok{deltaPx.value = }\DecValTok{50}\NormalTok{;}
-\NormalTok{calibrated{-}\textgreater{}setDeltaPixel(deltaPx);}
-\NormalTok{calibrated{-}\textgreater{}moveAuto(Direction::up);}
+\begin{lstlisting}[language=c++, gobble=2]
+  auto deltaPx = calibrated->getDeltaPixel();
+  deltaPx.value = 50;
+  calibrated->setDeltaPixel(deltaPx);
+  calibrated->moveAuto(Direction::up);
+  
+  calibrated->startOneShotController();
+  calibrated->stopOneShotController();
+\end{lstlisting}
 
-\NormalTok{calibrated{-}\textgreater{}startOneShotController();}
-\NormalTok{calibrated{-}\textgreater{}stopOneShotController();}
-\end{Highlighting}
-\end{Shaded}
-
-\hypertarget{calibratedwidget}{%
-\subsubsection{CalibratedWidget}\label{calibratedwidget}}
+\lvlv{CalibratedWidget}
 
 The \textbf{CalibratedWidget} class is a widget for the Calibrated
 controller. Here I present the an example consistent with the Calibrated
 one. The include code is the following.
 
-\begin{Shaded}
-\begin{Highlighting}[]
-\PreprocessorTok{\#include }\ImportTok{\textless{}QApplication\textgreater{}}
-\PreprocessorTok{\#include }\ImportTok{\textless{}PAT/Controller/gui/CalibratedWidget.h\textgreater{}}
-\PreprocessorTok{\#include }\ImportTok{\textless{}PAT/Mirror/STT254.h\textgreater{}}
-\PreprocessorTok{\#include }\ImportTok{\textless{}memory\textgreater{}}
-\PreprocessorTok{\#include }\ImportTok{\textless{}PAT/Camera/IDS.h\textgreater{}}
-\KeywordTok{using} \KeywordTok{namespace}\NormalTok{ PAT::Controller;}
-\KeywordTok{using} \KeywordTok{namespace}\NormalTok{ PAT::Camera;}
-\KeywordTok{using} \KeywordTok{namespace}\NormalTok{ PAT::Mirror;}
-\end{Highlighting}
-\end{Shaded}
+\begin{lstlisting}[language=c++, gobble=2]
+  #include <QApplication>
+  #include <PAT/Controller/gui/CalibratedWidget.h>
+  #include <PAT/Mirror/STT254.h>
+  #include <memory>
+  #include <PAT/Camera/IDS.h>
+  using namespace PAT::Controller;
+  using namespace PAT::Camera;
+  using namespace PAT::Mirror;
+\end{lstlisting}
 
 This is a simple \textbf{main} example.
 
-\begin{Shaded}
-\begin{Highlighting}[]
-\DataTypeTok{int}\NormalTok{ main(}\DataTypeTok{int}\NormalTok{ argc, }\DataTypeTok{char}\NormalTok{ *argv[]) \{}
-  \ExtensionTok{QApplication}\NormalTok{ a(argc, argv);}
-\NormalTok{  CalibratedWidget calibratedWidget;}
-  \BuiltInTok{std::}\NormalTok{shared\_ptr\textless{}Camera\textgreater{} camera      = }\BuiltInTok{std::}\NormalTok{make\_shared\textless{}IDS\textgreater{}();}
-  \BuiltInTok{std::}\NormalTok{shared\_ptr\textless{}PAT::KPA101\textgreater{} kpa101 = }\BuiltInTok{std::}\NormalTok{make\_shared\textless{}PAT::KPA101\textgreater{}();}
-  \BuiltInTok{std::}\NormalTok{shared\_ptr\textless{}Mirror\textgreater{} mirror      = }\BuiltInTok{std::}\NormalTok{make\_shared\textless{}STT254\textgreater{}(kpa101);}
-  \BuiltInTok{std::}\NormalTok{shared\_ptr\textless{}Calibrated\textgreater{} calibrated  = }\BuiltInTok{std::}\NormalTok{make\_shared\textless{}Calibrated\textgreater{}(mirror, camera{-}\textgreater{}getFrame(){-}\textgreater{}getCentroid(), camera{-}\textgreater{}getFrame(){-}\textgreater{}getTarget());}
-\NormalTok{  calibratedWidget.setController(calibrated);}
-\NormalTok{  calibratedWidget.show();}
-\NormalTok{  camera{-}\textgreater{}start();}
-  \ControlFlowTok{return}\NormalTok{ a.exec();}
-\NormalTok{\}}
-\end{Highlighting}
-\end{Shaded}
+\begin{lstlisting}[language=c++, gobble=2]
+  int main(int argc, char *argv[]) {
+    QApplication a(argc, argv);
+    CalibratedWidget calibratedWidget;
+    std::shared_ptr<Camera> camera      = std::make_shared<IDS>();
+    std::shared_ptr<PAT::KPA101> kpa101 = std::make_shared<PAT::KPA101>();
+    std::shared_ptr<Mirror> mirror      = std::make_shared<STT254>(kpa101);
+    std::shared_ptr<Calibrated> calibrated  = std::make_shared<Calibrated>(mirror, camera->getFrame()->getCentroid(), camera->getFrame()->getTarget());
+    calibratedWidget.setController(calibrated);
+    calibratedWidget.show();
+    camera->start();
+    return a.exec();
+  }
+\end{lstlisting}
 
 If you want instead integrate the widget into another GUI (layout) you
 can use this code.
 
-\begin{Shaded}
-\begin{Highlighting}[]
-\ExtensionTok{QWidget}\NormalTok{ *window                     = }\KeywordTok{new} \ExtensionTok{QWidget}\NormalTok{();}
-\ExtensionTok{QVBoxLayout}\NormalTok{ *mainLayout             = }\KeywordTok{new} \ExtensionTok{QVBoxLayout}\NormalTok{();}
-\NormalTok{CalibratedWidget *calibratedWidget  = }\KeywordTok{new}\NormalTok{ CalibratedWidget();}
-
-\BuiltInTok{std::}\NormalTok{shared\_ptr\textless{}Camera\textgreater{} camera         = }\BuiltInTok{std::}\NormalTok{make\_shared\textless{}IDS\textgreater{}();}
-\BuiltInTok{std::}\NormalTok{shared\_ptr\textless{}PAT::KPA101\textgreater{} kpa101    = }\BuiltInTok{std::}\NormalTok{make\_shared\textless{}PAT::KPA101\textgreater{}();}
-\BuiltInTok{std::}\NormalTok{shared\_ptr\textless{}Mirror\textgreater{} mirror         = }\BuiltInTok{std::}\NormalTok{make\_shared\textless{}STT254\textgreater{}(kpa101);}
-\BuiltInTok{std::}\NormalTok{shared\_ptr\textless{}Calibrated\textgreater{} calibrated = }\BuiltInTok{std::}\NormalTok{make\_shared\textless{}Calibrated\textgreater{}(mirror, camera{-}\textgreater{}getFrame(){-}\textgreater{}getCentroid());}
-
-\NormalTok{calibratedWidget{-}\textgreater{}setPSD(calibrated);}
-\NormalTok{mainLayout{-}\textgreater{}addWidget((}\ExtensionTok{QWidget}\NormalTok{ *)calibratedWidget);}
-\NormalTok{window{-}\textgreater{}setLayout(mainLayout);}
-\NormalTok{window{-}\textgreater{}show();}
-\end{Highlighting}
-\end{Shaded}
+\begin{lstlisting}[language=c++, gobble=2]
+  QWidget *window                     = new QWidget();
+  QVBoxLayout *mainLayout             = new QVBoxLayout();
+  CalibratedWidget *calibratedWidget  = new CalibratedWidget();
+  
+  std::shared_ptr<Camera> camera         = std::make_shared<IDS>();
+  std::shared_ptr<PAT::KPA101> kpa101    = std::make_shared<PAT::KPA101>();
+  std::shared_ptr<Mirror> mirror         = std::make_shared<STT254>(kpa101);
+  std::shared_ptr<Calibrated> calibrated = std::make_shared<Calibrated>(mirror, camera->getFrame()->getCentroid());
+  
+  calibratedWidget->setPSD(calibrated);
+  mainLayout->addWidget((QWidget *)calibratedWidget);
+  window->setLayout(mainLayout);
+  window->show();
+\end{lstlisting}
 
 There are also these three signal functions that they are used to
 propagate the click of their respective buttons in other controllers.
 
-\begin{Shaded}
-\begin{Highlighting}[]
-\DataTypeTok{void}\NormalTok{ chkFlipXchanged(}\DataTypeTok{int}\NormalTok{ arg1);}
-\DataTypeTok{void}\NormalTok{ chkFlipYchanged(}\DataTypeTok{int}\NormalTok{ arg1);}
-\DataTypeTok{void}\NormalTok{ chkSwapXYchanged(}\DataTypeTok{int}\NormalTok{ arg1);}
-\end{Highlighting}
-\end{Shaded}
+\begin{lstlisting}[language=c++, gobble=2]
+  void chkFlipXchanged(int arg1);
+  void chkFlipYchanged(int arg1);
+  void chkSwapXYchanged(int arg1);
+\end{lstlisting}
 
-DistancePlotterWidget
-\textasciitilde\textasciitilde\textasciitilde\textasciitilde\textasciitilde\textasciitilde\textasciitilde\textasciitilde\textasciitilde\textasciitilde\textasciitilde\textasciitilde\textasciitilde\textasciitilde\textasciitilde\textasciitilde\textasciitilde{}
+\lvlv{DistancePlotterWidget}
 
 The \textbf{DistancePlotterWidget} class is a widget for plot the
 distance between a centroid and a point. This widget is used in
 combination with \textbf{CalibratedWiget} and \textbf{ManualWidget}. The
 include code is the following.
 
-\begin{Shaded}
-\begin{Highlighting}[]
-\PreprocessorTok{\#include }\ImportTok{\textless{}QApplication\textgreater{}}
-\PreprocessorTok{\#include }\ImportTok{\textless{}PAT/Controller.h\textgreater{}}
-\PreprocessorTok{\#include }\ImportTok{\textless{}PAT/Centroid.h\textgreater{}}
-\PreprocessorTok{\#include }\ImportTok{\textless{}PAT/Utils/Point.h\textgreater{}}
-\PreprocessorTok{\#include }\ImportTok{\textless{}memory\textgreater{}}
-\PreprocessorTok{\#include }\ImportTok{\textless{}thread\textgreater{}}
-\PreprocessorTok{\#include }\ImportTok{\textless{}stdlib.h\textgreater{}}
-\PreprocessorTok{\#include }\ImportTok{\textless{}QDebug\textgreater{}}
-\KeywordTok{using} \KeywordTok{namespace}\NormalTok{ PAT::Controller;}
-\end{Highlighting}
-\end{Shaded}
+\begin{lstlisting}[language=c++, gobble=2]
+  #include <QApplication>
+  #include <PAT/Controller.h>
+  #include <PAT/Centroid.h>
+  #include <PAT/Utils/Point.h>
+  #include <memory>
+  #include <thread>
+  #include <stdlib.h>
+  #include <QDebug>
+  using namespace PAT::Controller;
+\end{lstlisting}
 
 This is a simple \textbf{main} example.
 
-\begin{Shaded}
-\begin{Highlighting}[]
-\DataTypeTok{int}\NormalTok{ main(}\DataTypeTok{int}\NormalTok{ argc, }\DataTypeTok{char}\NormalTok{ *argv[]) \{}
-  \ExtensionTok{QApplication}\NormalTok{ a(argc, argv);}
-\NormalTok{  DistancePlotterWidget distancePlotterWidget;}
-  \BuiltInTok{std::}\NormalTok{shared\_ptr\textless{}PAT::Centroid\textgreater{} centroid(}\KeywordTok{new}\NormalTok{ PAT::Centroid());}
-  \BuiltInTok{std::}\NormalTok{shared\_ptr\textless{}PAT::Utils::BoundedParameter\textless{}PAT::Utils::Circle\textless{}}\DataTypeTok{int}\NormalTok{\textgreater{}\textgreater{}\textgreater{} target(}\KeywordTok{new}\NormalTok{ PAT::Utils::BoundedParameter\textless{}PAT::Utils::Circle\textless{}}\DataTypeTok{int}\NormalTok{\textgreater{}\textgreater{}(\{}\DecValTok{0}\NormalTok{, }\DecValTok{1000}\NormalTok{, }\DecValTok{1}\NormalTok{, }\DecValTok{500}\NormalTok{\}, \{}\DecValTok{0}\NormalTok{, }\DecValTok{1000}\NormalTok{, }\DecValTok{1}\NormalTok{, }\DecValTok{500}\NormalTok{\}));}
-  \DataTypeTok{double}\NormalTok{ frameRate = }\DecValTok{30}\NormalTok{;}
-\NormalTok{  distancePlotterWidget.setCentroidAndTarget(centroid, target);}
-  \BuiltInTok{std::}\NormalTok{thread t1([\&]() \{}
-    \ControlFlowTok{for}\NormalTok{ (}\DataTypeTok{size\_t}\NormalTok{ i = }\DecValTok{0}\NormalTok{; i \textless{} }\DecValTok{50000}\NormalTok{; i++) \{}
-\NormalTok{      centroid{-}\textgreater{}x = (}\DataTypeTok{double}\NormalTok{)rand() / RAND\_MAX * }\DecValTok{1000}\NormalTok{;}
-\NormalTok{      centroid{-}\textgreater{}y = (}\DataTypeTok{double}\NormalTok{)rand() / RAND\_MAX * }\DecValTok{1000}\NormalTok{;}
-      \ExtensionTok{emit}\NormalTok{ centroid{-}\textgreater{}newValue();}
-      \BuiltInTok{std::}\NormalTok{this\_thread}\BuiltInTok{::}\NormalTok{sleep\_for(}\BuiltInTok{std::}\NormalTok{chrono}\BuiltInTok{::}\NormalTok{milliseconds((}\DataTypeTok{int}\NormalTok{)round(}\DecValTok{1000}\NormalTok{ / frameRate)));}
-\NormalTok{    \}}
-\NormalTok{  \});}
-\NormalTok{  distancePlotterWidget.show();}
-\NormalTok{  t1.detach();}
-  \ControlFlowTok{return}\NormalTok{ a.exec();}
-\NormalTok{\}}
-\end{Highlighting}
-\end{Shaded}
+\begin{lstlisting}[language=c++, gobble=2]
+  int main(int argc, char *argv[]) {
+    QApplication a(argc, argv);
+    DistancePlotterWidget distancePlotterWidget;
+    std::shared_ptr<PAT::Centroid> centroid(new PAT::Centroid());
+    std::shared_ptr<PAT::Utils::BoundedParameter<PAT::Utils::Circle<int>>> target(new PAT::Utils::BoundedParameter<PAT::Utils::Circle<int>>({0, 1000, 1, 500}, {0, 1000, 1, 500}));
+    double frameRate = 30;
+    distancePlotterWidget.setCentroidAndTarget(centroid, target);
+    std::thread t1([&]() {
+      for (size_t i = 0; i < 50000; i++) {
+        centroid->x = (double)rand() / RAND_MAX * 1000;
+        centroid->y = (double)rand() / RAND_MAX * 1000;
+        emit centroid->newValue();
+        std::this_thread::sleep_for(std::chrono::milliseconds((int)round(1000 / frameRate)));
+      }
+    });
+    distancePlotterWidget.show();
+    t1.detach();
+    return a.exec();
+  }
+\end{lstlisting}
 
-\hypertarget{uml}{%
-\subsection{UML}\label{uml}}
+\lvliv{UML}
 
-\includegraphics[width=8.33333in,height=\textheight]{https://gitlab.dei.unipd.it/pat/docs/-/raw/4da37d1e14c960824565fc73d9bca1143e667907/out/repositories/Controller/Controller.svg}
+\img{Controller}{Controller UML.}

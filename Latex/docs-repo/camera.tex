@@ -1,62 +1,51 @@
-\hypertarget{camera}{%
-\section{Camera}\label{camera}}
+\lvliii{Camera}
 
 This project contains the interface \textbf{Camera} for all cameras. The
 actual implementations are: IDS.
 
 \textbf{Requirements}
 
-\includegraphics{https://img.shields.io/static/v1?label=cpp\&message=11\&color=007bff}
+\includegraphics[scale=0.7]{img/shilds/cpp.png}
+\includegraphics[scale=0.7]{img/shilds/cmake.png}
+\includegraphics[scale=0.7]{img/shilds/git.png}
+\includegraphics[scale=0.7]{img/shilds/doxygen.png}
+\includegraphics[scale=0.7]{img/shilds/sphinx.png}
+\includegraphics[scale=0.7]{img/shilds/win.png}
 
-\includegraphics{https://img.shields.io/static/v1?label=cmake\&message=3.16\&color=007bff}
+\lvliv{Generality}
 
-\includegraphics{https://img.shields.io/static/v1?label=git\&message=2.0\&color=007bff}
-
-\includegraphics{https://img.shields.io/static/v1?label=Doxygen\&message=1.8.13\&color=007bff}
-
-\includegraphics{https://img.shields.io/static/v1?label=Sphinx\&message=3.0.2\&color=007bff}
-
-\includegraphics{https://img.shields.io/static/v1?label=OS\&message=Win\&color=28a745\%22}
-
-\hypertarget{generality}{%
-\subsection{Generality}\label{generality}}
-
-\hypertarget{import}{%
-\subsubsection{Import}\label{import}}
+\lvlv{Import}
 
 Import as an external library into your project by copy-paste the
 following lines in your \texttt{config.json}.
 
-\begin{Shaded}
-\begin{Highlighting}[]
-\FunctionTok{\{}
-  \DataTypeTok{"name"}     \FunctionTok{:} \StringTok{"PATCamera"}\FunctionTok{,}
-  \DataTypeTok{"path"}     \FunctionTok{:} \StringTok{"gitlab.dei.unipd.it/PAT/Camera.git"}\FunctionTok{,}
-  \DataTypeTok{"tag"}      \FunctionTok{:} \StringTok{"HEAD"}\FunctionTok{,}
-  \DataTypeTok{"available"}\FunctionTok{:} \StringTok{"YES"}\FunctionTok{,}
-  \DataTypeTok{"getGui"}   \FunctionTok{:} \StringTok{"YES"}
-\FunctionTok{\}}
-\end{Highlighting}
-\end{Shaded}
+\begin{lstlisting}[language=javascript, gobble=2]
+  {
+    "name"     : "PATCamera",
+    "path"     : "gitlab.dei.unipd.it/PAT/Camera.git",
+    "tag"      : "HEAD",
+    "available": "YES",
+    "getGui"   : "YES"
+  }
+\end{lstlisting}
 
-\hypertarget{prerequisites}{%
-\subsubsection{Prerequisites}\label{prerequisites}}
+\lvlv{Prerequisites}
 
 The following libraries are auto fetched from the gitlab.dei.unipd.it
 host (ask the owner of this repo to become a member):
 
 \begin{itemize}
-\tightlist
-\item
-  \href{https://gitlab.dei.unipd.it/PAT/Centroid.git}{Centroid} 1.0.0
+  \tightlist
+  \item
+        \href{https://gitlab.dei.unipd.it/PAT/Centroid.git}{Centroid} 1.0.0
 \end{itemize}
 
 These other libraries need to be installed manually in your system:
 
 \begin{itemize}
-\tightlist
-\item
-  \href{https://www.qt.io/}{Qt} 5.14.2
+  \tightlist
+  \item
+        \href{https://www.qt.io/}{Qt} 5.14.2
 \end{itemize}
 
 The library documentation is generated through
@@ -67,66 +56,56 @@ documentation in the \texttt{index} folder is generated through the
 extensions (which you can install through pip3):
 
 \begin{itemize}
-\tightlist
-\item
-  \href{https://pypi.org/project/Sphinx/}{Sphinx 3.0.2}
-\item
-  \href{https://sphinx-rtd-theme.readthedocs.io/en/stable/}{Sphinx read
-  the doc theme} (to use the read the doc theme for html documentation)
-\item
-  \href{https://pypi.org/project/breathe/}{Breathe} (to use the xml
-  output of doxygen)
-\item
-  \href{https://pypi.org/project/sphinx-markdown-builder/}{Sphinx-markdown-builder}
-  (to generate the markdown version for gitlab wiki)
+  \tightlist
+  \item
+        \href{https://pypi.org/project/Sphinx/}{Sphinx 3.0.2}
+  \item
+        \href{https://sphinx-rtd-theme.readthedocs.io/en/stable/}{Sphinx read
+          the doc theme} (to use the read the doc theme for html documentation)
+  \item
+        \href{https://pypi.org/project/breathe/}{Breathe} (to use the xml
+        output of doxygen)
+  \item
+        \href{https://pypi.org/project/sphinx-markdown-builder/}{Sphinx-markdown-builder}
+        (to generate the markdown version for gitlab wiki)
 \end{itemize}
 
 \texttt{pip3\ install\ Sphinx\ sphinx\_rtd\_theme\ breathe\ sphinx-markdown-builder}
 
-\hypertarget{usage}{%
-\subsection{Usage}\label{usage}}
+\lvliv{Usage}
 
-\hypertarget{frame}{%
-\subsubsection{Frame}\label{frame}}
+\lvlv{Frame}
 
 The \textbf{Frame} class manages all the processing of the images
 captured by the camera.
 
-\begin{Shaded}
-\begin{Highlighting}[]
-\PreprocessorTok{\#include }\ImportTok{\textless{}PAT/Camera/Frame.h\textgreater{}}
-\end{Highlighting}
-\end{Shaded}
+\begin{lstlisting}[language=c++, gobble=2]
+  #include <PAT/Camera/Frame.h>
+\end{lstlisting}
 
 This is an example of initialization.
 
-\begin{Shaded}
-\begin{Highlighting}[]
-\DataTypeTok{int}\NormalTok{ width = }\DecValTok{100}\NormalTok{;}
-\DataTypeTok{int}\NormalTok{ height = }\DecValTok{100}\NormalTok{;}
-\DataTypeTok{unsigned} \DataTypeTok{char}\NormalTok{ imgBuffer[width * height] = \{}\DecValTok{0}\NormalTok{\};}
-\BuiltInTok{std::}\NormalTok{shared\_ptr\textless{}Frame\textgreater{} frame = }\BuiltInTok{std::}\NormalTok{make\_shared\textless{}Frame\textgreater{}(imgBuffer, width, height, }\ExtensionTok{QImage::}\NormalTok{Format\_Grayscale8);}
-\end{Highlighting}
-\end{Shaded}
+\begin{lstlisting}[language=c++, gobble=2]
+  int width = 100;
+  int height = 100;
+  unsigned char imgBuffer[width * height] = {0};
+  std::shared_ptr<Frame> frame = std::make_shared<Frame>(imgBuffer, width, height, QImage::Format_Grayscale8);
+\end{lstlisting}
 
 You can flip the image in the two axes usign these functions.
 
-\begin{Shaded}
-\begin{Highlighting}[]
-\NormalTok{frame{-}\textgreater{}flipX();}
-\NormalTok{frame{-}\textgreater{}flipY();}
-\end{Highlighting}
-\end{Shaded}
+\begin{lstlisting}[language=c++, gobble=2]
+  frame->flipX();
+  frame->flipY();
+\end{lstlisting}
 
 You can calculate the centroid, the spotDiameter and the integral (spot
 intensity) using this function. If it does not find the centroid it
 returns -1 as invalid value.
 
-\begin{Shaded}
-\begin{Highlighting}[]
-\NormalTok{frame{-}\textgreater{}calculateCentroidAndIntegral();}
-\end{Highlighting}
-\end{Shaded}
+\begin{lstlisting}[language=c++, gobble=2]
+  frame->calculateCentroidAndIntegral();
+\end{lstlisting}
 
 You can also control the centroid calculation setting the parameters
 \textbf{threshold} and \textbf{rangeRadius}. -
@@ -137,73 +116,61 @@ where to search the centroid. The value 0 means infinite range. -
 \textbf{getRange} get the four cordinate of the range where to search
 the centroid.
 
-\begin{Shaded}
-\begin{Highlighting}[]
-\KeywordTok{auto}\NormalTok{ threshold = frame{-}\textgreater{}getThreshold();}
-\NormalTok{threshold.value = }\DecValTok{30}\NormalTok{;}
-\NormalTok{frame{-}\textgreater{}setThreshold(threshold);}
-
-\KeywordTok{auto}\NormalTok{ rangeRadius = frame{-}\textgreater{}getRangeRadius();}
-\NormalTok{rangeRadius.value = }\DecValTok{200}\NormalTok{;}
-\NormalTok{frame{-}\textgreater{}setRangeRadius(rangeRadius);}
-
-\NormalTok{PAT::Utils::Range\textless{}}\DataTypeTok{int}\NormalTok{\textgreater{} range = frame{-}\textgreater{}getRange()}
-\end{Highlighting}
-\end{Shaded}
+\begin{lstlisting}[language=c++, gobble=2]
+  auto threshold = frame->getThreshold();
+  threshold.value = 30;
+  frame->setThreshold(threshold);
+  
+  auto rangeRadius = frame->getRangeRadius();
+  rangeRadius.value = 200;
+  frame->setRangeRadius(rangeRadius);
+  
+  PAT::Utils::Range<int> range = frame->getRange();
+\end{lstlisting}
 
 You can get the other parameters using these functions.
 
-\begin{Shaded}
-\begin{Highlighting}[]
-\BuiltInTok{std::}\NormalTok{shared\_ptr\textless{}PAT::Centroid\textgreater{} centroid = frame{-}\textgreater{}getCentroid();}
-\BuiltInTok{std::}\NormalTok{shared\_ptr\textless{}PAT::Utils::BoundedParameter\textless{}PAT::Utils::Circle\textless{}}\DataTypeTok{int}\NormalTok{\textgreater{}\textgreater{}\textgreater{} target = frame{-}\textgreater{}getTarget();}
-\DataTypeTok{unsigned} \DataTypeTok{char}\NormalTok{* imgBuffer = frame{-}\textgreater{}getImageRaw();}
-\ExtensionTok{QImage}\NormalTok{ img = frame{-}\textgreater{}getImage();}
-\DataTypeTok{int}\NormalTok{ width = frame{-}\textgreater{}getWidth();}
-\DataTypeTok{int}\NormalTok{ height = frame{-}\textgreater{}getHeight();}
-\end{Highlighting}
-\end{Shaded}
+\begin{lstlisting}[language=c++, gobble=2]
+  std::shared_ptr<PAT::Centroid> centroid = frame->getCentroid();
+  std::shared_ptr<PAT::Utils::BoundedParameter<PAT::Utils::Circle<int>>> target = frame->getTarget();
+  unsigned char* imgBuffer = frame->getImageRaw();
+  QImage img = frame->getImage();
+  int width = frame->getWidth();
+  int height = frame->getHeight();
+\end{lstlisting}
 
-\hypertarget{camera-1}{%
-\subsubsection{Camera}\label{camera-1}}
+\lvlv{Camera}
 
 The \textbf{Camera} class is a interface for all Camera. Here is the
 include code.
 
-\begin{Shaded}
-\begin{Highlighting}[]
-\PreprocessorTok{\#include }\ImportTok{\textless{}PAT/Camera/Camera.h\textgreater{}}
-\end{Highlighting}
-\end{Shaded}
+\begin{lstlisting}[language=c++, gobble=2]
+  #include <PAT/Camera/Camera.h>
+\end{lstlisting}
 
 To inherit the class you have to overwrite the four methods:
 \textbf{start}, \textbf{stop}, \textbf{setFrameRate},
 \textbf{setExposureTime}.
 
-\begin{Shaded}
-\begin{Highlighting}[]
-\KeywordTok{class}\NormalTok{ YourClass : }\KeywordTok{public}\NormalTok{ Camera \{}
-\KeywordTok{public}\NormalTok{:}
-  \DataTypeTok{void}\NormalTok{ start() }\KeywordTok{override}\NormalTok{;}
-  \DataTypeTok{void}\NormalTok{ stop() }\KeywordTok{override}\NormalTok{;}
-  \DataTypeTok{void}\NormalTok{ setFrameRate(}\AttributeTok{const}\NormalTok{ PAT::Utils::BoundedParameter\textless{}}\DataTypeTok{double}\NormalTok{\textgreater{}\& \_frameRate) }\KeywordTok{override}\NormalTok{;}
-  \DataTypeTok{void}\NormalTok{ setExposureTime(}\AttributeTok{const}\NormalTok{ PAT::Utils::BoundedParameter\textless{}}\DataTypeTok{double}\NormalTok{\textgreater{}\& \_exposureTimeValue) }\KeywordTok{override}\NormalTok{;}
-\NormalTok{\};}
-\end{Highlighting}
-\end{Shaded}
+\begin{lstlisting}[language=c++, gobble=2]
+  class YourClass : public Camera {
+    public:
+      void start() override;
+      void stop() override;
+      void setFrameRate(const PAT::Utils::BoundedParameter<double>& _frameRate) override;
+      void setExposureTime(const PAT::Utils::BoundedParameter<double>& _exposureTimeValue) override;
+    };
+\end{lstlisting}
 
-\hypertarget{ids}{%
-\subsubsection{IDS}\label{ids}}
+\lvlv{IDS}
 
 The \textbf{IDS} class is a Camera implementation. Here is the include
 code.
 
-\begin{Shaded}
-\begin{Highlighting}[]
-\PreprocessorTok{\#include }\ImportTok{\textless{}PAT/Camera/IDS.h\textgreater{}}
-\KeywordTok{using} \KeywordTok{namespace}\NormalTok{ PAT::Camera;}
-\end{Highlighting}
-\end{Shaded}
+\begin{lstlisting}[language=c++, gobble=2]
+  #include <PAT/Camera/IDS.h>
+  using namespace PAT::Camera;
+\end{lstlisting}
 
 The \textbf{IDS} is typically used as polymorphism with \textbf{Camera}.
 In order to define a variable you can choose to pass the \textbf{IDS id}
@@ -211,120 +178,100 @@ or to let it automatically search it. If the search fails the program
 throw an exception "not found". To search the id you can use
 \textbf{find} and \textbf{findAll} functions.
 
-\begin{Shaded}
-\begin{Highlighting}[]
-\BuiltInTok{std::}\NormalTok{shared\_ptr\textless{}PAT::Camera::Camera\textgreater{} camera = }\BuiltInTok{std::}\NormalTok{make\_shared\textless{}PAT::Camera::IDS\textgreater{}();}
-\BuiltInTok{std::}\NormalTok{shared\_ptr\textless{}PAT::Camera::Camera\textgreater{} camera = }\BuiltInTok{std::}\NormalTok{make\_shared\textless{}PAT::Camera::IDS\textgreater{}(IDS::find());}
-\BuiltInTok{std::}\NormalTok{shared\_ptr\textless{}PAT::Camera::Camera\textgreater{} camera = }\BuiltInTok{std::}\NormalTok{make\_shared\textless{}PAT::Camera::IDS\textgreater{}(IDS::findAll(){-}\textgreater{}uci[}\DecValTok{0}\NormalTok{].dwCameraID);}
-\end{Highlighting}
-\end{Shaded}
+\begin{lstlisting}[language=c++, gobble=2]
+  std::shared_ptr<PAT::Camera::Camera> camera = std::make_shared<PAT::Camera::IDS>();
+  std::shared_ptr<PAT::Camera::Camera> camera = std::make_shared<PAT::Camera::IDS>(IDS::find());
+  std::shared_ptr<PAT::Camera::Camera> camera = std::make_shared<PAT::Camera::IDS>(IDS::findAll()->uci[0].dwCameraID);
+\end{lstlisting}
 
 You can enable/disable or check if enabled the IDS's acquisition using
 these functions.
 
-\begin{Shaded}
-\begin{Highlighting}[]
-\ControlFlowTok{if}\NormalTok{(!camera{-}\textgreater{}isActive())}
-\NormalTok{ camera{-}\textgreater{}start();}
-\ControlFlowTok{else}
-\NormalTok{ camera{-}\textgreater{}stop();}
-\end{Highlighting}
-\end{Shaded}
+\begin{lstlisting}[language=c++, gobble=2]
+  if(!camera->isActive())
+    camera->start();
+ else
+    camera->stop();
+\end{lstlisting}
 
 You can set the frame rate of the acquisition using these functions. At
 every frame the Camera calculates the centroid and then it emit a signal
 \textbf{newFrameSignal}.
 
-\begin{Shaded}
-\begin{Highlighting}[]
-\KeywordTok{auto}\NormalTok{ framerate  = camera{-}\textgreater{}getFrameRate();}
-\NormalTok{framerate.value = }\DecValTok{30}\NormalTok{;}
-\NormalTok{camera{-}\textgreater{}setFrameRate(framerate);}
-\end{Highlighting}
-\end{Shaded}
+\begin{lstlisting}[language=c++, gobble=2]
+  auto framerate  = camera->getFrameRate();
+  framerate.value = 30;
+  camera->setFrameRate(framerate);
+\end{lstlisting}
 
 You can set the exposure time of the acquisition using these functions.
 The exposure time limit depends on the frame rate (1 / framerate).
 
-\begin{Shaded}
-\begin{Highlighting}[]
-\KeywordTok{auto}\NormalTok{ exposureTime  = camera{-}\textgreater{}getExposureTime();}
-\NormalTok{exposureTime.value = }\DecValTok{1}\NormalTok{ / }\DecValTok{30}\NormalTok{;}
-\NormalTok{camera{-}\textgreater{}setExposureTime(exposureTime);}
-\end{Highlighting}
-\end{Shaded}
+\begin{lstlisting}[language=c++, gobble=2]
+  auto exposureTime  = camera->getExposureTime();
+  exposureTime.value = 1 / 30;
+  camera->setExposureTime(exposureTime);
+\end{lstlisting}
 
 You can enable/disable or check if enabled the centroid calculation
 using these functions.
 
-\begin{Shaded}
-\begin{Highlighting}[]
-\ControlFlowTok{if}\NormalTok{(!camera{-}\textgreater{}getCentroidCalculation())}
-\NormalTok{ camera{-}\textgreater{}setCentroidCalculation(}\KeywordTok{true}\NormalTok{);}
-\ControlFlowTok{else}
-\NormalTok{ camera{-}\textgreater{}setCentroidCalculation(}\KeywordTok{false}\NormalTok{);}
-\end{Highlighting}
-\end{Shaded}
+\begin{lstlisting}[language=c++, gobble=2]
+  if(!camera->getCentroidCalculation())
+    camera->setCentroidCalculation(true);
+ else
+    camera->setCentroidCalculation(false);
+\end{lstlisting}
 
 You can alse obtain the frame object that it automatically update at
 every frame.
 
-\begin{Shaded}
-\begin{Highlighting}[]
-\BuiltInTok{std::}\NormalTok{shared\_ptr\textless{}Frame\textgreater{} frame = camera{-}\textgreater{}getFrame();}
-\end{Highlighting}
-\end{Shaded}
+\begin{lstlisting}[language=c++, gobble=2]
+  std::shared_ptr<Frame> frame = camera->getFrame();
+\end{lstlisting}
 
-\hypertarget{camerawiget}{%
-\subsubsection{CameraWiget}\label{camerawiget}}
+\lvlv{CameraWiget}
 
 The \textbf{CameraWiget} class is a widget fot the Camera's
 implementations. Here I present the IDS example. The include code is the
 following.
 
-\begin{Shaded}
-\begin{Highlighting}[]
-\PreprocessorTok{\#include }\ImportTok{\textless{}QApplication\textgreater{}}
-\PreprocessorTok{\#include }\ImportTok{\textless{}PAT/Camera/gui/CameraWidget.h\textgreater{}}
-\PreprocessorTok{\#include }\ImportTok{\textless{}PAT/Camera/IDS.h\textgreater{}}
-\KeywordTok{using} \KeywordTok{namespace}\NormalTok{ PAT::Camera;}
-\end{Highlighting}
-\end{Shaded}
+\begin{lstlisting}[language=c++, gobble=2]
+  #include <QApplication>
+  #include <PAT/Camera/gui/CameraWidget.h>
+  #include <PAT/Camera/IDS.h>
+  using namespace PAT::Camera;
+\end{lstlisting}
 
 This is a simple \textbf{main} example.
 
-\begin{Shaded}
-\begin{Highlighting}[]
-\DataTypeTok{int}\NormalTok{ main(}\DataTypeTok{int}\NormalTok{ argc, }\DataTypeTok{char}\NormalTok{ *argv[]) \{}
-  \ExtensionTok{QApplication}\NormalTok{ a(argc, argv);}
-\NormalTok{  CameraWidget cameraWidget;}
-  \BuiltInTok{std::}\NormalTok{shared\_ptr\textless{}Camera\textgreater{} camera = }\BuiltInTok{std::}\NormalTok{make\_shared\textless{}IDS\textgreater{}();}
-\NormalTok{  cameraWidget.setCamera(camera);}
-\NormalTok{  cameraWidget.show();}
-\NormalTok{  camera{-}\textgreater{}start();}
- \ControlFlowTok{return}\NormalTok{ a.exec();}
-\NormalTok{\}}
-\end{Highlighting}
-\end{Shaded}
+\begin{lstlisting}[language=c++, gobble=2]
+  int main(int argc, char *argv[]) {
+    QApplication a(argc, argv);
+    CameraWidget cameraWidget;
+    std::shared_ptr<Camera> camera = std::make_shared<IDS>();
+    cameraWidget.setCamera(camera);
+    cameraWidget.show();
+    camera->start();
+   return a.exec();
+  }
+\end{lstlisting}
 
 If you want instead integrate the widget into another GUI (layout) you
 can use this code.
 
-\begin{Shaded}
-\begin{Highlighting}[]
-\ExtensionTok{QWidget}\NormalTok{ *window                = }\KeywordTok{new} \ExtensionTok{QWidget}\NormalTok{();}
-\ExtensionTok{QVBoxLayout}\NormalTok{ *mainLayout        = }\KeywordTok{new} \ExtensionTok{QVBoxLayout}\NormalTok{();}
-\NormalTok{CameraWidget *cameraWidget     = }\KeywordTok{new}\NormalTok{ CameraWidget();}
-\BuiltInTok{std::}\NormalTok{shared\_ptr\textless{}Camera\textgreater{} camera = }\BuiltInTok{std::}\NormalTok{make\_shared\textless{}IDS\textgreater{}();}
+\begin{lstlisting}[language=c++, gobble=2]
+  QWidget *window                = new QWidget();
+  QVBoxLayout *mainLayout        = new QVBoxLayout();
+  CameraWidget *cameraWidget     = new CameraWidget();
+  std::shared_ptr<Camera> camera = std::make_shared<IDS>();
+  
+  cameraWidget->setCamera(camera);
+  mainLayout->addWidget((QWidget *)cameraWidget);
+  window->setLayout(mainLayout);
+  window->show();
+\end{lstlisting}
 
-\NormalTok{cameraWidget{-}\textgreater{}setCamera(camera);}
-\NormalTok{mainLayout{-}\textgreater{}addWidget((}\ExtensionTok{QWidget}\NormalTok{ *)cameraWidget);}
-\NormalTok{window{-}\textgreater{}setLayout(mainLayout);}
-\NormalTok{window{-}\textgreater{}show();}
-\end{Highlighting}
-\end{Shaded}
+\lvliv{UML}
 
-\hypertarget{uml}{%
-\subsection{UML}\label{uml}}
-
-\includegraphics[width=8.33333in,height=\textheight]{https://gitlab.dei.unipd.it/pat/docs/-/raw/4da37d1e14c960824565fc73d9bca1143e667907/out/repositories/Camera/Camera.svg}
+\img{Camera}{Camera UML.}
