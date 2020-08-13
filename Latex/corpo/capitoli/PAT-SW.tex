@@ -1,15 +1,17 @@
 \lvli{PAT software design}
+Two analyses were carried out to build this project. An analysis that focuses on the components available, and an analysis that focuses on what a user expects to use. Having these two analyses the construction of the single repositories becomes immediate. The construction is reduced to connecting the functionalities expected by users to the various components available.
+
 \lvlii{The components analysis}
 The aim of this project was to develop modular software that could control a PAT system. The PAT system had to be able to align the telescope with different light sources such as the light of a star or the laser of another telescope.
 In addition, the PAT system had to be able to control all devices in the \sect{Components}.
 Starting from the PAT model \fig{PAT} a simplified model has been developed \fig{simplified-model} to highlight the various components to be implemented.
-In questo modello si vede che tre sono le principali famiglie da implementare: sensori, controllori, e attuatori. Le frecce in questo schema indicano i passaggi di informazione, in altre parole, sensore a attuatore dovranno comunicare con il controllore e vice versa.
+In this model we see that there are three main families to implement: sensors, controllers, and actuators. The arrows in this diagram indicate the information passages, in other words, actuator and sensor will have to communicate with the controller and vice versa.
 It is therefore necessary to establish a common interface between the various sensors and actuators to connect them with the controllers. The study of these interfaces required multiple iterations to ensure maximum flexibility.
 \img{simplified-model}{Simplified model for PAT system.}
 
 \lvlii{The GUI analysis}
-To get a complete idea of the goal of the code the next step was to study what are the possible setups and what are the features that a user expects. For this reason, an analysis of the graphical interfaces and the procedures to be carried out for alignment was done.
-In this section will be reported the global interface that will be an assembly of the graphics of the individual components.
+To get a complete idea of the goal of the system an other analysis was carry out. This analysis aims to establish the possible setups and what are the features that a user expects from the setup's GUI.
+In this section will be reported the final interface that an user expects to use and its functionalities. This final interface it was created joining togheter the sub-modules interfaces.
 
 \lvliii{Possible setups}
 In this system there are three basic setups:
