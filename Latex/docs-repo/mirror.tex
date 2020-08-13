@@ -1,0 +1,149 @@
+\lvliii{Mirror}
+
+This project contains the interface \textbf{Mirror} for all mirrors. The
+actual implementations are: STT254.
+
+\textbf{Requirements}
+
+\includegraphics[scale=0.7]{img/shilds/cpp.png}
+\includegraphics[scale=0.7]{img/shilds/cmake.png}
+\includegraphics[scale=0.7]{img/shilds/git.png}
+\includegraphics[scale=0.7]{img/shilds/doxygen.png}
+\includegraphics[scale=0.7]{img/shilds/sphinx.png}
+\includegraphics[scale=0.7]{img/shilds/win.png}
+
+\lvliv{Generality}
+
+\lvlv{Import}
+
+Import as an external library into your project by copy-paste the
+following lines in your \texttt{config.json}.
+
+\begin{lstlisting}[language=javascript, gobble=2]
+  {
+    "name"     : "PATMirror",
+    "path"     : "gitlab.dei.unipd.it/PAT/Mirror.git",
+    "tag"      : "HEAD",
+    "available": "YES",
+    "getGui"   : "NO"
+  }
+\end{lstlisting}
+
+\lvlv{Prerequisites}
+
+The following libraries are auto fetched from the gitlab.dei.unipd.it
+host (ask the owner of this repo to become a member):
+
+\begin{itemize}
+  \tightlist
+  \item
+        \href{https://gitlab.dei.unipd.it/PAT/KPA101.git}{KPA101} 1.0.0
+\end{itemize}
+
+These other libraries need to be installed manually in your system:
+
+\begin{itemize}
+  \tightlist
+  \item
+        \href{https://www.qt.io/}{Qt} 5.14.2
+\end{itemize}
+
+The library documentation is generated through
+\href{http://www.doxygen.nl/download.html}{Doxygen 1.8.13}. Additional
+documentation in the \texttt{index} folder is generated through the
+\href{https://www.anaconda.com/products/individual}{python3} package
+\href{https://www.sphinx-doc.org/en/master/}{Sphinx} using the following
+extensions (which you can install through pip3):
+
+\begin{itemize}
+  \tightlist
+  \item
+        \href{https://pypi.org/project/Sphinx/}{Sphinx 3.0.2}
+  \item
+        \href{https://sphinx-rtd-theme.readthedocs.io/en/stable/}{Sphinx read
+          the doc theme} (to use the read the doc theme for html documentation)
+  \item
+        \href{https://pypi.org/project/breathe/}{Breathe} (to use the xml
+        output of doxygen)
+  \item
+        \href{https://pypi.org/project/sphinx-markdown-builder/}{Sphinx-markdown-builder}
+        (to generate the markdown version for gitlab wiki)
+\end{itemize}
+
+\texttt{pip3\ install\ Sphinx\ sphinx\_rtd\_theme\ breathe\ sphinx-markdown-builder}
+
+\lvliv{Usage}
+
+\lvlv{Mirror}
+
+The \textbf{Mirror} class is a interface for all mirrors. Here is the
+include code.
+
+\begin{lstlisting}[language=c++, gobble=2]
+  #include <PAT/Mirror/Mirror.h>
+\end{lstlisting}
+
+To inherit the class you have to overwrite the two methods:
+\textbf{setOutputImpulse}, \textbf{setOutputCombinedImpulse}. When the
+impulse finish remember to emit a \textbf{movementCompleted} signal that
+is already defined in \textbf{Mirror} class.
+
+\begin{lstlisting}[language=c++, gobble=2]
+  class YourClass : public Mirror {
+    public:
+      void setOutputImpulse(double _voltagePeakX, double _voltagePeakY, double _time_ms) override;
+      void setOutputCombinedImpulse(double _voltagePeakX, double _timeX_ms, double _voltagePeakY, double _timeY_ms) override;
+    };
+\end{lstlisting}
+
+\lvlv{STT254}
+
+The \textbf{STT254} class is a Mirror implementation that it works with
+the \textbf{KPA101}. Here is the include code.
+
+\begin{lstlisting}[language=c++, gobble=2]
+  #include <PAT/KPA101.h>
+  #include <PAT/Mirror/STT254.h>
+  using namespace PAT::Mirror;
+\end{lstlisting}
+
+When you istantiate the \textbf{STT254} you must pass a \textbf{KPA101}
+istance. The \textbf{STT254} is typically used as polymorphism with
+\textbf{Mirror}.
+
+\begin{lstlisting}[language=c++, gobble=2]
+  std::shared_ptr<PAT::KPA101> kpa101         = std::make_shared<PAT::KPA101>();
+  std::shared_ptr<PAT::Mirror::Mirror> mirror = std::make_shared<PAT::Mirror::STT254>(kpa101);
+\end{lstlisting}
+
+You can set the output state of the \textbf{Mirror} using one of these
+two functions. Output voltages are between 10 and 0. When the functions
+finish they emit a a \textbf{movementCompleted} signal.
+
+\begin{itemize}
+  \tightlist
+  \item
+        The function \textbf{setOutputImpulse} send a single impulse with
+        length \textbf{\_time\_ms}.
+  \item
+        The function \textbf{setOutputCombinedImpulse} send two impulses at
+        the same time with with their respective lengths. I one finish before
+        the other its voltage go to zero.
+\end{itemize}
+
+\begin{lstlisting}[language=c++, gobble=2]
+  double voltagePeakX = 1;
+  double voltagePeakY = 1;
+  double time_ms      = 1;
+  mirror->setOutputImpulse(voltagePeakX, voltagePeakY, time_ms);
+  
+  double voltagePeakX = 1;
+  double timeX_ms     = 1;
+  double voltagePeakY = 1;
+  double timeY_ms     = 1;
+  mirror->setOutputCombinedImpulse(voltagePeakX, timeX_ms, voltagePeakY, timeY_ms);
+\end{lstlisting}
+
+\lvliv{UML}
+
+\img{Mirror}{Mirror UML.}

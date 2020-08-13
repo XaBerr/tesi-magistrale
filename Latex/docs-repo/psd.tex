@@ -1,0 +1,195 @@
+\lvliii{PSD}
+
+This project contains the interface \textbf{PSD} for all PSD. The actual
+implementations are: PDQ90A.
+
+\textbf{Requirements}
+
+\includegraphics[scale=0.7]{img/shilds/cpp.png}
+\includegraphics[scale=0.7]{img/shilds/cmake.png}
+\includegraphics[scale=0.7]{img/shilds/git.png}
+\includegraphics[scale=0.7]{img/shilds/doxygen.png}
+\includegraphics[scale=0.7]{img/shilds/sphinx.png}
+\includegraphics[scale=0.7]{img/shilds/win.png}
+
+\lvliv{Generality}
+
+\lvlv{Import}
+
+Import as an external library into your project by copy-paste the
+following lines in your \texttt{config.json}.
+
+\begin{lstlisting}[language=javascript, gobble=2]
+  {
+    "name"     : "PATPSD",
+    "path"     : "gitlab.dei.unipd.it/PAT/PSD.git",
+    "tag"      : "HEAD",
+    "available": "YES",
+    "getGui"   : "YES"
+  }
+\end{lstlisting}
+
+\lvlv{Prerequisites}
+
+The following libraries are auto fetched from the gitlab.dei.unipd.it
+host (ask the owner of this repo to become a member):
+
+\begin{itemize}
+  \tightlist
+  \item
+        \href{https://gitlab.dei.unipd.it/PAT/KPA101.git}{KPA101} 1.0.0
+  \item
+        \href{https://gitlab.dei.unipd.it/PAT/Centroid.git}{Centroid} 1.0.0
+\end{itemize}
+
+These other libraries need to be installed manually in your system:
+
+\begin{itemize}
+  \tightlist
+  \item
+        \href{https://www.qt.io/}{Qt} 5.14.2
+\end{itemize}
+
+The library documentation is generated through
+\href{http://www.doxygen.nl/download.html}{Doxygen 1.8.13}. Additional
+documentation in the \texttt{index} folder is generated through the
+\href{https://www.anaconda.com/products/individual}{python3} package
+\href{https://www.sphinx-doc.org/en/master/}{Sphinx} using the following
+extensions (which you can install through pip3):
+
+\begin{itemize}
+  \tightlist
+  \item
+        \href{https://pypi.org/project/Sphinx/}{Sphinx 3.0.2}
+  \item
+        \href{https://sphinx-rtd-theme.readthedocs.io/en/stable/}{Sphinx read
+          the doc theme} (to use the read the doc theme for html documentation)
+  \item
+        \href{https://pypi.org/project/breathe/}{Breathe} (to use the xml
+        output of doxygen)
+  \item
+        \href{https://pypi.org/project/sphinx-markdown-builder/}{Sphinx-markdown-builder}
+        (to generate the markdown version for gitlab wiki)
+\end{itemize}
+
+\texttt{pip3\ install\ Sphinx\ sphinx\_rtd\_theme\ breathe\ sphinx-markdown-builder}
+
+\lvliv{Usage}
+
+\lvlv{PSD}
+
+The \textbf{PSD} class is a interface for all PSD. Here is the include
+code.
+
+\begin{lstlisting}[language=c++, gobble=2]
+  #include <PAT/PSD/PSD.h>
+\end{lstlisting}
+
+To inherit the class you have to overwrite the three methods:
+\textbf{start}, \textbf{stop}, \textbf{getIntensity}.
+
+\begin{lstlisting}[language=c++, gobble=2]
+  class YourClass : public PSD {
+    public:
+      void start() override;
+      void stop() override;
+      double getIntensity() const override;
+    };    
+\end{lstlisting}
+
+\lvlv{PDQ90A}
+
+The \textbf{PDQ90A} class is a PSD implementation that it works with the
+\textbf{KPA101}. Here is the include code.
+
+\begin{lstlisting}[language=c++, gobble=2]
+  #include <PAT/KPA101.h>
+  #include <PAT/PSD/PDQ90A.h>
+  using namespace PAT::PSD;  
+\end{lstlisting}
+
+When you istantiate the \textbf{PDQ90A} you must pass a \textbf{KPA101}
+istance. The \textbf{PDQ90A} is typically used as polymorphism with
+\textbf{PSD}.
+
+\begin{lstlisting}[language=c++, gobble=2]
+  std::shared_ptr<PAT::KPA101> kpa101   = std::make_shared<PAT::KPA101>();
+  std::shared_ptr<PAT::PSD::PSD> psd = std::make_shared<PAT::PSD::PDQ90A>(kpa101);
+\end{lstlisting}
+
+You can enable/disable or check if enabled the PDQ90A's acquisition
+using these functions.
+
+\begin{lstlisting}[language=c++, gobble=2]
+  if(!psd->isActive())
+    psd->start();
+ else
+    psd->stop();
+\end{lstlisting}
+
+You can set the frame rate of the acquisition using these functions. At
+every frame the PSD calculates the centroid and then it emit a signal
+\textbf{newFrameSignal}.
+
+\begin{lstlisting}[language=c++, gobble=2]
+  auto framerate  = psd->getFrameRate();
+  framerate.value = 30;
+  psd->setFrameRate(framerate);
+\end{lstlisting}
+
+You can get the other parameters using these functions.
+
+\begin{lstlisting}[language=c++, gobble=2]
+  PAT::Utils::Point<double> sensorSize = psd->getSensorSize();
+  std::shared_ptr<PAT::Utils::BoundedParameter<PAT::Utils::Circle<int>>> target = psd->getTarget();
+  std::shared_ptr<PAT::Centroid> centroid = psd->getCentroid();
+  PAT::Utils::Point<double> sensorSize = psd->getSensorSize();
+  double intensity = psd->getIntensity();
+\end{lstlisting}
+
+\lvlv{PSDWiget}
+
+The \textbf{PSDWiget} class is a widget fot the PSD's implementations.
+Here I present the PDQ90A example. The include code is the following.
+
+\begin{lstlisting}[language=c++, gobble=2]
+  #include <QApplication>
+  #include <PAT/PSD/gui/PSDWidget.h>
+  #include <PAT/PSD/PDQ90A.h>
+  using namespace PAT::PSD;
+\end{lstlisting}
+
+This is a simple \textbf{main} example.
+
+\begin{lstlisting}[language=c++, gobble=2]
+  int main(int argc, char *argv[]) {
+    QApplication a(argc, argv);
+    PSDWidget cameraWidget;
+    std::shared_ptr<PAT::KPA101> kpa101 = std::make_shared<PAT::KPA101>();
+    std::shared_ptr<PSD> camera         = std::make_shared<PDQ90A>(kpa101);
+    cameraWidget.setPSD(camera);
+    cameraWidget.show();
+    camera->start();
+    return a.exec();
+ }
+\end{lstlisting}
+
+If you want instead integrate the widget into another GUI (layout) you
+can use this code.
+
+\begin{lstlisting}[language=c++, gobble=2]
+  QWidget *window                     = new QWidget();
+  QVBoxLayout *mainLayout             = new QVBoxLayout();
+  PSDWidget *psdWidget                = new PSDWidget();
+  std::shared_ptr<PAT::KPA101> kpa101 = std::make_shared<PAT::KPA101>();
+  std::shared_ptr<PSD> camera         = std::make_shared<PDQ90A>(kpa101);
+  
+  psdWidget->setPSD(psd);
+  mainLayout->addWidget((QWidget *)psdWidget);
+  window->setLayout(mainLayout);
+  window->show();
+\end{lstlisting}
+
+\lvliv{UML}
+
+\img{PSD}{PSD UML.}

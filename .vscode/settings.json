@@ -2,5 +2,6 @@
   "plantuml.diagramsRoot": "Latex/UML",
   "plantuml.exportOutDir": "Latex/img",
   "plantuml.exportSubFolder": false,
-  "plantuml.exportFormat": "eps"
+  "plantuml.exportFormat": "eps",
+  "restructuredtext.confPath": ""
 }

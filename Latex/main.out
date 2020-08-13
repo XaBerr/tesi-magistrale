@@ -34,17 +34,18 @@
 \BOOKMARK [1][-]{section.4.2}{The GUI analysis}{chapter.4}% 34
 \BOOKMARK [2][-]{subsection.4.2.1}{Possible setups}{section.4.2}% 35
 \BOOKMARK [2][-]{subsection.4.2.2}{Possible GUIs}{section.4.2}% 36
-\BOOKMARK [1][-]{section.4.3}{The repositories}{chapter.4}% 37
-\BOOKMARK [2][-]{subsection.4.3.1}{Utils}{section.4.3}% 38
-\BOOKMARK [2][-]{subsection.4.3.2}{Centroid}{section.4.3}% 39
-\BOOKMARK [2][-]{subsection.4.3.3}{KPA101}{section.4.3}% 40
-\BOOKMARK [2][-]{subsection.4.3.4}{Mirror}{section.4.3}% 41
-\BOOKMARK [2][-]{subsection.4.3.5}{PSD}{section.4.3}% 42
-\BOOKMARK [2][-]{subsection.4.3.6}{Camera}{section.4.3}% 43
-\BOOKMARK [2][-]{subsection.4.3.7}{Controller}{section.4.3}% 44
-\BOOKMARK [2][-]{subsection.4.3.8}{Setup}{section.4.3}% 45
-\BOOKMARK [0][-]{chapter.5}{KPA101 bias circuit}{}% 46
-\BOOKMARK [1][-]{section.5.1}{Circuit design}{chapter.5}% 47
-\BOOKMARK [1][-]{section.5.2}{Software design}{chapter.5}% 48
-\BOOKMARK [0][-]{chapter.6}{Fiber injection setup}{}% 49
-\BOOKMARK [1][-]{section.6.1}{Align procedure}{chapter.6}% 50
+\BOOKMARK [1][-]{section.4.3}{The repositories structure}{chapter.4}% 37
+\BOOKMARK [1][-]{section.4.4}{The repositories documentation}{chapter.4}% 38
+\BOOKMARK [2][-]{subsection.4.4.1}{Utils}{section.4.4}% 39
+\BOOKMARK [2][-]{subsection.4.4.2}{Centroid}{section.4.4}% 40
+\BOOKMARK [2][-]{subsection.4.4.3}{KPA101}{section.4.4}% 41
+\BOOKMARK [2][-]{subsection.4.4.4}{Mirror}{section.4.4}% 42
+\BOOKMARK [2][-]{subsection.4.4.5}{PSD}{section.4.4}% 43
+\BOOKMARK [2][-]{subsection.4.4.6}{Camera}{section.4.4}% 44
+\BOOKMARK [2][-]{subsection.4.4.7}{Controller}{section.4.4}% 45
+\BOOKMARK [2][-]{subsection.4.4.8}{Setup}{section.4.4}% 46
+\BOOKMARK [0][-]{chapter.5}{KPA101 bias circuit}{}% 47
+\BOOKMARK [1][-]{section.5.1}{Circuit design}{chapter.5}% 48
+\BOOKMARK [1][-]{section.5.2}{Software design}{chapter.5}% 49
+\BOOKMARK [0][-]{chapter.6}{Fiber injection setup}{}% 50
+\BOOKMARK [1][-]{section.6.1}{Align procedure}{chapter.6}% 51

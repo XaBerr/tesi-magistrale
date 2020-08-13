@@ -1,0 +1,111 @@
+\lvliii{Centroid}
+
+This project contains the centroid class. This class contains the
+centroid information shared between the sensor and the controller in the
+PAT-system.
+
+\textbf{Requirements}
+
+\includegraphics[scale=0.7]{img/shilds/cpp.png}
+\includegraphics[scale=0.7]{img/shilds/cmake.png}
+\includegraphics[scale=0.7]{img/shilds/git.png}
+\includegraphics[scale=0.7]{img/shilds/doxygen.png}
+\includegraphics[scale=0.7]{img/shilds/sphinx.png}
+\includegraphics[scale=0.7]{img/shilds/win.png}
+\includegraphics[scale=0.7]{img/shilds/mac.png}
+\includegraphics[scale=0.7]{img/shilds/linux.png}
+
+\lvliv{Generality}
+
+\lvlv{Import}
+
+Import as an external library into your project by copy-paste the
+following lines in your \texttt{config.json}.
+
+\begin{lstlisting}[language=javascript, gobble=2]
+  {
+    "name"     : "PATCentroid",
+    "path"     : "gitlab.dei.unipd.it/PAT/Centroid.git",
+    "tag"      : "HEAD",
+    "available": "YES",
+    "getGui"   : "NO"
+  }
+\end{lstlisting}
+
+\lvlv{Prerequisites}
+
+The following libraries are auto fetched from the gitlab.dei.unipd.it
+host (ask the owner of this repo to become a member):
+
+\begin{itemize}
+  \tightlist
+  \item
+        \href{https://gitlab.dei.unipd.it/PAT/Utils.git}{Utils} 1.0.0
+\end{itemize}
+
+These other libraries need to be installed manually in your system:
+
+\begin{itemize}
+  \tightlist
+  \item
+        \href{https://www.qt.io/}{Qt} 5.14.2
+\end{itemize}
+
+The library documentation is generated through
+\href{http://www.doxygen.nl/download.html}{Doxygen 1.8.13}. Additional
+documentation in the \texttt{index} folder is generated through the
+\href{https://www.anaconda.com/products/individual}{python3} package
+\href{https://www.sphinx-doc.org/en/master/}{Sphinx} using the following
+extensions (which you can install through pip3):
+
+\begin{itemize}
+  \tightlist
+  \item
+        \href{https://pypi.org/project/Sphinx/}{Sphinx 3.0.2}
+  \item
+        \href{https://sphinx-rtd-theme.readthedocs.io/en/stable/}{Sphinx read
+          the doc theme} (to use the read the doc theme for html documentation)
+  \item
+        \href{https://pypi.org/project/breathe/}{Breathe} (to use the xml
+        output of doxygen)
+  \item
+        \href{https://pypi.org/project/sphinx-markdown-builder/}{Sphinx-markdown-builder}
+        (to generate the markdown version for gitlab wiki)
+\end{itemize}
+
+\texttt{pip3\ install\ Sphinx\ sphinx\_rtd\_theme\ breathe\ sphinx-markdown-builder}
+
+\lvliv{Usage}
+
+Centroid give the possibility to store the point information with
+\textbf{x} and \textbf{y} using a
+\textbf{Point\textless double\textgreater{}} structure, and also the
+\textbf{instensity} information.
+
+It also contains a signal \textbf{newValue} that it could be emitted
+when a new value is ready.
+
+First you need to include the header file and use the namespace.
+
+\begin{lstlisting}[language=c++, gobble=2]
+  #include <PAT/Centroid.h>
+  using namespace PAT;
+\end{lstlisting}
+
+Then you can define the variable ready to be used.
+
+\begin{lstlisting}[language=c++, gobble=2]
+  Centroid centroid(10, 20, 100);
+  centroid.x = 10;
+  centroid.y = 20;
+  centroid.instensity = 100;
+\end{lstlisting}
+
+If you need to emit the signal use this function.
+
+\begin{lstlisting}[language=c++, gobble=2]
+  emit centroid.newValue();
+\end{lstlisting}
+
+\lvliv{UML}
+\img{centroid}{Centroid UML.}

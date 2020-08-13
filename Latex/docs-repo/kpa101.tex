@@ -1,0 +1,222 @@
+\lvliii{KPA101}
+
+This project create and interface between sensors, controllers,
+actuators and all the functionalities of the KPA101.
+
+\textbf{Requirements}
+
+\includegraphics[scale=0.7]{img/shilds/cpp.png}
+\includegraphics[scale=0.7]{img/shilds/cmake.png}
+\includegraphics[scale=0.7]{img/shilds/git.png}
+\includegraphics[scale=0.7]{img/shilds/doxygen.png}
+\includegraphics[scale=0.7]{img/shilds/sphinx.png}
+\includegraphics[scale=0.7]{img/shilds/win.png}
+
+\lvlv{Generality}
+
+\lvliv{Import}
+
+Import as an external library into your project by copy-paste the
+following lines in your \texttt{config.json}.
+
+\begin{lstlisting}[language=javascript, gobble=2]
+  {
+    "name"     : "PATKPA101",
+    "path"     : "gitlab.dei.unipd.it/PAT/KPA101.git",
+    "tag"      : "HEAD",
+    "available": "YES",
+    "getGui"   : "NO"
+  }
+\end{lstlisting}
+
+\lvliv{Prerequisites}
+
+The following libraries are auto fetched from the gitlab.dei.unipd.it
+host (ask the owner of this repo to become a member):
+
+\begin{itemize}
+  \tightlist
+  \item
+        \href{https://gitlab.dei.unipd.it/PAT/Utils.git}{Utils} 1.0.0
+\end{itemize}
+
+These other libraries need to be installed manually in your system:
+
+\begin{itemize}
+  \tightlist
+  \item
+        \href{https://www.qt.io/}{Qt} 5.14.2
+\end{itemize}
+
+The library documentation is generated through
+\href{http://www.doxygen.nl/download.html}{Doxygen 1.8.13}. Additional
+documentation in the \texttt{index} folder is generated through the
+\href{https://www.anaconda.com/products/individual}{python3} package
+\href{https://www.sphinx-doc.org/en/master/}{Sphinx} using the following
+extensions (which you can install through pip3):
+
+\begin{itemize}
+  \tightlist
+  \item
+        \href{https://pypi.org/project/Sphinx/}{Sphinx 3.0.2}
+  \item
+        \href{https://sphinx-rtd-theme.readthedocs.io/en/stable/}{Sphinx read
+          the doc theme} (to use the read the doc theme for html documentation)
+  \item
+        \href{https://pypi.org/project/breathe/}{Breathe} (to use the xml
+        output of doxygen)
+  \item
+        \href{https://pypi.org/project/sphinx-markdown-builder/}{Sphinx-markdown-builder}
+        (to generate the markdown version for gitlab wiki)
+\end{itemize}
+
+\texttt{pip3\ install\ Sphinx\ sphinx\_rtd\_theme\ breathe\ sphinx-markdown-builder}
+
+\lvlv{Usage}
+
+\lvliv{InputKPA}
+
+InputKPA is a utility structure that contains the three voltagies that
+KPA101 takes in input: \textbf{x}, \textbf{y}, \textbf{sum}.
+
+First you need to include the header file and use the namespace.
+
+\begin{lstlisting}[language=c++, gobble=2]
+  #include <PAT/InputKPA.h>
+  using namespace PAT;  
+\end{lstlisting}
+
+Then you can define the variable ready to be used.
+
+\begin{lstlisting}[language=c++, gobble=2]
+  InputKPA parameters;
+  parameters.x = 1;
+  parameters.y = 2;
+  parameters.sum = 3;
+\end{lstlisting}
+
+\lvliv{KPA101}
+
+KPA101 is a wrapper for the Kinesis libs that it enhance their
+functionalities.
+
+First you need to include the header file and use the namespace.
+
+\begin{lstlisting}[language=c++, gobble=2]
+  #include <PAT/KPA101.h>
+  using namespace PAT;
+\end{lstlisting}
+
+In order to define a variable you can choose to pass the \textbf{kpa id}
+or to let it automatically search it. If the search fails the program
+throw an exception "not found". To search the id you can use
+\textbf{find} and \textbf{findAll} functions.
+
+\begin{lstlisting}[language=c++, gobble=2]
+  KPA101 kpa101;          // auto
+  KPA101 kpa101("kpaid"); // with id
+  KPA101 kpa101(KPA101::find());       // with find
+  KPA101 kpa101(KPA101::findAll()[0]); // with findAll
+\end{lstlisting}
+
+\textbf{Sensor}
+
+Here are listed the functions useful for sensors.
+
+If you need the get the current input state you can use this function.
+
+\begin{lstlisting}[language=c++, gobble=2]
+  InputKPA getInputVoltage() const;
+\end{lstlisting}
+
+\textbf{Actuator}
+
+Here are listed the functions useful for actuators.
+
+You can set the output state of the KPA using one of these three
+functions. Output voltages are between 10 and 0.
+
+\begin{itemize}
+  \tightlist
+  \item
+        The function \textbf{setOutputVoltage} set the output voltages at the
+        selected values.
+  \item
+        The function \textbf{setOutputImpulse} send a single impulse with
+        length \textbf{\_time\_ms}.
+  \item
+        The function \textbf{setOutputCombinedImpulse} send two impulses at
+        the same time with with their respective lengths. I one finish before
+        the other its voltage go to zero.
+\end{itemize}
+
+\begin{lstlisting}[language=c++, gobble=2]
+  double voltageX = 1;
+  double voltageY = 1;
+  kpa101.setOutputVoltage(voltageX, voltageY);
+
+  double voltagePeakX = 1;
+  double voltagePeakY = 1;
+  double time_ms      = 1;
+  kpa101.setOutputImpulse(voltagePeakX, voltagePeakY, time_ms);
+
+  double voltagePeakX = 1;
+  double timeX_ms     = 1;
+  double voltagePeakY = 1;
+  double timeY_ms     = 1;
+  kpa101.setOutputCombinedImpulse(voltagePeakX, timeX_ms, voltagePeakY, timeY_ms);
+\end{lstlisting}
+
+\textbf{Controller}
+
+Here are listed the functions useful to use the PID controller
+integrated in the KPA.
+
+You can set the PID parameters using these functions. PID values are
+between 1 and 0.
+
+\begin{lstlisting}[language=c++, gobble=2]
+  auto parameters = kpa101.getPIDParameters();
+  parameters.value.proportionalGain = 1;
+  parameters.value.integralGain = 0.001;
+  parameters.value.differentialGain = 0.01;
+  kpa101.setPIDParameters(parameters);
+\end{lstlisting}
+
+You can enable/disable or check if enabled the PID controller using
+these functions.
+
+\begin{lstlisting}[language=c++, gobble=2]
+  if(!kpa101.isPIDActive())
+    kpa101.enablePID(true);
+  else
+    kpa101.enablePID(false);
+\end{lstlisting}
+
+You can enable/disable the auto open closed loop. If the intensity of
+the light is outside the interval \textbf{autoOpenInterval} then the PID
+controller is stopped. The intensity value is bounded between 10 and 0.
+
+\begin{lstlisting}[language=c++, gobble=2]
+  auto interval = kpa101.getAutoOpenInterval();
+  interval.value.min = 0.1;
+  interval.value.max = 1.3;
+  kpa101.setAutoOpenInterval(interval);
+  if(!kpa101.getAutoOpenCloseLoop())
+    kpa101.setAutoOpenCloseLoop(true);
+\end{lstlisting}
+
+The output of the PID controller is multiplied by a feedback constant
+that it range between -10 to +10 volts. Using this function you can set
+it.
+
+\begin{lstlisting}[language=c++, gobble=2]
+  auto feedback = kpa101.getFeedBackGain();
+  gain.value.x = 10;
+  gain.value.y = 10;
+  kpa101.setFeedBackGain(feedback);
+\end{lstlisting}
+
+\lvlv{UML}
+
+\img{KPA101}{KPA101 UML.}

@@ -1,0 +1,215 @@
+\lvliii{Utils}
+
+This project contains a set of utilities for the PAT's repositories.
+This REPO contains:
+
+\begin{itemize}
+  \tightlist
+  \item
+        Interval
+  \item
+        Point
+  \item
+        Range
+  \item
+        BoundedParameter
+\end{itemize}
+
+\textbf{Requirements}
+
+\includegraphics[scale=0.7]{img/shilds/cpp.png}
+\includegraphics[scale=0.7]{img/shilds/cmake.png}
+\includegraphics[scale=0.7]{img/shilds/git.png}
+\includegraphics[scale=0.7]{img/shilds/doxygen.png}
+\includegraphics[scale=0.7]{img/shilds/sphinx.png}
+\includegraphics[scale=0.7]{img/shilds/win.png}
+\includegraphics[scale=0.7]{img/shilds/mac.png}
+\includegraphics[scale=0.7]{img/shilds/linux.png}
+
+\lvliv{Generality}
+
+\lvlv{Import}
+
+Import as an external library into your project by copy-paste the
+following lines in your \texttt{config.json}.
+
+\begin{lstlisting}[language=javascript, gobble=2]
+  {
+    "name"     : "PATUtils",
+    "path"     : "gitlab.dei.unipd.it/PAT/Utils.git",
+    "tag"      : "HEAD",
+    "available": "YES",
+    "getGui"   : "NO"
+  }
+\end{lstlisting}
+
+
+\lvlv{Prerequisites}
+
+These libraries need to be installed manually in your system:
+
+\begin{itemize}
+  \tightlist
+  \item
+        \href{https://www.qt.io/}{Qt} 5.14.2
+\end{itemize}
+
+The library documentation is generated through
+\href{http://www.doxygen.nl/download.html}{Doxygen 1.8.13}. Additional
+documentation in the \texttt{index} folder is generated through the
+\href{https://www.anaconda.com/products/individual}{python3} package
+\href{https://www.sphinx-doc.org/en/master/}{Sphinx} using the following
+extensions (which you can install through pip3):
+
+\begin{itemize}
+  \tightlist
+  \item
+        \href{https://pypi.org/project/Sphinx/}{Sphinx 3.0.2}
+  \item
+        \href{https://sphinx-rtd-theme.readthedocs.io/en/stable/}{Sphinx read
+          the doc theme} (to use the read the doc theme for html documentation)
+  \item
+        \href{https://pypi.org/project/breathe/}{Breathe} (to use the xml
+        output of doxygen)
+  \item
+        \href{https://pypi.org/project/sphinx-markdown-builder/}{Sphinx-markdown-builder}
+        (to generate the markdown version for gitlab wiki)
+\end{itemize}
+
+\texttt{pip3\ install\ Sphinx\ sphinx\_rtd\_theme\ breathe\ sphinx-markdown-builder}
+
+\lvliv{Usage}
+
+\lvlv{Interval}
+
+Interval give the possibility to generate a base-type structure that it
+has a \textbf{min} and \textbf{max} value.
+
+First you need to include the header file and use the namespace.
+
+\begin{lstlisting}[language=c++, gobble=2]
+  #include <PAT/Utils/Interval.h>
+  using namespace PAT::Utils;
+\end{lstlisting}
+
+Then you can define the variable ready to be used.
+
+\begin{lstlisting}[language=c++, gobble=2]
+  Interval<double> interval{0, 100};
+  interval.min = 0;
+  interval.max = 100;
+\end{lstlisting}
+
+\lvlv{Point}
+
+Point give the possibility to generate a 2d-point that it has a
+\textbf{x} and \textbf{y} value.
+
+First you need to include the header file and use the namespace.
+
+\begin{lstlisting}[language=c++, gobble=2]
+  #include <PAT/Utils/Point.h>
+  using namespace PAT::Utils;
+\end{lstlisting}
+
+Then you can define the variable ready to be used.
+
+\begin{lstlisting}[language=c++, gobble=2]
+  Point<double> point{0, 100};
+  point.x = 0;
+  point.y = 100;  
+\end{lstlisting}
+
+It has some operations already defined suc as: sum, division, scalar
+product.
+
+\begin{lstlisting}[language=c++, gobble=2]
+  Point<double> point2{0, 100};
+  point += point2;
+  point -= point2;
+  point /= 3;
+  point *= 3;  
+\end{lstlisting}
+
+\lvlv{Rectangle}
+
+Rectangle give the possibility to generate a rectangular range defined
+by two points(\textbf{Point}) that they are \textbf{start} and
+\textbf{end}.
+
+First you need to include the header file and use the namespace.
+
+\begin{lstlisting}[language=c++, gobble=2]
+  #include <PAT/Utils/Rectangle.h>
+  using namespace PAT::Utils;
+\end{lstlisting}
+
+Then you can define the variable ready to be used.
+
+\begin{lstlisting}[language=c++, gobble=2]
+  Rectangle<double> rectangle{{0, 0}, {100, 100}};
+  rectangle.start.x = 0;
+  rectangle.start.y = 0;
+  rectangle.end.x = 100;
+  rectangle.end.y = 100;
+  Point<double> point{50, 50};
+  if(rectangle.isInside(point))
+   rectangle.end = point;
+\end{lstlisting}
+
+\lvlv{Circle}
+
+Circle give the possibility to generate a circular range defined by a
+central point(Point) and a radius.
+
+First you need to include the header file and use the namespace.
+
+\begin{lstlisting}[language=c++, gobble=2]
+  #include <PAT/Utils/Circle.h>
+  using namespace PAT::Utils;
+\end{lstlisting}
+
+Then you can define the variable ready to be used.
+
+\begin{lstlisting}[language=c++, gobble=2]
+  Circle<double> circle{{0, 0}, 100};
+  circle.center.x = 0;
+  circle.center.y = 0;
+  circle.radius = 100;
+  Point<double> point{50, 50};
+  if(circle.isInside(point))
+    circle.radius = point.x;
+  Rectangle<double> boundaries = circle.getBoundaries();
+\end{lstlisting}
+
+\lvlv{BoundedParameter}
+
+BoundedParameter give the possibility to define a parameter that it has:
+\textbf{min} value, \textbf{max} value, \textbf{increment} value, and
+\textbf{value} value.
+
+First you need to include the header file and use the namespace.
+
+\begin{lstlisting}[language=c++, gobble=2]
+  #include <PAT/Utils/BoundedParameter.h>
+  using namespace PAT::Utils;
+\end{lstlisting}
+
+Then you can define the variable ready to be used.
+
+\begin{lstlisting}[language=c++, gobble=2]
+  BoundedParameter<double> parameter{0, 100, 1, 50};
+  parameter.min = 0;
+  parameter.max = 100;
+  parameter.increment = 1;
+  parameter.value = 50;
+\end{lstlisting}
+
+\textbf{Warning}
+
+The order of these parameters is imporant because is the same of the IDS
+camera (min, max, increment).
+
+\lvliv{UML}
+
+\img{utils}{Utils UML.}
