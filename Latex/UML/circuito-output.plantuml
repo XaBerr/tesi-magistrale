@@ -1,0 +1,38 @@
+@startuml
+hide time-axis
+concise "SCLK" as SCLK
+binary "__SYNC__" as SYNC
+concise "SDIN" as SDIN
+concise "SDO" as SDO
+binary "__LDAC__" as LDAC
+
+@0
+SYNC is high
+SDIN is {-}
+SCLK is {-}
+SDO is {-}
+
+@1
+SYNC is low
+SDIN is "data"
+SCLK is "24 clock"
+
+@4
+SYNC is high
+SDIN is {-}
+SCLK is {-}
+
+@5
+SYNC is low
+SDIN is "NOP"
+SDO is "data"
+SCLK is "24 clock"
+
+@8
+SYNC is high
+SDIN is {-}
+SCLK is {-}
+SDO is {-}
+
+
+@enduml

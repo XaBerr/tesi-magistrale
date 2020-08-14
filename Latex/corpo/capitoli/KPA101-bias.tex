@@ -2,8 +2,9 @@
 Un problema del PID integrato nel KPA101 è che allinea il sistema solo al centro del sensore. Questo diventa un problema in sistemi molto complessi quando la posizione di ottimo allineamento non combacia con il centro del sensore. Per risolvere questo problema è stato creato un circuito che aggiunge delle tensioni di bias a quelle uscenti dal sensore ed entranti nel KPA101.
 
 \lvlii{Circuit design}
+\img{circuito/schematic}{Eagle schamtic view of the circuit.}
+Il circuito è stato realizzato in Eagle. Esso è composto da tre componenti principali: controller, digital analog converter (DAC), amplificatori. Il controller è un ESP32 montato sulla board Huzzah32 feather. Esso parla con il DAC attraverso l'interfaccia seriale (SDO/SDIN).
 \imgTwo{0.08}{circuito/top}{Circuit top view.}{0.08}{circuito/bottom}{Circuit bottom view.}
 \img{circuito/board.pdf}{Eagle board view of the circuit.}
-\img{circuito/schematic}{Eagle schamtic view of the circuit.}
 
 \lvlii{Software design}
