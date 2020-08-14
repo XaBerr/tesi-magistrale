@@ -1,10 +1,60 @@
 \lvli{KPA101 bias circuit}
 Un problema del PID integrato nel KPA101 è che allinea il sistema solo al centro del sensore. Questo diventa un problema in sistemi molto complessi quando la posizione di ottimo allineamento non combacia con il centro del sensore. Per risolvere questo problema è stato creato un circuito che aggiunge delle tensioni di bias a quelle uscenti dal sensore ed entranti nel KPA101.
 
-\lvlii{Circuit design}
+\lvlii{Circuit schematic}
 \img{circuito/schematic}{Eagle schamtic view of the circuit.}
-Il circuito è stato realizzato in Eagle. Esso è composto da tre componenti principali: controller, digital analog converter (DAC), amplificatori. Il controller è un ESP32 montato sulla board Huzzah32 feather. Esso parla con il DAC attraverso l'interfaccia seriale (SDO/SDIN).
+Il circuito è stato realizzato in Eagle. Esso è composto da tre componenti principali: controller, digital analog converter (DAC), amplificatori.
+Il controller (ESP32) è montato sulla feather-board Huzzah32 e si innesta nel circuito tramite un socket. Esso parla con il DAC attraverso il protocollo serial-peripheral-interface (SPI) utilizzando la convenzione most-significant-bit (MSB) with twos-complement-data-coding.
+Il DAC ha un output range di $\pm 2 V_{ref}$, esso viene combinato ai due segnali di input X, Y attraverso due amplificatori per strumentazione. Il voltaggio di referenza $V_{ref} = 2.048V$ viene generato da un'integrato a parte (ADR430ARMZ).
+Gli amplificatori (AD8226ARMZ) hanno dei regolatori di tensioni motabili in caso ci sia da correggere alcuni problemi di bilanciamento del circuito. Tutti gli integrati hanno due condensatori $0.1 \mu F, 10 \mu F$ utilizati come filtri per le alimentazioni. Le linee MISO, MOSI, SCK hanno una resistenza da $1 k\Omega$ utilizzata come pull-up. GLi amplificatori hanno sulle linee -IN, +IN delle resistenze da $100 k\Omega$ come pull-down. Dei jumper sono stati aggiunti per poter scegliere se usare l'alimentazione interna (KPA101) o esterna per gli integrati.
+
+\lvlii{Circuit board}
 \imgTwo{0.08}{circuito/top}{Circuit top view.}{0.08}{circuito/bottom}{Circuit bottom view.}
-\img{circuito/board.pdf}{Eagle board view of the circuit.}
+% \img{circuito/board.pdf}{Eagle board view of the circuit.}
+Il design delle piste è stato fatto usando le design rules circuit (DRC) di SparkFun. È stata portata particolare attenzione nel isolamento tra circuito digitale e analogico, inoltre si è cercato di mantenere della stessa lunghezza le line di comunicazione seriale. Il circuito finale è stato stagnato in laboratorio e testato.
 
 \lvlii{Software design}
+Il software è stato reallizato tramite PlatformIO. Esso si divide in due parti principali: la prima parte è un'interfaccia di comunicazione tra il controller e il DAC; la seconda è l'interfaccia grafica che permette ad un'utente di settare il valore di bias.
+
+\lvliii{Controller-DAC interface}
+\imgTwo{0.5}{circuito-input}{Simplify diagram of the sequence to write in a register.}{0.5}{circuito-output}{Simplify diagram of the sequence to read from a register.}
+
+L'interfaccia di comunicazione tra controller e DAC deve implementare tre funzioni: inizializzazione, scrittura da un registro, e lettura da un registro. Questa interfaccia è stata implementata attraverso la class AD5763. Un esempio di possibile main è il seguente.
+
+\begin{lstlisting}[language=c++, gobble=2]
+  #include <Arduino.h>
+  #include <SoftwareSerial.h>
+  #include "AD5763.h"
+  
+  void serialTrigger(String message);
+  
+  PINSConfig pins;
+  AD5763 ad5763(pins);
+  unsigned char input[2]  = {0x0F, 0x0F};
+  unsigned char input2[2] = {0x00, 0x00};
+  
+  void setup() {
+    Serial.begin(115200);
+  }
+  
+  void loop() {
+    serialTrigger(F("Press to continue to send a write message."));
+    ad5763.write(Register::data, DAC::B, input);
+    serialTrigger(F("Press to continue to send a read message."));
+    ad5763.read(Register::data, DAC::B);
+  }
+  
+  void serialTrigger(String message) {
+    Serial.println();
+    Serial.println(message);
+    Serial.println();
+  
+    while (!Serial.available())
+      ;
+  
+    while (Serial.available())
+      Serial.read();
+  }
+\end{lstlisting}
+
+Le procedure di lettura e scrittura sono state realizzate seguendo le sequenze descritte nella documentazion, i loro schemi semplificati è possibile vederli in \fig{circuito-input} and \fig{circuito-output}.

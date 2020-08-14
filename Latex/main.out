@@ -45,7 +45,9 @@
 \BOOKMARK [2][-]{subsection.4.4.7}{Controller}{section.4.4}% 45
 \BOOKMARK [2][-]{subsection.4.4.8}{Setup}{section.4.4}% 46
 \BOOKMARK [0][-]{chapter.5}{KPA101 bias circuit}{}% 47
-\BOOKMARK [1][-]{section.5.1}{Circuit design}{chapter.5}% 48
-\BOOKMARK [1][-]{section.5.2}{Software design}{chapter.5}% 49
-\BOOKMARK [0][-]{chapter.6}{Fiber injection setup}{}% 50
-\BOOKMARK [1][-]{section.6.1}{Align procedure}{chapter.6}% 51
+\BOOKMARK [1][-]{section.5.1}{Circuit schematic}{chapter.5}% 48
+\BOOKMARK [1][-]{section.5.2}{Circuit board}{chapter.5}% 49
+\BOOKMARK [1][-]{section.5.3}{Software design}{chapter.5}% 50
+\BOOKMARK [2][-]{subsection.5.3.1}{Controller-DAC interface}{section.5.3}% 51
+\BOOKMARK [0][-]{chapter.6}{Fiber injection setup}{}% 52
+\BOOKMARK [1][-]{section.6.1}{Align procedure}{chapter.6}% 53
