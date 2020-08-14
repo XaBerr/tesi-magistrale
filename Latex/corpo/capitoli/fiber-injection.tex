@@ -1,2 +1,48 @@
 \lvli{Fiber injection setup}
-\lvlii{Align procedure}
+Sebbene il software PAT si occupi di mantenere l'allineamento, per avere delle buone condizioni iniziali è necessario un allineamento manuale. Per semplificare le procedure verranno definiti degli acronimi per indicare le principali componenti in Tab. \ref{table:1}.
+
+\begin{table}[h!]
+  \centering
+  \begin{tabular}{ |c|c|c| }
+    \hline
+    Acronym & Description                                \\
+    \hline
+    AL      & Alice laser @1550nm used for communication \\
+    ALF     & Alice laser @1545nm used for PAT fine      \\
+    ALC     & Alice laser @1540nm used for PAT coarse    \\
+    ACC     & Alice camera @1540nm used for PAT coarse   \\
+    BF      & Bob fiber @1550nm used for communication   \\
+    BP      & Bob PSD @1545nm used for PAT fine          \\
+    BCC     & Bob camera @1540nm used for PAT coarse     \\
+    BLC     & Bob laser @1540nm used for PAT coarse      \\
+    \hline
+  \end{tabular}
+  \caption{Table to test captions and labels}
+  \label{table:1}
+\end{table}
+
+\lvlii{Coarse alignment}
+\begin{itemize}
+  \item montare il FSM centrato in x/y e a 45 gradi
+\end{itemize}
+\lvlii{Fine alignment}
+\lvlii{Multi-mode fiber alignment}
+\begin{itemize}
+  \item montare il FSM centrato in x/y e a 45 gradi
+  \item fare un home in modo che sia in posizione neutra
+  \item sparare con il trasmettitore 1550+980 e vedere che non divergano
+        collimare il trasmettitore 1550+980 e vedere che siano collimato (togliere la fibra) (980 non lo sarà)
+  \item controllare che 1550 sia 3.6mm nel punto della fibra $(4 * 1550 * 10^-9 / \pi * 18.4 / 10^-5)$
+  \item controllare che il 980 sia centrato nella cage
+  \item vedere la distanza del fuoco del 980
+  \item mettere una lente con il coating B (300mm) e controllare ancora dove sia il fuoco (ci aspettiamo sia intorno al 300)
+  \item posizionare il PSD nella posizione del fuoco (se non abbiamo spazio muovere la lente)
+  \item smontare il laser e metterlo sul banco
+  \item controllare che non diverga
+  \item controllare che sia collimato
+  \item rimontate tutto ed attivare il controllo
+  \item provare ad accoppiare in fibra
+  \item sparare due laser da 1550 e vedere che uno entra e uno esce nel posto giusto
+  \item misurare le perdite in dB in uscita dal laser 1550 prima di entrata in fibra nel trasmettitore (max 30 dB)
+\end{itemize}
+\lvlii{Single-mode fiber alignment}
