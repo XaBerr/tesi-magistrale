@@ -5,20 +5,21 @@ Sebbene il software PAT si occupi di mantenere l'allineamento, per avere delle b
   \centering
   \begin{tabular}{ |c|c|c| }
     \hline
-    Acronym & Description                                \\
+    Acronym & Description                                              \\
     \hline
-    AL      & Alice laser @1550nm used for communication \\
-    ALF     & Alice laser @1545nm used for PAT fine      \\
-    ALC     & Alice laser @1540nm used for PAT coarse    \\
-    ACC     & Alice camera @1540nm used for PAT coarse   \\
-    BL      & Bob laser's slot used for alignment        \\
-    BF      & Bob fiber @1550nm used for communication   \\
-    BP      & Bob PSD @1545nm used for PAT fine          \\
-    BCC     & Bob camera @1540nm used for PAT coarse     \\
-    BLC     & Bob laser @1540nm used for PAT coarse      \\
-    FMS     & Bob fast-steering mirror                   \\
-    DBS     & Bob dichroic beam splitter                 \\
-    PSD     & Bob PSD                                    \\
+    AL      & Alice laser @1550nm used for communication               \\
+    ALF     & Alice laser @1545nm used for PAT fine                    \\
+    ALC     & Alice laser @1540nm used for PAT coarse                  \\
+    ACC     & Alice camera @1540nm used for PAT coarse                 \\
+    \hline
+    BL      & Bob laser's slot used for alignment                      \\
+    BF      & Bob fiber-port collimator @1550nm used for communication \\
+    BP      & Bob PSD @1545nm used for PAT fine                        \\
+    BCC     & Bob camera @1540nm used for PAT coarse                   \\
+    BLC     & Bob laser @1540nm used for PAT coarse                    \\
+    FSM     & Bob fast-steering mirror                                 \\
+    DBS     & Bob dichroic beam splitter                               \\
+    PSD     & Bob PSD                                                  \\
     \hline
   \end{tabular}
   \caption{Table to test captions and labels}
@@ -42,6 +43,7 @@ Sebbene il software PAT si occupi di mantenere l'allineamento, per avere delle b
   \item collimare AL, AF e montarli sulla montatura ed assicurarsi che siano paralleli (coassiali)
   \item montare il FSM centrato in x/y e a 45 gradi rispetto il percorso ottico
   \item montare il DBS centrato in x/y e a 45 gradi rispetto il percorso ottico
+  \item montare la BF
   \item montare la lente e il PSD in maniera che il PSD sia posizionato sul fuoco della lente
   \item accendere AL, ALF ed assicurarsi che arrivino centrati in BF, BP. In caso contrario correggere con il posizionamento di FSM, DBS
   \item fare una calibrazione con il software PAT sul PSD
@@ -51,21 +53,21 @@ Sebbene il software PAT si occupi di mantenere l'allineamento, per avere delle b
 \end{itemize}
 
 \lvlii{Multi-mode fiber alignment}
-% \begin{itemize}
-%   \item fare un home in modo che sia in posizione neutra
-%   \item sparare con il trasmettitore 1550+980 e vedere che non divergano
-%         collimare il trasmettitore 1550+980 e vedere che siano collimato (togliere la fibra) (980 non lo sarà)
-%   \item controllare che 1550 sia 3.6mm nel punto della fibra $(4 * 1550 * 10^-9 / \pi * 18.4 / 10^-5)$
-%   \item controllare che il 980 sia centrato nella cage
-%   \item vedere la distanza del fuoco del 980
-%   \item mettere una lente con il coating B (300mm) e controllare ancora dove sia il fuoco (ci aspettiamo sia intorno al 300)
-%   \item posizionare il PSD nella posizione del fuoco (se non abbiamo spazio muovere la lente)
-%   \item smontare il laser e metterlo sul banco
-%   \item controllare che non diverga
-%   \item controllare che sia collimato
-%   \item rimontate tutto ed attivare il controllo
-%   \item provare ad accoppiare in fibra
-%   \item sparare due laser da 1550 e vedere che uno entra e uno esce nel posto giusto
-%   \item misurare le perdite in dB in uscita dal laser 1550 prima di entrata in fibra nel trasmettitore (max 30 dB)
-% \end{itemize}
+\begin{itemize}
+  \item smontare il laser e metterlo sul banco
+  \item smontare la BF e metterla sul manco dentro una cage attaccandoci una fibra multi modo
+  \item collegari una fibra e sparare un laser visibile attraverso la fibra
+  \item assicurarsi che il fascio uscente sia allineato con la cage e sia collimato
+  \item controllare che AL abbia un diametro di 3.6mm dove verrà posizionata la BF $(4 * 1550 * 10^-9 / \pi * 18.4 / 10^-5)$. Misurare la potenza del laser in quel punto.
+  \item rimontare BF con il laser visibile attaccato
+  \item controllare che il laser AL e il laser uscente da BF siano allineati. In caso contrario correggere con il movimenti di precisione della montatura del DBS (tutti i sistemi PAT devono essere accesi)
+  \item assicurarsi di avere un buon accoppiamento in fibra controllando che le perdite prima e dopo la fibra siano inferiori al 40\%
+\end{itemize}
+
 \lvlii{Single-mode fiber alignment}
+\img{fiberport}{This image shows the adjustments sequence for the fiber-port. The image is taken in the Thorlabs website.}
+\begin{itemize}
+  \item smontare la fibra multi modo e montare quella a singolo modo
+  \item Choose an sequence to make your adjustments, and keep to that sequence as shown in \fig{fiberport}.
+  \item Turn each adjuster clockwise to maximize the output, then continue to turn slightly beyond local maxima (to ~95\% of your local maximum). If turning an adjuster clockwise decreases output, skip that adjuster for that round of adjustments and repeat. Once the local maxima values begin to decrease, reverse the direction, and turn each adjuster to maximize the output, and not beyond.
+\end{itemize}
