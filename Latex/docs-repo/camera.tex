@@ -19,7 +19,7 @@ actual implementations are: IDS.
 Import as an external library into your project by copy-paste the
 following lines in your \texttt{config.json}.
 
-\begin{lstlisting}[language=javascript, gobble=2]
+\begin{lstlisting}[language=javascript, gobble=2, caption=PATCamera module inclusion.]
   {
     "name"     : "PATCamera",
     "path"     : "gitlab.dei.unipd.it/PAT/Camera.git",
@@ -79,13 +79,13 @@ extensions (which you can install through pip3):
 The \textbf{Frame} class manages all the processing of the images
 captured by the camera.
 
-\begin{lstlisting}[language=c++, gobble=2]
+\begin{lstlisting}[language=c++, gobble=2, caption=PAT/Camera/Frame inclusion.]
   #include <PAT/Camera/Frame.h>
 \end{lstlisting}
 
 This is an example of initialization.
 
-\begin{lstlisting}[language=c++, gobble=2]
+\begin{lstlisting}[language=c++, gobble=2, caption=Frame initialization example.]
   int width = 100;
   int height = 100;
   unsigned char imgBuffer[width * height] = {0};
