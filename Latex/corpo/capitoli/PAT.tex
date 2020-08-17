@@ -2,7 +2,7 @@
 \lvlii{Introduction}
 \img{PAT}{Pointing, Acquisition and Tracking model system.}
 To establish a communication between two non-isotropic sources (transmitter, receiver), an alignment system is required. The one used in the free-space QKD is called \textit{Pointing, Acquisition and Tracking} (\idx{PAT}) system. PAT system operates on two levels: the first level is called \textit{coarse} (\idx{PATC}) while the second level is called \textit{fine} (\idx{PATF}).
-The coarse aims to align the telescopes, while the fine aims to compensate the fluctuations of the transmitted signal. The signals typically used in this communication are laser signals. Both systems can be modeled with a feedback-control shown in the \fig{PAT}.
+The PATC aims to align the telescopes, while the PATF aims to compensate the fluctuations of the transmitted signal. The signals typically used in this communication are laser signals. Both systems can be modeled with a feedback-control shown in the \fig{PAT}.
 Given a nominal position, the controller will estimate the error via a sensor. Once the estimate is completed, it will try to compensate the error by an actuator.
 Now will presented a possible implementations for these systems.
 The PAT system can be divide in two parts: the software (\idx{PATSW}), and the hardware (\idx{PATHW}).
@@ -71,8 +71,8 @@ This system will maintain the aiming of both telescopes in both cases: for large
 \lvlii{Fine}
 In this section we will explain the operation of the PATF and the physical implementation used in the fiber injection experiment.
 \lvliii{Logical design}
-\img{PAT-fine-v1}{PAT fine model-implementation system with position sensitive device.}
-\img{PAT-fine-v2}{PAT fine-v2 model-implementation system with camera.}
+\img{PAT-fine-v1}{PATF model-implementation system with position sensitive device.}
+\img{PAT-fine-v2}{PATF model-implementation system with camera.}
 
 Once the PATC system has aligned the telescopes then the PATF goes in action. To compensate for the fluctuations of the transmitted signal, a second beam is superimposed on the beam of the signal. If the wavelengths of the two beams are sufficiently close together, then both beams will be subject to the same fluctuations and thus compensate the second beam will also compensate the first.
 This system is essential if you want to inject the free-space signal into a single-mode fiber. In this case the sensor can be a camera for long distances or a PSD for small distances.
