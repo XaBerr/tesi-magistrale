@@ -177,7 +177,7 @@ class PAT.Controller.Calibrated extends QObject {
   - conditionCalibration : std::condition_variable
   - threshold : PAT::Utils::BoundedParameter<double>
   - analysis : CalibrationAnalysis
-  ..one shot controller..
+  ..One shot controller..
   - threadOneShotController : std::shared_ptr<std::thread>
   - oneShotControllerOn : bool
   - thresholdIntensity : PAT::Utils::Interval<double>

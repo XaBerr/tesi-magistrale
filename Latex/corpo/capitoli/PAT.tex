@@ -1,24 +1,26 @@
 \lvli{Pointing Acquisition Tracking system}
 \lvlii{Introduction}
 \img{PAT}{Pointing, Acquisition and Tracking model system.}
-To establish a communication between two non-isotropic sources (transmitter, receiver), an alignment system is required. The one used in the free-space QKD is called \textit{Pointing, Acquisition and Tracking} (PAT) system. PAT system operates on two levels: the first level is called \textit{coarse} while the second level is called \textit{fine}.
+To establish a communication between two non-isotropic sources (transmitter, receiver), an alignment system is required. The one used in the free-space QKD is called \textit{Pointing, Acquisition and Tracking} (\idx{PAT}) system. PAT system operates on two levels: the first level is called \textit{coarse} (\idx{PATC}) while the second level is called \textit{fine} (\idx{PATF}).
 The coarse aims to align the telescopes, while the fine aims to compensate the fluctuations of the transmitted signal. The signals typically used in this communication are laser signals. Both systems can be modeled with a feedback-control shown in the \fig{PAT}.
 Given a nominal position, the controller will estimate the error via a sensor. Once the estimate is completed, it will try to compensate the error by an actuator.
 Now will presented a possible implementations for these systems.
+The PAT system can be divide in two parts: the software (\idx{PATSW}), and the hardware (\idx{PATHW}).
+PATHW can change a lot depending on what experiment you want to do because different experiments require different components. PATSW must adapt to the PATHW but at the same time must provide an equal interface to the user, this is because the goal is always the same: align the system at the desired point.
 
 \lvlii{Components}
-In this section will be listed all the components used into PAT system.
+In this section will be listed all the components of the PATHW which a software implementation has been made in this thesis. In addition, these components will then be used in the single-mode fiber injection experiment.
 \lvliii{Sensors}
 \lvliv{Camera}
 \img{pictures/camera}{IDS camera.}
-The industrial camera is the main sensor for communication. Depending on the model it can cover all the spectra useful for communication with lasers: ultraviolet, visible, infrared.
-It typically has a framerate that can range from 30Hz to 200Hz. The main advantage of the camera over the other sensors is that it is possible to reduce the framerate to increase the exposure time to compensate for the typical attenuations of long distances.
+The industrial \idx{camera} is the main sensor for communication. Depending on the model it can cover all the spectra useful for communication with lasers: ultraviolet, visible, infrared.
+It typically has a framerate that can range from 25Hz to 200Hz. The main advantage of the camera over the other sensors is that it is possible to reduce the framerate to increase the exposure time to compensate for the typical attenuations of long distances.
 The camera returns an image typically of the size 1280x1024 pixels. This image will then have to be processed by the computer to calculate the location of the laser signal.
 The cameras used in the PAT setup are IDS's cameras with CMOS technology.
 
 \lvliv{Position Sensing Detectors}
 \imgs{0.2}{pictures/PSD}{ThorLabs PSD.}
-The Position Sensing Detectors (PSD) utilizes a silicon photodiode-based pincushion-tetra-lateral sensor to accurately measure the displacement of an incident beam relative to the calibrated center. These devices are ideal for measuring the movement of a beam, the distance traveled, or as feedback for alignment systems.
+The Position Sensing Detectors (\idx{PSD}) utilizes a silicon photodiode-based pincushion-tetra-lateral sensor to accurately measure the displacement of an incident beam relative to the calibrated center. These devices are ideal for measuring the movement of a beam, the distance traveled, or as feedback for alignment systems.
 The spectrum covered is from 320nm to 1100nm. This device needs a hardware driver to be used. Depending on the position of the laser in the sensor, it returns three voltages: $\Delta x, \Delta y, SUM$.
 From these three components it is possible to obtain the position of the laser, using the following equations:
 $$x = \frac{L_x \cdot \Delta x}{2 \cdot SUM}, y = \frac{L_y \cdot \Delta y}{2 \cdot  SUM}$$
@@ -28,13 +30,13 @@ The PSD is typically better than the camera at short distances because the integ
 \lvliii{Drivers}
 \lvliv{KPA101}
 \imgs{0.25}{pictures/KPA101}{ThorLabs KPA101.}
-The KPA101 is a device with three main functions: driver for the PSD, driver for the FSM, and natively implement a PID controller. Connecting it to a computer gives the ability to control these three functions separately.
+The \idx{KPA101} is a device with three main functions: driver for the PSD, driver for the FSM, and natively implement a PID controller. Connecting it to a computer gives the ability to control these three functions separately.
 
 
 \lvliii{Actuators}
 \lvliv{Fast Steering Mirror}
 \imgs{2.5}{pictures/FSM}{SmarAct FSM.}
-The fast-steering mirror is a mirror housed on a mount able to do tip and tilt. It typically has an angular velocity of 15 degree/s and a range of motion of $\pm 2.5$ degree.
+The fast-steering mirror (\idx{FSM}) is a mirror housed on a mount able to do tip and tilt. It typically has an angular velocity of 15 degree/s and a range of motion of $\pm 2.5$ degree.
 The FSM used for the PAT is mounted into a SmarAct frame that takes advantage of the technology stick-slip piezo stages. The piezo actuator combine macroscopic travel with nanometer resolution and high velocities of several millimeters per second.
 It requires an external driver to be managed because its movement is controlled by two voltages (x,y). The KPA101 is a driver compatible with the technology of this actuator.
 
@@ -43,22 +45,23 @@ It requires an external driver to be managed because its movement is controlled 
 The telescope mount used in the PAT is the AZ-GTI of the Skywatcher. It is an altitude-azimuth mount controlled by two DC servo motor. It needs a computer to do the targeting.
 
 \lvliii{Controllers}
-Ideally there are countless controllers available for the PAT system, but only two are used: one shot, and PID KPA101.
+Ideally there are countless controllers available for the PAT system, but only two are used: One shot, and PID KPA101.
 \lvliv{One Shot}
-One shot is a computer-made controller that reads the error in pixels between the input signal and the desired position, and generates a proportional correction signal for the actuator.
+\idx{One shot} is a computer-made controller that reads the error in pixels between the input signal and the desired position, and generates a proportional correction signal for the actuator.
 Since the devices are not ideal, this controller will have to make a calibration for each device, in order to obtain the best voltages to be given to the various actuators.
 
 \lvliv{PID KPA101}
-This controller is Proportional Integral Derivatives (PID) and is integrated into the KPA101. A computer is required to specify PID parameters. The integrated PID system has a big limitation, it allows to align the beam only to the center of the system, this position is not always optimal in case of complex setups.
+The \idx{PID KPA101} controller is Proportional Integral Derivatives (PID) and is integrated into the KPA101. A computer is required to specify PID parameters. The integrated PID system has a big limitation, it allows to align the beam only to the center of the system, this position is not always optimal in case of complex setups.
 
 \lvlii{Coarse}
+In this section we will explain the operation of the PATC and the physical implementation used in the fiber injection experiment.
 \lvliii{Logical design}
-\img{PAT-coarse}{PAT coarse model-implementation system.}
-One way to point a telescope in a given region of space, it is to put a laser in that region, pointing in the direction of the telescope, and in the telescope mount a camera to see the laser.
-If the camera is aligned with the telescope, then when the laser is centered in the camera, the telescope will be aligned in the desired direction.
+\img{PAT-coarse}{PATC model-implementation system.}
+One way to point a telescope in a given region of space is to put in that region a laser pointing in the direction of the telescope, and in the telescope mount a camera to see the laser.
+If the camera is aligned with the telescope and the laser is centered in the camera, then the telescope will be aligned in the desired direction.
 To align two telescopes (Alice, Bob) will be needed to mount this system twice, so that Alice has a camera that points towards Bob’s laser and vice versa.
 
-In this alignment system a camera is used as a sensor to express the system error in pixels. This error is handled by an ad-hoc developed controller that takes the name of \textit{one shot} and will be explained in the chapter \ref{chapter:2.2}. Once the controller has complete the error calculation, it will move the two-axis engine on the mount to align the telescope.
+In the fiber injection experiment a camera is used as a sensor to express the system error in pixels. This error is handled by an ad-hoc developed controller called One shot. Once the controller has complete the error calculation, it will move the two-axis engine on the mount to align the telescope.
 
 This system will maintain the aiming of both telescopes in both cases: for large movements such as the displacement of the two telescopes, and for smaller ones such as vibrations at low frequencies.
 
@@ -66,13 +69,17 @@ This system will maintain the aiming of both telescopes in both cases: for large
 %  TODO: farmi dare uno schema del circuito ottico
 
 \lvlii{Fine}
+In this section we will explain the operation of the PATF and the physical implementation used in the fiber injection experiment.
 \lvliii{Logical design}
 \img{PAT-fine-v1}{PAT fine model-implementation system with position sensitive device.}
 \img{PAT-fine-v2}{PAT fine-v2 model-implementation system with camera.}
 
-Once the coarse system has aligned the telescopes then the fine goes in action. To compensate for the fluctuations of the transmitted signal, a second beam is superimposed on the beam of the signal. If the wavelengths of the two beams are sufficiently close together, then both beams will be subject to the same fluctuations and thus compensate the second beam will also compensate the first.
-This system is essential if you want to inject the free-space signal into a single-mode fiber. In this case the sensor can be a camera for long distances or a position sensitive device (PSD) for small distances.
-The PSD can exploits another control system called \textit{PID KPA101} which will be explained in the chapter \ref{chapter:2.2}. The sensor will read the position of the laser and send it to the controller that will correct it using a fast-steering mirror (FSM). This system will be able to compensate for the atmosphere fluctuations and high frequency vibrations.
+Once the PATC system has aligned the telescopes then the PATF goes in action. To compensate for the fluctuations of the transmitted signal, a second beam is superimposed on the beam of the signal. If the wavelengths of the two beams are sufficiently close together, then both beams will be subject to the same fluctuations and thus compensate the second beam will also compensate the first.
+This system is essential if you want to inject the free-space signal into a single-mode fiber. In this case the sensor can be a camera for long distances or a PSD for small distances.
+
+In the fiber injection experiment a PSD is used as a sensor and it exploits another control system PID KPA101. The sensor will read the position of the laser and send it to the controller that will correct it using a FSM.
+
+This system will be able to compensate for the atmosphere fluctuations and high frequency vibrations.
 
 \lvliii{Physical implementation}
 %  TODO: farmi dare uno schema del circuito ottico
