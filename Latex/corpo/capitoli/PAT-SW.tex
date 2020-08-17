@@ -1,9 +1,9 @@
 \lvli{PAT software design}
-Two analyses were carried out to build this project. An analysis that focuses on the components available, and an analysis that focuses on what a user expects to use. Having these two analyses the construction of the single repositories becomes immediate. The construction is reduced to connecting the functionalities expected by users to the various components available.
+Two analyses were carried out in order to build the PATSW part of this project. An analysis that focuses on the components available, and an analysis that focuses on what a user expects to use. Having these two analyses the construction of the single repositories becomes immediate. The construction is reduced to connecting the functionalities expected by users to the various components available.
 
 \lvlii{The components analysis}
-The aim of this project was to develop modular software that could control a PAT system. The PAT system had to be able to align the telescope with different light sources such as the light of a star or the laser of another telescope.
-In addition, the PAT system had to be able to control all devices in the \sect{Components}.
+The aim of this project was to develop modular software that could control a PAT system. The PATSW had to be able to align the telescope with different light sources such as the light of a star or the laser of another telescope.
+In addition, the PATSW had to be able to control all devices in the \sect{Components}.
 Starting from the PAT model \fig{PAT} a simplified model has been developed \fig{simplified-model} to highlight the various components to be implemented.
 In this model we see that there are three main families to implement: sensors, controllers, and actuators. The arrows in this diagram indicate the information passages, in other words, actuator and sensor will have to communicate with the controller and vice versa.
 It is therefore necessary to establish a common interface between the various sensors and actuators to connect them with the controllers. The study of these interfaces required multiple iterations to ensure maximum flexibility.
@@ -15,17 +15,17 @@ In this section will be reported the final interface that an user expects to use
 
 \lvliii{Possible setups}
 In this system there are three basic setups:
-\textbf{mirror-camera-pc}, \textbf{skywatcher-camera-pc}, and \textbf{mirror-PSD-KPA101}.
+mirror-camera-pc, skywatcher-camera-pc, and mirror-PSD-KPA101.
 
 \lvliv{Mirror-camera-pc}
 In this setup the pc is connected with two devices: the first is
 the KPA101 used to control the mirror; the second is the camera used as
-sensor. Here two types of controllers are available: \textbf{manual},
-\textbf{calibrated}. Manual give the possibility to move the mirror using a joystick taking
+sensor. Here two types of controllers are available: manual,
+calibrated. Manual give the possibility to move the mirror using a joystick taking
 in input times and voltages. Calibrated has two functionalities: the first is to use a joystick
 similar to manual that it work taking in input a distance in pixels; the
 second is to use and automatic controller that align the centroid to the
-target that it is called \textbf{One shot}.
+target that it is called One shot.
 
 \lvliv{Skywatcher-camera-pc}
 In this setup the pc is connected with two devices: the first is
@@ -34,7 +34,7 @@ sensor. The controllers available are the same of the mirror-camera-pc setup.
 
 \lvliv{Mirror-PSD-KPA101}
 In this setup the pc is connected only to the KPA101, the KPA101 is
-then connected to the mirror and to the PSD. Here three types of controllers are available: \textbf{manual}, \textbf{calibrated}, \textbf{PIDKPA101}. Manual and calibrated are the same as the previous point. PIDKPA101 use the integrated PID-controller available in the KPA101.
+then connected to the mirror and to the PSD. Here three types of controllers are available: manual, calibrated, PIDKPA101. Manual and calibrated are the same as the previous point. PIDKPA101 use the integrated PID-controller available in the KPA101.
 
 \lvliii{Possible GUIs}
 
@@ -46,23 +46,23 @@ information, the right side show the controllers information.
 In the sensor's side is composed by (form the top):
 
 \begin{itemize}
-  \itemsep1pt\parskip0pt\parsep0pt
-  \item
-        the frame rendering that contains three objects:
-  \item
-        the red dots represents the centroid of the beam;
-  \item
-        the red square represents the area where the controller calculates the
-        centroid;
-  \item
-        the green circle represents the target;
-  \item
-        the set of parameters of the camera/PSD;
-  \item
-        the set of parameters to position the target;
-  \item
-        the plotter that show in real time the distances in pixels between the
-        target and the centroid.
+      \itemsep1pt\parskip0pt\parsep0pt
+      \item
+            the frame rendering that contains three objects:
+      \item
+            the red dots represents the centroid of the beam;
+      \item
+            the red square represents the area where the controller calculates the
+            centroid;
+      \item
+            the green circle represents the target;
+      \item
+            the set of parameters of the camera/PSD;
+      \item
+            the set of parameters to position the target;
+      \item
+            the plotter that show in real time the distances in pixels between the
+            target and the centroid.
 \end{itemize}
 
 The controller's side there are three tabs: manual controller, calibrated
@@ -83,7 +83,7 @@ section is reserved for it.
 \imgThree{0.3}{calibrated1}{Controller interface.}{0.3}{calibrated2}{Analyzer interface.}{0.3}{calibrated3}{Graph interface.}
 
 The aim of this controller is to be able to use the \emph{One shot
-  controller}, but before to be able to use it a calibration is required. The calibration procedure can be decomposed into two parts:
+      controller}, but before to be able to use it a calibration is required. The calibration procedure can be decomposed into two parts:
 data acquisition, data analysis.
 
 \paragraph{Data acquisition}
@@ -92,13 +92,13 @@ In this phase several calibration points will be taken and stored into a file. T
 is the following:
 
 \begin{itemize}
-  \itemsep1pt\parskip0pt\parsep0pt
-  \item
-        in the \emph{Analyzer} tab set the voltages and the time interval;
-  \item
-        autogenerate the filename;
-  \item
-        start the point acquisition.
+      \itemsep1pt\parskip0pt\parsep0pt
+      \item
+            in the \emph{Analyzer} tab set the voltages and the time interval;
+      \item
+            autogenerate the filename;
+      \item
+            start the point acquisition.
 \end{itemize}
 
 \paragraph{Data analysis}
@@ -107,17 +107,17 @@ In this phase the calibration points storde into a
 file will be analyzed to retrieve the low/high voltages configuration. The procedure is the following:
 
 \begin{itemize}
-  \itemsep1pt\parskip0pt\parsep0pt
-  \item
-        in the \emph{Controller} tab select the file and press \emph{Upload
-          and Calibrated};
-  \item
-        go into \emph{Graphs} tab and check that the analysis is completed
-        correctly;
-  \item
-        if everything is ok then go into the \emph{Controller} tab and set the
-        configuration to the low voltages or high voltages pressing the
-        corresponding button.
+      \itemsep1pt\parskip0pt\parsep0pt
+      \item
+            in the \emph{Controller} tab select the file and press \emph{Upload
+                  and Calibrated};
+      \item
+            go into \emph{Graphs} tab and check that the analysis is completed
+            correctly;
+      \item
+            if everything is ok then go into the \emph{Controller} tab and set the
+            configuration to the low voltages or high voltages pressing the
+            corresponding button.
 \end{itemize}
 
 \paragraph{One shot controller}
@@ -136,13 +136,13 @@ The last two repositories that have been created are: Docs that contains quick d
 \lvlii{The repositories documentation}
 This section lists all the documentation of the developed repositories.
 
-  {\parindent0pt
-    \input{docs-repo/utils.tex}
-    \input{docs-repo/centroid.tex}
-    \input{docs-repo/kpa101.tex}
-    \input{docs-repo/mirror.tex}
-    \input{docs-repo/psd.tex}
-    \input{docs-repo/camera.tex}
-    \input{docs-repo/controller.tex}
-    \input{docs-repo/setup.tex}
-  }
+      {\parindent0pt
+            \input{docs-repo/utils.tex}
+            \input{docs-repo/centroid.tex}
+            \input{docs-repo/kpa101.tex}
+            \input{docs-repo/mirror.tex}
+            \input{docs-repo/psd.tex}
+            \input{docs-repo/camera.tex}
+            \input{docs-repo/controller.tex}
+            \input{docs-repo/setup.tex}
+      }

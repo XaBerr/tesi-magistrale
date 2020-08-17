@@ -13,7 +13,7 @@ In this section will be listed all the components of the PATHW which a software 
 \lvliii{Sensors}
 \lvliv{Camera}
 \img{pictures/camera}{IDS camera.}
-The industrial \idx{camera} is the main sensor for communication. Depending on the model it can cover all the spectra useful for communication with lasers: ultraviolet, visible, infrared.
+The industrial camera is the main sensor for communication. Depending on the model it can cover all the spectra useful for communication with lasers: ultraviolet, visible, infrared.
 It typically has a framerate that can range from 25Hz to 200Hz. The main advantage of the camera over the other sensors is that it is possible to reduce the framerate to increase the exposure time to compensate for the typical attenuations of long distances.
 The camera returns an image typically of the size 1280x1024 pixels. This image will then have to be processed by the computer to calculate the location of the laser signal.
 The cameras used in the PAT setup are IDS's cameras with CMOS technology.
@@ -46,7 +46,7 @@ The telescope mount used in the PAT is the AZ-GTI of the Skywatcher. It is an al
 
 \lvliii{Controllers}
 Ideally there are countless controllers available for the PAT system, but only two are used: One shot, and PID KPA101.
-\lvliv{One Shot}
+\lvliv{One shot}
 \idx{One shot} is a computer-made controller that reads the error in pixels between the input signal and the desired position, and generates a proportional correction signal for the actuator.
 Since the devices are not ideal, this controller will have to make a calibration for each device, in order to obtain the best voltages to be given to the various actuators.
 
