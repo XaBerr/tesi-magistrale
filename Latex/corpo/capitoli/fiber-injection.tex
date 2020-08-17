@@ -1,5 +1,8 @@
-\lvli{Fiber injection setup}
-Although the PAT software maintains alignment, manual alignment is required for good initial condition. The alignment procedure will be reported in this section, to simplify it will be defined acronyms of the main components in Tab. \ref{table:1}.
+\lvli{Fiber injection experiment}
+In this experiment, a PAT system was developed between two telescopes in order to realize QKD with single-mode fiber injection.
+The objective of this experiment was to send a signal between two telescopes, making sure that it was injected in single-mode fibre, with attenuation lower than the 50\%.
+
+Although the PATSW maintains alignment, manual alignment of the single components of the PATHW is required. The alignment procedure will be reported in this section, to simplify it will be defined acronyms of the main components in Tab. \ref{table:1}.
 
 \begin{table}[h!]
   \centering
@@ -25,6 +28,7 @@ Although the PAT software maintains alignment, manual alignment is required for 
   \caption{Table to test captions and labels}
   \label{table:1}
 \end{table}
+The complete alignment procedure for PATHW will be divided into parts. At the end of each part it will be needed an activation of the corresponding PATSW in order to move into the next one.
 
 \lvlii{Coarse alignment}
 \begin{itemize}
@@ -34,7 +38,7 @@ Although the PAT software maintains alignment, manual alignment is required for 
   \item ensure that ACC, BCC cameras focus on the plane of ALC, BLC lasers
   \item bet Alice on Bob and vice versa, make sure ALC, BLC are "quite" centered in the BCC, ACC rooms. Otherwise correct with laser tip-tilt
   \item save the camera alignment points
-  \item make a calibration with PAT software on both mounts
+  \item make a calibration with PATSW on both mounts
   \item enable the One shot controller
 \end{itemize}
 
@@ -46,9 +50,9 @@ Although the PAT software maintains alignment, manual alignment is required for 
   \item mount the BF
   \item mount the lens and PSD so that the PSD is positioned on the lens focus
   \item turn on AL, ALF and make sure they arrive centered in BF, BP. Otherwise correct with the placement of FSM, DBS
-  \item calibration with PAT software on PSD
-  \item make a Home with PAT software to put the FSM in its tip-tilt neutral position, then correct its placement so the laser is still visible in the PSD
-  \item recalibrate with PAT software
+  \item calibration with PATSW on PSD
+  \item make a Home with PATSW to put the FSM in its tip-tilt neutral position, then correct its placement so the laser is still visible in the PSD
+  \item recalibrate with PATSW
   \item activate the PID control
 \end{itemize}
 
@@ -69,4 +73,5 @@ Although the PAT software maintains alignment, manual alignment is required for 
   \item disassemble the multi-mode fiber and mount the single-mode fiber
   \item choose an sequence to make your adjustments, and keep to that sequence as shown in \fig{fiberport}
   \item turn each adjuster clockwise to maximize the output, then continue to turn slightly beyond local maxima (to ~95\% of your local maximum). If turning an adjuster clockwise decreases output, skip that adjuster for that round of adjustments and repeat. Once the local maxima values begin to decrease, reverse the direction, and turn each adjuster to maximize the output, and not beyond
+  \item make sure to have a good fiber coupling by checking that the losses before and after the fiber are less than 50\%
 \end{itemize}
