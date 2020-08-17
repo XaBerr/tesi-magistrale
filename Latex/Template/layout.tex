@@ -1,6 +1,5 @@
 \newfont{\ttvar}{cmvtt10 scaled 1200}     % nuovo carattere tipi courier a spaziatura variabile per le dimostrazioni
 
-
 % interlinea
 %\renewcommand{\baselinestretch}{1.25}
 
@@ -27,8 +26,6 @@
 \parindent = 0.7cm
 \captionmargin = 0.7cm
 
-
-
 % stile pagina
 \pagestyle{fancy}
 \renewcommand{\chaptermark}[1]{\markboth{\chaptername\ \thechapter.\ #1 }{}}
@@ -41,17 +38,9 @@
 
 % ridefinisco lo stile plain
 \fancypagestyle{plain}{ \fancyhead{} \fancyfoot{}
-\fancyfoot[C]{\sffamily \thepage}
-\renewcommand{\headrulewidth}{0pt}}
+  \fancyfoot[C]{\sffamily \thepage}
+  \renewcommand{\headrulewidth}{0pt}}
 
 % stile per i titoli
 \allsectionsfont{\sffamily \raggedright}
 
-% definisco i colori
-\definecolor{light_yellow}{rgb}{1,1,0.7}
-\definecolor{dark_yellow}{rgb}{1,1,0.5}
-\definecolor{my_green}{rgb}{0,0.6,0}
-\definecolor{my_red}{rgb}{0.8,0,0}
-
-% definisco il codice sql
-\lstset{basicstyle=\small\ttfamily,language=SQL, keywordstyle=\color{blue},commentstyle=\color{blue}, stringstyle=\color{my_green}}
