@@ -1,7 +1,7 @@
 \lvliii{PSD}
 
 This project contains the interface \textbf{PSD} for all PSD. The actual
-implementations are: PDQ90A.
+implementations are: PDP90A.
 
 \textbf{Requirements}
 
@@ -97,27 +97,27 @@ To inherit the class you have to overwrite the three methods:
     };    
 \end{lstlisting}
 
-\lvlv{PDQ90A}
+\lvlv{PDP90A}
 
-The \textbf{PDQ90A} class is a PSD implementation that it works with the
+The \textbf{PDP90A} class is a PSD implementation that it works with the
 \textbf{KPA101}. Here is the include code.
 
 \begin{lstlisting}[language=c++, gobble=2]
   #include <PAT/KPA101.h>
-  #include <PAT/PSD/PDQ90A.h>
+  #include <PAT/PSD/PDP90A.h>
   using namespace PAT::PSD;  
 \end{lstlisting}
 
-When you istantiate the \textbf{PDQ90A} you must pass a \textbf{KPA101}
-istance. The \textbf{PDQ90A} is typically used as polymorphism with
+When you istantiate the \textbf{PDP90A} you must pass a \textbf{KPA101}
+istance. The \textbf{PDP90A} is typically used as polymorphism with
 \textbf{PSD}.
 
 \begin{lstlisting}[language=c++, gobble=2]
   std::shared_ptr<PAT::KPA101> kpa101   = std::make_shared<PAT::KPA101>();
-  std::shared_ptr<PAT::PSD::PSD> psd = std::make_shared<PAT::PSD::PDQ90A>(kpa101);
+  std::shared_ptr<PAT::PSD::PSD> psd = std::make_shared<PAT::PSD::PDP90A>(kpa101);
 \end{lstlisting}
 
-You can enable/disable or check if enabled the PDQ90A's acquisition
+You can enable/disable or check if enabled the PDP90A's acquisition
 using these functions.
 
 \begin{lstlisting}[language=c++, gobble=2]
@@ -150,12 +150,12 @@ You can get the other parameters using these functions.
 \lvlv{PSDWiget}
 
 The \textbf{PSDWiget} class is a widget fot the PSD's implementations.
-Here I present the PDQ90A example. The include code is the following.
+Here I present the PDP90A example. The include code is the following.
 
 \begin{lstlisting}[language=c++, gobble=2]
   #include <QApplication>
   #include <PAT/PSD/gui/PSDWidget.h>
-  #include <PAT/PSD/PDQ90A.h>
+  #include <PAT/PSD/PDP90A.h>
   using namespace PAT::PSD;
 \end{lstlisting}
 
@@ -166,7 +166,7 @@ This is a simple \textbf{main} example.
     QApplication a(argc, argv);
     PSDWidget cameraWidget;
     std::shared_ptr<PAT::KPA101> kpa101 = std::make_shared<PAT::KPA101>();
-    std::shared_ptr<PSD> camera         = std::make_shared<PDQ90A>(kpa101);
+    std::shared_ptr<PSD> camera         = std::make_shared<PDP90A>(kpa101);
     cameraWidget.setPSD(camera);
     cameraWidget.show();
     camera->start();
@@ -182,7 +182,7 @@ can use this code.
   QVBoxLayout *mainLayout             = new QVBoxLayout();
   PSDWidget *psdWidget                = new PSDWidget();
   std::shared_ptr<PAT::KPA101> kpa101 = std::make_shared<PAT::KPA101>();
-  std::shared_ptr<PSD> camera         = std::make_shared<PDQ90A>(kpa101);
+  std::shared_ptr<PSD> camera         = std::make_shared<PDP90A>(kpa101);
   
   psdWidget->setPSD(psd);
   mainLayout->addWidget((QWidget *)psdWidget);

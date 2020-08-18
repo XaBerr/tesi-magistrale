@@ -11,7 +11,7 @@ namespace PAT {
   namespace PSD {
     interface PSD
     class PSDWidget
-    class PDQ90A
+    class PDP90A
   }
 }
 
@@ -37,13 +37,13 @@ interface PAT.PSD.PSD extends QObject {
   newFrameSignal()
 }
 
-class  PAT.PSD.PDQ90A implements  PAT.PSD.PSD {
+class  PAT.PSD.PDP90A implements  PAT.PSD.PSD {
   - kpa101 : std::shared_ptr<PAT::KPA101>
   - threadNewFrame : QFuture<void>
   - maxVoltage : int
   ---
-  + PDQ90A(_kpa101 : std::shared_ptr<PAT::KPA101>&)
-  + ~PDQ90A()
+  + PDP90A(_kpa101 : std::shared_ptr<PAT::KPA101>&)
+  + ~PDP90A()
   + start()
   + stop()
   + getIntensity() : double
@@ -77,7 +77,7 @@ PAT.PSD.PSD --* PAT.Centroid
 PAT.PSD.PSD --* PAT.Utils.Point
 PAT.PSD.PSD --* PAT.Utils.BoundedParameter
 
-PAT.PSD.PDQ90A --* PAT.KPA101
+PAT.PSD.PDP90A --* PAT.KPA101
 
 PAT.PSD.PSDWidget --* PAT.PSD.PSD
 

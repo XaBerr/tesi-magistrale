@@ -24,7 +24,7 @@ The Position Sensing Detectors (\idx{PSD}) utilizes a silicon photodiode-based p
 The spectrum covered is from 320nm to 1100nm. This device needs a hardware driver to be used. Depending on the position of the laser in the sensor, it returns three voltages: $\Delta x, \Delta y, SUM$.
 From these three components it is possible to obtain the position of the laser, using the following equations:
 $$x = \frac{L_x \cdot \Delta x}{2 \cdot SUM}, y = \frac{L_y \cdot \Delta y}{2 \cdot  SUM}$$
-where $L_x,L_y$ are the sensor sizes. The model used in the PAT is the Thorlabs PDQ90A, which requires a driver called KPA101.
+where $L_x,L_y$ are the sensor sizes. The model used in the PAT is the Thorlabs PDP90A, which requires a driver called KPA101.
 The PSD is typically better than the camera at short distances because the integrated controller in the KPA101 is based on a circuit and therefore has a continuous resolution, its signal is not sampled and analyzed.
 
 \lvliii{Drivers}
