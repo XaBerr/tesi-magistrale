@@ -1,6 +1,6 @@
-\lvliii{Mirror}
+\lvliii{Actuator}
 
-This project contains the interface \textbf{Mirror} for all mirrors. The
+This project contains the interface \textbf{Actuator} for all actuators. The
 actual implementations are: STT254.
 
 \textbf{Requirements}
@@ -21,8 +21,8 @@ following lines in your \texttt{config.json}.
 
 \begin{lstlisting}[language=javascript, gobble=2]
   {
-    "name"     : "PATMirror",
-    "path"     : "gitlab.dei.unipd.it/PAT/Mirror.git",
+    "name"     : "PATActuator",
+    "path"     : "gitlab.dei.unipd.it/PAT/Actuator.git",
     "tag"      : "HEAD",
     "available": "YES",
     "getGui"   : "NO"
@@ -74,22 +74,22 @@ extensions (which you can install through pip3):
 
 \lvliv{Usage}
 
-\lvlv{Mirror}
+\lvlv{Actuator}
 
-The \textbf{Mirror} class is a interface for all mirrors. Here is the
+The \textbf{Actuator} class is a interface for all actuators. Here is the
 include code.
 
 \begin{lstlisting}[language=c++, gobble=2]
-  #include <PAT/Mirror/Mirror.h>
+  #include <PAT/Actuator/Actuator.h>
 \end{lstlisting}
 
 To inherit the class you have to overwrite the two methods:
 \textbf{setOutputImpulse}, \textbf{setOutputCombinedImpulse}. When the
 impulse finish remember to emit a \textbf{movementCompleted} signal that
-is already defined in \textbf{Mirror} class.
+is already defined in \textbf{Actuator} class.
 
 \begin{lstlisting}[language=c++, gobble=2]
-  class YourClass : public Mirror {
+  class YourClass : public Actuator {
     public:
       void setOutputImpulse(double _voltagePeakX, double _voltagePeakY, double _time_ms) override;
       void setOutputCombinedImpulse(double _voltagePeakX, double _timeX_ms, double _voltagePeakY, double _timeY_ms) override;
@@ -98,25 +98,25 @@ is already defined in \textbf{Mirror} class.
 
 \lvlv{STT254}
 
-The \textbf{STT254} class is a Mirror implementation that it works with
+The \textbf{STT254} class is a Actuator implementation that it works with
 the \textbf{KPA101}. Here is the include code.
 
 \begin{lstlisting}[language=c++, gobble=2]
   #include <PAT/KPA101.h>
-  #include <PAT/Mirror/STT254.h>
-  using namespace PAT::Mirror;
+  #include <PAT/Actuator/STT254.h>
+  using namespace PAT::Actuator;
 \end{lstlisting}
 
 When you istantiate the \textbf{STT254} you must pass a \textbf{KPA101}
 istance. The \textbf{STT254} is typically used as polymorphism with
-\textbf{Mirror}.
+\textbf{Actuator}.
 
 \begin{lstlisting}[language=c++, gobble=2]
   std::shared_ptr<PAT::KPA101> kpa101         = std::make_shared<PAT::KPA101>();
-  std::shared_ptr<PAT::Mirror::Mirror> mirror = std::make_shared<PAT::Mirror::STT254>(kpa101);
+  std::shared_ptr<PAT::Actuator::Actuator> actuator = std::make_shared<PAT::Actuator::STT254>(kpa101);
 \end{lstlisting}
 
-You can set the output state of the \textbf{Mirror} using one of these
+You can set the output state of the \textbf{Actuator} using one of these
 two functions. Output voltages are between 10 and 0. When the functions
 finish they emit a a \textbf{movementCompleted} signal.
 
@@ -135,15 +135,15 @@ finish they emit a a \textbf{movementCompleted} signal.
   double voltagePeakX = 1;
   double voltagePeakY = 1;
   double time_ms      = 1;
-  mirror->setOutputImpulse(voltagePeakX, voltagePeakY, time_ms);
+  actuator->setOutputImpulse(voltagePeakX, voltagePeakY, time_ms);
   
   double voltagePeakX = 1;
   double timeX_ms     = 1;
   double voltagePeakY = 1;
   double timeY_ms     = 1;
-  mirror->setOutputCombinedImpulse(voltagePeakX, timeX_ms, voltagePeakY, timeY_ms);
+  actuator->setOutputCombinedImpulse(voltagePeakX, timeX_ms, voltagePeakY, timeY_ms);
 \end{lstlisting}
 
 \lvliv{UML}
 
-\img{Mirror}{Mirror UML.}
+\img{Mirror}{Actuator UML.}

@@ -127,8 +127,8 @@ swap between high and low voltages a time threshold is available in the same tab
 
 \lvlii{The repositories structure}
 \img{repositories}{This is a screenshot of all the repositories developed in the PAT group.}
-Starting from the simplified model \fig{simplified-model} has been chosen to create: a single repository for all controllers (Controller), a single repository for all actuators (Mirror), and two separate repositories for sensors (Camera, PSD).
-As a communication interface between Controller and Mirror was made a Mirror class. As a communication interface between the Controller class and Camera/PSD it was chosen to create a Centroid class stored in a separate repository (Centroid).
+Starting from the simplified model \fig{simplified-model} has been chosen to create: a single repository for all controllers (Controller), a single repository for all actuators (Actuator), and two separate repositories for sensors (Camera, PSD).
+As a communication interface between Controller and Actuator was made a Actuator class. As a communication interface between the Controller class and Camera/PSD it was chosen to create a Centroid class stored in a separate repository (Centroid).
 The KPA101 repository was added to contain the KPA101 driver, while the Utils repository was created to contain a list of classes useful to all other repositories.
 The Setup repository was created with the idea of taking pieces from the various repositories and composing setups, in other words, it contains a list of possible PAT combinations.
 The last two repositories that have been created are: Docs that contains quick documentation for programmers who want to contribute to the PAT and PSD-bias that contains the software created to control a circuit that will be explained in the next chapter.
@@ -140,7 +140,7 @@ This section lists all the documentation of the developed repositories.
             \input{docs-repo/utils.tex}
             \input{docs-repo/centroid.tex}
             \input{docs-repo/kpa101.tex}
-            \input{docs-repo/mirror.tex}
+            \input{docs-repo/actuator.tex}
             \input{docs-repo/psd.tex}
             \input{docs-repo/camera.tex}
             \input{docs-repo/controller.tex}
