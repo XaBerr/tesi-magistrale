@@ -1,12 +1,12 @@
 \lvli{PATLIC experiment}
 \lvlii{Introduction}
-In this experiment, a PAT system was developed between two telescopes in order to realize QKD with single-mode fiber injection.
+In this experiment, a PAT system was developed between two telescopes in order to realize QKD with single-mode fiber injection, this experiment is called PATLIC (PAT system for Light Injection on C-band fiber).
 The objective of this experiment was to send a signal between two telescopes, making sure that it was injected in single-mode fibre, with attenuation lower than the 50\%.
-Although the PATSW maintains alignment, manual alignment of the single components of the PATHW is required.
 
 \lvlii{Setup}
 \img{PATLIC/setup-ottico}{PATLIC optical setup.}
-he alignment procedure will be reported in this section, to simplify it will be defined acronyms of the main components in Tab. \ref{table:1}.
+In this experiment there is a trasmitter (Alice) and a receiver (Bob). Alice want to sent to Bob a signal, but in order to do a PAT system is required.
+% The alignment procedure will be reported in this section, to simplify it will be defined acronyms of the main components in Tab. \ref{table:1}.
 
 \begin{table}[h!]
   \centering
@@ -15,15 +15,15 @@ he alignment procedure will be reported in this section, to simplify it will be 
     Acronym & Description                                              \\
     \hline
     AL      & Alice laser @1550nm used for communication               \\
-    ALF     & Alice laser @1545nm used for PAT fine                    \\
-    ALC     & Alice laser @1540nm used for PAT coarse                  \\
-    ACC     & Alice camera @1540nm used for PAT coarse                 \\
+    ALF     & Alice laser @1064nm used for PAT fine                    \\
+    ALC     & Alice laser @850nm used for PAT coarse                   \\
+    ACC     & Alice camera @850nm used for PAT coarse                  \\
     \hline
     BL      & Bob laser's slot used for alignment                      \\
     BF      & Bob fiber-port collimator @1550nm used for communication \\
-    BP      & Bob PSD @1545nm used for PAT fine                        \\
-    BCC     & Bob camera @1540nm used for PAT coarse                   \\
-    BLC     & Bob laser @1540nm used for PAT coarse                    \\
+    BP      & Bob PSD @1064nm used for PAT fine                        \\
+    BCC     & Bob camera @850nm used for PAT coarse                    \\
+    BLC     & Bob laser @850nm used for PAT coarse                     \\
     FSM     & Bob fast-steering mirror                                 \\
     DBS     & Bob dichroic beam splitter                               \\
     PSD     & Bob PSD                                                  \\
@@ -32,9 +32,10 @@ he alignment procedure will be reported in this section, to simplify it will be 
   \caption{Table to test captions and labels}
   \label{table:1}
 \end{table}
-The complete alignment procedure for PATHW will be divided into parts. At the end of each part it will be needed an activation of the corresponding PATSW in order to move into the next one.
 
 \lvlii{Alignment procedure}
+Although the PATSW maintains alignment, manual alignment of the single components of the PATHW is required.
+The complete alignment procedure for PATHW will be divided into parts. At the end of each part it will be needed an activation of the corresponding PATSW in order to move into the next one.
 \lvliii{Coarse alignment}
 \begin{itemize}
   \item mount visible and collimated lasers on the frame instead of AL, BL
