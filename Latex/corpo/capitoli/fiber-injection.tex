@@ -1,8 +1,12 @@
-\lvli{Fiber injection experiment}
+\lvli{PATLIC experiment}
+\lvlii{Introduction}
 In this experiment, a PAT system was developed between two telescopes in order to realize QKD with single-mode fiber injection.
 The objective of this experiment was to send a signal between two telescopes, making sure that it was injected in single-mode fibre, with attenuation lower than the 50\%.
+Although the PATSW maintains alignment, manual alignment of the single components of the PATHW is required.
 
-Although the PATSW maintains alignment, manual alignment of the single components of the PATHW is required. The alignment procedure will be reported in this section, to simplify it will be defined acronyms of the main components in Tab. \ref{table:1}.
+\lvlii{Setup}
+\img{PATLIC/setup-ottico}{PATLIC optical setup.}
+he alignment procedure will be reported in this section, to simplify it will be defined acronyms of the main components in Tab. \ref{table:1}.
 
 \begin{table}[h!]
   \centering
@@ -30,7 +34,8 @@ Although the PATSW maintains alignment, manual alignment of the single component
 \end{table}
 The complete alignment procedure for PATHW will be divided into parts. At the end of each part it will be needed an activation of the corresponding PATSW in order to move into the next one.
 
-\lvlii{Coarse alignment}
+\lvlii{Alignment procedure}
+\lvliii{Coarse alignment}
 \begin{itemize}
   \item mount visible and collimated lasers on the frame instead of AL, BL
   \item diverge the laser beams ALC, BLC
@@ -42,7 +47,7 @@ The complete alignment procedure for PATHW will be divided into parts. At the en
   \item enable the One shot controller
 \end{itemize}
 
-\lvlii{Fine alignment}
+\lvliii{Fine alignment}
 \begin{itemize}
   \item collimate AL, AF and mount them on the mount and make sure they are parallel (coaxial)
   \item mount the FSM centered in x/y and 45 degrees to the optical path
@@ -56,7 +61,7 @@ The complete alignment procedure for PATHW will be divided into parts. At the en
   \item activate the PID control
 \end{itemize}
 
-\lvlii{Multi-mode fiber alignment}
+\lvliii{Multi-mode fiber alignment}
 \begin{itemize}
   \item disassemble the laser and put it on the table
   \item disassemble the BF and put it on the table inside a cage attaching a multi-mode fiber
@@ -67,7 +72,7 @@ The complete alignment procedure for PATHW will be divided into parts. At the en
   \item make sure to have a good fiber coupling by checking that the losses before and after the fiber are less than 40\%
 \end{itemize}
 
-\lvlii{Single-mode fiber alignment}
+\lvliii{Single-mode fiber alignment}
 \img{fiberport}{This image shows the adjustments sequence for the fiber-port. The image is taken in the Thorlabs website.}
 \begin{itemize}
   \item disassemble the multi-mode fiber and mount the single-mode fiber

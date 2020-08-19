@@ -1,15 +1,22 @@
 \lvli{Pointing Acquisition Tracking system}
 \lvlii{Introduction}
-\img{PAT}{Pointing, Acquisition and Tracking model system.}
-To establish a communication between two non-isotropic sources (transmitter, receiver), an alignment system is required. The one used in the free-space QKD is called \textit{Pointing, Acquisition and Tracking} (\idx{PAT}) system. PAT system operates on two levels: the first level is called \textit{coarse} (\idx{PATC}) while the second level is called \textit{fine} (\idx{PATF}).
+\img{PAT}{Pointing, Acquisition and Tracking system's model.}
+To establish a communication between two non-isotropic sources (transmitter, receiver) an alignment system is required. The one used in the free-space QKD is called \textit{Pointing, Acquisition and Tracking} (\idx{PAT}) system. PAT system operates on two levels: the first level is called \textit{coarse} (\idx{PATC}) while the second level is called \textit{fine} (\idx{PATF}).
 The PATC aims to align the telescopes, while the PATF aims to compensate the fluctuations of the transmitted signal. The signals typically used in this communication are laser signals. Both systems can be modeled with a feedback-control shown in the \fig{PAT}.
 Given a nominal position, the controller will estimate the error via a sensor. Once the estimate is completed, it will try to compensate the error by an actuator.
-Now will presented a possible implementations for these systems.
+
 The PAT system can be divide in two parts: the software (\idx{PATSW}), and the hardware (\idx{PATHW}).
 PATHW can change a lot depending on what experiment you want to do because different experiments require different components. PATSW must adapt to the PATHW but at the same time must provide an equal interface to the user, this is because the goal is always the same: align the system at the desired point.
+In this thesis will be exposed a possible implementation of the PAT system, the implementation used for the PATLIC experiment.
+
+\lvlii{PAT experiments}
+The aim of this thesis is to implement a PAT system that can control the PATLIC experiment, keeping it as generic as possible.
+The additional genericity is required because the same system will have to offer PAT performance also for other experiments such as: observation of a star, generic communication for free-space QKD ground-to-ground, and others.
+
+PATLIC is therefore the main experiment that will be detailed in this thesis. \idx{PATLIC} is "PAT system for Light Injection on C-band fiber".
 
 \lvlii{Components}
-In this section will be listed all the components of the PATHW which a software implementation has been made in this thesis. In addition, these components will then be used in the single-mode fiber injection experiment.
+In this section will be listed all the components of the PATHW which a software implementation has been made in this thesis. In addition, these components will then be used in the PATLIC experiment.
 \lvliii{Sensors}
 \lvliv{Camera}
 \img{pictures/camera}{IDS camera.}
@@ -40,9 +47,9 @@ The fast-steering mirror (\idx{FSM}) is a mirror housed on a mount able to do ti
 The FSM used for the PAT is mounted into a SmarAct frame that takes advantage of the technology stick-slip piezo stages. The piezo actuator combine macroscopic travel with nanometer resolution and high velocities of several millimeters per second.
 It requires an external driver to be managed because its movement is controlled by two voltages (x,y). The KPA101 is a driver compatible with the technology of this actuator.
 
-\lvliv{Telescope mount}
+\lvliv{Skywatcher}
 \imgs{0.1}{pictures/skywatcher}{Skywatcher telescope mout.}
-The telescope mount used in the PAT is the AZ-GTI of the Skywatcher. It is an altitude-azimuth mount controlled by two DC servo motor. It needs a computer to do the targeting.
+The Skywatcher used in the PAT is the AZ-GTI telescope mount. It is an altitude-azimuth mount controlled by two DC servo motor. It needs a computer to do the targeting.
 
 \lvliii{Controllers}
 Ideally there are countless controllers available for the PAT system, but only two are used: One shot, and PID KPA101.
@@ -54,32 +61,22 @@ Since the devices are not ideal, this controller will have to make a calibration
 The \idx{PID KPA101} controller is Proportional Integral Derivatives (PID) and is integrated into the KPA101. A computer is required to specify PID parameters. The integrated PID system has a big limitation, it allows to align the beam only to the center of the system, this position is not always optimal in case of complex setups.
 
 \lvlii{Coarse}
-In this section we will explain the operation of the PATC and the physical implementation used in the fiber injection experiment.
-\lvliii{Logical design}
-\img{PAT-coarse}{PATC model-implementation system.}
+\img{PAT-coarse}{PATC models' implementation.}
 One way to point a telescope in a given region of space is to put in that region a laser pointing in the direction of the telescope, and in the telescope mount a camera to see the laser.
 If the camera is aligned with the telescope and the laser is centered in the camera, then the telescope will be aligned in the desired direction.
 To align two telescopes (Alice, Bob) will be needed to mount this system twice, so that Alice has a camera that points towards Bob’s laser and vice versa.
 
-In the fiber injection experiment a camera is used as a sensor to express the system error in pixels. This error is handled by an ad-hoc developed controller called One shot. Once the controller has complete the error calculation, it will move the two-axis engine on the mount to align the telescope.
+In the PATLIC a camera is used as a sensor to express the system error in pixels. This error is handled by an ad-hoc developed controller called One shot. Once the controller has complete the error calculation, it will move the two-axis engine on the mount to align the telescope.
 
 This system will maintain the aiming of both telescopes in both cases: for large movements such as the displacement of the two telescopes, and for smaller ones such as vibrations at low frequencies.
 
-\lvliii{Physical implementation}
-%  TODO: farmi dare uno schema del circuito ottico
-
 \lvlii{Fine}
-In this section we will explain the operation of the PATF and the physical implementation used in the fiber injection experiment.
-\lvliii{Logical design}
-\img{PAT-fine-v1}{PATF model-implementation system with position sensitive device.}
-\img{PAT-fine-v2}{PATF model-implementation system with camera.}
+\img{PAT-fine-v1}{PATF models' implementation with position sensitive device.}
+\img{PAT-fine-v2}{PATF models' implementation with camera.}
 
 Once the PATC system has aligned the telescopes then the PATF goes in action. To compensate for the fluctuations of the transmitted signal, a second beam is superimposed on the beam of the signal. If the wavelengths of the two beams are sufficiently close together, then both beams will be subject to the same fluctuations and thus compensate the second beam will also compensate the first.
 This system is essential if you want to inject the free-space signal into a single-mode fiber. In this case the sensor can be a camera for long distances or a PSD for small distances.
 
-In the fiber injection experiment a PSD is used as a sensor and it exploits another control system PID KPA101. The sensor will read the position of the laser and send it to the controller that will correct it using a FSM.
+In the PATLIC a PSD is used as a sensor and it exploits another control system PID KPA101. The sensor will read the position of the laser and send it to the controller that will correct it using a FSM.
 
 This system will be able to compensate for the atmosphere fluctuations and high frequency vibrations.
-
-\lvliii{Physical implementation}
-%  TODO: farmi dare uno schema del circuito ottico
