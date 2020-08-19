@@ -4,10 +4,16 @@ In this experiment, a PAT system was developed between two telescopes in order t
 The objective of this experiment was to send a signal between two telescopes, making sure that it was injected in single-mode fibre, with attenuation lower than the 50\%.
 
 \lvlii{Setup}
-\img{PATLIC/setup-ottico}{PATLIC optical setup.}
-In this experiment there is a trasmitter (Alice) and a receiver (Bob). Alice want to sent to Bob a signal, but in order to do a PAT system is required.
-% The alignment procedure will be reported in this section, to simplify it will be defined acronyms of the main components in Tab. \ref{table:1}.
+\img{PATLIC/setup-ottico}{PATLIC optical setup. The acronyms are: wavelength division multiplexing (WDM), dichroic mirror (DM), beam expander (beam exp), and beam reducer (beam red).}
+In this experiment there is a trasmitter (Alice) and a receiver (Bob). As shown in \fig{PATLIC/setup-ottico} they use a PATF (blue beam) and a PATC (red beam) to inject a 1550nm signal (yellow beam) into a single-mode fiber.
 
+From Alice two lasers 1550nm, 1064nm are guided by multi-mode fibers into a wavelength division multiplexing that combine them. The fiber-signal is released in free-space by a fiber port. It is collimated by a lens before entering a beam expander that prepare it for a long communications link. The signal is then recived by Bob where a beam reducer convert it into a collimate beam. The beam across a FSM and impact a dichroic mirror. The dichroic mirror separate the signal's beam at 1550nm from the PATF's beam at 1064nm. The PATF's beam across a band-pass filter at 1064nm and then across a lens that focus it into a PSD. Instead, the signal's beam across a band-pass filter at 1550nm and then across a lens that focus it into a single-mode fiber.
+
+From Alice there is a third laser at 850nm that shine a divergent beam into free-space. This beam is then collected by Bob through a lens-camera setup that is focussing the laser's plane. To increase the signal to noise ratio, a filter is put in front the camera. This setup was also duplicated by Bob to Alice.
+
+\lvlii{Alignment procedure}
+Although the PATSW maintains alignment, manual alignment of the single components of the PATHW is required.
+The complete alignment procedure for PATHW will be divided into parts. At the end of each part it will be needed an activation of the corresponding PATSW in order to move into the next one. To simplify the reading of the procedure, acronyms will be defined in the following Tab. \ref{table:1}.
 \begin{table}[h!]
   \centering
   \begin{tabular}{ |c|c|c| }
@@ -24,8 +30,8 @@ In this experiment there is a trasmitter (Alice) and a receiver (Bob). Alice wan
     BP      & Bob PSD @1064nm used for PAT fine                        \\
     BCC     & Bob camera @850nm used for PAT coarse                    \\
     BLC     & Bob laser @850nm used for PAT coarse                     \\
+    BDM     & Bob dichroic mirror                                      \\
     FSM     & Bob fast-steering mirror                                 \\
-    DBS     & Bob dichroic beam splitter                               \\
     PSD     & Bob PSD                                                  \\
     \hline
   \end{tabular}
@@ -33,9 +39,6 @@ In this experiment there is a trasmitter (Alice) and a receiver (Bob). Alice wan
   \label{table:1}
 \end{table}
 
-\lvlii{Alignment procedure}
-Although the PATSW maintains alignment, manual alignment of the single components of the PATHW is required.
-The complete alignment procedure for PATHW will be divided into parts. At the end of each part it will be needed an activation of the corresponding PATSW in order to move into the next one.
 \lvliii{Coarse alignment}
 \begin{itemize}
   \item mount visible and collimated lasers on the frame instead of AL, BL
@@ -52,10 +55,10 @@ The complete alignment procedure for PATHW will be divided into parts. At the en
 \begin{itemize}
   \item collimate AL, AF and mount them on the mount and make sure they are parallel (coaxial)
   \item mount the FSM centered in x/y and 45 degrees to the optical path
-  \item mount the DBS centered in x/y and 45 degrees to the optical path
+  \item mount the BDM centered in x/y and 45 degrees to the optical path
   \item mount the BF
   \item mount the lens and PSD so that the PSD is positioned on the lens focus
-  \item turn on AL, ALF and make sure they arrive centered in BF, BP. Otherwise correct with the placement of FSM, DBS
+  \item turn on AL, ALF and make sure they arrive centered in BF, BP. Otherwise correct with the placement of FSM, BDM
   \item calibration with PATSW on PSD
   \item make a Home with PATSW to put the FSM in its tip-tilt neutral position, then correct its placement so the laser is still visible in the PSD
   \item recalibrate with PATSW
@@ -69,7 +72,7 @@ The complete alignment procedure for PATHW will be divided into parts. At the en
   \item shoot a visible laser through the fiber and ensure that the outgoing beam is aligned with the cage and is collimated
   \item check that AL has a diameter of 3.6mm where the BF will be placed $(4 * 1550 * 10^-9 / \pi * 18.4 / 10^-5)$. Measure the laser power at that point
   \item reassemble BF in the mount with visible laser attached
-  \item check that the AL laser and the BF laser are aligned. Otherwise correct with the precision movements of the DBS frame (all PAT systems must be switched on)
+  \item check that the AL laser and the BF laser are aligned. Otherwise correct with the precision movements of the BDM frame (all PAT systems must be switched on)
   \item make sure to have a good fiber coupling by checking that the losses before and after the fiber are less than 40\%
 \end{itemize}
 
