@@ -1,8 +1,10 @@
+\lvliii{Setup your environment}
 \lvliv{Prerequisites}
 
 These libraries need to be installed manually in your system:
 
 \begin{itemize}
+      \tightlist
       \item
             \href{https://www.qt.io/}{Qt 5.14.2}
       \item
@@ -14,6 +16,7 @@ These libraries need to be installed manually in your system:
 This can be installed through \textbf{pip3} using a single command line:
 
 \begin{itemize}
+      \tightlist
       \item
             \href{https://pypi.org/project/Sphinx/}{Sphinx 3.0.3}
       \item
@@ -35,64 +38,39 @@ On \textbf{Windows} add the path of the \texttt{../Anaconda3/Scripts} folder to 
 \lvliv{Setup procedure}
 
 \begin{itemize}
+      \tightlist
       \item
             Create a new project on gitlab \{YourProject\} (the name of the
             project must be \href{https://en.wikipedia.org/wiki/Camel_case}{upper
                   camel case}).
-\end{itemize}
-
-\begin{itemize}
       \item
             Download \{YourProject\} on the computer.
-\end{itemize}
-
-\begin{itemize}
       \item
             Download this repository
             \texttt{git\ clone\ https://gitlab.dei.unipd.it/Calderaro/BoilerplateQT.git}.
-\end{itemize}
-
-\begin{itemize}
       \item
             Copy everything except the folder \textbf{.git} from this repository
             to \{YourProject\} folder.
-\end{itemize}
-
-\begin{itemize}
       \item
             (optional for QtCreator) Configure the project as described in the
             Installation.
-\end{itemize}
-
-\begin{itemize}
       \item
             Replace every string \textbf{BoilerplateQt} with \{YourProject\} in
             every file (Recommended to use QtCreator advanced replace).
-\end{itemize}
-
-\begin{itemize}
       \item
             Replace every string \textbf{boilerplateQt} with \{yourProject\} in
             every file (Recommended to use QtCreator advanced replace).
-\end{itemize}
-
-\begin{itemize}
       \item
             Replace every string \textbf{boilerplateqt} with \{yourproject\} in
             every file (Recommended to use QtCreator advanced replace).
-\end{itemize}
-
-\begin{itemize}
       \item
             Replace every string \textbf{BOILERPLATEQT} with \{YOURPROJECT\} in
             every file (Recommended to use QtCreator advanced replace).
-\end{itemize}
-
-\begin{itemize}
       \item
             Rename every file that contains \textbf{boilerplateqt} with
             \{yourproject\}:
             \begin{itemize}
+                  \tightlist
                   \item
                         `/gui/boilerplateqtwidget.cpp` to `/gui/{yourproject}widget.cpp`.
 
@@ -112,17 +90,12 @@ On \textbf{Windows} add the path of the \texttt{../Anaconda3/Scripts} folder to 
 
 
 \begin{itemize}
+      \tightlist
       \item
             Rename the folder \texttt{/include/BoilerplateQt} with
             \texttt{/include/\{YourProject\}}.
-\end{itemize}
-
-\begin{itemize}
       \item
             Open \texttt{config.json} and substitute with your data:
-\end{itemize}
-
-\begin{itemize}
       \item \textbf{name}: name of the project {YourProject}.
 
       \item \textbf{version}: last tag in {YourProject} master history.
@@ -132,12 +105,10 @@ On \textbf{Windows} add the path of the \texttt{../Anaconda3/Scripts} folder to 
       \item \textbf{GUI}: whether {YourProject} have a GUI. \textbf{If you do not have a gui remove} `/gui` \textbf{and} `/include/{YourProject}/gui` \textbf{folders}.
 
       \item \textbf{modules}: external libraries to be fetched from an online repositoty.
-\end{itemize}
-
-\begin{itemize}
       \item
             (Optional for QtCreator):
             \begin{itemize}
+                  \tightlist
                   \item Close the project on QtCreator.
 
                   \item Remove the file `CMakeLists.txt.user` and build directory (if any).
@@ -151,11 +122,9 @@ If you correctly executed the above steps the project should build with
 no problems. From this point on you can start:
 
 \begin{itemize}
+      \tightlist
       \item
             adding new source files and/or change the existing ones.
-\end{itemize}
-
-\begin{itemize}
       \item
             adding and removing libraries dependeces.
 \end{itemize}

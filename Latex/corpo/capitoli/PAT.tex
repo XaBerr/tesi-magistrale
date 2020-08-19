@@ -61,7 +61,7 @@ Since the devices are not ideal, this controller will have to make a calibration
 The \idx{PID KPA101} controller is Proportional Integral Derivatives (PID) and is integrated into the KPA101. A computer is required to specify PID parameters. The integrated PID system has a big limitation, it allows to align the beam only to the center of the system, this position is not always optimal in case of complex setups.
 
 \lvlii{Coarse}
-\img{PAT-coarse}{PATC models' implementation.}
+\img{PAT-coarse}{PATC model's' implementation.}
 One way to point a telescope in a given region of space is to put in that region a laser pointing in the direction of the telescope, and in the telescope mount a camera to see the laser.
 If the camera is aligned with the telescope and the laser is centered in the camera, then the telescope will be aligned in the desired direction.
 To align two telescopes (Alice, Bob) will be needed to mount this system twice, so that Alice has a camera that points towards Bob’s laser and vice versa.
@@ -71,8 +71,8 @@ In the PATLIC a camera is used as a sensor to express the system error in pixels
 This system will maintain the aiming of both telescopes in both cases: for large movements such as the displacement of the two telescopes, and for smaller ones such as vibrations at low frequencies.
 
 \lvlii{Fine}
-\img{PAT-fine-v1}{PATF models' implementation with position sensitive device.}
-\img{PAT-fine-v2}{PATF models' implementation with camera.}
+\img{PAT-fine-v1}{PATF model's' implementation with position sensitive device.}
+\img{PAT-fine-v2}{PATF model's' implementation with camera.}
 
 Once the PATC system has aligned the telescopes then the PATF goes in action. To compensate for the fluctuations of the transmitted signal, a second beam is superimposed on the beam of the signal. If the wavelengths of the two beams are sufficiently close together, then both beams will be subject to the same fluctuations and thus compensate the second beam will also compensate the first.
 This system is essential if you want to inject the free-space signal into a single-mode fiber. In this case the sensor can be a camera for long distances or a PSD for small distances.

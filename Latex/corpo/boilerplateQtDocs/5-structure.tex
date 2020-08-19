@@ -1,33 +1,23 @@
+\lvliii{Structure description of the project}
 CMakeLists.txt is the configure root file used by cmake to set the
 building process of the project.
 
 \begin{itemize}
+  \tightlist
   \item
         \textbf{include} folder contains all the headers that must be shared
         to external project (the headers, that declare the classes and
         variables that do \textbf{not} need to be accessed through the
         library, must be placed in src or gui folders).
-\end{itemize}
-
-\begin{itemize}
   \item
         \textbf{src} folder contains all the sources for the business logic of
         the project.
-\end{itemize}
-
-\begin{itemize}
   \item
         \textbf{gui} folder contains all the sources for the definition of the
         GUI and the interaction between its widgets and the business logic.
-\end{itemize}
-
-\begin{itemize}
   \item
         \textbf{test} folder contains all the sources for testing the core and
         gui sources.
-\end{itemize}
-
-\begin{itemize}
   \item
         \textbf{apps} folder contains all the sources for executing the
         applications using the src and gui libraries.
