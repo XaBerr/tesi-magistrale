@@ -1,11 +1,11 @@
 \lvli{PAT software design}
-Two analyses were carried out in order to build the PATSW part of this project. An analysis that focuses on the components available, and an analysis that focuses on what a user expects to use. Having these two analyses the construction of the single repositories becomes immediate. The construction is reduced to connecting the functionalities expected by users to the various components available.
+Two analyses were carried out in order to build the PATSW part of this project. An analysis that focuses on the components available, and an analysis that focuses on what a user expects to use. Having these two analyses the construction of the single repositories becomes immediate, it is reduced to connecting the functionalities expected by users to the various components available.
 
 \lvlii{The components analysis}
 The aim of this project was to develop modular software that could control a PAT system. The PATSW had to be able to align the telescope with different light sources such as the light of a star or the laser of another telescope.
 In addition, the PATSW had to be able to control all devices in the \sect{Components}.
 Starting from the PAT model \fig{PAT} a simplified model has been developed \fig{simplified-model} to highlight the various components to be implemented.
-In this model we see that there are three main families to implement: sensors, controllers, and actuators. The arrows in this diagram indicate the information passages, in other words, actuator and sensor will have to communicate with the controller and vice versa.
+In this model we see that there are three main families to be implemented: sensors, controllers, and actuators. The arrows in this diagram indicate the information passages, in other words, actuator and sensor will have to communicate with the controller and vice versa.
 It is therefore necessary to establish a common interface between the various sensors and actuators to connect them with the controllers. The study of these interfaces required multiple iterations to ensure maximum flexibility.
 \img{simplified-model}{Simplified model for PAT system.}
 
@@ -29,7 +29,7 @@ target that it is called One shot.
 
 \lvliv{Skywatcher-camera-pc}
 In this setup the pc is connected with two devices: the first is
-the skywatcher mout used to control the mirror; the second is the camera used as
+the skywatcher mout; the second is the camera used as
 sensor. The controllers available are the same of the mirror-camera-pc setup.
 
 \lvliv{Mirror-PSD-KPA101}
@@ -46,16 +46,19 @@ information, the right side show the controllers information.
 In the sensor's side is composed by (form the top):
 
 \begin{itemize}
-      \itemsep1pt\parskip0pt\parsep0pt
       \item
             the frame rendering that contains three objects:
-      \item
-            the red dots represents the centroid of the beam;
-      \item
-            the red square represents the area where the controller calculates the
-            centroid;
-      \item
-            the green circle represents the target;
+            \begin{itemize}
+
+                  \item
+                        the red dot represents the centroid of the beam;
+                  \item
+                        the red square represents the area where the controller calculates the
+                        centroid;
+                  \item
+                        the green circle represents the target;
+            \end{itemize}
+
       \item
             the set of parameters of the camera/PSD;
       \item
@@ -66,25 +69,21 @@ In the sensor's side is composed by (form the top):
 \end{itemize}
 
 The controller's side there are three tabs: manual controller, calibrated
-controller and PIDKPA101 controller (only for PSD). The Manual
-controller and the PID KPA controller are simpler than calibrated. In the manual
-controller voltages and times are the two parameters to be configured to optimize the joystick that will be use for the movement.
-
+controller and PIDKPA101 controller (only for PSD).
+The Manual controller and the PID KPA controller are simpler than calibrated.
+In the manual controller voltages and times are the two parameters to be configured to optimize the joystick that will be use for the movement.
 In the PIDKPA101 after the configuration of the PID parameters a checkbox \emph{enable PID}
 is avaliable to start the controller. The \emph{auto open closed loop} checkbox is used to
 disable the controller when the intensity of the beam go outside the
 threshold range.
-
-The calibrated controller is more complex so a separate
-section is reserved for it.
+The calibrated controller is more complex so a separate section is reserved for it.
 
 \lvliv{Calibrated controller}
 
 \imgThree{0.3}{calibrated1}{Controller interface.}{0.3}{calibrated2}{Analyzer interface.}{0.3}{calibrated3}{Graph interface.}
 
-The aim of this controller is to be able to use the \emph{One shot
-      controller}, but before to be able to use it a calibration is required. The calibration procedure can be decomposed into two parts:
-data acquisition, data analysis.
+The aim of this controller is to be able to use the \emph{One shot controller}, but before to be able to use it a calibration is required. The calibration procedure can be decomposed in two parts:
+data acquisition, and data analysis.
 
 \paragraph{Data acquisition}
 
@@ -103,7 +102,7 @@ is the following:
 
 \paragraph{Data analysis}
 
-In this phase the calibration points storde into a
+In this phase the calibration points stored in a
 file will be analyzed to retrieve the low/high voltages configuration. The procedure is the following:
 
 \begin{itemize}
@@ -115,7 +114,7 @@ file will be analyzed to retrieve the low/high voltages configuration. The proce
             go into \emph{Graphs} tab and check that the analysis is completed
             correctly;
       \item
-            if everything is ok then go into the \emph{Controller} tab and set the
+            if everything is ok then go in the \emph{Controller} tab and set the
             configuration to the low voltages or high voltages pressing the
             corresponding button.
 \end{itemize}
@@ -130,11 +129,11 @@ swap between high and low voltages a time threshold is available in the same tab
 Starting from the simplified model \fig{simplified-model} has been chosen to create: a single repository for all controllers (Controller), a single repository for all actuators (Actuator), and two separate repositories for sensors (Camera, PSD).
 As a communication interface between Controller and Actuator was made a Actuator class. As a communication interface between the Controller class and Camera/PSD it was chosen to create a Centroid class stored in a separate repository (Centroid).
 The KPA101 repository was added to contain the KPA101 driver, while the Utils repository was created to contain a list of classes useful to all other repositories.
-The Setup repository was created with the idea of taking pieces from the various repositories and composing setups, in other words, it contains a list of possible PAT combinations.
-The last two repositories that have been created are: Docs that contains quick documentation for programmers who want to contribute to the PAT and PSD-bias that contains the software created to control a circuit that will be explained in the next chapter.
+The Setup repository was created with the idea of taking pieces from the various repositories to compose different setups, in other words, it contains a list of possible PAT combinations.
+The last two repositories that have been created are: Docs that contains quick documentation for programmers who want to contribute to the PAT, and PSD-bias that contains the software created to control a circuit that will be explained in the next chapter.
 
 \lvlii{The repositories documentation}
-This section lists all the documentation of the developed repositories.
+This section lists all the documentations of the developed repositories.
 
       {\parindent0pt
             \input{docs-repo/utils.tex}
