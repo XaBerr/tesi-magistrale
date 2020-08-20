@@ -5,9 +5,9 @@ The objective of this experiment was to send a signal between two telescopes, ma
 
 \lvlii{Setup}
 \img{PATLIC/setup-ottico}{PATLIC optical setup. The acronyms are: wavelength division multiplexing (WDM), dichroic mirror (DM), beam expander (beam exp), and beam reducer (beam red).}
-In this experiment there is a trasmitter (Alice) and a receiver (Bob). As shown in \fig{PATLIC/setup-ottico} they use a PATF (blue beam) and a PATC (red beam) to inject a 1550nm signal (yellow beam) into a single-mode fiber.
+In this experiment there is a trasmitter (Alice) and a receiver (Bob). As shown in \fig{PATLIC/setup-ottico} they use a PATF's beam (blue) at 1064nm and two PATC's beams (red) at 850nm, to inject a 1550nm signal SIG's beam (yellow) into a single-mode fiber.
 
-From Alice two lasers 1550nm, 1064nm are guided by multi-mode fibers into a wavelength division multiplexing that combine them. The fiber-signal is released in free-space by a fiber port. It is collimated by a lens before entering a beam expander that prepare it for a long communications link. The signal is then recived by Bob where a beam reducer convert it into a collimate beam. The beam across a FSM and impact a dichroic mirror. The dichroic mirror separate the signal's beam at 1550nm from the PATF's beam at 1064nm. The PATF's beam across a band-pass filter at 1064nm and then across a lens that focus it into a PSD. Instead, the signal's beam across a band-pass filter at 1550nm and then across a lens that focus it into a single-mode fiber.
+From Alice two lasers 1550nm, 1064nm are guided by multi-mode fibers into a wavelength division multiplexing that combine them. The fiber's signal is released in free-space by a fiber port. It is collimated by a lens before entering a beam expander that prepare it for a long communications link. The signal is then recived by Bob where a beam reducer convert it into a smaller collimate beam. The beam reflected by a FSM impact on a dichroic mirror. The dichroic mirror separate the SIG's beam at 1550nm from the PATF's beam at 1064nm. The PATF's beam across a band-pass filter at 1064nm and then across a lens that focus it into a PSD. Instead, the SIG's beam across a band-pass filter at 1550nm and then across a lens that focus it into a single-mode fiber.
 
 From Alice there is a third laser at 850nm that shine a divergent beam into free-space. This beam is then collected by Bob through a lens-camera setup that is focussing the laser's plane. To increase the signal to noise ratio, a filter is put in front the camera. This setup was also duplicated by Bob to Alice.
 
@@ -41,46 +41,45 @@ The complete alignment procedure for PATHW will be divided into parts. At the en
 
 \lvliii{Coarse alignment}
 \begin{itemize}
-  \item mount visible and collimated lasers on the frame instead of AL, BL
-  \item diverge the laser beams ALC, BLC
-  \item mount ALC, BLC lasers and ensure that they are "parallel" to AL, BL, respectively
-  \item ensure that ACC, BCC cameras focus on the plane of ALC, BLC lasers
-  \item bet Alice on Bob and vice versa, make sure ALC, BLC are "quite" centered in the BCC, ACC rooms. Otherwise correct with laser tip-tilt
-  \item save the camera alignment points
-  \item make a calibration with PATSW on both mounts
-  \item enable the One shot controller
+  \item mount visible and collimated lasers in the slots of AL, BL;
+  \item diverge the laser beams ALC, BLC;
+  \item mount ALC, BLC lasers and ensure that they are "parallel" to AL, BL respectively;
+  \item ensure that ACC, BCC cameras focus on the plane of ALC, BLC lasers;
+  \item aim Alice on Bob and vice versa. Make sure ALC, BLC are "quite" centered in the BCC, ACC rooms. Otherwise correct with laser tip-tilt;
+  \item save the camera alignment points;
+  \item make a calibration with PATSW on both mounts;
+  \item enable the One shot controller.
 \end{itemize}
 
 \lvliii{Fine alignment}
 \begin{itemize}
-  \item collimate AL, AF and mount them on the mount and make sure they are parallel (coaxial)
-  \item mount the FSM centered in x/y and 45 degrees to the optical path
-  \item mount the BDM centered in x/y and 45 degrees to the optical path
-  \item mount the BF
-  \item mount the lens and PSD so that the PSD is positioned on the lens focus
-  \item turn on AL, ALF and make sure they arrive centered in BF, BP. Otherwise correct with the placement of FSM, BDM
-  \item calibration with PATSW on PSD
-  \item make a Home with PATSW to put the FSM in its tip-tilt neutral position, then correct its placement so the laser is still visible in the PSD
-  \item recalibrate with PATSW
-  \item activate the PID control
+  \item Collimate AL, AF and mount them on the telescope mount and make sure they are parallel; (coaxial)
+  \item mount the FSM centered in x/y and 45 degrees to the optical path;
+  \item mount the BDM centered in x/y and 45 degrees to the optical path;
+  \item mount the BF;
+  \item mount the lens and PSD so that the PSD is positioned on the lens focus;
+  \item turn on AL, ALF and make sure they arrive centered in BF, BP. Otherwise correct with the placement of FSM, BDM;
+  \item calibration with PATSW on PSD;
+  \item make a Home with PATSW to put the FSM in its tip-tilt neutral position, then correct its placement so the laser is still visible in the PSD;
+  \item recalibrate with PATSW;
+  \item activate the PID KPA101 control.
 \end{itemize}
 
 \lvliii{Multi-mode fiber alignment}
 \begin{itemize}
-  \item disassemble the laser and put it on the table
-  \item disassemble the BF and put it on the table inside a cage attaching a multi-mode fiber
-  \item shoot a visible laser through the fiber and ensure that the outgoing beam is aligned with the cage and is collimated
-  \item check that AL has a diameter of 3.6mm where the BF will be placed $(4 * 1550 * 10^-9 / \pi * 18.4 / 10^-5)$. Measure the laser power at that point
-  \item reassemble BF in the mount with visible laser attached
-  \item check that the AL laser and the BF laser are aligned. Otherwise correct with the precision movements of the BDM frame (all PAT systems must be switched on)
-  \item make sure to have a good fiber coupling by checking that the losses before and after the fiber are less than 40\%
+  \item Disassemble the BF and put it on the table inside a cage attaching a multi-mode fiber;
+  \item shoot a visible laser through the multi-mode fiber and ensure that the outgoing beam is aligned with the cage and is collimated;
+  \item check that AL has a diameter of 3.6mm where the BF will be placed $(4 * 1550 * 10^-9 / \pi * 18.4 / 10^-5)$. Measure the laser power at that point;
+  \item reassemble BF in the mount with visible laser attached;
+  \item check that the AL laser and the BF laser are aligned. Otherwise correct with the precision movements of the BDM frame (all PAT systems must be switched on);
+  \item make sure to have a good fiber coupling by checking that the losses before and after the fiber are less than 40\%.
 \end{itemize}
 
 \lvliii{Single-mode fiber alignment}
 \img{fiberport}{This image shows the adjustments sequence for the fiber-port. The image is taken in the Thorlabs website.}
 \begin{itemize}
-  \item disassemble the multi-mode fiber and mount the single-mode fiber
-  \item choose an sequence to make your adjustments, and keep to that sequence as shown in \fig{fiberport}
-  \item turn each adjuster clockwise to maximize the output, then continue to turn slightly beyond local maxima (to ~95\% of your local maximum). If turning an adjuster clockwise decreases output, skip that adjuster for that round of adjustments and repeat. Once the local maxima values begin to decrease, reverse the direction, and turn each adjuster to maximize the output, and not beyond
-  \item make sure to have a good fiber coupling by checking that the losses before and after the fiber are less than 50\%
+  \item Disassemble the multi-mode fiber and mount the single-mode fiber;
+  \item choose an sequence to make your adjustments, and keep to that sequence as shown in \fig{fiberport};
+  \item turn each adjuster clockwise to maximize the output, then continue to turn slightly beyond local maxima (to ~95\% of your local maximum). If turning an adjuster clockwise decreases output, skip that adjuster for that round of adjustments and repeat. Once the local maxima values begin to decrease, reverse the direction, and turn each adjuster to maximize the output, and not beyond;
+  \item make sure to have a good fiber coupling by checking that the losses before and after the fiber are less than 50\%.
 \end{itemize}
