@@ -1,19 +1,28 @@
 \lvli{QKD software design}
 \lvlii{Memorization, standardization and expansion of the QKD software}
-All of the code that control the QKD was done temporarily on several computers without a particular organization. It was therefore necessary to implement an easy system that would allow standardization, memorization, and simplification of code expansion.
+All of the code that control the QKD was done temporarily on several computers without a particular organization, it was therefore necessary to implement an easy system that would allow standardization, memorization, and simplification of code expansion.
 
 To store the code, it was chosen to use GitLab, a web-platform that allows the storage and versioning of the code via Git. The code can then be stored in repositories that are organized in groups.
 
-To create a standardization has been chosen to create a \idx{Boilerplate}, a ready-made code that serves as a template for the realization of various projects. The Boilerplate was built in c++ with the integration of Cmake and Qt.
-\idx{CMake} is a system that simplifies the compilation of sources, while \idx{Qt} is a set of libraries that simplify the graphical interface for the c++. The Boilerplate also contains two types of documentation: README and Sphinx.
-\idx{README} is a reStructuredText (.rst) file in which a template allows you to quickly describe how to use the library.
-The documentation in \idx{Sphinx} is more complex, it uses a python program that collects all the inline comments in the code and provides the class structure visible through web pages.
+To create a standardization has been chosen to create a \idx{Boilerplate}, a ready-made code that serves as a template for the realization of various projects.
 
 To simplify code expansion, it was decided to create a CMake-based packet manager and integrate it directly into the Boilerplate. This new system allows to list in a file "config.json" the dependencies of every project, that are the libraries necessary for its compilation.
 When the project is compiled, dependencies are automatically downloaded and compiled.
 
+\lvlii{Boilerplate structure}
+\img{repos/boilerplateqt}{BoilerplateQt repository's structure.}
+The Boilerplate was built in c++ with the integration of Cmake and Qt.
+\idx{CMake} is a system that simplifies the compilation of sources, while \idx{Qt} is a set of libraries that simplify the graphical interface for the c++. The Boilerplate also contains two types of documentation: README and Sphinx.
+\idx{README} is a reStructuredText (.rst) file in which a template allows you to quickly describe how to use the library.
+The documentation in \idx{Sphinx} is more complex, it uses a python program that collects all the inline comments in the code and provides the class structure visible through web pages.
+
+There are five major folders that are used by programmers: \textit{apps, gui, include, src, and tests}.
+In \textit{src} are put all the project sources code, the only sources that are not inside are the header files that want to be made public placed in \textit{include}, and graphical interfaces put in \textit{gui}.
+For each class developed will be created a unit-test that will be placed in the \textit{test} folder. All sample files of use of the repository will be put in \textit{app}.
+All other files and folder are typically left to the exclusive use of the system.
+
 \lvlii{Boilerplate documentation}
-Boilerplate documentation is stored in a separate repository called BoilerplateQt.wiki. It is made in markdown (.md). This section will list its main sections.
+Boilerplate documentation is stored in a separate repository called \textit{BoilerplateQt.wiki}. It is made in markdown (.md). This section will list its main sections.
   {\parindent0pt
     \input{corpo/boilerplateQtDocs/1-setup-enviroment.tex}
     \input{corpo/boilerplateQtDocs/2-add-source-files.tex}

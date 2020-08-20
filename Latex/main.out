@@ -19,39 +19,40 @@
 \BOOKMARK [1][-]{section.2.5}{Fine}{chapter.2}% 19
 \BOOKMARK [0][-]{chapter.3}{QKD software design}{}% 20
 \BOOKMARK [1][-]{section.3.1}{Memorization, standardization and expansion of the QKD software}{chapter.3}% 21
-\BOOKMARK [1][-]{section.3.2}{Boilerplate documentation}{chapter.3}% 22
-\BOOKMARK [2][-]{subsection.3.2.1}{Setup your environment}{section.3.2}% 23
-\BOOKMARK [2][-]{subsection.3.2.2}{How to add source files .cpp or .h}{section.3.2}% 24
-\BOOKMARK [2][-]{subsection.3.2.3}{Include other projects inside https://gitlab.dei.unipd.it/}{section.3.2}% 25
-\BOOKMARK [2][-]{subsection.3.2.4}{Include third part libs .dll or .h}{section.3.2}% 26
-\BOOKMARK [2][-]{subsection.3.2.5}{Structure description of the project}{section.3.2}% 27
-\BOOKMARK [2][-]{subsection.3.2.6}{Setup git credential in windows}{section.3.2}% 28
-\BOOKMARK [0][-]{chapter.4}{PAT software design}{}% 29
-\BOOKMARK [1][-]{section.4.1}{The components analysis}{chapter.4}% 30
-\BOOKMARK [1][-]{section.4.2}{The GUI analysis}{chapter.4}% 31
-\BOOKMARK [2][-]{subsection.4.2.1}{Possible setups}{section.4.2}% 32
-\BOOKMARK [2][-]{subsection.4.2.2}{Possible GUIs}{section.4.2}% 33
-\BOOKMARK [1][-]{section.4.3}{The repositories structure}{chapter.4}% 34
-\BOOKMARK [1][-]{section.4.4}{The repositories documentation}{chapter.4}% 35
-\BOOKMARK [2][-]{subsection.4.4.1}{Utils}{section.4.4}% 36
-\BOOKMARK [2][-]{subsection.4.4.2}{Centroid}{section.4.4}% 37
-\BOOKMARK [2][-]{subsection.4.4.3}{KPA101}{section.4.4}% 38
-\BOOKMARK [2][-]{subsection.4.4.4}{Actuator}{section.4.4}% 39
-\BOOKMARK [2][-]{subsection.4.4.5}{PSD}{section.4.4}% 40
-\BOOKMARK [2][-]{subsection.4.4.6}{Camera}{section.4.4}% 41
-\BOOKMARK [2][-]{subsection.4.4.7}{Controller}{section.4.4}% 42
-\BOOKMARK [2][-]{subsection.4.4.8}{Setup}{section.4.4}% 43
-\BOOKMARK [0][-]{chapter.5}{KPA101 bias circuit}{}% 44
-\BOOKMARK [1][-]{section.5.1}{Circuit schematic}{chapter.5}% 45
-\BOOKMARK [1][-]{section.5.2}{Circuit board}{chapter.5}% 46
-\BOOKMARK [1][-]{section.5.3}{Software design}{chapter.5}% 47
-\BOOKMARK [2][-]{subsection.5.3.1}{Controller-DAC interface}{section.5.3}% 48
-\BOOKMARK [0][-]{chapter.6}{PATLIC experiment}{}% 49
-\BOOKMARK [1][-]{section.6.1}{Introduction}{chapter.6}% 50
-\BOOKMARK [1][-]{section.6.2}{Setup}{chapter.6}% 51
-\BOOKMARK [1][-]{section.6.3}{Alignment procedure}{chapter.6}% 52
-\BOOKMARK [2][-]{subsection.6.3.1}{Coarse alignment}{section.6.3}% 53
-\BOOKMARK [2][-]{subsection.6.3.2}{Fine alignment}{section.6.3}% 54
-\BOOKMARK [2][-]{subsection.6.3.3}{Multi-mode fiber alignment}{section.6.3}% 55
-\BOOKMARK [2][-]{subsection.6.3.4}{Single-mode fiber alignment}{section.6.3}% 56
-\BOOKMARK [0][-]{chapter.7}{Conclusion}{}% 57
+\BOOKMARK [1][-]{section.3.2}{Boilerplate structure}{chapter.3}% 22
+\BOOKMARK [1][-]{section.3.3}{Boilerplate documentation}{chapter.3}% 23
+\BOOKMARK [2][-]{subsection.3.3.1}{Setup your environment}{section.3.3}% 24
+\BOOKMARK [2][-]{subsection.3.3.2}{How to add source files .cpp or .h}{section.3.3}% 25
+\BOOKMARK [2][-]{subsection.3.3.3}{Include other projects inside https://gitlab.dei.unipd.it/}{section.3.3}% 26
+\BOOKMARK [2][-]{subsection.3.3.4}{Include third part libs .dll or .h}{section.3.3}% 27
+\BOOKMARK [2][-]{subsection.3.3.5}{Structure description of the project}{section.3.3}% 28
+\BOOKMARK [2][-]{subsection.3.3.6}{Setup git credential in windows}{section.3.3}% 29
+\BOOKMARK [0][-]{chapter.4}{PAT software design}{}% 30
+\BOOKMARK [1][-]{section.4.1}{The components analysis}{chapter.4}% 31
+\BOOKMARK [1][-]{section.4.2}{The GUI analysis}{chapter.4}% 32
+\BOOKMARK [2][-]{subsection.4.2.1}{Possible setups}{section.4.2}% 33
+\BOOKMARK [2][-]{subsection.4.2.2}{Possible GUIs}{section.4.2}% 34
+\BOOKMARK [1][-]{section.4.3}{The repositories structure}{chapter.4}% 35
+\BOOKMARK [1][-]{section.4.4}{The repositories documentation}{chapter.4}% 36
+\BOOKMARK [2][-]{subsection.4.4.1}{Utils}{section.4.4}% 37
+\BOOKMARK [2][-]{subsection.4.4.2}{Centroid}{section.4.4}% 38
+\BOOKMARK [2][-]{subsection.4.4.3}{KPA101}{section.4.4}% 39
+\BOOKMARK [2][-]{subsection.4.4.4}{Actuator}{section.4.4}% 40
+\BOOKMARK [2][-]{subsection.4.4.5}{PSD}{section.4.4}% 41
+\BOOKMARK [2][-]{subsection.4.4.6}{Camera}{section.4.4}% 42
+\BOOKMARK [2][-]{subsection.4.4.7}{Controller}{section.4.4}% 43
+\BOOKMARK [2][-]{subsection.4.4.8}{Setup}{section.4.4}% 44
+\BOOKMARK [0][-]{chapter.5}{KPA101 bias circuit}{}% 45
+\BOOKMARK [1][-]{section.5.1}{Circuit schematic}{chapter.5}% 46
+\BOOKMARK [1][-]{section.5.2}{Circuit board}{chapter.5}% 47
+\BOOKMARK [1][-]{section.5.3}{Software design}{chapter.5}% 48
+\BOOKMARK [2][-]{subsection.5.3.1}{Controller-DAC interface}{section.5.3}% 49
+\BOOKMARK [0][-]{chapter.6}{PATLIC experiment}{}% 50
+\BOOKMARK [1][-]{section.6.1}{Introduction}{chapter.6}% 51
+\BOOKMARK [1][-]{section.6.2}{Setup}{chapter.6}% 52
+\BOOKMARK [1][-]{section.6.3}{Alignment procedure}{chapter.6}% 53
+\BOOKMARK [2][-]{subsection.6.3.1}{Coarse alignment}{section.6.3}% 54
+\BOOKMARK [2][-]{subsection.6.3.2}{Fine alignment}{section.6.3}% 55
+\BOOKMARK [2][-]{subsection.6.3.3}{Multi-mode fiber alignment}{section.6.3}% 56
+\BOOKMARK [2][-]{subsection.6.3.4}{Single-mode fiber alignment}{section.6.3}% 57
+\BOOKMARK [0][-]{chapter.7}{Conclusion}{}% 58
