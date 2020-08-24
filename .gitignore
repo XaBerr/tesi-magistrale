@@ -17,3 +17,4 @@
 /Latex/*.fls
 /Latex/*.fdb_latexmk
 /Latex/img/*-eps-converted-to.pdf
+!main.pdf
