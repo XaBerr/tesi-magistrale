@@ -1,4 +1,10 @@
 \lvli{Pointing Acquisition Tracking system}
+In physics and automation, feedback is the ability of a dynamic system to take into account the results of the system to change the characteristics of the system itself. Feedback is the basic element on which the single-mode fibre injection stabilization system is based.
+
+This chapter starts with a brief introduction on the relation between QKD and PAT, then describe its modelling and and some experiments in which it will be used. It concludes with a list of components and an explanation of the fine and coarse versions.
+
+\imgs{0.4}{pictures/matera}{Picture of Matera Observatory using a feedback system during the QKD communication.}
+
 \lvlii{Introduction}
 \img{QKD}{The requirements of QKD: PAT, Synchro, and Telecom.}
 Typical free-space systems used to implement the BB84 decoy-state share the logical structure sketched in~\fig{QKD}. The three logic units necessary to implement the BB84 decoy-state protocol in a free-space channels are a Pointing-Acquisition-Tracking (\idx{PAT}) system, a Synchronization (\idx{Synchro}) system and a \idx{Telecom} interface between Alice and Bob.
@@ -22,7 +28,7 @@ PATHW can change a lot depending on what experiment you want to do, because diff
 
 \lvlii{PAT experiments}
 The aim of this thesis is to implement a PAT system that can control the PATLIC experiment, keeping it as generic as possible.
-The additional genericity is required because the same system will have to offer PAT performance also for other experiments such as the observation of a star or a generic communication for free-space QKD ground-to-ground.
+The additional generality is required because the same system will have to offer PAT performance also for other experiments such as the observation of a star or a generic communication for free-space QKD ground-to-ground.
 
 PATLIC is therefore the main experiment that will be detailed in this thesis. \idx{PATLIC} is "PAT system for Light Injection on C-band fiber".
 
@@ -73,7 +79,7 @@ The \idx{PID KPA101} controller is Proportional Integral Derivatives (\idx{PID})
 
 \lvliii{Additional hardware}
 A problem with the integrated PID KPA101 is that it aligns the system only to the center of the sensor. This becomes a problem in very complex systems when the optimal alignment position does not match the center of the sensor.
-To solve this problem, a circuit was created that adds bias voltages to the signlas that are exiting from the sensor and entering in the KPA101.
+To solve this problem, a circuit was created that adds bias voltages to the signals that are exiting from the sensor and entering in the KPA101.
 
 \lvliv{Circuit schematic}
 \imgs{0.5}{circuito/schematic}{Eagle schematic view of the circuit.}
