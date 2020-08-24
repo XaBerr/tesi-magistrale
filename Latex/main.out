@@ -6,18 +6,18 @@
 \BOOKMARK [2][-]{subsection.1.2.3}{BB84}{section.1.2}% 6
 \BOOKMARK [2][-]{subsection.1.2.4}{Fiber}{section.1.2}% 7
 \BOOKMARK [2][-]{subsection.1.2.5}{Satellite}{section.1.2}% 8
-\BOOKMARK [1][-]{section.1.3}{The requirements of QKD}{chapter.1}% 9
-\BOOKMARK [0][-]{chapter.2}{Pointing Acquisition Tracking system}{}% 10
-\BOOKMARK [1][-]{section.2.1}{Introduction}{chapter.2}% 11
-\BOOKMARK [1][-]{section.2.2}{PAT experiments}{chapter.2}% 12
-\BOOKMARK [1][-]{section.2.3}{Components}{chapter.2}% 13
-\BOOKMARK [2][-]{subsection.2.3.1}{Sensors}{section.2.3}% 14
-\BOOKMARK [2][-]{subsection.2.3.2}{Drivers}{section.2.3}% 15
-\BOOKMARK [2][-]{subsection.2.3.3}{Actuators}{section.2.3}% 16
-\BOOKMARK [2][-]{subsection.2.3.4}{Controllers}{section.2.3}% 17
-\BOOKMARK [2][-]{subsection.2.3.5}{Additional hardware}{section.2.3}% 18
-\BOOKMARK [1][-]{section.2.4}{Coarse}{chapter.2}% 19
-\BOOKMARK [1][-]{section.2.5}{Fine}{chapter.2}% 20
+\BOOKMARK [0][-]{chapter.2}{Pointing Acquisition Tracking system}{}% 9
+\BOOKMARK [1][-]{section.2.1}{Introduction}{chapter.2}% 10
+\BOOKMARK [1][-]{section.2.2}{The PAT model}{chapter.2}% 11
+\BOOKMARK [1][-]{section.2.3}{PAT experiments}{chapter.2}% 12
+\BOOKMARK [1][-]{section.2.4}{Components}{chapter.2}% 13
+\BOOKMARK [2][-]{subsection.2.4.1}{Sensors}{section.2.4}% 14
+\BOOKMARK [2][-]{subsection.2.4.2}{Drivers}{section.2.4}% 15
+\BOOKMARK [2][-]{subsection.2.4.3}{Actuators}{section.2.4}% 16
+\BOOKMARK [2][-]{subsection.2.4.4}{Controllers}{section.2.4}% 17
+\BOOKMARK [2][-]{subsection.2.4.5}{Additional hardware}{section.2.4}% 18
+\BOOKMARK [1][-]{section.2.5}{Coarse}{chapter.2}% 19
+\BOOKMARK [1][-]{section.2.6}{Fine}{chapter.2}% 20
 \BOOKMARK [0][-]{chapter.3}{QKD software design}{}% 21
 \BOOKMARK [1][-]{section.3.1}{Memorization, standardization and expansion of the QKD software}{chapter.3}% 22
 \BOOKMARK [1][-]{section.3.2}{Boilerplate structure}{chapter.3}% 23

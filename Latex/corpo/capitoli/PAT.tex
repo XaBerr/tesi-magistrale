@@ -1,5 +1,17 @@
 \lvli{Pointing Acquisition Tracking system}
 \lvlii{Introduction}
+\img{QKD}{The requirements of QKD: PAT, Synchro, and Telecom.}
+Typical free-space systems used to implement the BB84 decoy-state share the logical structure sketched in~\fig{QKD}. The three logic units necessary to implement the BB84 decoy-state protocol in a free-space channels are a Pointing-Acquisition-Tracking (\idx{PAT}) system, a Synchronization (\idx{Synchro}) system and a \idx{Telecom} interface between Alice and Bob.
+
+The PAT system is in charge of allowing Alice and Bob to send and receive the quantum signals over the free-space channel. It is usually comprised of a transmitting and a receiving telescope and a close-feedback pointing system to keep the two telescope aligned one with respect to the other.
+
+The Synchro unit is in charge of the real-time timing of the protocol. It controls the lasers and tag the detections, allowing Alice and Bob to compare their raw bit strings a posteriori. It is worth noticing that the pulsed laser used for synchronization can be used also as a beacon for the PAT system.
+
+The Telecom unit is in charged of the (authenticated) classical communication between the two terminals. It allows the raw-key exchange to the other post-processing phases, the basis-reconciliation (or sifting), and error-correction and privacy-amplification~\cite{a9}.
+
+In this thesis it will be explained how to implement the PAT system.
+
+\lvlii{The PAT model}
 \img{PAT}{Pointing, Acquisition and Tracking system's model.}
 To establish a communication between two non-isotropic sources (transmitter, receiver) an alignment system is required. The one used in the free-space QKD is called \textit{Pointing, Acquisition and Tracking} (\idx{PAT}) system. PAT system operates on two levels: the first level is called \textit{coarse} (\idx{PATC}) while the second level is called \textit{fine} (\idx{PATF}).
 The PATC aims to align the telescopes, while the PATF aims to compensate the fluctuations of the transmitted signal. The signals typically used in this communication are laser signals. Both systems can be modeled with a feedback-control shown in the~\fig{PAT}.

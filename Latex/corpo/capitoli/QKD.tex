@@ -88,15 +88,3 @@ Unlike fiber, free-space has no spatial confinement and therefore has beam diver
 Another disadvantage is that the medium in which the light propagates depends on the atmospheric conditions of the moment. In other words, the channel has strong attenuation in case of fog, rain, clouds, and in the case of turbulent motions it can create jittering and beam wandering~\cite{a25}.
 
 Another feature that makes free-space difficult for communication is that it requires one of the two components to be mounted on a satellite. This is a higher difficulty level than fiber because it requires additional monetary investments for the launch a satellite and additional complexity to control a satellite in orbit.
-
-\lvlii{The requirements of QKD}
-\img{QKD}{The requirements of QKD: PAT, Synchro, and Telecom.}
-Typical free-space systems used to implement the BB84 decoy-state share the logical structure sketched in~\fig{QKD}. The three logic units necessary to implement the BB84 decoy-state protocol in a free-space channels are a Pointing-Acquisition-Tracking (\idx{PAT}) system, a Synchronization (\idx{Synchro}) system and a \idx{Telecom} interface between Alice and Bob.
-
-The PAT system is in charge of allowing Alice and Bob to send and receive the quantum signals over the free-space channel. It is usually comprised of a transmitting and a receiving telescope and a close-feedback pointing system to keep the two telescope aligned one with respect to the other.
-
-The Synchro unit is in charge of the real-time timing of the protocol. It controls the lasers and tag the detections, allowing Alice and Bob to compare their raw bit strings a posteriori. It is worth noticing that the pulsed laser used for synchronization can be used also as a beacon for the PAT system.
-
-The Telecom unit is in charged of the (authenticated) classical communication between the two terminals. It allows the raw-key exchange to the other post-processing phases, the basis-reconciliation (or sifting), and error-correction and privacy-amplification~\cite{a9}.
-
-In this thesis it will be explained how to implement the PAT system.
