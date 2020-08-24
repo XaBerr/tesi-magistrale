@@ -5,7 +5,7 @@ The objective of this experiment was to send a signal between two telescopes, ma
 
 \lvlii{Setup}
 \img{PATLIC/setup-ottico}{PATLIC optical setup. The acronyms are: wavelength division multiplexing (WDM), dichroic mirror (DM), beam expander (beam exp), and beam reducer (beam red).}
-In this experiment there is a trasmitter (Alice) and a receiver (Bob). As shown in \fig{PATLIC/setup-ottico} they use a PATF's beam (blue) at 1064nm and two PATC's beams (red) at 850nm, to inject a 1550nm signal SIG's beam (yellow) into a single-mode fiber.
+In this experiment there is a trasmitter (Alice) and a receiver (Bob). As shown in~\fig{PATLIC/setup-ottico} they use a PATF's beam (blue) at 1064nm and two PATC's beams (red) at 850nm, to inject a 1550nm signal SIG's beam (yellow) into a single-mode fiber.
 
 From Alice two lasers 1550nm, 1064nm are guided by multi-mode fibers into a wavelength division multiplexing that combine them. The fiber's signal is released in free-space by a fiber port. It is collimated by a lens before entering a beam expander that prepare it for a long communications link. The signal is then recived by Bob where a beam reducer convert it into a smaller collimate beam. The beam reflected by a FSM impact on a dichroic mirror. The dichroic mirror separate the SIG's beam at 1550nm from the PATF's beam at 1064nm. The PATF's beam across a band-pass filter at 1064nm and then across a lens that focus it into a PSD. Instead, the SIG's beam across a band-pass filter at 1550nm and then across a lens that focus it into a single-mode fiber.
 
@@ -79,7 +79,7 @@ The complete alignment procedure for PATHW will be divided into parts. At the en
 \img{fiberport}{This image shows the adjustments sequence for the fiber-port. The image is taken in the Thorlabs website.}
 \begin{itemize}
   \item Disassemble the multi-mode fiber and mount the single-mode fiber;
-  \item choose an sequence to make your adjustments, and keep to that sequence as shown in \fig{fiberport};
+  \item choose an sequence to make your adjustments, and keep to that sequence as shown in~\fig{fiberport};
   \item turn each adjuster clockwise to maximize the output, then continue to turn slightly beyond local maxima (to ~95\% of your local maximum). If turning an adjuster clockwise decreases output, skip that adjuster for that round of adjustments and repeat. Once the local maxima values begin to decrease, reverse the direction, and turn each adjuster to maximize the output, and not beyond;
   \item make sure to have a good fiber coupling by checking that the losses before and after the fiber are less than 50\%.
 \end{itemize}

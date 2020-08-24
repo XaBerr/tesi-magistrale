@@ -3,8 +3,8 @@ Two analyses were carried out in order to build the PATSW part of this project. 
 
 \lvlii{The components analysis}
 The aim of this project was to develop modular software that could control a PAT system. The PATSW had to be able to align the telescope with different light sources such as the light of a star or the laser of another telescope.
-In addition, the PATSW had to be able to control all devices in the \sect{Components}.
-Starting from the PAT model \fig{PAT} a simplified model has been developed \fig{simplified-model} to highlight the various components to be implemented.
+In addition, the PATSW had to be able to control all devices in the~\sect{Components}.
+Starting from the PAT model~\fig{PAT} a simplified model has been developed~\fig{simplified-model} to highlight the various components to be implemented.
 In this model we see that there are three main families to be implemented: sensors, controllers, and actuators. The arrows in this diagram indicate the information passages, in other words, actuator and sensor will have to communicate with the controller and vice versa.
 It is therefore necessary to establish a common interface between the various sensors and actuators to connect them with the controllers. The study of these interfaces required multiple iterations to ensure maximum flexibility.
 \img{simplified-model}{Simplified model for PAT system.}
@@ -46,26 +46,26 @@ information, the right side show the controllers information.
 In the sensor's side is composed by (form the top):
 
 \begin{itemize}
-      \item
-            the frame rendering that contains three objects:
-            \begin{itemize}
+  \item
+        the frame rendering that contains three objects:
+        \begin{itemize}
 
-                  \item
-                        the red dot represents the centroid of the beam;
-                  \item
-                        the red square represents the area where the controller calculates the
-                        centroid;
-                  \item
-                        the green circle represents the target;
-            \end{itemize}
+          \item
+                the red dot represents the centroid of the beam;
+          \item
+                the red square represents the area where the controller calculates the
+                centroid;
+          \item
+                the green circle represents the target;
+        \end{itemize}
 
-      \item
-            the set of parameters of the camera/PSD;
-      \item
-            the set of parameters to position the target;
-      \item
-            the plotter that show in real time the distances in pixels between the
-            target and the centroid.
+  \item
+        the set of parameters of the camera/PSD;
+  \item
+        the set of parameters to position the target;
+  \item
+        the plotter that show in real time the distances in pixels between the
+        target and the centroid.
 \end{itemize}
 
 The controller's side there are three tabs: manual controller, calibrated
@@ -91,13 +91,13 @@ In this phase several calibration points will be taken and stored into a file. T
 is the following:
 
 \begin{itemize}
-      \itemsep1pt\parskip0pt\parsep0pt
-      \item
-            in the \emph{Analyzer} tab set the voltages and the time interval;
-      \item
-            autogenerate the filename;
-      \item
-            start the point acquisition.
+  \itemsep1pt\parskip0pt\parsep0pt
+  \item
+        in the \emph{Analyzer} tab set the voltages and the time interval;
+  \item
+        autogenerate the filename;
+  \item
+        start the point acquisition.
 \end{itemize}
 
 \paragraph{Data analysis}
@@ -106,17 +106,17 @@ In this phase the calibration points stored in a
 file will be analyzed to retrieve the low/high voltages configuration. The procedure is the following:
 
 \begin{itemize}
-      \itemsep1pt\parskip0pt\parsep0pt
-      \item
-            in the \emph{Controller} tab select the file and press \emph{Upload
-                  and Calibrated};
-      \item
-            go into \emph{Graphs} tab and check that the analysis is completed
-            correctly;
-      \item
-            if everything is ok then go in the \emph{Controller} tab and set the
-            configuration to the low voltages or high voltages pressing the
-            corresponding button.
+  \itemsep1pt\parskip0pt\parsep0pt
+  \item
+        in the \emph{Controller} tab select the file and press \emph{Upload
+          and Calibrated};
+  \item
+        go into \emph{Graphs} tab and check that the analysis is completed
+        correctly;
+  \item
+        if everything is ok then go in the \emph{Controller} tab and set the
+        configuration to the low voltages or high voltages pressing the
+        corresponding button.
 \end{itemize}
 
 \paragraph{One shot controller}
@@ -126,7 +126,7 @@ swap between high and low voltages a time threshold is available in the same tab
 
 \lvlii{The repositories structure}
 \img{repositories}{This is a screenshot of all the repositories developed in the PAT group.}
-Starting from the simplified model \fig{simplified-model} has been chosen to create: a single repository for all controllers (Controller), a single repository for all actuators (Actuator), and two separate repositories for sensors (Camera, PSD).
+Starting from the simplified model~\fig{simplified-model} has been chosen to create: a single repository for all controllers (Controller), a single repository for all actuators (Actuator), and two separate repositories for sensors (Camera, PSD).
 As a communication interface between Controller and Actuator was made a Actuator class. As a communication interface between the Controller class and Camera/PSD it was chosen to create a Centroid class stored in a separate repository (Centroid).
 The KPA101 repository was added to contain the KPA101 driver, while the Utils repository was created to contain a list of classes useful to all other repositories.
 The Setup repository was created with the idea of taking pieces from the various repositories to compose different setups, in other words, it contains a list of possible PAT combinations.
@@ -135,13 +135,13 @@ The last two repositories that have been created are: Docs that contains quick d
 \lvlii{The repositories documentation}
 This section lists all the documentations of the developed repositories.
 
-      {\parindent0pt
-            \input{docs-repo/utils.tex}
-            \input{docs-repo/centroid.tex}
-            \input{docs-repo/kpa101.tex}
-            \input{docs-repo/actuator.tex}
-            \input{docs-repo/psd.tex}
-            \input{docs-repo/camera.tex}
-            \input{docs-repo/controller.tex}
-            \input{docs-repo/setup.tex}
-      }
+  {\parindent0pt
+    \input{docs-repo/utils.tex}
+    \input{docs-repo/centroid.tex}
+    \input{docs-repo/kpa101.tex}
+    \input{docs-repo/actuator.tex}
+    \input{docs-repo/psd.tex}
+    \input{docs-repo/camera.tex}
+    \input{docs-repo/controller.tex}
+    \input{docs-repo/setup.tex}
+  }

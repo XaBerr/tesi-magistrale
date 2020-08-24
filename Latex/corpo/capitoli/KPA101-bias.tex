@@ -22,7 +22,7 @@ The software was created via PlatformIO. It is divided in two main parts: the fi
 \lvliii{Controller-DAC interface}
 \imgTwo{0.5}{circuito-input}{Simplify diagram of the sequence to write in a register.}{0.5}{circuito-output}{Simplify diagram of the sequence to read from a register.}
 
-The communication interface between controller and DAC must implement three functions: initialization, writing from a register, and reading from a register. This interface has been implemented through the class AD5763, where the initialization is done via the constructor, and the read/write operation is done via the homonymous functions. The read and write procedures were carried out following the sequences described in the DAC documentation, their simplified schemes can be seen in \fig{circuito-input} and \fig{circuito-output}. Some additional structures have been implemented to simplify the use of these three functions.
+The communication interface between controller and DAC must implement three functions: initialization, writing from a register, and reading from a register. This interface has been implemented through the class AD5763, where the initialization is done via the constructor, and the read/write operation is done via the homonymous functions. The read and write procedures were carried out following the sequences described in the DAC documentation, their simplified schemes can be seen in~\fig{circuito-input} and~\fig{circuito-output}. Some additional structures have been implemented to simplify the use of these three functions.
 For a quick view of its components, the List. \ref{code:AD5763} shows the class header.
 \begin{lstlisting}[language=c++, gobble=2, label=code:AD5763]
   #ifndef AD75763_H
