@@ -5,9 +5,9 @@ The objective of this experiment was to send a signal between two telescopes, ma
 
 \lvlii{Setup}
 \img{PATLIC/setup-ottico}{PATLIC optical setup. The acronyms are: wavelength division multiplexing (WDM), dichroic mirror (DM), beam expander (beam exp), and beam reducer (beam red).}
-In this experiment there is a trasmitter (Alice) and a receiver (Bob). As shown in~\fig{PATLIC/setup-ottico} they use a PATF's beam (blue) at 1064nm and two PATC's beams (red) at 850nm, to inject a 1550nm signal SIG's beam (yellow) into a single-mode fiber.
+In this experiment there is a trasmitter (Alice) and a receiver (Bob). As shown in~\fig{PATLIC/setup-ottico} they use a PATF's beam (blue) at 980nm and two PATC's beams (red) at 850nm, to inject a 1550nm signal SIG's beam (yellow) into a single-mode fiber.
 
-From Alice two lasers 1550nm, 1064nm are guided by multi-mode fibers into a wavelength division multiplexing that combine them. The fiber's signal is released in free-space by a fiber port. It is collimated by a lens before entering a beam expander that prepare it for a long communications link. The signal is then recived by Bob where a beam reducer convert it into a smaller collimate beam. The beam reflected by a FSM impact on a dichroic mirror. The dichroic mirror separate the SIG's beam at 1550nm from the PATF's beam at 1064nm. The PATF's beam across a band-pass filter at 1064nm and then across a lens that focus it into a PSD. Instead, the SIG's beam across a band-pass filter at 1550nm and then across a lens that focus it into a single-mode fiber.
+From Alice two lasers 1550nm, 980nm are guided by multi-mode fibers into a wavelength division multiplexing that combine them. The fiber's signal is released in free-space by a fiber port. It is collimated by a lens before entering a beam expander that prepare it for a long communications link. The signal is then recived by Bob where a beam reducer convert it into a smaller collimate beam. The beam reflected by a FSM impact on a dichroic mirror. The dichroic mirror separate the SIG's beam at 1550nm from the PATF's beam at 980nm. The PATF's beam across a band-pass filter at 980nm and then across a lens that focus it into a PSD. Instead, the SIG's beam across a band-pass filter at 1550nm and then across a lens that focus it into a single-mode fiber.
 
 From Alice there is a third laser at 850nm that shine a divergent beam into free-space. This beam is then collected by Bob through a lens-camera setup that is focussing the laser's plane. To increase the signal to noise ratio, a filter is put in front the camera. This setup was also duplicated by Bob to Alice.
 
@@ -21,13 +21,13 @@ The complete alignment procedure for PATHW will be divided into parts. At the en
     Acronym & Description                                              \\
     \hline
     AL      & Alice laser @1550nm used for communication               \\
-    ALF     & Alice laser @1064nm used for PAT fine                    \\
+    ALF     & Alice laser @980nm used for PAT fine                     \\
     ALC     & Alice laser @850nm used for PAT coarse                   \\
     ACC     & Alice camera @850nm used for PAT coarse                  \\
     \hline
     BL      & Bob laser's slot used for alignment                      \\
     BF      & Bob fiber-port collimator @1550nm used for communication \\
-    BP      & Bob PSD @1064nm used for PAT fine                        \\
+    BP      & Bob PSD @980nm used for PAT fine                         \\
     BCC     & Bob camera @850nm used for PAT coarse                    \\
     BLC     & Bob laser @850nm used for PAT coarse                     \\
     BDM     & Bob dichroic mirror                                      \\
