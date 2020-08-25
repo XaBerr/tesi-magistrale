@@ -32,10 +32,6 @@ Other options:
   \item
         If you do not want to import the BoilerplateQtGui library set
         \texttt{"getGui":\ "NO"}
-\end{itemize}
-
-\begin{itemize}
-  \tightlist
   \item
         You can just force your submodules to use a particular version of the
         BoilerplateQt libraries by setting \texttt{"available":\ "NO"}. Your
@@ -54,35 +50,18 @@ steps:
   \item
         create an empty Widget in your GUI Widget and name it as
         ``boilerplateQtWidget''.
-\end{itemize}
-
-\begin{itemize}
-  \tightlist
   \item
         right-click on the boilerplateQtWidget and select ``promote to''.
-\end{itemize}
-
-\begin{itemize}
-  \tightlist
   \item
         Use ``QWidget'' as base class.
-\end{itemize}
-
-\begin{itemize}
-  \tightlist
   \item
         In ``Promoted class name'' insert ``BoilerplateQtWidget''.
-\end{itemize}
-
-\begin{itemize}
-  \tightlist
   \item
         In ``Header file'' insert
         \textless BoilerplateQt/gui/boilerplateqtwidget.h\textgreater.
 \end{itemize}
 
-Connect BoilerplateQt business logic to the presentation of
-BoilerplateQt Widget following these steps:
+Connect the BoilerplateQt business logic to the BoilerplateQt Widget following these steps:
 
 \begin{itemize}
   \tightlist
@@ -101,10 +80,6 @@ BoilerplateQt Widget following these steps:
   \item
         assign two objects to the pointers in a method of your GUI Widget
         class.
-\end{itemize}
-
-\begin{itemize}
-  \tightlist
   \item
         call the setBoilerplateQt method of BoilerplateQtWidget, passing the
         two pointers as argument:
