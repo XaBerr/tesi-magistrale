@@ -7,11 +7,11 @@ This chapter starts with a brief introduction on the relation between QKD and PA
 
 \lvlii{Introduction}
 \img{QKD}{The requirements of QKD: PAT, Synchro, and Telecom.}
-Typical free-space systems used to implement the BB84 decoy-state share the logical structure sketched in~\fig{QKD}. The three logic units necessary to implement the BB84 decoy-state protocol in a free-space channels are a Pointing-Acquisition-Tracking (\idx{PAT}) system, a Synchronization (\idx{Synchro}) system and a \idx{Telecom} interface between Alice and Bob.
+Typical free-space systems used to implement the BB84 decoy-state share the logical structure sketched in~\fig{QKD}. The three logic units necessary to implement the BB84 decoy-state protocol in a free-space channels are a Pointing-Acquisition-Tracking (\idx{PAT}) system, a Synchronization (\idx{Synchro}) system and a \idx{Telecom} interface between Alice and Bob. In this scheme \fig{QKD} Alice prepares and sends the states to Bob that measure them.
 
 The PAT system is in charge of allowing Alice and Bob to send and receive the quantum signals over the free-space channel. It is usually comprised of a transmitting and a receiving telescope and a close-feedback pointing system to keep the two telescope aligned one with respect to the other.
 
-The Synchro unit is in charge of the real-time timing of the protocol. It controls the lasers and tag the detections, allowing Alice and Bob to compare their raw bit strings a posteriori. It is worth noticing that the pulsed laser used for synchronization can be used also as a beacon for the PAT system.
+The Synchro unit is in charge of the real-time timing of the protocol. It controls the lasers and tag the detections, allowing Alice and Bob to compare their raw bit strings a posteriori.
 
 The Telecom unit is in charged of the (authenticated) classical communication between the two terminals. It allows the raw-key exchange to the other post-processing phases, the basis-reconciliation (or sifting), and error-correction and privacy-amplification~\cite{a9}.
 
@@ -19,35 +19,51 @@ In this thesis it will be explained how to implement the PAT system.
 
 \lvlii{The PAT model}
 \img{PAT}{Pointing, Acquisition and Tracking system's model.}
-To establish a communication between two non-isotropic sources (transmitter, receiver) an alignment system is required. The one used in the free-space QKD is called \textit{Pointing, Acquisition and Tracking} (\idx{PAT}) system. PAT system operates on two levels: the first level is called \textit{coarse} (\idx{PATC}) while the second level is called \textit{fine} (\idx{PATF}).
+To establish a communication between two non-isotropic sources (transmitter, receiver) an alignment system is required. The one used in the free-space quantum communication is called \textit{Pointing, Acquisition and Tracking} (\idx{PAT}) system. PAT system operates on two levels: the first level is called \textit{coarse} (\idx{PATC}) while the second level is called \textit{fine} (\idx{PATF}).
 The PATC aims to align the telescopes, while the PATF aims to compensate the fluctuations of the transmitted signal. The signals typically used in this communication are laser signals. Both systems can be modeled with a feedback-control shown in the~\fig{PAT}.
 Given a nominal position, the controller will estimate the error via a sensor. Once the estimate is completed, it will try to compensate the error by an actuator.
 
 The PAT system can be divide in two parts: the software (\idx{PATSW}), and the hardware (\idx{PATHW}).
 PATHW can change a lot depending on what experiment you want to do, because different experiments require different components. PATSW must adapt to the PATHW but at the same time must provide an equal interface to users, this is because the goal is always the same: align the system at the desired point.
 
-\lvlii{PAT experiments}
-The aim of this thesis is to implement a PAT system that can control the PATLIC experiment, keeping it as generic as possible.
-The additional generality is required because the same system will have to offer PAT performance also for other experiments such as the observation of a star or a generic communication for free-space QKD ground-to-ground.
-
-PATLIC is therefore the main experiment that will be detailed in this thesis. \idx{PATLIC} is "PAT system for Light Injection on C-band fiber".
+\lvlii{PAT implementations}
+\idx{PATLIC} (PAT system for Light Injection on C-band fiber) is the main experiment that will be detailed in this thesis, it will explained in details in chapter~\ref{cha:PATLIC experiment}.
+Additional generality in the PAT implementation is required because the same system will have to offer PAT performance also for other experiments such as the observation of a star or a generic communication for free-space QKD ground-to-ground.
 
 \lvlii{Components}
 In this section will be listed all the components of the PATHW which a software implementation has been made in this thesis. In addition, these components will then be used in the PATLIC experiment.
 \lvliii{Sensors}
 \lvliv{Camera}
 \img{pictures/camera}{IDS camera.}
-The industrial camera is the main sensor for the communication. Depending on the model it can cover all the useful spectra for lasers: ultraviolet, visible, infrared.
+A camera is a common sensor used in a PAT system. Depending on the model it can cover all the useful spectra for lasers: ultraviolet, visible, infrared.
 Typically, it has a frame rate that can range from 25Hz to 200Hz. The main advantage of the camera over the other sensors is its capability to reduce the frame rate to increase the exposure time to compensate for the typical attenuations of long distances.
-The camera returns an image typically of the size 1280x1024 pixels. This image will then have to be processed by the computer to calculate the location of the laser signal.
-The cameras used in the PAT setup are IDS's cameras with CMOS technology.
+The camera returns an image typically of order of magnitude of 1000x1000 pixels. This image will then have to be processed by the computer to calculate the location of the laser signal.
+The technical details for the cameras used in the PAT setup reported in table~\ref{table:1}.
+
+\begin{table}[h!]
+  \centering
+  \begin{tabular}{ |c|c| }
+    \hline
+    Name         & UI-3240LE           \\\hline
+    Producer     & IDS                 \\\hline
+    Sensor type  & CMOS                \\\hline
+    Frame rate   & 30 fps              \\\hline
+    Resolution   & 1280 x 1024 pixels  \\\hline
+    Optical area & 6.784 mm x 5.427 mm \\\hline
+    Pixel size   & 5.30 µm             \\\hline
+  \end{tabular}
+  \caption{Camera UI-3240LE details.}
+  \label{table:1}
+\end{table}
 
 \lvliv{Position Sensing Detectors}
 \imgs{0.2}{pictures/PSD}{ThorLabs PSD.}
 The Position Sensing Detectors (\idx{PSD}) utilizes a silicon photodiode-based pincushion-tetra-lateral sensor to accurately measure the displacement of an incident beam relative to the calibrated center. These devices are ideal for measuring the movement of a beam, the distance traveled, or as feedback for alignment systems.
 The spectrum covered is from 320nm to 1100nm. This device needs a hardware driver to be used. Depending on the position of the laser in the sensor, it returns three voltages: $\Delta x, \Delta y, SUM$.
 From these three components it is possible to obtain the position of the laser using the following equations:
-$$x = \frac{L_x \cdot \Delta x}{2 \cdot SUM}, y = \frac{L_y \cdot \Delta y}{2 \cdot  SUM}$$
+\begin{equation}
+  x = \frac{L_x \cdot \Delta x}{2 \cdot SUM}, y = \frac{L_y \cdot \Delta y}{2 \cdot  SUM}
+\end{equation}
 where $L_x,L_y$ are the sensor sizes. The model used in the PAT is the Thorlabs PDP90A, which requires a driver called KPA101.
 The PSD is typically better than a camera at short distances, because the integrated controller in the KPA101 is based on a circuit and therefore has a continuous resolution, its signal doesn't require a post processing.
 
