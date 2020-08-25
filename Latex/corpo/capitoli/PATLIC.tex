@@ -1,13 +1,21 @@
 \lvli{PATLIC experiment}
+The experimental method, also known as the scientific method, was established about four centuries ago by a generation of scientists and philosophers. Its father is considered to be Galileo Galilei (1564 - 1642), so it is also called the galilean method.
+The fundamental principle of this method is that science is based on experience.
+In greater detail, scientific research must proceed through the following steps: observation, modelling, and experimentation.
+
+This chapter contains the description of the experiment used to test the PAT system. It starts with a description of the setup and then describe how to assemble it.
+
+\imgs{1}{pictures/galileo}{Portrait of Galileo Galilei.}
+
 \lvlii{Introduction}
 In this experiment, a PAT system was developed between two telescopes in order to realize QKD with single-mode fiber injection, this experiment is called PATLIC (PAT system for Light Injection on C-band fiber).
 The objective of this experiment was to send a signal between two telescopes, making sure that it was injected in single-mode fibre, with attenuation lower than the 50\%.
 
 \lvlii{Setup}
 \img{PATLIC/setup-ottico}{PATLIC optical setup. The acronyms are: wavelength division multiplexing (WDM), dichroic mirror (DM), beam expander (beam exp), and beam reducer (beam red).}
-In this experiment there is a trasmitter (Alice) and a receiver (Bob). As shown in~\fig{PATLIC/setup-ottico} they use a PATF's beam (blue) at 980nm and two PATC's beams (red) at 850nm, to inject a 1550nm signal SIG's beam (yellow) into a single-mode fiber.
+In this experiment there is a transmitter (Alice) and a receiver (Bob). As shown in~\fig{PATLIC/setup-ottico} they use a PATF's beam (blue) at 980nm and two PATC's beams (red) at 850nm, to inject a 1550nm signal SIG's beam (yellow) into a single-mode fiber.
 
-From Alice two lasers 1550nm, 980nm are guided by multi-mode fibers into a wavelength division multiplexing that combine them. The fiber's signal is released in free-space by a fiber port. It is collimated by a lens before entering a beam expander that prepare it for a long communications link. The signal is then recived by Bob where a beam reducer convert it into a smaller collimate beam. The beam reflected by a FSM impact on a dichroic mirror. The dichroic mirror separate the SIG's beam at 1550nm from the PATF's beam at 980nm. The PATF's beam across a band-pass filter at 980nm and then across a lens that focus it into a PSD. Instead, the SIG's beam across a band-pass filter at 1550nm and then across a lens that focus it into a single-mode fiber.
+From Alice two lasers 1550nm, 980nm are guided by multi-mode fibers into a wavelength division multiplexing that combine them. The fiber's signal is released in free-space by a fiber port. It is collimated by a lens before entering a beam expander that prepare it for a long communications link. The signal is then received by Bob where a beam reducer convert it into a smaller collimate beam. The beam reflected by a FSM impact on a dichroic mirror. The dichroic mirror separate the SIG's beam at 1550nm from the PATF's beam at 980nm. The PATF's beam across a band-pass filter at 980nm and then across a lens that focus it into a PSD. Instead, the SIG's beam across a band-pass filter at 1550nm and then across a lens that focus it into a single-mode fiber.
 
 From Alice there is a third laser at 850nm that shine a divergent beam into free-space. This beam is then collected by Bob through a lens-camera setup that is focussing the laser's plane. To increase the signal to noise ratio, a filter is put in front the camera. This setup was also duplicated by Bob to Alice.
 
