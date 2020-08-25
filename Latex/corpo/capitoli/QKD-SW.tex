@@ -7,13 +7,15 @@ This chapter starts with a description of the state-of-the-art of the QKD-softwa
 \newpage
 
 \lvlii{Memorization, standardization and expansion of the QKD software}
-All of the code that control the QKD was done temporarily on several computers without a particular organization, it was therefore necessary to implement an easy system that would allow standardization, memorization, and simplification of code expansion.
+All of the code that control the QKD was done temporarily on several computers without a particular organization, and it was therefore necessary to implement an easy system that would allow standardization, memorization, and simplification of code expansion.
 
-To store the code, it was chosen to use GitLab, a web-platform that allows the storage and versioning of the code via Git. The code can then be stored in repositories that are organized in groups.
+To store the code, it was chosen to use GitLab, a web platform that allows the storage and versioning of the code via Git. Git is a free and open-source distributed version control system, it is typically used via shell commands.
+The code can then be stored in repositories that are organized in groups.
 
 To create a standardization has been chosen to create a \idx{Boilerplate}, a ready-made code that serves as a template for the realization of various projects.
 
-To simplify code expansion, it was decided to create a CMake-based packet manager and integrate it directly into the Boilerplate. This new system allows to list in a file "config.json" the dependencies of every project, that are the libraries necessary for its compilation.
+To simplify code expansion, it was decided to create a CMake-based packet manager and integrate it directly into the Boilerplate. CMake is an open-source, cross-platform family of tools designed to build, test and c++ package software.
+This new system allows to list in a file "config.json" the dependencies of every project, that are the libraries necessary for its compilation.
 When the project is compiled, dependencies are automatically downloaded and compiled.
 
 \lvlii{Boilerplate structure}
