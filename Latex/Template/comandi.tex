@@ -47,13 +47,19 @@
 % Impostazioni del codice
 \definecolor{darkgreen}{rgb}{0, 0.6, 0}
 \definecolor{gray}{rgb}{0.5, 0.5, 0.5}
-\definecolor{lightgray}{rgb}{0.8, 0.8, 0.8}
+\definecolor{lightgray}{rgb}{0.6, 0.6, 0.6}
 \definecolor{mauve}{rgb}{0.58, 0, 0.82}
 \definecolor{blue}{rgb}{0, 0, 0.82}
 \definecolor{black}{rgb}{0, 0, 0}
+\definecolor{backcolour}{rgb}{0.9, 0.9, 0.9}
 
 \lstset{
-  frame=tb,
+  % backgroundcolor=\color{backcolour},
+  framerule=5px,
+  rulecolor=\color{backcolour},
+  rulesepcolor=\color{backcolour},
+  frameround=tttt,
+  frame=tlrb,
   language=c++,
   aboveskip=3mm,
   belowskip=3mm,
@@ -67,7 +73,7 @@
   stringstyle=\color{darkgreen},
   breaklines=true,
   breakatwhitespace=true,
-  tabsize=3
+  tabsize=2
 }
 
 \lstdefinelanguage{javascript}{
