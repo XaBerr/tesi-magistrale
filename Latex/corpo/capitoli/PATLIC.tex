@@ -13,11 +13,11 @@ The objective of this experiment was to send a signal between two telescopes, ma
 
 \lvlii{Logical setup}
 \img{PATLIC/setup-ottico}{PATLIC optical setup. The acronyms are: wavelength division multiplexing (WDM), dichroic mirror (DM), beam expander (beam exp), and beam reducer (beam red).}
-In this experiment there is a transmitter (Alice) and a receiver (Bob). As shown in~\fig{PATLIC/setup-ottico} they use a PATF's beam (blue) at 980nm and two PATC's beams (red) at 850nm, to inject a 1550nm signal SIG's beam (yellow) into a single-mode fiber.
+In this experiment there is a transmitter (Alice) and a receiver (Bob). As shown in~\fig{PATLIC/setup-ottico} they use a PATF's beam (blue) at 980 nm and two PATC's beams (red) at 850 nm, to inject a 1550 nm signal SIG's beam (yellow) into a single-mode fiber.
 
-From Alice two lasers 1550nm, 980nm are guided by multi-mode fibers into a wavelength division multiplexing that combine them. The fiber's signal is released in free-space by a fiber port. It is collimated by a lens before entering a beam expander that prepare it for a long communications link. The signal is then received by Bob where a beam reducer convert it into a smaller collimate beam. The beam reflected by a FSM impact on a dichroic mirror. The dichroic mirror separate the SIG's beam at 1550nm from the PATF's beam at 980nm. The PATF's beam across a band-pass filter at 980nm and then across a lens that focus it into a PSD. Instead, the SIG's beam across a band-pass filter at 1550nm and then across a lens that focus it into a single-mode fiber.
+From Alice two lasers 1550 nm, 980 nm are guided by multi-mode fibers into a wavelength division multiplexing that combine them. The fiber's signal is released in free-space by a fiber port. It is collimated by a lens before entering a beam expander that prepare it for a long communications link. The signal is then received by Bob where a beam reducer convert it into a smaller collimate beam. The beam reflected by a FSM impact on a dichroic mirror. The dichroic mirror separate the SIG's beam at 1550 nm from the PATF's beam at 980 nm. The PATF's beam across a band-pass filter at 980 nm and then across a lens that focus it into a PSD. Instead, the SIG's beam across a band-pass filter at 1550 nm and then across a lens that focus it into a single-mode fiber.
 
-From Alice there is a third laser at 850nm that shine a divergent beam into free-space. This beam is then collected by Bob through a lens-camera setup that is focussing the laser's plane. To increase the signal to noise ratio, a filter is put in front the camera. This setup was also duplicated by Bob to Alice.
+From Alice there is a third laser at 850 nm that shine a divergent beam into free-space. This beam is then collected by Bob through a lens-camera setup that is focussing the laser's plane. To increase the signal to noise ratio, a filter is put in front the camera. This setup was also duplicated by Bob to Alice.
 
 \lvlii{Physical setup}
 \img{PATLIC/mount}{PATLIC physical setup with Alice on the left and Bob on the right. In this picture we can see how PATF and PATC are combined.}
@@ -29,77 +29,53 @@ When reach Bob the beam is a little bit expanded due to the propagation and so i
 In the PATF, the beam finds a plane-convex lens (light-blue) with a focal 300 mm, followed by a band-pass filter (magenta) for 980 nm with a FWHM of 10 nm, that it is focussed on a PSD (dark-blue) after 300 mm of distance.
 In the SIG, a band-pass filter (magenta) for 1550 nm with a FWHM of 10 nm, that it is focussed on a fiber port (yellow) with a convex-plane lens with focal 18 mm.
 
-Both PATC are attached and aligned to the main structures. For each, a laser beam (red) is received into a convex-convex lens (light-blue) with focal 300 mm through a filter (magenta) for 850 nm with a FWHM of 10 nm, and then it is focussed after 300 mm into a 25Hz-camera (green).
+Both PATC are attached and aligned to the main structures. For each, a laser beam (red) is received into a convex-concave lens (light-blue) with focal 300 mm through a filter (magenta) for 850 nm with a FWHM of 10 nm, and then it is focussed after 300 mm into a 25Hz-camera (green).
 
 \lvlii{Alignment procedure}
 Although the PATSW maintains alignment, manual alignment of the single components of the PATHW is required.
-The complete alignment procedure for PATHW will be divided into parts. At the end of each part it will be needed an activation of the corresponding PATSW in order to move into the next one. To simplify the reading of the procedure, acronyms will be defined in the following Tab. \ref{table:1}.
-\begin{table}[h!]
-  \centering
-  \begin{tabular}{ |c|c|c| }
-    \hline
-    Acronym & Description                                              \\
-    \hline
-    AL      & Alice laser @1550nm used for communication               \\
-    ALF     & Alice laser @980nm used for PAT fine                     \\
-    ALC     & Alice laser @850nm used for PAT coarse                   \\
-    ACC     & Alice camera @850nm used for PAT coarse                  \\
-    \hline
-    BL      & Bob laser's slot used for alignment                      \\
-    BF      & Bob fiber-port collimator @1550nm used for communication \\
-    BP      & Bob PSD @980nm used for PAT fine                         \\
-    BCC     & Bob camera @850nm used for PAT coarse                    \\
-    BLC     & Bob laser @850nm used for PAT coarse                     \\
-    BDM     & Bob dichroic mirror                                      \\
-    FSM     & Bob fast-steering mirror                                 \\
-    PSD     & Bob PSD                                                  \\
-    \hline
-  \end{tabular}
-  \caption{Table to test captions and labels}
-  \label{table:1}
-\end{table}
+The complete alignment procedure for PATHW will be divided into parts. At the end of each part it will be needed an activation of the corresponding PATSW in order to move into the next one.
 
 \lvliii{Coarse alignment}
 \begin{itemize}
-  \item mount visible and collimated lasers in the slots of AL, BL;
-  \item diverge the laser beams ALC, BLC;
-  \item mount ALC, BLC lasers and ensure that they are "parallel" to AL, BL respectively;
-  \item ensure that ACC, BCC cameras focus on the plane of ALC, BLC lasers;
-  \item aim Alice on Bob and vice versa. Make sure ALC, BLC are "quite" centered in the BCC, ACC rooms. Otherwise correct with laser tip-tilt;
-  \item save the camera alignment points;
-  \item make a calibration with PATSW on both mounts;
+  \item mount two visible and collimated lasers in the two fiber ports. This simplify the initial aligned procedure;
+  \item diverge the two lasers that should be used in the PATC;
+  \item mount both PATC's lasers and ensure that they are "parallel" to the visible mounted in the fiber ports;
+  \item ensure that PATC's cameras are focussing on the plane where the PATC's lasers are mounted;
+  \item aim Alice on Bob and vice versa. You should try to get the beam-expander exiting beam into the beam-reducer. Make sure the PATC's lasers are "quite" centered in the cameras' pictures. Otherwise correct with laser's tip-tilt. Perfect center is impossible;
+  \item save the camera alignment points. This is important if something went wrong and you need to start again the procedure;
+  \item make a calibration with PATSW on both mounts, this is required to use the One shot controller;
   \item enable the One shot controller.
 \end{itemize}
 
 \lvliii{Fine alignment}
 \begin{itemize}
-  \item Collimate AL, AF and mount them on the telescope mount and make sure they are parallel; (coaxial)
-  \item mount the FSM centered in x/y and 45 degrees to the optical path;
-  \item mount the BDM centered in x/y and 45 degrees to the optical path;
-  \item mount the BF;
-  \item mount the lens and PSD so that the PSD is positioned on the lens focus;
-  \item turn on AL, ALF and make sure they arrive centered in BF, BP. Otherwise correct with the placement of FSM, BDM;
-  \item calibration with PATSW on PSD;
-  \item make a Home with PATSW to put the FSM in its tip-tilt neutral position, then correct its placement so the laser is still visible in the PSD;
-  \item recalibrate with PATSW;
-  \item activate the PID KPA101 control.
+  \item Collimate the Alice's laser @1550 nm used for communication, and the Alice's laser @980 nm used for PAT fine. Connect them on the fiber port removing the visible lasers. Make sure their beams are coaxial;
+  \item mount the FSM on Bob. Make sure it is centered in x/y and has 45 degrees angle respect to the optical path;
+  \item mount the DM on Bob. Make sure it is centered in x/y and has 45 degrees angle respect to the optical path;
+  \item mount the PATF lens and PSD on Bob. Be sure the PSD is positioned on the lens focus;
+  \item turn on the Alice's lasers @1550 nm, @980 nm and be sure they arrive centered in Bob's fiber port and in the Bob's PSD. Otherwise correct with the placement of FSM, DM;
+  \item make a calibration with PATSW on PSD, this is required to use the Home command;
+  \item make a Home command with PATSW to put the FSM in its tip-tilt neutral position, then correct its placement so the laser is still visible in the PSD. For the correction you can use or the DM placement or the xy-axis controller on the PSD;
+  \item recalibrate the PATSW, this is required to be sure the system is stable;
+  \item activate the PID KPA101 control, paying attention to any inversion of axes due to the positioning of the PSD.
 \end{itemize}
 
 \lvliii{Multi-mode fiber alignment}
 \begin{itemize}
-  \item Disassemble the BF and put it on the table inside a cage attaching a multi-mode fiber;
+  \item Disassemble the Bob fiber-port collimator and put it on a table inside a cage, and attach it on a multi-mode fiber;
   \item shoot a visible laser through the multi-mode fiber and ensure that the outgoing beam is aligned with the cage and is collimated;
-  \item check that AL has a diameter of 3.6mm where the BF will be placed $(4 * 1550 * 10^-9 / \pi * 18.4 / 10^-5)$. Measure the laser power at that point;
-  \item reassemble BF in the mount with visible laser attached;
-  \item check that the AL laser and the BF laser are aligned. Otherwise correct with the precision movements of the BDM frame (all PAT systems must be switched on);
-  \item make sure to have a good fiber coupling by checking that the losses before and after the fiber are less than 40\%.
+  \item check that the SIG's beam after the DM has a diameter of 3.6mm where the fiber port will be placed $(4 * 1550 * 10^-9 / \pi * 18.4 / 10^-5)$. Measure the laser power at that point, this power will be used as reference to understand if the losses are lower than 40\%;
+  \item reassemble fiber port in the mount with visible laser attached;
+  \item check that the SIG's beam and the fiber-port exiting beam are aligned. Otherwise correct with the precision movements of the DM frame. Be sure that all PAT systems are switched on or the procedure doesn't work;
+  \item mount a power meter at the end of the Bob's fiber swapping the visible laser.
+  \item make sure to have a good fiber coupling by checking that the losses using the power before and after the fiber. If everything is aligned the less are lower than 40\%.
 \end{itemize}
 
 \lvliii{Single-mode fiber alignment}
 \img{fiberport}{This image shows the adjustments sequence for the fiber-port. The image is taken in the Thorlabs website.}
 \begin{itemize}
-  \item Disassemble the multi-mode fiber and mount the single-mode fiber;
+  \item Disassemble the multi-mode fiber and mount the single-mode fiber attached to the Bob's fiber port;
   \item choose an sequence to make your adjustments, and keep to that sequence as shown in~\fig{fiberport};
   \item turn each adjuster clockwise to maximize the output, then continue to turn slightly beyond local maxima (to ~95\% of your local maximum). If turning an adjuster clockwise decreases output, skip that adjuster for that round of adjustments and repeat. Once the local maxima values begin to decrease, reverse the direction, and turn each adjuster to maximize the output, and not beyond;
-  \item make sure to have a good fiber coupling by checking that the losses before and after the fiber are less than 50\%.
+  \item make sure to have a good fiber coupling by checking that the losses using the power before and after the fiber. If everything is aligned the less are lower than 50\%.
 \end{itemize}
