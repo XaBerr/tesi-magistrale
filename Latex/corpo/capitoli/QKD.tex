@@ -163,19 +163,21 @@ where $w$ is the angular frequency. This parameter depends on fiber profile, fib
 
 In general, all three of these characteristics impose a maximum reachable distance-constraint regarding fiber communication especially for PMD and attenuation. All fiber-based implementations of quantum communication have to face PMD. This is clearly true for polarization encoding but it is equally a concern for the time-bin encoding because the interferometer depends on the polarization~\cite{a25}. The attenuation is another big problem because unlike the classic communications where the intensity of the impulse sent can be increased, here the single-photon regime forbids it, and largely reduces the maximum communication distance.
 
-When the pulse leaves the fiber, it will be sent to the decoding system which it will converted into a pair "bit and base" used in the communication.
+When the pulse leaves the fiber, it will be sent to the decoding system which it will converted into a pair "bit and base" used in the communication. From here on the system will depend on the protocol used such as the BB84 protocol described above.
 
 \lvliii{Satellite}
 
 In QKD both fiber communication and the free-space ground-to-ground communication have a much shorter maximum link-distance than satellite communication. The first one is due to attenuations, and the second one is due to curvature of the earth and fluctuations of the low atmosphere. The atmosphere behaves as a medium with a variable refractive index, which results in fluctuations of phase and intensity for the light beams that pass through it. It would be preferable to use satellite communication for long range links~\cite{a14}.
 
-The composition of the atmosphere offers an excellent transmission window around 770 nm which is very close to the 800 nm of the typical telecommunication window. In this band it does not present any birefringent behavior and therefore does not have PMD.
+The composition of the atmosphere offers an excellent transmission window around 770 nm which is very close to the 800 nm of the first telecommunication window used for fiber, this is important because a lot of devices are already developed for this window. In this band it does not present any birefringent behavior and therefore does not have PMD.
 
 Unlike fiber, free-space has no spatial confinement and therefore has beam divergence problems. For reference, a gaussian-beam laser that illuminates a geostationary orbit from earth $r \approx 36000$ km with a beam waste of $w_0 \approx 10$ cm, produce a spot with diameter $d \approx r \theta \approx 88$ m, where
 \begin{equation}
   \theta = \frac{\lambda}{\pi w_0}
 \end{equation}
-is the gaussian-beam divergence. Non-confinement makes the channel easily influenced by external noises such as sun and moon emissions. This problem can be mitigated by introducing spatial, temporal and spectral filters to try to confine the channel. New studies are trying to change the wavelength from 800 nm to 1550 nm to mitigate this problem.
+is the gaussian-beam divergence. Non-confinement makes the channel easily influenced by external noises such as sun and moon emissions. This problem can be mitigated by introducing spatial, temporal and spectral filters to try to confine the channel. New studies are trying to change the wavelength from 800 nm to 1550 nm to mitigate this problem. The 1550 nm wavelength is in the third telecommunication window used for fiber, so it is compatible with the standard fiber-technologies used in our days.
+
+At the moment there are no free-space receivers at 1550 nm but only for single-mode fiber. Developing an efficient single-mode fiber injection system at 1550 nm would be advantageous because it would provide wavelength compatibility with fiber-based QKD technology which is available at telecom wavelength. Moreover, it would give the possibility of using very good single-mode fiber detectors (SNSPD) in the case of fixed stations, and of medium-good detectors to make a portable receiver.
 
 Another disadvantage is that the medium in which the light propagates depends on the atmospheric conditions of the moment. In other words, the channel has strong attenuation in case of fog, rain, clouds, and in the case of turbulent motions it can create jittering and beam wandering~\cite{a25}.
 
