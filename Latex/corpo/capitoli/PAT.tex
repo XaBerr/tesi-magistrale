@@ -88,8 +88,8 @@ The PSD is typically better than a camera at short distances, because the integr
 \lvliii{Drivers}
 \lvliv{KPA101}
 \imgs{0.25}{pictures/KPA101}{ThorLabs KPA101.}
-The \idx{KPA101} is a device with three main functions: driver for the PSD, driver for the FSM, and natively implement a PID controller. Connecting it to a computer gives the ability to control these three functions separately.
-
+The \idx{KPA101} is a device with three main functions: driver for the PSD, driver for the FSM, and natively implement a PID controller.
+The KPA101 can be controlled by the manual interface on the top of the unit or via a USB connection to a computer running a Kinesis software package or with the PATSW. Both interfaces allow the auto aligner to be operated in either an open-loop or closed-loop mode. In both modes, the KPA101 generates a left-minus-right X difference ($\Delta X$) signal, a top-minus-bottom Y ($\Delta Y$) difference signal, and a sum (SUM) signal that are displayed on the target screen. In the closed-loop mode, a processor inside the KPA101 runs two independent feedback loops that output X DIFF and Y DIFF signals. These signals will be present at the connectors on the back of the unit for use as the inputs to the beam steering elements being used to center the beam on the detector.
 
 \lvliii{Actuators}
 \lvliv{Fast Steering Mirror}
