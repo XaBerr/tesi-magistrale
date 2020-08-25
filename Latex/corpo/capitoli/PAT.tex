@@ -52,7 +52,7 @@ The technical details for the cameras used in the PAT setup reported in table~\r
     Optical area & 6.784 mm x 5.427 mm \\\hline
     Pixel size   & 5.30 µm             \\\hline
   \end{tabular}
-  \caption{Camera UI-3240LE details.}
+  \caption{Camera UI-3240LE technical details.}
   \label{table:1}
 \end{table}
 
@@ -64,8 +64,26 @@ From these three components it is possible to obtain the position of the laser u
 \begin{equation}
   x = \frac{L_x \cdot \Delta x}{2 \cdot SUM}, y = \frac{L_y \cdot \Delta y}{2 \cdot  SUM}
 \end{equation}
-where $L_x,L_y$ are the sensor sizes. The model used in the PAT is the Thorlabs PDP90A, which requires a driver called KPA101.
+where $L_x,L_y$ are the sensor sizes. The model used in the PAT is the Thorlabs PDP90A, which requires a driver called KPA101. The technical details for the PDP90A used in the PAT setup reported in table~\ref{table:2}.
 The PSD is typically better than a camera at short distances, because the integrated controller in the KPA101 is based on a circuit and therefore has a continuous resolution, its signal doesn't require a post processing.
+
+\begin{table}[h!]
+  \centering
+  \begin{tabular}{ |c|c| }
+    \hline
+    Name                 & PDP90A                 \\\hline
+    Producer             & Thorlabs               \\\hline
+    Wavelength range     & 320 to 1100 nm         \\\hline
+    Resolutiona          & 0.75 µm                \\\hline
+    Sensor size          & 9 mm x 9 mm            \\\hline
+    Bandwidth            & 15 kHz                 \\\hline
+    Output voltage range & pin-1 (X): -4 V to 4 V \\
+                         & pin-2 (Y): -4 V to 4 V \\
+                         & pin-3 (SUM): 0 to 4 V  \\\hline
+  \end{tabular}
+  \caption{Camera PDP90A technical details.}
+  \label{table:2}
+\end{table}
 
 \lvliii{Drivers}
 \lvliv{KPA101}
