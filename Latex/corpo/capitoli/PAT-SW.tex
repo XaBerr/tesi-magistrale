@@ -20,9 +20,9 @@ In this section will be reported the final interface that an user expects to use
 \lvliii{Possible setups}
 In this system there are three basic setups:
 \begin{itemize}
-      \item mirror-camera-pc
-      \item skywatcher-camera-pc
-      \item and mirror-PSD-KPA101.
+      \item mirror-camera-pc;
+      \item skywatcher-camera-pc;
+      \item mirror-PSD-KPA101.
 \end{itemize}
 
 \lvliv{Mirror-camera-pc}
@@ -90,8 +90,20 @@ The calibrated controller is more complex so a separate section is reserved for 
 
 \imgThree{0.3}{calibrated1}{Controller interface.}{0.3}{calibrated2}{Analyzer interface.}{0.3}{calibrated3}{Graph interface.}
 
-The aim of this controller is to be able to use the \emph{One shot controller}, but before to be able to use it a calibration is required. The calibration procedure can be decomposed in two parts:
+The aim of this controller is to be able to use the \emph{One shot controller}, but before to be able to use it a calibration is required.
+
+Sensor calibration is done mainly for two reasons: the first is to establish the linear relationship between pixel error and actuator motion, and this applies to both PATF and PATC; and the second is to find the best voltage at which the FSM will work, and this applies only to PATF.
+
+The calibration procedure can be decomposed in two parts:
 data acquisition, and data analysis.
+
+The point acquisition consists in moving the actuator (for example the FSM) in the four directions (up, down, left, right) giving an input time and a ratio (voltage). Each movement will correspond to a variation in pixels.
+Fixed a ratio (voltage) of movement, the ratio between pixel and time will result in a perfect line in case of ideality of the system. Unfortunately the system is not ideal and therefore a fit of the points obtained is required as shown in \fig{calibrazione}.
+In the case of the FSM the problem becomes more complicated because the four directions have different optimal voltages, in other words by fixing one direction and applying different voltages to it, the generated fits will have different quadratic errors.
+The best choice is therefore to choose the combination of voltage-direction that has the minor quadratic error, but two voltages are chosen: one high and one low. This is done because typically the best voltage is low and therefore produces movements that are too slow but very precise, so having a high tension for big movements is recommended.
+
+This calibration procedure is typically broken into two parts because when you create a system you do not know which are the best ratios (voltages) and therefore must be searched.
+Once the ideal configuration is found, it always remains the same for the system so it is useful to have this configuration saved in a ready-to-use file.
 
 \paragraph{Data acquisition}
 
@@ -126,6 +138,8 @@ file will be analyzed to retrieve the low/high voltages configuration. The proce
             configuration to the low voltages or high voltages pressing the
             corresponding button.
 \end{itemize}
+
+\img{calibrazione}{Example of data acquisition for the PATF done with mirror-camera-pc configuration.}
 
 \paragraph{One shot controller}
 
