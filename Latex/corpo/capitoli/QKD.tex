@@ -1,22 +1,24 @@
 \lvli{Quantum key distribution}
 
-Since the discovery of radio transmissions, the security of the wireless channel has been one of the most studied points, but today with the advent of quantum communications, is going to change the transmission technique itself, whose cryptographic keys could be an impregnable frontier for hackers.
+Since the discovery of radio transmissions, the security of wireless communications has been continuously improved. Today, the advent of quantum communications is going to change the transmission technique itself, making the cryptographic keys an impregnable frontier for hackers.
 
-This chapter starts with a brief introduction of state-of-the-art for quantum communication, then touches the main points of the theory behind the quantum key distribution, and concludes with the need for quantum satellite communication.
+This chapter starts with a brief introduction to quantum communication, then touches the key elements of quantum key distribution, and concludes with the need for satellite quantum communication.
 
 \imgs{0.4}{pictures/micius}{Micius satellite used for quantum communication.}
 
+\newpage
+
 \lvlii{Introduction}
-The security of telecommunication systems is typically ensured by cryptographic protocols that are based on computational assumptions. For example, the complexity of factorizing large prime numbers is at the basis of the RSA public-key cryptosystem. However. This technique will be irremediably compromise with the arrival of quantum computers~\cite{a1,a2,a3}, which can provide an exponential speedup~\cite{a4} in performing complex computational tasks, as factorizing prime numbers. Quantum Key Distribution (\idx{QKD}), once paired with the symmetric cryptosystem called One Time Pad (\idx{OTP}), offers a solution to this issue, since the security of the key generation process is guaranteed by physical laws such as monogamy and no cloning theorem~\cite{a5}.
+The security of telecommunication systems is typically ensured by cryptographic protocols that are based on computational assumptions. For example, the complexity of factorizing large prime numbers is at the basis of the RSA public-key cryptosystem. However. This technique will be irremediably compromise with the arrival of quantum computers~\cite{a1,a2,a3}, which can provide an exponential speedup~\cite{a4} in performing complex computational tasks, as factorizing prime numbers. Quantum Key Distribution (\idx{QKD})~\cite{a24,a25}, once paired with the symmetric cryptosystem called One Time Pad (\idx{OTP}), offers a solution to this issue, since the security of the key generation process is guaranteed by physical laws such as monogamy and no cloning theorem~\cite{a5}.
 
 Since the first QKD protocol was introduced in 1984~\cite{a6}, theoretical developments of security proofs and protocols have led to refined schemes that guarantee security even if devices are not completely safe or trust, as in the device independent framework~\cite{a5,a6,a7,a8,a9,a10,a11}.
 
-From the experimental point of view, we can divide QKD into two main branches distinct by the medium in which the quantum communication (that is the exchange of photons) takes place: via fiber, via free-space. This last one can take place via both horizontal and vertical links (via satellite). At the moment free-space QKD is less developed with respect its fiber-based counterpart, because it has to face additional issues, such as the use of telescopes, the presence of atmospheric turbulence and strong environmental noise. In this regards the Quantum Future research group of DEI department is deeply focused in free-space quantum communication technologies, in particular along satellite links. For instance, they reported on different feasibility studies realized in collaboration with the Italian Space Agency~\cite{a12,a13,a14}. An important milestone in satellite QKD has been reached by China through the launch of the first satellite dedicated to quantum communication in 2016 called Micius~\cite{a15}, and many other research groups around the world are developing their own platform satellites~\cite{a16,a17,a18}.
+From the experimental point of view, we can divide QKD into two main branches distinct by the medium in which the quantum communication (that is the exchange of photons) takes place: via fiber, via free-space. This last one can take place via both horizontal and vertical links (via satellite). At the moment free-space QKD is less developed with respect to its fiber-based counterpart, because it has to face additional issues, such as the use of telescopes, the presence of atmospheric turbulence and strong environmental noise. In this regards the Quantum Future research group of DEI department is deeply focused in free-space quantum communication technologies, in particular along satellite links. For instance, they reported on different feasibility studies realized in collaboration with the Italian Space Agency~\cite{a12,a13,a14}. An important milestone in satellite QKD has been reached by China through the launch of the first satellite dedicated to quantum communication in 2016 called Micius~\cite{a15}, and many other research groups around the world are developing their own platform satellites~\cite{a16,a17,a18}.
 
 The long-term aim of quantum communication is achieving one day the Quantum Internet~\cite{a19} on a global scale, which require two conditions to be fulfilled. The first will be an integration between classical and quantum communication in the same physical channel (fiber and/or free-space), and the second one is the hybridization of the network, which must support both free-space and fiber-based channels. For example, it could be built small-scale centralized fiber distribution stations, interconnected with satellite links that presents long-scale characteristics.
 
 
-\lvlii{The theory behind QKD}
+\lvlii{Elements of Quantum Key Distribution}
 \lvliii{Qubit}
 Quantum communication is based on the qubit. A classical bit (\idx{bit}) can stays in only two states and it is represented by $0$ or $1$, in contrast a quantum bit (\idx{qubit}) can stays in one of the states generated by a basis of the Hilbert space.
 For example, the two dimensional Hilbert space can be generated by the vectors
@@ -42,7 +44,7 @@ and the $1$ with probability
 What is infinite is the possibility to choose the bases of measurement, in fact there are infinite possibility of choosing two orthonormal vectors in the two dimensional Hilbert space.
 
 \lvliii{Photons}
-In the quantum optic theory, light is the sum of indivisible particles called \idx{photons}. The photons are important for quantum communication because the qubit information can be carried into a single photon. The qubit can be encoded in two main ways: polarization and time bin.
+In the quantum optics theory, light is the sum of indivisible particles called \idx{photons}. The photons are important for quantum communication because the qubit information can be carried into a single photon. The qubit can be encoded in the single photon by using various encodings or degrees of freedom. For quantum communications in fiber and free-space the two most used encodings are polarization and time-bin.
 
 \idx{Polarization encoding} takes advantage of the polarization of the single photon. Polarization is a property applying to transverse waves that specifies the geometrical orientation of the oscillations. The electromagnetic waves propagate according the Helmholtz equations and the simpler solutions for the Helmholtz equations are the plane waves, the higher solution can be expressed as a superposition of plane waves~\cite{a21}. In general, the polarization of a plane wave refers to the orientation of the electric field vector that can be expressed as a super position of two vectors of the basis, in the specific case of a plane propagating in the $\hat{z}$ direction can be written as
 \begin{equation}
@@ -54,7 +56,7 @@ The polarization can be expressed by a Jones's vector
 \end{equation}
 that is in a space with the same characteristic of the Hilbert one.
 
-\idx{Time bin encoding} is obtained by sending a photon through a Mach-Zehnder interferometer (MZI). In the MZI the photon can take one of the two paths, one path $\left|1\right>$ is designed longer than the other one $\left|0\right>$ by a length bigger than the coherence length. The final state can be expressed as a superposition of the two possibilities
+\idx{Time bin encoding} is obtained by sending a photon through a unbalanced Mach-Zehnder interferometer (MZI). In the MZI the photon can take one of the two paths, one path $\left|1\right>$ is designed longer than the other one $\left|0\right>$ by a length bigger than the coherence length of the photon. The final state can be expressed as a superposition of the two possibilities
 \begin{equation}
   \left|\psi\right> = \frac{1}{\sqrt{2}} (\left|0\right> + e^{i\theta}\left|1\right>)
 \end{equation}
@@ -76,7 +78,7 @@ This operator does not satisfy linearity:
   \left|\psi 0 \Phi\right> = \alpha\left|0 0 \Phi\right> + \beta\left|1 0 \Phi\right> \to \alpha\left|0 0 \Phi\right> + \beta\left|1 1 \Phi\right> \ne \left|\psi \psi \Phi\right>.
 \end{equation}
 
-The single-photon source is difficult to realize and therefore it is preferred to use an \textit{attenuated phase-randomized} laser pulse. The laser is important for quantum communication because its pulse generate a coherent state
+The single-photon source is difficult to realize and therefore it is preferred to use an \textit{attenuated phase-randomized} laser pulse. A laser generates coherent light, whose quantum state is described by
 \begin{equation}
   \left|\alpha\right> = e^{- |\alpha|^2 / 2} \sum_{n=0}^{+\infty} \frac{\alpha^n}{\sqrt{n!}} \left|n\right>
 \end{equation}
@@ -84,7 +86,7 @@ that have an average number of photons of $\bar{n} = |\alpha|^2$. The average nu
 
 \lvliii{BB84}
 
-The first quantum distribution protocol \idx{BB84}~\cite{a9} was devised in 1984 by Charles H. Bennett and Gilles Brassard, it requires the use of a public and authenticated classical channel and a quantum channel. The strength of this protocol lies in the fact that non-orthogonal single-photon symbols are used for data transmission, so that any eavesdropper who starts listening to the channel is forced to consume the photon to read the state. Once consumed, the eavesdropper is not able to reproduce it perfectly and so introducing an error in the system. In other words, the security of the channel can be determined by the number of errors obtained in the communication itself. Because this protocol requires to send a random sequence of symbols this cannot be used to share data but only for generate secret keys that will be used to encode the data. This process is called quantum key distribution QKD. The safest way to communicate using keys is to divide the data in messages, for each message encrypt it with a random string (key) and then discard that key. In this way, every message became a random message that only who knows the key can decrypt. This procedure is called one time pad.
+The first quantum distribution protocol \idx{BB84}~\cite{a9} was devised in 1984 by Charles H. Bennett and Gilles Brassard. It requires the use of a public and authenticated classical channel and a quantum channel. The strength of this protocol lies in the fact that non-orthogonal single-photon symbols are used for data transmission, so that any eavesdropper who starts listening to the channel is forced to consume the photon to read the state. Once consumed, the eavesdropper is not able to reproduce it perfectly and so introducing an error in the system. In other words, the security of the channel can be determined by the number of errors obtained in the communication itself. Because this protocol requires to send a random sequence of symbols, this cannot be used to share data but only for generate secret keys that will be used to encode the data. This process is called quantum key distribution. The safest way to communicate using keys is to divide the data in messages, for each message encrypt it with a random string (key) and then discard that key. In this way, every message became a random message that only who knows the key can decrypt. This procedure is called one time pad.
 
 The functioning details of this protocol are very important to understand the others protocols because they are all variations around the same concept. In this protocol a transmitter called \idx{Alice} and a receiver called \idx{Bob} want to communicate using the following steps:
 
@@ -96,6 +98,7 @@ The functioning details of this protocol are very important to understand the ot
         \begin{equation}
           B_2 = \{\left|D\right>, \left|A\right>\}
         \end{equation}
+        with
         \begin{equation}
           \left|D\right> = \frac{1}{\sqrt{2}} (\left|0\right> + \left|1\right>)
         \end{equation}
@@ -158,7 +161,7 @@ The simpler way to communicate with QKD is via fiber because the technology of t
 
 There are three effects that characterize the fiber: losses, chromatic dispersion, polarization mode dispersion. \idx{Fiber losses} are due to random scattering processes and depend therefore exponentially on the length $t = 10^{-\alpha l / 10}$ where $\alpha$ is the attenuation coefficient and it is typically
 \begin{equation}
-  \alpha(\lambda = 1550[nm]) \approx 0.2 [dB / km].
+  \alpha(\lambda = 1550~\mbox{nm}) \approx 0.2~\mbox{dB/km}.
 \end{equation}
 The attenuation coefficient depends from intrinsic or extrinsic properties. Intrinsic properties are electrons transition, molecule agitations, and Rayleigh scattering. Extrinsic properties are contamination of $OH^-, H_2$, bending, micro-bending, and leakage due to modes coupling. \idx{Chromatic dispersion} $\beta_2$ is a nonlinear effect that is generated by the dependence of the traveling velocity of the singular wavelength
 \begin{equation}
