@@ -8,11 +8,11 @@ This chapter contains the description of the experiment used to test the PAT sys
 \imgs{1}{pictures/galileo}{Portrait of Galileo Galilei.}
 
 \lvlii{Introduction}
-In this experiment, a PAT system was developed between two telescopes in order to realize QKD with single-mode fiber injection, this experiment is called PATLIC (PAT system for Light Injection on C-band fiber).
+In this experiment, a PAT system was developed between two telescopes in order to realize QKD with single-mode fiber injection. This experiment is called PATLIC (PAT system for Light Injection on C-band fiber).
 The objective of this experiment was to send a signal between two telescopes, making sure that it was injected in single-mode fibre, with attenuation lower than the 50\%.
 
-\lvlii{Logical setup}
-\img{PATLIC/setup-ottico}{PATLIC logical setup. The acronyms are: wavelength division multiplexing (WDM), dichroic mirror (DM), beam expander (beam exp), and beam reducer (beam red).}
+\lvlii{Optical setup}
+\img{PATLIC/setup-ottico}{PATLIC optical setup. The acronyms are: wavelength division multiplexing (WDM), dichroic mirror (DM), beam expander (beam exp), and beam reducer (beam red).}
 In this experiment there is a transmitter (Alice) and a receiver (Bob). As shown in~\fig{PATLIC/setup-ottico} they use a PATF's beam (blue) at 980 nm and two PATC's beams (red) at 850 nm, to inject a 1550 nm signal SIG's beam (yellow) into a single-mode fiber.
 
 From Alice two lasers 1550 nm, 980 nm are guided by multi-mode fibers into a wavelength division multiplexing that combine them. The fiber's signal is released in free-space by a fiber port. It is collimated by a lens before entering a beam expander that prepare it for a long communications link. The signal is then received by Bob where a beam reducer convert it into a smaller collimate beam. The beam reflected by a FSM impact on a dichroic mirror. The dichroic mirror separate the SIG's beam at 1550 nm from the PATF's beam at 980 nm. The PATF's beam across a band-pass filter at 980 nm and then across a lens that focus it into a PSD. Instead, the SIG's beam across a band-pass filter at 1550 nm and then across a lens that focus it into a single-mode fiber.
@@ -25,7 +25,7 @@ From Alice there is a third laser at 850 nm that shine a divergent beam into fre
 As shown in the \fig{PATLIC/mount} PATF and PATC are united to create a single PAT system. These two structures represent Alice on the left, and Bob on the right. Alice and Bob are then attached to their respective mounts through the dovetail bars.
 The input point for Alice is the fiber port, where the WDM will be attached through a fiber shown in \fig{PATLIC/setup-ottico}. The fiber port (yellow) contains a lens plane-convex with focal 15.3 mm that collimate the beam exiting from the fiber and traveling for 60 mm. Then the beam enter in the expander (ochre-yellow) composed by three lenses used to increase the beam waist. The beam finds: a achromatic-doublet convex-plane lens with focal 50 mm and then travels for 85 mm; a plane-concave lens with focal -150 mm and then travels for 197 mm; and a achromatic-doublet plane-convex lens with focal 250 mm. The beam then exits from Alice and propagates toward Bob.
 
-When reach Bob the beam is a little bit expanded due to the propagation and so it finds a beam reducer (ochre-yellow) with lenses similar to the beam expander, where the differences are to compensate this expansion. The beam finds: a achromatic-doublet convex-plane lens with focal 300 mm and then travels for 228 mm; a concave-plane lens with focal -150 mm and then travels for 130 mm, and achromatic-doublet plane-convex with focal 50 mm. The resulting 4mm-diameter beam is then reflected to the DM (orange) by a FSM (yellow). Then, the beam is divided in to paths: PATF, SIG.
+When reach Bob the beam is a little bit expanded due to the propagation and so it finds a beam reducer (ochre-yellow) with lenses similar to the beam expander, where the differences are to compensate this expansion. The beam finds: a achromatic-doublet convex-plane lens with focal 300 mm and then travels for 228 mm; a concave-plane lens with focal -150 mm and then travels for 130 mm, and achromatic-doublet plane-convex with focal 50 mm. The resulting 4mm-diameter beam is then reflected to the DM (orange) by a FSM (yellow) that is put in the pupil plane of the system. Then, the beam is divided in to paths: PATF, SIG.
 In the PATF, the beam finds a plane-convex lens (light-blue) with a focal 300 mm, followed by a band-pass filter (magenta) for 980 nm with a FWHM of 10 nm, that it is focussed on a PSD (dark-blue) after 300 mm of distance.
 In the SIG, a band-pass filter (magenta) for 1550 nm with a FWHM of 10 nm, that it is focussed on a fiber port (yellow) with a convex-plane lens with focal 18 mm.
 
@@ -40,10 +40,10 @@ The complete alignment procedure for PATHW will be divided into parts. At the en
   \item mount two visible and collimated lasers in the two fiber ports. This simplify the initial alignment procedure;
   \item diverge the two lasers that should be used in the PATC;
   \item mount both PATC's lasers and ensure that their beams are "parallel" to the beams of the visible lasers mounted in the fiber ports;
-  \item ensure that PATC's cameras are focusing on the plane where the PATC's lasers are mounted;
+  \item ensure that PATC's lasers are immaged by the PATC's cameras;
   \item aim Alice on Bob and vice versa. You should try to get the beam-expander exiting beam into the beam-reducer. Make sure the PATC's lasers are "quite" centered in the cameras' pictures. Otherwise correct with laser's tip-tilt. Perfect center is impossible;
   \item take note of the camera's alignment coordinates in pixels given by PATSW. This is important if something went wrong and you need to start again the procedure. In the PATSW set the alignment-position targets using the alignment coordinates;
-  \item make a calibration with PATSW on both mounts, this is required to use the One shot controller;
+  \item make a calibration with PATSW on both mounts. This is required to use the One shot controller;
   \item enable the One shot controller.
 \end{itemize}
 
@@ -54,17 +54,17 @@ The complete alignment procedure for PATHW will be divided into parts. At the en
   \item check the DM on Bob. Make sure it is centered in x/y and has 45 degrees angle respect to the optical path;
   \item mount the PATF lens and PSD on Bob. Be sure the PSD is positioned on the lens focus;
   \item turn on the Alice's lasers @1550 nm, @980 nm and be sure they arrive centered in Bob's fiber port and in the Bob's PSD. Otherwise correct with the placement of FSM, DM;
-  \item make a calibration with PATSW on PSD, this is required to use the Home command;
+  \item make a calibration with PATSW on PSD. This is required to use the Home command;
   \item make a Home command with PATSW to put the FSM in its tip-tilt neutral position, then correct its placement so the laser is still visible in the PSD. For the correction you can use or the DM placement or the xy-axis controller on the PSD;
-  \item recalibrate the PATSW, this is required to be sure the system is stable;
+  \item recalibrate the PATSW. This is required to be sure the system is stable;
   \item activate the PID KPA101 control, paying attention to any inversion of axes due to the positioning of the PSD.
 \end{itemize}
 
 \lvliii{Multi-mode fiber alignment}
 \begin{itemize}
   \item Disassemble the Bob fiber-port collimator and put it on a table inside a cage, and attach it on a multi-mode fiber;
+  \item check that the SIG's collimated beam after the DM has a diameter that allows the optimal matching with fiber. Measure the laser power where the fiber port will be placed. This power will be used as reference to understand if the losses are lower than 40\%;
   \item shoot a visible laser through the multi-mode fiber and ensure that the outgoing beam is aligned with the cage and is collimated;
-  \item check that the SIG's beam after the DM has a diameter of 3.6mm where the fiber port will be placed. Measure the laser power at that point, this power will be used as reference to understand if the losses are lower than 40\%;
   \item reassemble fiber port in the mount with visible laser attached;
   \item check that the SIG's beam and the fiber-port exiting beam are aligned. Otherwise correct with the precision movements of the DM frame. Be sure that all PAT systems are switched on or the procedure doesn't work;
   \item mount a power meter at the end of the Bob's fiber swapping the visible laser.
