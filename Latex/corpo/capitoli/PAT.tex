@@ -24,7 +24,7 @@ The PATC aims to align the telescopes, while the PATF aims to compensate the flu
 Given a nominal position, the controller will estimate the error via a sensor. Once the estimate is completed, it will try to compensate the error by an actuator.
 
 The PAT system can be divide in two parts: the software (\idx{PATSW}), and the hardware (\idx{PATHW}).
-PATHW can change a lot depending on what experiment you want to do, because different experiments require different components. PATSW must adapt to the PATHW but at the same time must provide an equal interface to users, this is because the goal is always the same: align the system at the desired point.
+PATHW can change a lot depending on what experiment you want to do, because different experiments require different components. PATSW must adapt to the PATHW but at the same time must provide an equal interface to users. This is because the goal is always the same: align the system at the desired point.
 
 \lvlii{PAT implementations}
 \idx{PATLIC} (PAT system for Light Injection on C-band fiber) is the main experiment that will be detailed in this thesis, it will explained in details in chapter~\ref{cha:PATLIC experiment}.
@@ -122,7 +122,7 @@ Ideally there are countless controllers available for the PAT system, but only t
 Since the devices are not ideal this controller will have to make a calibration for each device, in order to obtain the best voltages to be given to the various actuators.
 
 \lvliv{PID KPA101}
-The \idx{PID KPA101} controller is Proportional Integral Derivatives (\idx{PID}) and is integrated into the KPA101. A computer is required to specify PID parameters. The integrated PID system has a big limitation, it allows to align the beam only to the center of the system, this position is not always optimal in case of complex setups.
+The \idx{PID KPA101} controller is Proportional Integral Derivatives (\idx{PID}) and is integrated into the KPA101. A computer is required to specify PID parameters. The integrated PID system has a big limitation, it allows to align the beam only to the center of the system. This position is not always optimal in case of complex setups.
 
 \lvliii{Additional hardware}
 A problem with the integrated PID KPA101 is that it aligns the system only to the center of the sensor. This becomes a problem in very complex systems when the optimal alignment position does not match the center of the sensor.

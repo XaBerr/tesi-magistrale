@@ -7,7 +7,7 @@ This chapter starts with a description of the state-of-the-art of the QKD-softwa
 \newpage
 
 \lvlii{Memorization, standardization and expansion of the QKD software}
-All of the code that control the QKD was done temporarily on several computers without a particular organization, and it was therefore necessary to implement an easy system that would allow standardization, memorization, and simplification of code expansion.
+All of the software already developed by the Quantum Future group to control the QKD was done temporarily on several computers without a particular organization, and it was therefore necessary to implement an easy system that would allow standardization, memorization, and simplification of code expansion.
 
 To store the code, it was chosen to use GitLab, a web platform that allows the storage and versioning of the code via Git. Git is a free and open-source distributed version control system, it is typically used via shell commands.
 The code can then be stored in repositories that are organized in groups.
@@ -33,7 +33,7 @@ The Boilerplate was built in c++ with the integration of Cmake and Qt.
 \idx{README} is a reStructuredText (.rst) file in which a template allows you to quickly describe how to use the library.
 The documentation in \idx{Sphinx} is more complex, it uses a python program that collects all the inline comments in the code and provides the class structure visible through web pages.
 
-Typically when an application is developed, the developers decide on an interface (.h) that will have to be visible to other developers and all the rest of the code is kept hidden, this is to simplify the work of other developers who have already filtered the content they are interested in.
+Typically when an application is developed, the developers decide on an interface (.h) that will have to be visible to other developers and all the rest of the code is kept hidden. This is to simplify the work of other developers who have already filtered the content they are interested in.
 To implement this division it was chosen to create an "include" folder that contains the interface and an "src" folder where all the rest of the code will be put.
 Moreover, the code is not only composed by features but also by ready-to-use examples, for these examples it was decided to create the folder "apps".
 Since not all projects have a GUI, it was chosen to create a separate folder for them "gui" which in case of non-use is easily erasable.
