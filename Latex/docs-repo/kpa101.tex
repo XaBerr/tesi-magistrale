@@ -31,8 +31,7 @@ following lines in your \texttt{config.json}.
 
 \lvliv{Prerequisites}
 
-The following libraries are auto fetched from the gitlab.dei.unipd.it
-host (ask the owner of this repo to become a member):
+The Prerequisites are the same descibed in the section "Setup your enviroment Prerequisites" \sect{Setup your environment} with the addition of the following libraries that are auto fetched from the gitlab.dei.unipd.it:
 
 \begin{itemize}
   \tightlist
@@ -40,37 +39,9 @@ host (ask the owner of this repo to become a member):
         \href{https://gitlab.dei.unipd.it/PAT/Utils.git}{Utils} 1.0.0
 \end{itemize}
 
-These other libraries need to be installed manually in your system:
-
-\begin{itemize}
-  \tightlist
-  \item
-        \href{https://www.qt.io/}{Qt} 5.14.2
-\end{itemize}
-
-The library documentation is generated through
-\href{http://www.doxygen.nl/download.html}{Doxygen 1.8.13}. Additional
-documentation in the \texttt{index} folder is generated through the
-\href{https://www.anaconda.com/products/individual}{python3} package
-\href{https://www.sphinx-doc.org/en/master/}{Sphinx} using the following
-extensions (which you can install through pip3):
-
-\begin{itemize}
-  \tightlist
-  \item
-        \href{https://pypi.org/project/Sphinx/}{Sphinx 3.0.2}
-  \item
-        \href{https://sphinx-rtd-theme.readthedocs.io/en/stable/}{Sphinx read
-          the doc theme} (to use the read the doc theme for html documentation)
-  \item
-        \href{https://pypi.org/project/breathe/}{Breathe} (to use the xml
-        output of doxygen)
-  \item
-        \href{https://pypi.org/project/sphinx-markdown-builder/}{Sphinx-markdown-builder}
-        (to generate the markdown version for gitlab wiki)
-\end{itemize}
-
-\texttt{pip3\ install\ Sphinx\ sphinx\_rtd\_theme\ breathe\ sphinx-markdown-builder}
+\lvlv{UML}
+In figure \fig{KPA101} is illustrated the UML of the repository that shows the relationships between the classes that will be describe below.
+\img{KPA101}{KPA101 UML.}
 
 \lvlv{Usage}
 
@@ -216,7 +187,3 @@ it.
   gain.value.y = 10;
   kpa101.setFeedBackGain(feedback);
 \end{lstlisting}
-
-\lvlv{UML}
-
-\img{KPA101}{KPA101 UML.}
