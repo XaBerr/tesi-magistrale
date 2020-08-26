@@ -1,0 +1,25 @@
+@startuml program-logic
+!$LIGHT = 1
+!includeurl https://raw.githubusercontent.com/XaBerr/plantUMLstyle/master/style.plantuml
+
+rectangle "backend" {
+  object "business logic" as bl {
+    Calculator.cpp
+    Calculator.h
+  }
+}
+
+rectangle "frontend" {
+  object "presentation logic" as pl {
+    CalculatorWidget.cpp
+    CalculatorWidget.h
+  }
+  object "UI/GUI" as ui {
+    CalculatorWidget.ui
+  }
+}
+
+bl <-right-> pl
+pl <-right-> ui
+
+@enduml
