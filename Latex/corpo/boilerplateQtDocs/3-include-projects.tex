@@ -2,7 +2,7 @@
 \lvliv{Configuring your root CMakeLists.txt}
 
 This project builds two libraries called BoilerplateQt and
-BoilerplateQtGui. To import these libraries in your personal project you
+BoilerplateQtGui. To import other libraries in your personal project you
 can do the following. Assuming your project structure is based on
 BoilerplateQt, you can add to the \texttt{config.json} the following
 lines:
@@ -10,11 +10,8 @@ lines:
 \begin{lstlisting}[language=javascript, gobble=2]
   "modules": [
     {
-      "other module": "info"
-    },
-    {
-      "name": "BoilerplateQt",
-      "path": "gitlab.dei.unipd.it/Calderaro/BoilerplateQt.git",
+      "name": "SimpleLabel",
+      "path": "gitlab.dei.unipd.it/Calderaro/SimpleLabel.git",
       "tag": "1.0.0",
       "avaiable": "YES",
       "getGui": "YES"
@@ -22,7 +19,9 @@ lines:
   ]
 \end{lstlisting}
 
-\textbf{Keep in mind that this will force your submodules to use this version (the one described in the ``tag'') of BoilerplateQt. Make sure that your submodule works fine with the version you set.}
+Here the additional libraries SimpleLabel is added to BoilerplateQt. SimpleLabel contains a SimpleLabelWidget that is just a label that will be used as example in this tutorial.
+
+Keep in mind that this will force your submodules to use this version (the one described in the "tag") of BoilerplateQt. Make sure that your submodule works fine with the version you set.
 
 This will add two library targets: BoilerplateQt and BoilerplateQtGui.
 Other options:
