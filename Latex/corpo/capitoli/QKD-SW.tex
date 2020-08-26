@@ -41,7 +41,7 @@ In general the gui folder contains all frontend files, while the "src" and "incl
 For each class made in both backend and frontend, it was chosen to realize unit tests that were put in a separate folder "tests".
 
 All other files and folder are typically left to the exclusive use of the packet manager.
-Also during the dependency assembly pipeline, the packet manager compiles individual folders into objects that it will then put together. In particular, it will always compile the folders "src", "include" and eventually "gui", but the folders "apps" and "tests" will be compiled only in case the repository is the parent and not a dependency. This pipeline is controlled by the "CMakeList.txt" files placed in each folder.
+Also during the dependency assembly pipeline, the packet manager compiles individual folders into objects that will then put together. In particular, it will always compile the folders "src", "include" and eventually "gui", but the folders "apps" and "tests" will be compiled only in case the repository is the parent and not a dependency. This pipeline is controlled by the "CMakeList.txt" files placed in each folder.
 Additionally, the "Cmakelist.txt" in the parent folder will extract all dependency information contained in the file "config.json" and then download and compile all dependencies.
 
 \lvlii{Boilerplate documentation}

@@ -136,7 +136,7 @@ controller is stopped. The intensity value is bounded between 10 and 0.
 \end{lstlisting}
 
 The output of the PID controller is multiplied by a feedback constant
-that it range between -10 to +10 volts. Using this function you can set
+that range between -10 to +10 volts. Using this function you can set
 it.
 
 \begin{lstlisting}[language=c++, gobble=2]
@@ -149,7 +149,7 @@ it.
 
 \lvlv{Manual}
 
-Manual is a controller that it allow to move a mirror in the four
+Manual is a controller that allow to move a mirror in the four
 directions. It require a \textbf{Mirror} and a \textbf{Centroid}. This
 last one is from a \textbf{Frame} inside a \textbf{Camera} or from a
 \textbf{PSD}. For semplicity here I provide an example using a
@@ -330,7 +330,7 @@ controller.
 
 \lvlv{Calibrated}
 
-Calibrated is a controller that it allow to move a mirror in the four
+Calibrated is a controller that allow to move a mirror in the four
 directions. It is able to calibrate itself using linear fit. It also
 contain a One shot controller that in one frame it try to align the
 centroid to the target point. It require a \textbf{Mirror}, a

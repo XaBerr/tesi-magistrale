@@ -52,7 +52,7 @@ The polarization can be expressed by a Jones's vector
 \begin{equation}
   \hat{P} = \begin{bmatrix} a_x \\ a_y e^{i\varphi} \\ \end{bmatrix}
 \end{equation}
-that it is in a space with the same characteristic of the Hilbert one.
+that is in a space with the same characteristic of the Hilbert one.
 
 \idx{Time bin encoding} is obtained by sending a photon through a Mach-Zehnder interferometer (MZI). In the MZI the photon can take one of the two paths, one path $\left|1\right>$ is designed longer than the other one $\left|0\right>$ by a length bigger than the coherence length. The final state can be expressed as a superposition of the two possibilities
 \begin{equation}
@@ -109,7 +109,7 @@ The functioning details of this protocol are very important to understand the ot
   \item at this point they do a classical post-processing to be sure no errors are introduced by the channel, so if everything is worked, they share a unique secret key.
 \end{itemize}
 
-The strength of this protocol appears when a third person Eve tries to read the data in the channel. Because the hole information of the qubit is encoded into a single photon that cannot be divided or copied, she must measure it. She can do only one measure per photon because a sequence of measurements does not commutate. When Eve measure the photon, she must guess a basis for the measure and send another photon to Bob with the corresponding guessed state. Doing so Eve introduce an error that Alice and Bob can estimate because it is additional to the typical one introduced by the channel. If the error introduced is too high, they must discard all bits and start again, else they have the \textit{sifted key} that are partially correlated and partially secret. As before, they do a classical post-processing to remove the error and they get a unique key that it is still partially secret because Eve has read some qubit correctly. To remove the partial information that Eve has in the secret key, Alice and Bob do an operation called \idx{privacy amplification}. They want to remove the bits that Eve know but they didn't know which are so they discard some bits using a hash function. Now they have unique secret key.
+The strength of this protocol appears when a third person Eve tries to read the data in the channel. Because the hole information of the qubit is encoded into a single photon that cannot be divided or copied, she must measure it. She can do only one measure per photon because a sequence of measurements does not commutate. When Eve measure the photon, she must guess a basis for the measure and send another photon to Bob with the corresponding guessed state. Doing so Eve introduce an error that Alice and Bob can estimate because it is additional to the typical one introduced by the channel. If the error introduced is too high, they must discard all bits and start again, else they have the \textit{sifted key} that are partially correlated and partially secret. As before, they do a classical post-processing to remove the error and they get a unique key that is still partially secret because Eve has read some qubit correctly. To remove the partial information that Eve has in the secret key, Alice and Bob do an operation called \idx{privacy amplification}. They want to remove the bits that Eve know but they didn't know which are so they discard some bits using a hash function. Now they have unique secret key.
 
 This protocol needs some conditions to communicate:
 \begin{itemize}
@@ -186,4 +186,4 @@ At the moment there are no free-space receivers at 1550 nm but only for single-m
 
 Another disadvantage is that the medium in which the light propagates depends on the atmospheric conditions of the moment. In other words, the channel has strong attenuation in case of fog, rain, clouds, and in the case of turbulent motions it can create jittering and beam wandering~\cite{a25}.
 
-Another feature that makes free-space difficult for communication is that it requires one of the two components to be mounted on a satellite. This is a higher difficulty level than fiber because it requires additional monetary investments for the launch a satellite and additional complexity to control a satellite in orbit.
+Another feature that makes free-space difficult for communication is that requires one of the two components to be mounted on a satellite. This is a higher difficulty level than fiber because it requires additional monetary investments for the launch a satellite and additional complexity to control a satellite in orbit.

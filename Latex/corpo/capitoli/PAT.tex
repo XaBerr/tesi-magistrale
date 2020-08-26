@@ -41,19 +41,19 @@ The camera returns an image typically of order of magnitude of 1000x1000 pixels.
 The technical details for the cameras used in the PAT setup reported in table~\ref{table:1}.
 
 \begin{table}[h!]
-  \centering
-  \begin{tabular}{ |c|c| }
-    \hline
-    Name         & UI-3240LE           \\\hline
-    Producer     & IDS                 \\\hline
-    Sensor type  & CMOS                \\\hline
-    Frame rate   & 30 fps              \\\hline
-    Resolution   & 1280 x 1024 pixels  \\\hline
-    Optical area & 6.784 mm x 5.427 mm \\\hline
-    Pixel size   & 5.30 µm             \\\hline
-  \end{tabular}
-  \caption{Camera UI-3240LE technical details.}
-  \label{table:1}
+      \centering
+      \begin{tabular}{ |c|c| }
+            \hline
+            Name         & UI-3240LE           \\\hline
+            Producer     & IDS                 \\\hline
+            Sensor type  & CMOS                \\\hline
+            Frame rate   & 30 fps              \\\hline
+            Resolution   & 1280 x 1024 pixels  \\\hline
+            Optical area & 6.784 mm x 5.427 mm \\\hline
+            Pixel size   & 5.30 µm             \\\hline
+      \end{tabular}
+      \caption{Camera UI-3240LE technical details.}
+      \label{table:1}
 \end{table}
 
 \lvliv{Position Sensing Detectors}
@@ -62,27 +62,27 @@ The Position Sensing Detectors (\idx{PSD}) utilizes a silicon photodiode-based p
 The spectrum covered is from 320nm to 1100nm. This device needs a hardware driver to be used. Depending on the position of the laser in the sensor, it returns three voltages: $\Delta x, \Delta y, SUM$.
 From these three components it is possible to obtain the position of the laser using the following equations:
 \begin{equation}
-  x = \frac{L_x \cdot \Delta x}{2 \cdot SUM}, y = \frac{L_y \cdot \Delta y}{2 \cdot  SUM}
+      x = \frac{L_x \cdot \Delta x}{2 \cdot SUM}, y = \frac{L_y \cdot \Delta y}{2 \cdot  SUM}
 \end{equation}
 where $L_x,L_y$ are the sensor sizes. The model used in the PAT is the Thorlabs PDP90A, which requires a driver called KPA101. The technical details for the PDP90A used in the PAT setup reported in table~\ref{table:2}.
 The PSD is typically better than a camera at short distances, because the integrated controller in the KPA101 is based on a circuit and therefore has a continuous resolution, its signal doesn't require a post processing.
 
 \begin{table}[h!]
-  \centering
-  \begin{tabular}{ |c|c| }
-    \hline
-    Name                 & PDP90A                 \\\hline
-    Producer             & Thorlabs               \\\hline
-    Wavelength range     & 320 to 1100 nm         \\\hline
-    Resolutiona          & 0.75 µm                \\\hline
-    Sensor size          & 9 mm x 9 mm            \\\hline
-    Bandwidth            & 15 kHz                 \\\hline
-    Output voltage range & pin-1 (X): -4 V to 4 V \\
-                         & pin-2 (Y): -4 V to 4 V \\
-                         & pin-3 (SUM): 0 to 4 V  \\\hline
-  \end{tabular}
-  \caption{Camera PDP90A technical details.}
-  \label{table:2}
+      \centering
+      \begin{tabular}{ |c|c| }
+            \hline
+            Name                 & PDP90A                 \\\hline
+            Producer             & Thorlabs               \\\hline
+            Wavelength range     & 320 to 1100 nm         \\\hline
+            Resolutiona          & 0.75 µm                \\\hline
+            Sensor size          & 9 mm x 9 mm            \\\hline
+            Bandwidth            & 15 kHz                 \\\hline
+            Output voltage range & pin-1 (X): -4 V to 4 V \\
+                                 & pin-2 (Y): -4 V to 4 V \\
+                                 & pin-3 (SUM): 0 to 4 V  \\\hline
+      \end{tabular}
+      \caption{Camera PDP90A technical details.}
+      \label{table:2}
 \end{table}
 
 \lvliii{Drivers}
@@ -99,16 +99,16 @@ The FSM used for the PAT is mounted in a STT-25.4 SmarAct frame that takes advan
 It requires an external driver to be managed because its movement is controlled by two voltages (x,y). The KPA101 is a driver compatible with the technology of this actuator.
 
 \begin{table}[h!]
-  \centering
-  \begin{tabular}{ |c|c| }
-    \hline
-    Name                  & STT-25.4            \\\hline
-    Producer              & SmarAct             \\\hline
-    Tip-tilt angles range & -2.5 to +2.5 degree \\\hline
-    Angular velocity      & 15 degree/s         \\\hline
-  \end{tabular}
-  \caption{Fast-steering mirror STT-25.4 technical details.}
-  \label{table:3}
+      \centering
+      \begin{tabular}{ |c|c| }
+            \hline
+            Name                  & STT-25.4            \\\hline
+            Producer              & SmarAct             \\\hline
+            Tip-tilt angles range & -2.5 to +2.5 degree \\\hline
+            Angular velocity      & 15 degree/s         \\\hline
+      \end{tabular}
+      \caption{Fast-steering mirror STT-25.4 technical details.}
+      \label{table:3}
 \end{table}
 
 \lvliv{Skywatcher}
@@ -125,7 +125,7 @@ Since the devices are not ideal this controller will have to make a calibration 
 The \idx{PID KPA101} controller is Proportional Integral Derivatives (\idx{PID}) and is integrated into the KPA101. A computer is required to specify PID parameters. The integrated PID system has a big limitation, it allows to align the beam only to the center of the system. This position is not always optimal in case of complex setups.
 
 \lvliii{Additional hardware}
-A problem with the integrated PID KPA101 is that it aligns the system only to the center of the sensor. This becomes a problem in very complex systems when the optimal alignment position does not match the center of the sensor.
+A problem with the integrated PID KPA101 is that aligns the system only to the center of the sensor. This becomes a problem in very complex systems when the optimal alignment position does not match the center of the sensor.
 To solve this problem, a circuit was created that adds bias voltages to the signals that are exiting from the sensor and entering in the KPA101.
 
 \lvliv{Circuit schematic}

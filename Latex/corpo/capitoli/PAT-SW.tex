@@ -1,14 +1,14 @@
 \lvli{PAT software design}
 User Interface Design (UI-design) in Information Technology refers to the design of the user interface for software, websites or applications. It’s about programming the look of things, with a view to facilitating usability and to improve the user experience. Developing a user interface for complex systems simplifies the scientist’s work by giving him more time to focus on the experiment.
 
-In this chapter, two analyses were carried out in order to build the PATSW part of this project. An analysis that focuses on the components available, and an analysis that focuses on what a user expects to use. Having these two analyses the construction of the single repositories becomes immediate, it is reduced to connecting the functionalities expected by users to the various components available.
+In this chapter, two analyses were carried out in order to build the PATSW part of this project. An analysis that focuses on the components available, and an analysis that focuses on what a user expects to use. Having these two analyses the construction of the single repositories becomes immediate, since it reduces to connecting the functionalities expected by users to the various components available.
 
 \imgs{0.4}{pictures/ui}{Typica user interface for data analysis.}
 
 \lvlii{The components analysis}
 The aim of this project was to develop modular software that could control a PAT system. The PATSW had to be able to align the telescope with different light sources such as the light of a star or the laser of another telescope.
 In addition, the PATSW had to be able to control all devices in the~\sect{Components}.
-Starting from the PAT model~\fig{PAT} a simplified model has been developed~\fig{simplified-model} to highlight the various components to be implemented.
+Starting from the PAT model in~\fig{PAT} a simplified model has been developed as shown in~\fig{simplified-model} to highlight the various components to be implemented.
 In this model we see that there are three main families to be implemented: sensors, controllers, and actuators. The arrows in this diagram indicate the information passages, in other words, actuator and sensor will have to communicate with the controller and vice versa.
 It is therefore necessary to establish a common interface between the various sensors and actuators to connect them with the controllers. The study of these interfaces required multiple iterations to ensure maximum flexibility.
 \img{simplified-model}{Simplified model for PAT system.}
@@ -19,7 +19,11 @@ In this section will be reported the final interface that an user expects to use
 
 \lvliii{Possible setups}
 In this system there are three basic setups:
-mirror-camera-pc, skywatcher-camera-pc, and mirror-PSD-KPA101.
+\begin{itemize}
+      \item mirror-camera-pc
+      \item skywatcher-camera-pc
+      \item and mirror-PSD-KPA101.
+\end{itemize}
 
 \lvliv{Mirror-camera-pc}
 In this setup the pc is connected with two devices: the first is
@@ -27,9 +31,9 @@ the KPA101 used to control the mirror; the second is the camera used as
 sensor. Here two types of controllers are available: manual,
 calibrated. Manual give the possibility to move the mirror using a joystick taking
 in input times and voltages. Calibrated has two functionalities: the first is to use a joystick
-similar to manual that it work taking in input a distance in pixels; the
+similar to manual that works taking in input a distance in pixels; the
 second is to use and automatic controller that align the centroid to the
-target that it is called One shot.
+target that is called One shot.
 
 \lvliv{Skywatcher-camera-pc}
 In this setup the pc is connected with two devices: the first is
