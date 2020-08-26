@@ -54,7 +54,7 @@ The polarization can be expressed by a Jones's vector
 \begin{equation}
   \hat{P} = \begin{bmatrix} a_x \\ a_y e^{i\varphi} \\ \end{bmatrix}
 \end{equation}
-that is in a space with the same characteristic of the Hilbert one.
+that is a vector in the $\C^2$ Hilbert space.
 
 \idx{Time bin encoding} is obtained by sending a photon through a unbalanced Mach-Zehnder interferometer (MZI). In the MZI the photon can take one of the two paths, one path $\left|1\right>$ is designed longer than the other one $\left|0\right>$ by a length bigger than the coherence length of the photon. The final state can be expressed as a superposition of the two possibilities
 \begin{equation}
@@ -106,7 +106,7 @@ The functioning details of this protocol are very important to understand the ot
           \left|A\right> = \frac{1}{\sqrt{2}} (\left|0\right> - \left|1\right>);
         \end{equation}
   \item Alice send a sequence of qubits randomly chosen from the four vectors of the bases;
-  \item for each qubit, Bob choose at random a basis and measure it typically with positive-operator valued measure (POVM) and it get a sequence of $0$ or $1$;
+  \item for each qubit, Bob choose at random a basis and measure it getting a sequence of $0$ or $1$;
   \item then Alice and Bob share in the authenticated classical channel the bases choice;
   \item they keep only the bits of the matching bases and discard the others because they are sure of the outcome. They get two partially correlated sequences of symbols called \idx{sifted key};
   \item at this point they do a classical post-processing to be sure no errors are introduced by the channel, so if everything is worked, they share a unique secret key.
@@ -175,7 +175,7 @@ When the pulse leaves the fiber, it will be sent to the decoding system which it
 
 \lvliii{Satellite}
 
-In QKD both fiber communication and the free-space ground-to-ground communication have a much shorter maximum link-distance than satellite communication. The first one is due to attenuations, and the second one is due to curvature of the earth and fluctuations of the low atmosphere. The atmosphere behaves as a medium with a variable refractive index, which results in fluctuations of phase and intensity for the light beams that pass through it. It would be preferable to use satellite communication for long range links~\cite{a14}.
+In QKD both fiber communication and the free-space ground-to-ground communication have a much shorter maximum link-distance than satellite communication. The first one is due to attenuations, and the second one is due to curvature of the earth and fluctuations of the low atmosphere. The atmosphere behaves as a medium with a variable refractive index, which results in fluctuations of phase and intensity for the light beams that pass through it. Therefore, it would be preferable to use satellite communication for long range links~\cite{a14}.
 
 The composition of the atmosphere offers an excellent transmission window around 770 nm which is very close to the 800 nm of the first telecommunication window used for fiber. This is important because a lot of devices are already developed for this window. In this band it does not present any birefringent behavior and therefore does not have PMD.
 
@@ -185,7 +185,7 @@ Unlike fiber, free-space has no spatial confinement and therefore has beam diver
 \end{equation}
 is the gaussian-beam divergence. Non-confinement makes the channel easily influenced by external noises such as sun and moon emissions. This problem can be mitigated by introducing spatial, temporal and spectral filters to try to confine the channel. New studies are trying to change the wavelength from 800 nm to 1550 nm to mitigate this problem. The 1550 nm wavelength is in the third telecommunication window used for fiber, so it is compatible with the standard fiber-technologies used in our days.
 
-At the moment there are no free-space receivers at 1550 nm but only for single-mode fiber. Developing an efficient single-mode fiber injection system at 1550 nm would be advantageous because it would provide wavelength compatibility with fiber-based QKD technology which is available at telecom wavelength. Moreover, it would give the possibility of using very good single-mode fiber detectors (SNSPD) in the case of fixed stations, and of medium-good detectors to make a portable receiver.
+At the moment there are no high-performance free-space receivers at 1550 nm but only for single-mode fiber. Developing an efficient single-mode fiber injection system at 1550 nm would be advantageous because it would provide wavelength compatibility with fiber-based QKD technology which is available at telecom wavelength. Moreover, it would give the possibility of using very good single-mode fiber detectors (SNSPD) in the case of fixed stations, and of medium-good detectors with InGaAs technology~\cite{b25} to make a portable receiver.
 
 Another disadvantage is that the medium in which the light propagates depends on the atmospheric conditions of the moment. In other words, the channel has strong attenuation in case of fog, rain, clouds, and in the case of turbulent motions it can create jittering and beam wandering~\cite{a25}.
 
