@@ -1,9 +1,9 @@
 \lvli{Pointing Acquisition Tracking system}
-In physics and automation, feedback is the ability of a dynamic system to take into account the results of the system to change the characteristics of the system itself. Feedback is the basic element on which the single-mode fibre injection stabilization system is based.
+In physics and automation, feedback is the ability of a dynamic system to take into account the results of the system to change the characteristics of the system itself. When a telescope points a satellite it makes a mistake that comes from the non-ideal of the system. This error can be compensated by using a feedback that instantly reads it and adjusts the pointing.
 
-This chapter starts with a brief introduction on the relation between QKD and PAT, then describe its modelling and and some experiments in which it will be used. It concludes with a list of components and an explanation of the fine and coarse versions.
+This chapter starts with a brief introduction on the relation between QKD and pointing-acquisition-tracking system, then describe its modelling and and some experiments in which it will be used. It concludes with a list of components and an explanation of the fine and coarse versions.
 
-\imgs{0.4}{pictures/matera}{Picture of Matera Observatory using a feedback system during the QKD communication.}
+\imgs{0.4}{pictures/matera}{Picture of Matera Observatory using a pointing-acquisition-Tracking system during the QKD communication experiment.}
 
 \lvlii{Introduction}
 \img{QKD}{The requirements of QKD: PAT, Synchro, and Telecom.}
@@ -27,8 +27,7 @@ The PAT system can be divide in two parts: the software (\idx{PATSW}), and the h
 PATHW can change a lot depending on what experiment you want to do, because different experiments require different components. PATSW must adapt to the PATHW but at the same time must provide an equal interface to users. This is because the goal is always the same: align the system at the desired point.
 
 \lvlii{PAT implementations}
-\idx{PATLIC} (PAT system for Light Injection on C-band fiber) is the main experiment that will be detailed in this thesis, it will explained in details in chapter~\ref{cha:PATLIC experiment}.
-Additional generality in the PAT implementation is required because the same system will have to offer PAT performance also for other experiments such as the observation of a star or a generic communication for free-space QKD ground-to-ground.
+The PATs implemented can be multiple and depend on the specific experiment that is carried out. For example, in this thesis it will be presented in the case of a free-space QKD system with single-mode fiber coupling called PATLIC that will be detailed in chapter~\ref{cha:PATLIC experiment}. However, the same functions can also be used to try to pair single-mode fiber with light from a star, or for a generic quantum communication experiment in free-space on horizontal links.
 
 \lvlii{Components}
 In this section will be listed all the components of the PATHW which a software implementation has been made in this thesis. In addition, these components will then be used in the PATLIC experiment.
@@ -114,6 +113,7 @@ It requires an external driver to be managed because its movement is controlled 
 \lvliv{Skywatcher}
 \imgs{0.1}{pictures/skywatcher}{Skywatcher telescope mout.}
 The Skywatcher used in the PAT is the AZ-GTI telescope mount. It is an altitude-azimuth mount controlled by two DC servo motor. It needs a computer to do the targeting.
+It has 9 speeds of motion called rates, so to perform a movement in one of the two axes a rate-time pair should be provided. The two motors are controlled separately by two encoders that translate the rate-time pair in an angle of motion.
 
 \lvliii{Controllers}
 Ideally there are countless controllers available for the PAT system, but only two are used/developed in this thesis: One shot, and PID KPA101.
