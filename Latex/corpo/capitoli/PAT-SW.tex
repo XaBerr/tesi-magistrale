@@ -1,9 +1,12 @@
 \lvli{PAT software design}
 User Interface Design (UI-design) in Information Technology refers to the design of the user interface for software, websites or applications. It’s about programming the look of things, with a view to facilitating usability and to improve the user experience. Developing a user interface for complex systems simplifies the scientist’s work by giving him more time to focus on the experiment.
+That’s why before starting a project in addition to doing the relational study between the various components is also important to do a graphic study of what a user needs.
 
 In this chapter, two analyses were carried out in order to build the PATSW part of this project. An analysis that focuses on the components available, and an analysis that focuses on what a user expects to use. Having these two analyses the construction of the single repositories becomes immediate, since it reduces to connecting the functionalities expected by users to the various components available.
 
-\imgs{0.4}{pictures/ui}{Typica user interface for data analysis.}
+\imgs{0.6}{CameraGUI_ditaa}{Initial draft of the PAT system interface.}
+
+\newpage
 
 \lvlii{The components analysis}
 The aim of this project was to develop modular software that could control a PAT system. The PATSW had to be able to align the telescope with different light sources such as the light of a star or the laser of another telescope.
@@ -97,8 +100,8 @@ Sensor calibration is done mainly for two reasons: the first is to establish the
 The calibration procedure can be decomposed in two parts:
 data acquisition, and data analysis.
 
-The point acquisition consists in moving the actuator (for example the FSM) in the four directions (up, down, left, right) giving an input time and a ratio (voltage). Each movement will correspond to a variation in pixels.
-Fixed a ratio (voltage) of movement, the ratio between pixel and time will result in a perfect line in case of ideality of the system. Unfortunately the system is not ideal and therefore a fit of the points obtained is required as shown in \fig{calibrazione}.
+The point acquisition consists in moving the actuator (for example the FSM) in the four directions (up, down, left, right) giving an input time and a rate (voltage). Each movement will correspond to a variation in pixels.
+Fixed a rate (voltage) of movement, the rate between pixel and time will result in a perfect line in case of ideality of the system. Unfortunately the system is not ideal and therefore a fit of the points obtained is required as shown in \fig{calibrazione}.
 In the case of the FSM the problem becomes more complicated because the four directions have different optimal voltages, in other words by fixing one direction and applying different voltages to it, the generated fits will have different quadratic errors.
 The best choice is therefore to choose the combination of voltage-direction that has the minor quadratic error, but two voltages are chosen: one high and one low. This is done because typically the best voltage is low and therefore produces movements that are too slow but very precise, so having a high tension for big movements is recommended.
 
