@@ -1,56 +1,57 @@
-\BOOKMARK [0][-]{chapter.1}{Quantum key distribution}{}% 1
-\BOOKMARK [1][-]{section.1.1}{Introduction}{chapter.1}% 2
-\BOOKMARK [1][-]{section.1.2}{Elements of Quantum Key Distribution}{chapter.1}% 3
-\BOOKMARK [2][-]{subsection.1.2.1}{Qubit}{section.1.2}% 4
-\BOOKMARK [2][-]{subsection.1.2.2}{Photons}{section.1.2}% 5
-\BOOKMARK [2][-]{subsection.1.2.3}{BB84}{section.1.2}% 6
-\BOOKMARK [2][-]{subsection.1.2.4}{Fiber}{section.1.2}% 7
-\BOOKMARK [2][-]{subsection.1.2.5}{Satellite}{section.1.2}% 8
-\BOOKMARK [0][-]{chapter.2}{Pointing Acquisition Tracking system}{}% 9
-\BOOKMARK [1][-]{section.2.1}{Introduction}{chapter.2}% 10
-\BOOKMARK [1][-]{section.2.2}{The PAT model}{chapter.2}% 11
-\BOOKMARK [1][-]{section.2.3}{PAT implementations}{chapter.2}% 12
-\BOOKMARK [1][-]{section.2.4}{Components}{chapter.2}% 13
-\BOOKMARK [2][-]{subsection.2.4.1}{Sensors}{section.2.4}% 14
-\BOOKMARK [2][-]{subsection.2.4.2}{Drivers}{section.2.4}% 15
-\BOOKMARK [2][-]{subsection.2.4.3}{Actuators}{section.2.4}% 16
-\BOOKMARK [2][-]{subsection.2.4.4}{Controllers}{section.2.4}% 17
-\BOOKMARK [2][-]{subsection.2.4.5}{Additional hardware}{section.2.4}% 18
-\BOOKMARK [1][-]{section.2.5}{PAT-Coarse system}{chapter.2}% 19
-\BOOKMARK [1][-]{section.2.6}{PAT-Fine system}{chapter.2}% 20
-\BOOKMARK [0][-]{chapter.3}{QKD software design}{}% 21
-\BOOKMARK [1][-]{section.3.1}{Memorization, standardization and expansion of the QKD software}{chapter.3}% 22
-\BOOKMARK [1][-]{section.3.2}{Program logical division}{chapter.3}% 23
-\BOOKMARK [1][-]{section.3.3}{Boilerplate structure}{chapter.3}% 24
-\BOOKMARK [1][-]{section.3.4}{Boilerplate documentation}{chapter.3}% 25
-\BOOKMARK [2][-]{subsection.3.4.1}{Setup your environment}{section.3.4}% 26
-\BOOKMARK [2][-]{subsection.3.4.2}{How to add source files .cpp or .h}{section.3.4}% 27
-\BOOKMARK [2][-]{subsection.3.4.3}{Include other projects inside https://gitlab.dei.unipd.it/}{section.3.4}% 28
-\BOOKMARK [2][-]{subsection.3.4.4}{Include third part libs .dll or .h}{section.3.4}% 29
-\BOOKMARK [2][-]{subsection.3.4.5}{Structure description of the project}{section.3.4}% 30
-\BOOKMARK [2][-]{subsection.3.4.6}{Setup git credential in windows}{section.3.4}% 31
-\BOOKMARK [0][-]{chapter.4}{PAT software design}{}% 32
-\BOOKMARK [1][-]{section.4.1}{The components analysis}{chapter.4}% 33
-\BOOKMARK [1][-]{section.4.2}{The GUI analysis}{chapter.4}% 34
-\BOOKMARK [2][-]{subsection.4.2.1}{Possible setups}{section.4.2}% 35
-\BOOKMARK [2][-]{subsection.4.2.2}{Possible GUIs}{section.4.2}% 36
-\BOOKMARK [1][-]{section.4.3}{The repositories structure}{chapter.4}% 37
-\BOOKMARK [1][-]{section.4.4}{The repositories documentation}{chapter.4}% 38
-\BOOKMARK [2][-]{subsection.4.4.1}{Utils}{section.4.4}% 39
-\BOOKMARK [2][-]{subsection.4.4.2}{Centroid}{section.4.4}% 40
-\BOOKMARK [2][-]{subsection.4.4.3}{KPA101}{section.4.4}% 41
-\BOOKMARK [2][-]{subsection.4.4.4}{Actuator}{section.4.4}% 42
-\BOOKMARK [2][-]{subsection.4.4.5}{PSD}{section.4.4}% 43
-\BOOKMARK [2][-]{subsection.4.4.6}{Camera}{section.4.4}% 44
-\BOOKMARK [2][-]{subsection.4.4.7}{Controller}{section.4.4}% 45
-\BOOKMARK [2][-]{subsection.4.4.8}{Setup}{section.4.4}% 46
-\BOOKMARK [0][-]{chapter.5}{PATLIC experiment}{}% 47
-\BOOKMARK [1][-]{section.5.1}{Introduction}{chapter.5}% 48
-\BOOKMARK [1][-]{section.5.2}{Optical setup}{chapter.5}% 49
-\BOOKMARK [1][-]{section.5.3}{Physical setup}{chapter.5}% 50
-\BOOKMARK [1][-]{section.5.4}{Alignment procedure}{chapter.5}% 51
-\BOOKMARK [2][-]{subsection.5.4.1}{Coarse alignment}{section.5.4}% 52
-\BOOKMARK [2][-]{subsection.5.4.2}{Fine alignment}{section.5.4}% 53
-\BOOKMARK [2][-]{subsection.5.4.3}{Multi-mode fiber alignment}{section.5.4}% 54
-\BOOKMARK [2][-]{subsection.5.4.4}{Single-mode fiber alignment}{section.5.4}% 55
-\BOOKMARK [0][-]{chapter.6}{Conclusions}{}% 56
+\BOOKMARK [0][-]{chapter.1}{Introduction}{}% 1
+\BOOKMARK [0][-]{chapter.2}{Quantum key distribution}{}% 2
+\BOOKMARK [1][-]{section.2.1}{Introduction}{chapter.2}% 3
+\BOOKMARK [1][-]{section.2.2}{Elements of Quantum Key Distribution}{chapter.2}% 4
+\BOOKMARK [2][-]{subsection.2.2.1}{Qubit}{section.2.2}% 5
+\BOOKMARK [2][-]{subsection.2.2.2}{Photons}{section.2.2}% 6
+\BOOKMARK [2][-]{subsection.2.2.3}{BB84}{section.2.2}% 7
+\BOOKMARK [2][-]{subsection.2.2.4}{Fiber}{section.2.2}% 8
+\BOOKMARK [2][-]{subsection.2.2.5}{Satellite}{section.2.2}% 9
+\BOOKMARK [0][-]{chapter.3}{Pointing Acquisition Tracking system}{}% 10
+\BOOKMARK [1][-]{section.3.1}{Introduction}{chapter.3}% 11
+\BOOKMARK [1][-]{section.3.2}{The PAT model}{chapter.3}% 12
+\BOOKMARK [1][-]{section.3.3}{PAT implementations}{chapter.3}% 13
+\BOOKMARK [1][-]{section.3.4}{Components}{chapter.3}% 14
+\BOOKMARK [2][-]{subsection.3.4.1}{Sensors}{section.3.4}% 15
+\BOOKMARK [2][-]{subsection.3.4.2}{Drivers}{section.3.4}% 16
+\BOOKMARK [2][-]{subsection.3.4.3}{Actuators}{section.3.4}% 17
+\BOOKMARK [2][-]{subsection.3.4.4}{Controllers}{section.3.4}% 18
+\BOOKMARK [2][-]{subsection.3.4.5}{Additional hardware}{section.3.4}% 19
+\BOOKMARK [1][-]{section.3.5}{PAT-Coarse system}{chapter.3}% 20
+\BOOKMARK [1][-]{section.3.6}{PAT-Fine system}{chapter.3}% 21
+\BOOKMARK [0][-]{chapter.4}{QKD software design}{}% 22
+\BOOKMARK [1][-]{section.4.1}{Memorization, standardization and expansion of the QKD software}{chapter.4}% 23
+\BOOKMARK [1][-]{section.4.2}{Program logical division}{chapter.4}% 24
+\BOOKMARK [1][-]{section.4.3}{Boilerplate structure}{chapter.4}% 25
+\BOOKMARK [1][-]{section.4.4}{Boilerplate documentation}{chapter.4}% 26
+\BOOKMARK [2][-]{subsection.4.4.1}{Setup your environment}{section.4.4}% 27
+\BOOKMARK [2][-]{subsection.4.4.2}{How to add source files .cpp or .h}{section.4.4}% 28
+\BOOKMARK [2][-]{subsection.4.4.3}{Include other projects inside https://gitlab.dei.unipd.it/}{section.4.4}% 29
+\BOOKMARK [2][-]{subsection.4.4.4}{Include third part libs .dll or .h}{section.4.4}% 30
+\BOOKMARK [2][-]{subsection.4.4.5}{Structure description of the project}{section.4.4}% 31
+\BOOKMARK [2][-]{subsection.4.4.6}{Setup git credential in windows}{section.4.4}% 32
+\BOOKMARK [0][-]{chapter.5}{PAT software design}{}% 33
+\BOOKMARK [1][-]{section.5.1}{The components analysis}{chapter.5}% 34
+\BOOKMARK [1][-]{section.5.2}{The GUI analysis}{chapter.5}% 35
+\BOOKMARK [2][-]{subsection.5.2.1}{Possible setups}{section.5.2}% 36
+\BOOKMARK [2][-]{subsection.5.2.2}{Possible GUIs}{section.5.2}% 37
+\BOOKMARK [1][-]{section.5.3}{The repositories structure}{chapter.5}% 38
+\BOOKMARK [1][-]{section.5.4}{The repositories documentation}{chapter.5}% 39
+\BOOKMARK [2][-]{subsection.5.4.1}{Utils}{section.5.4}% 40
+\BOOKMARK [2][-]{subsection.5.4.2}{Centroid}{section.5.4}% 41
+\BOOKMARK [2][-]{subsection.5.4.3}{KPA101}{section.5.4}% 42
+\BOOKMARK [2][-]{subsection.5.4.4}{Actuator}{section.5.4}% 43
+\BOOKMARK [2][-]{subsection.5.4.5}{PSD}{section.5.4}% 44
+\BOOKMARK [2][-]{subsection.5.4.6}{Camera}{section.5.4}% 45
+\BOOKMARK [2][-]{subsection.5.4.7}{Controller}{section.5.4}% 46
+\BOOKMARK [2][-]{subsection.5.4.8}{Setup}{section.5.4}% 47
+\BOOKMARK [0][-]{chapter.6}{PATLIC experiment}{}% 48
+\BOOKMARK [1][-]{section.6.1}{Introduction}{chapter.6}% 49
+\BOOKMARK [1][-]{section.6.2}{Optical setup}{chapter.6}% 50
+\BOOKMARK [1][-]{section.6.3}{Physical setup}{chapter.6}% 51
+\BOOKMARK [1][-]{section.6.4}{Alignment procedure}{chapter.6}% 52
+\BOOKMARK [2][-]{subsection.6.4.1}{Coarse alignment}{section.6.4}% 53
+\BOOKMARK [2][-]{subsection.6.4.2}{Fine alignment}{section.6.4}% 54
+\BOOKMARK [2][-]{subsection.6.4.3}{Multi-mode fiber alignment}{section.6.4}% 55
+\BOOKMARK [2][-]{subsection.6.4.4}{Single-mode fiber alignment}{section.6.4}% 56
+\BOOKMARK [0][-]{chapter.7}{Conclusions}{}% 57

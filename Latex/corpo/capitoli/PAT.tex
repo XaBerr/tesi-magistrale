@@ -61,13 +61,14 @@ The technical details for the cameras used in the PAT setup reported in table~\r
 \lvliv{Position Sensing Detectors}
 \imgs{0.2}{pictures/PSD}{ThorLabs PSD.}
 The Position Sensing Detectors (\idx{PSD}) utilizes a silicon photodiode-based pincushion-tetra-lateral sensor to accurately measure the displacement of an incident beam relative to the calibrated center. These devices are ideal for measuring the movement of a beam, the distance traveled, or as feedback for alignment systems.
-The spectrum covered is from 320nm to 1100nm. This device needs a hardware driver to be used. Depending on the position of the laser in the sensor, it returns three voltages: $\Delta x, \Delta y, SUM$.
+The spectrum covered is from 320nm to 1100nm. This device needs a hardware driver to be used. Depending on the position of the laser in the sensor, it returns three voltages: $\Delta x$ , $\Delta y$, $SUM$.
+$\Delta x$ and $\Delta y$ are signed voltages proportional to the light intensity captured in the two directions, where the sign signifies if the light intensity captured is before or after the middle point of the sensor. $SUM$ is proportional to the whole intensity capture in the both directions.
 From these three components it is possible to obtain the position of the laser using the following equations:
 \begin{equation}
       x = \frac{L_x \cdot \Delta x}{2 \cdot SUM}, y = \frac{L_y \cdot \Delta y}{2 \cdot  SUM}
 \end{equation}
 where $L_x,L_y$ are the sensor sizes. The model used in the PAT is the Thorlabs PDP90A, which requires a driver called KPA101. The technical details for the PDP90A used in the PAT setup reported in table~\ref{table:2}.
-The PSD is typically better than a camera at short distances, because the integrated controller in the KPA101 is based on a circuit and therefore has a continuous resolution, its signal doesn't require a post processing.
+The PSD is typically better than a camera at short distances, because the integrated controller in the KPA101 is based on a circuit and therefore has a continuous resolution with a bandwidth of 15 kHz, its signal doesn't require a post processing.
 
 \begin{table}[h!]
       \centering
@@ -91,7 +92,9 @@ The PSD is typically better than a camera at short distances, because the integr
 \lvliv{KPA101}
 \imgs{0.25}{pictures/KPA101}{ThorLabs KPA101.}
 The \idx{KPA101} is a device with three main functions: driver for the PSD, driver for the FSM, and natively implement a PID controller.
-The KPA101 can be controlled by the manual interface on the top of the unit or via a USB connection to a computer running a Kinesis software package or with the PATSW. Both interfaces allow the auto aligner to be operated in either an open-loop or closed-loop mode. In both modes, the KPA101 generates a left-minus-right X difference ($\Delta X$) signal, a top-minus-bottom Y ($\Delta Y$) difference signal, and a sum (SUM) signal that are displayed on the target screen. In the closed-loop mode, a processor inside the KPA101 runs two independent feedback loops that output X DIFF and Y DIFF signals. These signals will be present at the connectors on the back of the unit for use as the inputs to the beam steering elements being used to center the beam on the detector.
+The KPA101 can be controlled by the manual interface on the top of the unit or via a USB connection to a computer running a Kinesis software package or with the PATSW. Both interfaces allow the auto aligner to be operated in either an open-loop or closed-loop mode. In both modes, the KPA101 generates a left-minus-right X difference ($\Delta X$) signal, a top-minus-bottom Y ($\Delta Y$) difference signal, and a sum (SUM) signal that are displayed on the target screen. In the closed-loop mode, a processor inside the KPA101 runs two independent feedback loops that output X DIFF and Y DIFF signals.
+These signals will be present at the connectors on the back of the unit for use as the inputs to the beam steering elements being used to center the beam on the detector.
+% TODO: espandere
 
 \lvliii{Actuators}
 \lvliv{Fast Steering Mirror}
@@ -129,12 +132,12 @@ The \idx{PID KPA101} controller is Proportional Integral Derivatives (\idx{PID})
 
 \lvliii{Additional hardware}
 A problem with the integrated PID KPA101 is that aligns the system only to the center of the sensor. This becomes a problem in very complex systems when the optimal alignment position does not match the center of the sensor.
-To solve this problem, a circuit was created that adds bias voltages to the signals that are exiting from the sensor and entering in the KPA101.
+To solve this problem, a circuit was created that adds bias voltages to the signals that are exiting from the sensor and entering in the KPA101, with a range of $\pm 4.096$ V and a 16-bit accuracy. This resolution results in approximately 100 nm beam-displacement in the sensor.
 
 \lvliv{Circuit schematic}
 \imgs{0.5}{circuito/schematic}{Eagle schematic view of the circuit.}
-The circuit is made in Eagle. It is composed of three main components: controller, digital analog converter (DAC), amplifiers (AMP).
-The controller (ESP32) is mounted on the feather-board Huzzah32 and plugs into the circuit via a socket. It talks to the DAC through the serial-peripheral-interface (SPI) protocol using the most-significant-bit (MSB) convention with two-complement-data-coding.
+The circuit in \fig{circuito/schematic} was made in Eagle from scratch. It is composed of three main components: controller, digital analog converter (DAC), amplifiers (AMP).
+The controller (ESP32) is mounted on the feather-board Huzzah32 and plugs into the circuit via a socket. It talks to the DAC (AD5763) through the serial-peripheral-interface (SPI) protocol using the most-significant-bit (MSB) convention with two-complement-data-coding.
 The output of the DAC that has a range of $\pm 2 V_{ref}$ is combined with the two input signals X, Y through two instrumentation amplifiers. The reference voltage $V_{ref} = 2.048V$ is generated by a separate integrated (ADR430ARMZ).
 The amplifiers (AD8226ARMZ) has been provided with the possibility to add voltage regulators in case of amplification balance necessity.
 All integrated circuits have two capacitors $0.1 \mu F, 10 \mu F$ used as power supply filters. The MISO, MOSI, SCK lines have a resistance of $1 k \Omega$ used as a pull-up.
@@ -146,12 +149,12 @@ All amplifiers have on the -IN, IN lines $100 k \Omega$ resistors as pull-down. 
 The track design was done using Sparkfun’s design rules circuit (DRC). Particular attention has been paid to the isolation between digital and analog circuits, and efforts have been made to maintain serial communication lines of the same length. The final circuit was tinned in the laboratory and soon will be tested.
 
 \lvliv{Software design}
-The software was created via PlatformIO. It is divided in two main parts: the first part is a communication interface between the controller and the DAC; the second part is the graphical interface that allows a user to set the bias value. Only the first part has been developed.
+The software was created from scratch via PlatformIO. It is divided in two main parts: the first part is a communication interface between the controller and the DAC; the second part is the graphical interface that allows a user to set the bias value. Only the first part has been developed due to temporal restrictions.
 
 \lvlv{Controller-DAC interface}
 \imgTwo{0.5}{circuito-input}{Simplify diagram of the sequence to write in a register.}{0.5}{circuito-output}{Simplify diagram of the sequence to read from a register.}
 
-The communication interface between controller and DAC must implement three functions: initialization, writing from a register, and reading from a register. This interface has been implemented through the class AD5763, where the initialization is done via the constructor, and the read/write operation is done via the homonymous functions. The read and write procedures were carried out following the sequences described in the DAC documentation, their simplified schemes can be seen in~\fig{circuito-input} and~\fig{circuito-output}. Some additional structures have been implemented to simplify the use of these three functions.
+An initial analysis led to an implementation of the interface between controller and DAC through three functions: initialization, writing from a register, and reading from a register. This interface has been implemented through the class AD5763, where the initialization is done via the constructor, and the read/write operation is done via the homonymous functions. The read and write procedures were carried out following the sequences described in the DAC documentation, their simplified schemes can be seen in~\fig{circuito-input} and~\fig{circuito-output}. Some additional structures have been implemented to simplify the use of these three functions.
 For a quick view of its components, the List. \ref{code:AD5763} shows the class header.
 \begin{lstlisting}[language=c++, gobble=2, label=code:AD5763]
   #ifndef AD75763_H

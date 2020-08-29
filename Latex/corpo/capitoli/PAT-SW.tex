@@ -82,7 +82,7 @@ The sensor's side is composed by (form the top):
 In the controller's side there are three tabs: manual controller, calibrated
 controller and PIDKPA101 controller (only for PSD).
 The Manual controller and the PID KPA controller are simpler than calibrated.
-In the manual controller voltages and times are the two parameters to be configured to optimize the joystick that will be use for the movement.
+In the manual controller rate (voltages) and times are the two parameters to be configured to optimize the joystick that will be use for the movement.
 In the PIDKPA101 after the configuration of the PID parameters a checkbox \emph{enable PID}
 is avaliable to start the controller. The \emph{auto open closed loop} checkbox is used to
 disable the controller when the intensity of the beam go outside the
@@ -104,8 +104,9 @@ The point acquisition consists in moving the actuator (for example the FSM) in t
 Fixed a rate (voltage) of movement, the rate between pixel and time will result in a perfect line in case of ideality of the system. Unfortunately the system is not ideal and therefore a fit of the points obtained is required as shown in \fig{calibrazione}.
 In the case of the FSM the problem becomes more complicated because the four directions have different optimal voltages, in other words by fixing one direction and applying different voltages to it, the generated fits will have different quadratic errors.
 The best choice is therefore to choose the combination of voltage-direction that has the minor quadratic error, but two voltages are chosen: one high and one low. This is done because typically the best voltage is low and therefore produces movements that are too slow but very precise, so having a high tension for big movements is recommended.
+% TODO: estendimi
 
-This calibration procedure is typically broken into two parts because when you create a system you do not know which are the best ratios (voltages) and therefore must be searched.
+This calibration procedure is typically broken into two parts because when you create a system you do not know which are the best rates (voltages) and therefore must be searched.
 Once the ideal configuration is found, it always remains the same for the system so it is useful to have this configuration saved in a ready-to-use file.
 
 \paragraph{Data acquisition}
@@ -142,7 +143,7 @@ file will be analyzed to retrieve the low/high voltages configuration. The proce
             corresponding button.
 \end{itemize}
 
-\img{calibrazione}{Example of data acquisition for the PATF done with mirror-camera-pc configuration.}
+\img{calibrazione}{Example of data acquisition for the PATF done with mirror-camera-pc configuration. The volta used are: top 2V, bottom 2V, left 3V, right 3.5V.}
 
 \paragraph{One shot controller}
 
