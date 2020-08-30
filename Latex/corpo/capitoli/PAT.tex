@@ -63,9 +63,10 @@ The technical details for the cameras used in the PAT setup reported in table~\r
 The Position Sensing Detectors (\idx{PSD}) utilizes a silicon photodiode-based pincushion-tetra-lateral sensor to accurately measure the displacement of an incident beam relative to the calibrated center. These devices are ideal for measuring the movement of a beam, the distance traveled, or as feedback for alignment systems.
 The spectrum covered is from 320nm to 1100nm. This device needs a hardware driver to be used. Depending on the position of the laser in the sensor, it returns three voltages: $\Delta x$ , $\Delta y$, $SUM$.
 $\Delta x$ and $\Delta y$ are signed voltages proportional to the light intensity captured in the two directions, where the sign signifies if the light intensity captured is before or after the middle point of the sensor. $SUM$ is proportional to the whole intensity capture in the both directions.
-From these three components it is possible to obtain the position of the laser using the following equations:
+From these three components it is possible to obtain the position (x, y) of the laser's centroid relative to the center of the sensor (target point) using the following equations:
 \begin{equation}
       x = \frac{L_x \cdot \Delta x}{2 \cdot SUM}, y = \frac{L_y \cdot \Delta y}{2 \cdot  SUM}
+      \label{eq:KPA101}
 \end{equation}
 where $L_x,L_y$ are the sensor sizes. The model used in the PAT is the Thorlabs PDP90A, which requires a driver called KPA101. The technical details for the PDP90A used in the PAT setup reported in table~\ref{table:2}.
 The PSD is typically better than a camera at short distances, because the integrated controller in the KPA101 is based on a circuit and therefore has a continuous resolution with a bandwidth of 15 kHz, its signal doesn't require a post processing.
@@ -92,9 +93,10 @@ The PSD is typically better than a camera at short distances, because the integr
 \lvliv{KPA101}
 \imgs{0.25}{pictures/KPA101}{ThorLabs KPA101.}
 The \idx{KPA101} is a device with three main functions: driver for the PSD, driver for the FSM, and natively implement a PID controller.
-The KPA101 can be controlled by the manual interface on the top of the unit or via a USB connection to a computer running a Kinesis software package or with the PATSW. Both interfaces allow the auto aligner to be operated in either an open-loop or closed-loop mode. In both modes, the KPA101 generates a left-minus-right X difference ($\Delta X$) signal, a top-minus-bottom Y ($\Delta Y$) difference signal, and a sum (SUM) signal that are displayed on the target screen. In the closed-loop mode, a processor inside the KPA101 runs two independent feedback loops that output X DIFF and Y DIFF signals.
-These signals will be present at the connectors on the back of the unit for use as the inputs to the beam steering elements being used to center the beam on the detector.
-% TODO: espandere
+The KPA101 can be controlled by the manual interface on the top of the unit or via a USB connection to a computer running a Kinesis software package or with the PATSW.
+Both interfaces allow the auto aligner to be operated in either an open-loop or closed-loop mode.
+In both modes, the KPA101 displays three signals on its screen: SUM that represents the total intensity of the signal read by the sensor, and x and y that are the laser's centroid coordinates obtained from equations~\ref{eq:KPA101}.
+In the closed-loop mode, a processor inside the KPA101 runs two independent PID-feedback loops that outputs the two signals x and y as voltages on the back of the unit through the two pins X DIFF and Y DIFF. These signals will be used as the inputs to the beam steering elements being used to center the beam on the detector also called actuator.
 
 \lvliii{Actuators}
 \lvliv{Fast Steering Mirror}
