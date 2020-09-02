@@ -22,9 +22,8 @@ plot_scatter(ax1, filename2, 'blue');
 hold(ax1, 'on');
 grid(ax1, 'on');
 legend(ax1, 'PID OFF', 'PID ON')
-
-plot_timeseries(ax2, filename1)
-plot_timeseries(ax3, filename2)
+plot_timeseries(ax2, filename1);
+plot_timeseries(ax3, filename2);
 
 
 %% FUNCTIONS
@@ -39,8 +38,6 @@ ytarget = data{2};
 deltax = data{3};
 deltay = data{4};
 
-% x = xtarget + deltax;
-% y = ytarget + deltay;
 x = deltax - mean(deltax);
 y = deltay - mean(deltay);
 hold(ax, 'on');
@@ -49,9 +46,6 @@ t=t*0.1;
 plot(ax, t, x, 'color', 'red', 'Marker', '.');
 plot(ax, t, y, 'color', 'blue', 'Marker', '.');
 
-% xlabel(ax, 'Delta X (pixel)');
-% ylabel(ax, 'Delta Y (pixel)');
-% ylim([-150 150]);
 xlim([0 max(t)]);
 ylim([-2*max(x) 2*max(x)]);
 xlabel(ax, 'Time (s)')
