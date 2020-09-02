@@ -18,3 +18,4 @@
 /Latex/*.fdb_latexmk
 /Latex/img/*-eps-converted-to.pdf
 !/Latex/main.pdf
+*.asm
