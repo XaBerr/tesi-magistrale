@@ -54,7 +54,9 @@
 \BOOKMARK [2][-]{subsection.6.4.2}{Fine alignment}{section.6.4}% 54
 \BOOKMARK [2][-]{subsection.6.4.3}{Multi-mode fiber alignment}{section.6.4}% 55
 \BOOKMARK [2][-]{subsection.6.4.4}{Single-mode fiber alignment}{section.6.4}% 56
-\BOOKMARK [2][-]{subsection.6.4.5}{Calibration's tests}{section.6.4}% 57
-\BOOKMARK [2][-]{subsection.6.4.6}{Low frequency perturbation tests}{section.6.4}% 58
-\BOOKMARK [2][-]{subsection.6.4.7}{High frequency perturbation tests}{section.6.4}% 59
-\BOOKMARK [0][-]{chapter.7}{Conclusions}{}% 60
+\BOOKMARK [1][-]{section.6.5}{Test of the PATF}{chapter.6}% 57
+\BOOKMARK [2][-]{subsection.6.5.1}{PID on/off con stufetta}{section.6.5}% 58
+\BOOKMARK [2][-]{subsection.6.5.2}{One shot r10/r30}{section.6.5}% 59
+\BOOKMARK [2][-]{subsection.6.5.3}{One shot on/off}{section.6.5}% 60
+\BOOKMARK [1][-]{section.6.6}{Test of the PATF and PATC}{chapter.6}% 61
+\BOOKMARK [0][-]{chapter.7}{Conclusions}{}% 62
