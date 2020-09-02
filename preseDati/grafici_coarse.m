@@ -30,6 +30,11 @@ legend([p1 p2 p3], ["\Delta x" "\Delta y" "One shot on/off"]);
 
 [Bcoarse_dx, Bcoarse_dy, Bcoarse_cstatus] = load_file(filenameBobCoarse);
 ax2 = subplot(3,1,2);
+for i = 1 : 50
+    Bcoarse_dx = [0; Bcoarse_dx];
+    Bcoarse_dy = [0; Bcoarse_dy];
+    Bcoarse_cstatus = [519; Bcoarse_cstatus];
+end
 t = (1 : length(Bcoarse_dx)) * 0.017;
 index = t > 0;
 hold(ax2, 'on');
