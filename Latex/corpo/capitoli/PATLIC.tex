@@ -87,19 +87,32 @@ The complete alignment procedure for PATHW will be divided into parts. At the en
 \img{measure/PID_off}{PID off.}
 \img{measure/PID_on}{PID on.}
 \img{measure/PID_on_off}{PID on and off.}
+In questo test si vuole vedere la capacità del controllore PIDKPA101 di contrastare drift e fluttuazioni ad alta frequenza.
+Per realizzare ciò è stata aggiunta tra Alice e Bob una fonte di calore che fa flutturare il canale in maniera casuale.
+Nella figura1 dove il controllore non è accesso, è possibile vedere le fluttuazioni del canale sia in x (rosso) che in y (blue) che si evolvono nel tempo.
+Invece, nella figura2 è stato acceso il controllore le stesse fluttuazioni sono state visibilmente ridotte.
+Un modo più chiaro per vedere questa differenza è tramite la figura3. Essa rappresenta la posizione della differenza tra la posizione effettiva del centroide.
 
-
-\lvliii{One shot r10/r30}
-\img{measure/OneShot_r30}{OneShot r30.}
-\img{measure/OneShot_r10}{OneShot r10.}
-\img{measure/OneShot_r10_r30}{OneShot r10 and r30.}
+% TODO: PIDKPA101 corregge dript e frequenze, quadrato, metto i numeri (mean, sqrt(var)) e ratio delle varianze
 
 \lvliii{One shot on/off}
 \img{measure/OneShot_off}{OneShot off.}
 \img{measure/OneShot_on}{OneShot on.}
 \img{measure/OneShot_on_off}{OneShot on and off.}
+% TODO: corregge dript, peggiorano le frequenze, (xk controllore ad alte freq ha gossi errori), riferimento alla calibrazione, stessi numeri
+
+
+% \lvliii{One shot r10/r30}
+% \img{measure/OneShot_r30}{OneShot r30.}
+% \img{measure/OneShot_r10}{OneShot r10.}
+% \img{measure/OneShot_r10_r30}{OneShot r10 and r30.}
+% % TODO: corregge dript, peggiorano le frequenze, (xk controllore ad alte freq ha gossi errori), riferimento alla calibrazione, stessi numeri
+
 
 \lvlii{Test of the PATF and PATC}
 \img{measure/coarse_off}{Coarse off.}
 \img{measure/full_on}{Full on.}
 
+% TODO: 
+% - coarse: entrambe le figure hanno la stessa tipo perturbazione, nella 1 il drift esce, nella 2 no => anche se avessi avuto il fine nella 1 sarei uscito
+% - fine: attivando il coarse, che il coarse compensa il drift e il fine può compensare. attivando e disattivando il fine si nota la differenza
