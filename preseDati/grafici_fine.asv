@@ -68,8 +68,8 @@ end
 
 function [] = plot_timeseries(filename)
     data = importfile(filename);
-    x = data.deltax;
-    y = data.deltay;
+    x = data.deltax - mean(data.deltax);
+    y = data.deltay - mean(data.deltay);
     t = (1 : length(x)) * 0.01;
     figure();
     hold on;
@@ -80,14 +80,7 @@ function [] = plot_timeseries(filename)
     ylabel('Distance [px]');
     xlim([0 max(t)]);
     hold off;
-    mx = mean(x);
-    my = mean(y);
-    
-    x = data.deltax - mean(data.deltax);
-    y = data.deltay - mean(data.deltay);
-    vx = sqrt(var(x));
-    vy = sqrt(var(y));
-    fprintf("%s: m:(%.2f,%.2f) v:(%.2f,%.2f)\n", filename, mx, my, vx, vy);
+    mx = mean(x)
 end
 
 function [] = plot_scatter(filenames, colors)
