@@ -82,9 +82,6 @@ function [] = plot_timeseries(filename)
     hold off;
     mx = mean(x);
     my = mean(y);
-    
-    x = data.deltax - mean(data.deltax);
-    y = data.deltay - mean(data.deltay);
     vx = sqrt(var(x));
     vy = sqrt(var(y));
     fprintf("%s: m:(%.2f,%.2f) v:(%.2f,%.2f)\n", filename, mx, my, vx, vy);
