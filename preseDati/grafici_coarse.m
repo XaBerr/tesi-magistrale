@@ -89,24 +89,17 @@ ax3 = subplot(3,1,3);
 t = (1 : length(Bfine_dx)) * 0.0135;
 index = t > 0;
 hold(ax3, 'on');
-patch([14 50 50 14], [500 500 -500 -500], 'y');
-patch([60 125 125 60], [500 500 -500 -500], 'y');
+patch([14 50 50 14], [5 5 -5 -5], 'y');
+patch([60 125 125 60], [5 5 -5 -5], 'y');
 alpha(0.1);
-p1 = plot(ax3, t(index), Bfine_dx(index), 'color', "Red", 'Marker', '.');
-p2 = plot(ax3, t(index), Bfine_dy(index), 'color', "Blue", 'Marker', '.');
-p3 = plot(ax3, t(index), Bfine_cstatus(index), 'k-', 'LineWidth', 3);
+p1 = plot(ax3, t(index), Bfine_dx(index) / 100, 'color', "Red", 'Marker', '.');
+p2 = plot(ax3, t(index), Bfine_dy(index) / 100, 'color', "Blue", 'Marker', '.');
+p3 = plot(ax3, t(index), Bfine_cstatus(index) / 100, 'k-', 'LineWidth', 3);
 grid on;
 xlabel('Time [s]');
-ylabel('Distance [px]');
+ylabel('Distance [mm]');
 title("Bob Fine");
 legend([p1 p2 p3], ["\Delta x" "\Delta y" "PIDKPA101 on/off"], 'FontSize', 14);
-
-x_on = Bfine_dx(Bfine_cstatus > 10);
-y_on = Bfine_dy(Bfine_cstatus > 10);
-x_off = Bfine_dx(Bfine_cstatus < 10);
-y_off = Bfine_dy(Bfine_cstatus < 10);
-plot_scatter(x_on, y_on, x_off, y_off);
-
 
 %%
 plot_scatter(Bcoarse_dx(t < 50), Bcoarse_dy(t < 50), Bcoarse_dx_off, Bcoarse_dy_off);

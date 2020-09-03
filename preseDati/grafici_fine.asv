@@ -1,6 +1,6 @@
 clear all;
 close all;
-% clc;
+clc;
 set(0, 'defaultAxesFontSize', 20);
 
 %% FILE SELECTION
@@ -10,13 +10,13 @@ switch simulation
         filename1 = "fluttuazioni_vari_rumori/stufetta_caldo_controloff_100Hz.txt";
         filename2 = "fluttuazioni_vari_rumori/stufetta_caldo_PIDON_100Hz.txt";
         plot_timeseries(filename1);
-        ylim([-0.50 0.50]);
+        ylim([-50 50]);
         legend(["\Delta x" "\Delta y"]);
         plot_timeseries(filename2);
-        ylim([-0.50 0.50]);
+        ylim([-50 50]);
         legend(["\Delta x" "\Delta y"]);
         plot_scatter([filename1 filename2], ["red" "blue"]);
-        ylim([-0.50 0.50]);
+        ylim([-50 50]);
         legend(["PID off" "PID on"]);
 %     case 2
 %         filename1 = "fluttuazioni_vari_rumori/stufetta_caldo_singleshot_r10_100Hz.txt";
@@ -34,13 +34,13 @@ switch simulation
         filename1 = "fluttuazioni_vari_rumori/stufetta_caldo_controloff_100Hz.txt";
         filename2 = "fluttuazioni_vari_rumori/stufetta_caldo_singleshot_r30_100Hz.txt";
         plot_timeseries(filename1);
-        ylim([-5 5]);
+        ylim([-500 500]);
         legend(["\Delta x" "\Delta y"]);
         plot_timeseries(filename2);
-        ylim([-5 5]);
+        ylim([-500 500]);
         legend(["\Delta x" "\Delta y"]);
         plot_scatter([filename1 filename2], ["red" "blue"]);
-        ylim([-5 5]);
+        ylim([-500 500]);
         legend(["One shot off" "One shot on"]);
 end
 
@@ -68,8 +68,8 @@ end
 
 function [] = plot_timeseries(filename)
     data = importfile(filename);
-    x = data.deltax / 100;
-    y = data.deltay / 100;
+    x = data.deltax;
+    y = data.deltay;
     t = (1 : length(x)) * 0.0135;
     figure();
     hold on;
@@ -95,14 +95,14 @@ function [] = plot_scatter(filenames, colors)
     limitey = [];
     for i = 1 : size(filenames, 2)
         data = importfile(filenames(i));
-        x = data.deltax / 100;
-        y = data.deltay / 100;
+        x = data.deltax;
+        y = data.deltay;
         plot(x, y, 'color', colors(i), 'Marker', 'x', 'linestyle', 'none');
         limitex = [max(abs(x)) limitex];
         limitey = [max(abs(y)) limitey];
     end
-    xlabel('\Delta x [mm]');
-    ylabel('\Delta y [mm]');
+    xlabel('\Delta x [px]');
+    ylabel('\Delta y [px]');
     limite = max([limitex limitey]);
     ylim([-limite limite]);
     xlim([-limite limite]);

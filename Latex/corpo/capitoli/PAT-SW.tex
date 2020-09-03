@@ -54,7 +54,8 @@ then connected to the mirror and to the PSD. Here three types of controllers are
 The GUI can be divided in two parts: the left side show the sensor
 information, the right side show the controllers information.
 
-The sensor's side is composed by (form the top):
+The sensor's side works always in pixels to be device independent. In particular in the case of the camera the sensor works directly on pixels, while in the case of the PSD the millimeter scale is converted into a pixels with of a conversion factor of $10^{5}$ px/m = 1px / 10 $\mu$m.
+It is composed by (form the top):
 
 \begin{itemize}
       \item

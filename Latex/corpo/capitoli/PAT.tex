@@ -65,7 +65,7 @@ The spectrum covered is from 320nm to 1100nm. This device needs a hardware drive
 $\Delta x$ and $\Delta y$ are signed voltages proportional to the weighted average of the positions per coordinate respect to the middle point of the sensor, where the weight is proportional to the intensity received at a given point. $SUM$ is proportional to the whole intensity capture in the both directions.
 From these three components it is possible to obtain the position (x, y) of the laser's centroid relative to the center of the sensor (target point) using the following equations:
 \begin{equation}
-      x = \frac{L_x \cdot \Delta x}{2 \cdot SUM}, y = \frac{L_y \cdot \Delta y}{2 \cdot  SUM}
+      x = \frac{L_x \cdot \Delta x}{2 \cdot SUM}, \quad y = \frac{L_y \cdot \Delta y}{2 \cdot  SUM}
       \label{eq:KPA101}
 \end{equation}
 where $L_x,L_y$ are the sensor sizes. The model used in the PAT is the Thorlabs PDP90A, which requires a driver called KPA101. The technical details for the PDP90A used in the PAT setup reported in table~\ref{table:2}.
@@ -78,14 +78,14 @@ The PSD is typically better than a camera at short distances, because the integr
             Name                 & PDP90A                 \\\hline
             Producer             & Thorlabs               \\\hline
             Wavelength range     & 320 to 1100 nm         \\\hline
-            Resolutiona          & 0.75 µm                \\\hline
+            Resolution           & 0.75 µm                \\\hline
             Sensor size          & 9 mm x 9 mm            \\\hline
             Bandwidth            & 15 kHz                 \\\hline
             Output voltage range & pin-1 (X): -4 V to 4 V \\
                                  & pin-2 (Y): -4 V to 4 V \\
                                  & pin-3 (SUM): 0 to 4 V  \\\hline
       \end{tabular}
-      \caption{Camera PDP90A technical details.}
+      \caption{PSD PDP90A technical details.}
       \label{table:2}
 \end{table}
 
