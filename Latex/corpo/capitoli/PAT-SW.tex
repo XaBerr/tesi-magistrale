@@ -103,7 +103,7 @@ In this regards, if a FSM is used the rate is a voltage, instead if a Skywatcher
 Fixed a rate (voltage) of movement, the rate between pixels and time will result in a perfect line in case of ideality of the system. Unfortunately the system is not ideal and therefore a fit of the points obtained is required as shown in \fig{calibrazione}.
 
 In the case of the FSM the problem becomes more complicated given the precision required by the instrument, not all voltages stimulate the sensor’s movement in the same way. Moreover, the asymmetry of the four axes is highlighted.
-This result in four different optimal voltages for the directions, in other words by fixing one direction and applying different voltages to it, the generated fits will have different mean-squared-error. Multiple data acquisitions are therefore required to search for optimal values for each direction.
+This result in four different optimal voltages for the directions, in other words by fixing one direction and applying different voltages to it, the generated fits will have different mean-squared-error. Multiple data acquisitions are therefore required to search for optimal values for each direction as shown in figures: \fig{calibrazione}, \fig{calibrazione_1v}, and \fig{calibrazione_4v}.
 The best choice is therefore to choose the combination of voltage-direction that has the minor mean-squared-error, but two voltages are chosen: one high and one low. This is done because typically the best voltage is low and therefore produces movements that are too slow but very precise, so having a high tension for big movements is recommended. Thus, the combination of small precise movements and large rapid movements should be able to ensure good performance to the controller.
 
 
@@ -144,7 +144,9 @@ file will be analyzed to retrieve the low/high voltages configuration. The proce
             corresponding button.
 \end{itemize}
 
-\img{calibrazione}{Example of data acquisition for the PATF done with mirror-camera-pc configuration. The volta used are: top 2V, bottom 2V, left 3V, right 3.5V.}
+\imgs{0.4}{calibrazione}{Example of data acquisition for the PATF done with mirror-camera-pc configuration. The voltages used are: top 2V, bottom 2V, left 3V, right 3.5V.}
+
+\imgTwo{0.25}{calibrazione_1v}{Example of data acquisition for the PATF done with mirror-camera-pc configuration. The voltages used are: top 1V, bottom 1V, left 1V, right 1V.}{0.25}{calibrazione_4v}{Example of data acquisition for the PATF done with mirror-camera-pc configuration. The voltages used are: top 4V, bottom 4V, left 4V, right 4V.}
 
 \paragraph{One shot controller}
 
