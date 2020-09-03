@@ -64,7 +64,7 @@ grid on;
 xlabel('Time [s]');
 ylabel('Distance [px]');
 title("Bob Fine");
-legend([p1 p2 p3], ["\Delta x" "\Delta y" "One shot on/off"]);
+legend([p1 p2 p3], ["\Delta x" "\Delta y" "PIDKPA101 on/off"]);
 
 %% ESP1
 filenameAliceCoarse = "martellate/Alice_coarse_hammer.txt";
@@ -98,6 +98,7 @@ grid on;
 ylabel('Distance [px]');
 title("Bob Coarse");
 legend(["\Delta x" "\Delta y" "One shot on/off"]);
+xlabel('Time [s]');
 
 
 

@@ -116,10 +116,15 @@ This means that One shot controller and PIDKPA101 are not interchangeable contro
 \lvliii{Test of the PATF and PATC}
 \img{measure/coarse_off}{Coarse off.}
 \img{measure/full_on}{Full on.}
+This experiment aims to compensate external perturbation with both controllers enabled: the One shot controller for the PATC and the PIDKPA101 controller for the PATF.
+In this experiment, Bob’s mount was hit by a hammer in a sequence of pulses with a frequency of a few hertz.
 
+In the first figure~\fig{measure/coarse_off} where both PATC and PATF are disabled, it can be seen that the Bob's centroid starts to accumulate drift in the x-axis that leads it to lose the signal at about 7 seconds.
+The same perturbation was done with the PATC control enabled in the first yellow block (from 10 to 50 second) of~\fig{measure/full_on}.
+In this figure it is clearly visible that the One shot of the PATC has compensated the drift that before had carried to the loss of the signal. This is a similar result to the second test \textit{One shot on/off with heat source turbolence}.
+In addition, the PATC system also compensated the second set of perturbations (from 60 to 130 second) where both frequency and amplitude were increased.
 
+In \fig{measure/full_on} it is also possible to see that during the whole period of the experiment the PATF system was switched on and off.
+When the system is turned on the fluctuations and drifts are compensated similarly as already seen in the first test \textit{PIDKPA101 on/off with heat source turbolence} but in this experiment it is important to note that the PATF system could only operate thanks to the PATC compensation.
 
-% TODO: 
-% - coarse: entrambe le figure hanno la stessa tipo perturbazione, nella 1 il drift esce, nella 2 no => anche se avessi avuto il fine nella 1 sarei uscito
-% - fine: attivando il coarse, che il coarse compensa il drift e il fine può compensare. attivando e disattivando il fine si nota la differenza
-% fare le passe se posso
+%TODO: cacolare le palline del punto 3
