@@ -121,12 +121,10 @@ This means that the PIDKPA101 controller outperforms the One shot one in counter
 This experiment aims to compensate external perturbation with both controllers enabled: the One shot controller for the PATC and the PIDKPA101 controller for the PATF.
 In this experiment, Bob’s mount was hit by a hammer in a sequence of pulses with a frequency of a few hertz.
 
-In the first figure~\fig{measure/coarse_off} where both PATC and PATF are disabled, it can be seen that the Bob's centroid starts to accumulate drift in the x-axis that leads it to lose the signal at about 7 seconds.
+In the first figure~\fig{measure/coarse_off} where both PATC are disabled, it can be seen that the Bob's centroid on the coarse camera starts to accumulate drift in the x-axis that leads it to lose the signal after only 7 seconds.
 The same perturbation was done with the PATC control enabled in the first yellow block (from 10 to 50 second) of~\fig{measure/full_on}.
 In this figure it is clearly visible that the One shot of the PATC has compensated the drift that before had carried to the loss of the signal. This compensation can also be seen in \fig{measure/coarse_on_vs_off}, where the red oval result centered around the target and this is a result somehow similar to what was obtained in the test \textit{One shot on/off with heat source turbolence}.
-In addition, the PATC system also compensated the second set of perturbations (from 60 to 130 second) where both frequency and amplitude were increased.
+In the second set of perturbations (from 60 to 130 second) where both frequency and amplitude were increased, the PATC system try to compensate the perturbation but a lot of points go outside of the sensor (blue spike). However, the system keeps the target in average avoiding the drift and the total loss of the signal.
 
 In \fig{measure/full_on} it is also possible to see that during the whole period of the experiment the PATF system was switched on and off.
 When the system is turned on the fluctuations and drifts are compensated similarly as already seen in the test \textit{PIDKPA101 on/off with heat source turbolence} but in this experiment it is important to note that the PATF system could only operate thanks to the PATC compensation.
-
-%TODO: cacolare le palline del punto 3
